@@ -1,11 +1,8 @@
 name: Deploy Jekyll site to Pages
 
 on:
-  pull_request:
-    branches:
-      - main
-
-  workflow_dispatch:
+  schedule:
+    - cron: "0 3 * * *"
 
 permissions:
   contents: read
@@ -19,7 +16,6 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/main' # Condition added to run only on the main branch
     steps:
       - name: Checkout
         uses: actions/checkout@v3
