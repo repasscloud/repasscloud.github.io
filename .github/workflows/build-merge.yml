@@ -1,0 +1,35 @@
+name: Build & Merge
+
+on:
+  push:
+    branches: [ "dev" ]
+  workflow_dispatch:
+  
+jobs:
+  jekyll_build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Jekyll Build
+      run: |
+        docker run \
+        -v ${{ github.workspace }}:/srv/jekyll -v ${{ github.workspace }}/_site:/srv/jekyll/_site \
+        jekyll/builder:latest /bin/bash -c "chmod -R 777 /srv/jekyll && jekyll build --future"
+  pull_request:
+    needs: [ "jekyll_build" ]
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Create pull pull_request
+      run: gh pr create -B main -H dev --title 'Auto PR dev into main' --body 'Automatically created by gh-actions.'
+      env:
+        GITHUB_TOKEN: ${{ secrets.PAT }}
+  auto-merge:
+    needs: [ "pull_request" ]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: merge pull request
+        run: gh pr merge --squash
+        env:
+          GITHUB_TOKEN: ${{ secrets.PAT }}
