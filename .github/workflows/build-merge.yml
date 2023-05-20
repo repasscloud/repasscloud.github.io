@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
   
 jobs:
-  jekyll_build:
+  jekyll-build:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
@@ -15,8 +15,8 @@ jobs:
         docker run \
         -v ${{ github.workspace }}:/srv/jekyll -v ${{ github.workspace }}/_site:/srv/jekyll/_site \
         jekyll/builder:latest /bin/bash -c "chmod -R 777 /srv/jekyll && jekyll build --future"
-  pull_request:
-    needs: [ "jekyll_build" ]
+  pull-request:
+    needs: [ "jekyll-build" ]
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
@@ -25,7 +25,7 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.PAT }}
   auto-merge:
-    needs: [ "pull_request" ]
+    needs: [ "pull-request" ]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
