@@ -21,7 +21,7 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Create pull pull_request
-      run: gh pr create -B main -H dev --title 'Auto PR dev into main' --body 'Automatically created by gh-actions.' --admin
+      run: gh pr create -B main -H dev --title 'Auto PR dev into main' --body 'Automatically created by gh-actions.'
       env:
         GITHUB_TOKEN: ${{ secrets.PAT }}
   auto-merge:
@@ -30,6 +30,6 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: merge pull request
-        run: gh pr merge --squash
+        run: gh pr merge --merge --admin
         env:
           GITHUB_TOKEN: ${{ secrets.PAT }}
