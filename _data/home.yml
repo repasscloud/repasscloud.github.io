@@ -11,7 +11,7 @@ navbar_entries:
 project_entries:
   - title: OptechX
     url: projects/optechx
-    desc: Build WinOS SOE without overhead
+    desc: Build WinOS SOE without overhead in the cloud
 
   - title: Project 2
     url: overview-post
@@ -54,14 +54,14 @@ old_project_entries:
     desc: The better people know you, the better they collaborate
 
 footer_entries:
-  - title: abhinav's homepage
-    url: https://www.abhinav.co
+  - title: GlamLah
+    url: https://glamlah.com
 
   - title: twitter
-    url: https://twitter.com/abhinav
+    url: https://twitter.com/repasscloud
 
   - title: github
-    url: https://github.com/abhinavs
+    url: https://github.com/repasscloud
 
   - title: feed
     url: feed.xml
