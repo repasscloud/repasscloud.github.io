@@ -49,3 +49,6 @@ sass:
 plugins:
   - jekyll-feed
   - jekyll-soopr-seo-tag
+
+# Google Analytics
+google_analytics: G-RLMZK1PDGS
