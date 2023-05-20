@@ -66,6 +66,7 @@ OptechX remains committed to continuous improvement and innovation. The future r
 5. Continuous Security Updates: OptechX will continue to prioritize security by proactively implementing the latest security measures and releasing regular updates to address emerging threats. This commitment will ensure that OptechX users have access to the most secure and up-to-date SOE images.
 
 Through these achievements and the ongoing roadmap initiatives, OptechX strives to redefine the SOE design and deployment landscape, delivering a comprehensive solution that empowers businesses to create stable, secure, and customized operating environments with ease.
+
 ---
 {: data-content="footnotes"}
 
