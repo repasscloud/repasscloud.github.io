@@ -4,7 +4,7 @@ on:
   push:
     branches: [ "dev" ]
   workflow_dispatch:
-  
+
 jobs:
   jekyll-build:
     runs-on: ubuntu-latest
@@ -15,6 +15,7 @@ jobs:
         docker run \
         -v ${{ github.workspace }}:/srv/jekyll -v ${{ github.workspace }}/_site:/srv/jekyll/_site \
         jekyll/builder:latest /bin/bash -c "chmod -R 777 /srv/jekyll && jekyll build --future"
+
   pull-request:
     needs: [ "jekyll-build" ]
     runs-on: ubuntu-latest
@@ -24,6 +25,7 @@ jobs:
       run: gh pr create -B main -H dev --title 'Auto PR dev into main' --body 'Automatically created by gh-actions.'
       env:
         GITHUB_TOKEN: ${{ secrets.PAT }}
+
   auto-merge:
     needs: [ "pull-request" ]
     runs-on: ubuntu-latest
