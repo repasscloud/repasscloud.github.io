@@ -13,9 +13,10 @@ project_entries:
     url: projects/optechx
     desc: Build WinOS SOE without overhead in the cloud
 
-  # - title: Project 2
-  #   url: overview-post
-  #   desc: Projects are shown in card layout
+  - title: WanderConnect
+    url: projects/wanderconnect
+    desc: Your guide to unforgettable experiences and meaningful connections
+    highlight: WIP
 
   # - title: Project 3
   #   url: overview-post
