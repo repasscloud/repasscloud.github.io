@@ -3,8 +3,7 @@ layout: post
 author: Danijel-James Wynyard
 tags: [projects,wanderconnect]
 ---
-
-![WanderConnect Logo](/assets/images/wanderconnect/wanderconnect_logo.png)
+<img src="/assets/images/wanderconnect/wanderconnect_logo.png" style="max-width: 30%;" alt="WanderConnect logo" />
 
 ## WanderConnect
 
