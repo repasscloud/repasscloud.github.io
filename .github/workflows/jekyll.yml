@@ -2,7 +2,7 @@ name: Deploy Jekyll site to Pages
 
 on:
   schedule:
-    - cron: "44 * * * *"
+    - cron: "44 6 * * 1"
   workflow_dispatch:
 
 permissions:
