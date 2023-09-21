@@ -39,6 +39,7 @@ jobs:
       - name: Build with Jekyll
         run: |
           gem install bundler &&
+          bundle config unset deployment &&
           bundle install &&
           bundle add jekyll-sitemap &&
           bundle exec jekyll build --baseurl "${{ steps.pages.outputs.base_path }}"
