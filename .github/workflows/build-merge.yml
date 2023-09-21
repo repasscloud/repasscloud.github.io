@@ -15,6 +15,7 @@ jobs:
       uses: ruby/setup-ruby@v1
       with:
         ruby-version: 2.7  # Specify your desired Ruby version
+        bundler-cache: true
 
     - name: Install Dependencies
       run: |
@@ -30,7 +31,12 @@ jobs:
       run: |
         docker run \
         -v ${{ github.workspace }}:/srv/jekyll -v ${{ github.workspace }}/_site:/srv/jekyll/_site \
-        jekyll/builder:latest /bin/bash -c "chmod -R 777 /srv/jekyll && jekyll build --future"
+        jekyll/builder:latest /bin/bash -c "
+          chmod -R 777 /srv/jekyll &&
+          gem install bundler &&
+          bundle install &&
+          jekyll build --future"
+
 
   pull-request:
     needs: [ "jekyll-build" ]
