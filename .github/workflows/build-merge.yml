@@ -38,7 +38,6 @@ jobs:
           bundle add jekyll-sitemap &&
           jekyll build --future"
 
-
   pull-request:
     needs: [ "jekyll-build" ]
     runs-on: ubuntu-latest
