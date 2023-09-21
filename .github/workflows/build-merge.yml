@@ -35,6 +35,7 @@ jobs:
           chmod -R 777 /srv/jekyll &&
           gem install bundler &&
           bundle install &&
+          bundle add jekyll-sitemap &&
           jekyll build --future"
 
 
