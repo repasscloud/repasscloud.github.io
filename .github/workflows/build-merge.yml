@@ -6,7 +6,23 @@ on:
   workflow_dispatch:
 
 jobs:
+  setup:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Set up Ruby
+      uses: actions/setup-ruby@latest
+      with:
+        ruby-version: 2.7  # Specify your desired Ruby version
+
+    - name: Install Dependencies
+      run: |
+        gem install bundler
+        bundle install  # This will install all gems specified in your Gemfile, including jekyll-sitemap
+
   jekyll-build:
+    needs: [ "setup" ]
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
