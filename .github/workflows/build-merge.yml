@@ -6,7 +6,24 @@ on:
   workflow_dispatch:
 
 jobs:
+  setup:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Set up Ruby
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: 2.7  # Specify your desired Ruby version
+        bundler-cache: true
+
+    - name: Install Dependencies
+      run: |
+        gem install bundler
+        bundle install  # This will install all gems specified in your Gemfile, including jekyll-sitemap
+
   jekyll-build:
+    needs: [ "setup" ]
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
@@ -14,7 +31,13 @@ jobs:
       run: |
         docker run \
         -v ${{ github.workspace }}:/srv/jekyll -v ${{ github.workspace }}/_site:/srv/jekyll/_site \
-        jekyll/builder:latest /bin/bash -c "chmod -R 777 /srv/jekyll && jekyll build --future"
+        jekyll/builder:latest /bin/bash -c "
+          chmod -R 777 /srv/jekyll &&
+          gem install bundler &&
+          bundle install &&
+          bundle add jekyll-sitemap &&
+          jekyll build --future"
+
 
   pull-request:
     needs: [ "jekyll-build" ]
