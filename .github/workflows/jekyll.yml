@@ -29,6 +29,10 @@ jobs:
           ruby-version: '3.1'
           bundler-cache: true
           cache-version: 0
+      - name: Install Dependencies
+        run: |
+          gem install bundler
+          bundle install  # This will install all gems specified in your Gemfile, including jekyll-sitemap
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v3
