@@ -2,6 +2,3 @@
 
 source "https://rubygems.org"
 gemspec
-
-# Add jekyll-sitemap gem
-gem "jekyll-sitemap"
