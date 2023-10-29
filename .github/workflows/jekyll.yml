@@ -76,7 +76,3 @@ jobs:
       - name: Submit Sitemap to Bing
         run: |
           curl -H "Content-Type: text/plain" --data-binary "@feed.xml" "http://www.bing.com/ping?sitemap=$(python3 -c 'import urllib.parse; print(urllib.parse.quote("https://repasscloud.com/feed.xml"))')"
-
-      - name: Submit Sitemap to Yahoo
-        run: |
-          curl -H "Content-Type: text/plain" --data-binary "@feed.xml" "http://search.yahooapis.com/SiteExplorerService/V1/updateNotification?appid=YahooDemo&url=$(python3 -c 'import urllib.parse; print(urllib.parse.quote("https://repasscloud.com/feed.xml"))')"
