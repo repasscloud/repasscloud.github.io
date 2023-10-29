@@ -31,12 +31,14 @@ jobs:
       run: |
         docker run \
         -v ${{ github.workspace }}:/srv/jekyll -v ${{ github.workspace }}/_site:/srv/jekyll/_site \
-        jekyll/builder:latest /bin/bash -c "
-          chmod -R 777 /srv/jekyll &&
-          gem install bundler &&
-          bundle install &&
-          bundle add jekyll-sitemap &&
-          jekyll build --future"
+        jekyll/builder:latest /bin/bash -c "chmod -R 777 /srv/jekyll && \
+        gem install bundler && \
+        bundle install && \
+        gem install bundler && \
+        bundle config unset deployment && \
+        bundle install && \
+        bundle add jekyll-sitemap && \
+        bundle exec jekyll build --future"
 
   pull-request:
     needs: [ "jekyll-build" ]
