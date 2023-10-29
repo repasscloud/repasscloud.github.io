@@ -64,23 +64,23 @@ jobs:
     needs: deploy
     steps:
       - name: Install Python
-        run: sudo apt -y update && sudo apt -y install python
+        run: sudo apt -y update && sudo apt -y install python3
 
       - name: Download feed.xml
         run: curl -o feed.xml https://repasscloud.com/feed.xml
 
       - name: Submit Sitemap to Google
         run: |
-          curl -H "Content-Type: text/plain" --data-binary "@feed.xml" "http://www.google.com/ping?sitemap=$(python -c 'import urllib.parse; print(urllib.parse.quote("https://repasscloud.com/feed.xml"))')"
+          curl -H "Content-Type: text/plain" --data-binary "@feed.xml" "http://www.google.com/ping?sitemap=$(python3 -c 'import urllib.parse; print(urllib.parse.quote("https://repasscloud.com/feed.xml"))')"
 
       - name: Submit Sitemap to Bing
         run: |
-          curl -H "Content-Type: text/plain" --data-binary "@feed.xml" "http://www.bing.com/ping?sitemap=$(python -c 'import urllib.parse; print(urllib.parse.quote("https://repasscloud.com/feed.xml"))')"
+          curl -H "Content-Type: text/plain" --data-binary "@feed.xml" "http://www.bing.com/ping?sitemap=$(python3 -c 'import urllib.parse; print(urllib.parse.quote("https://repasscloud.com/feed.xml"))')"
 
       - name: Submit Sitemap to Yandex
         run: |
-          curl -H "Content-Type: text/plain" --data-binary "@feed.xml" "http://ping.blogs.yandex.ru/ping?sitemap=$(python -c 'import urllib.parse; print(urllib.parse.quote("https://repasscloud.com/feed.xml"))')"
+          curl -H "Content-Type: text/plain" --data-binary "@feed.xml" "http://ping.blogs.yandex.ru/ping?sitemap=$(python3 -c 'import urllib.parse; print(urllib.parse.quote("https://repasscloud.com/feed.xml"))')"
 
       - name: Submit Sitemap to Yahoo
         run: |
-          curl -H "Content-Type: text/plain" --data-binary "@feed.xml" "http://search.yahooapis.com/SiteExplorerService/V1/updateNotification?appid=YahooDemo&url=$(python -c 'import urllib.parse; print(urllib.parse.quote("https://repasscloud.com/feed.xml"))')"
+          curl -H "Content-Type: text/plain" --data-binary "@feed.xml" "http://search.yahooapis.com/SiteExplorerService/V1/updateNotification?appid=YahooDemo&url=$(python3 -c 'import urllib.parse; print(urllib.parse.quote("https://repasscloud.com/feed.xml"))')"
