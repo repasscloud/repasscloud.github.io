@@ -18,6 +18,16 @@ project_entries:
     desc: Your guide to unforgettable experiences and meaningful connections
     highlight: WIP
 
+  - title: LunaVPN
+    url: projects/lunavpn
+    desc: Ensuring private, secure online experiences with a no-logs policy
+    highlight: WIP
+
+  - title: TigerGrab 「とらグラブ」
+    url: projects/wanderconnect
+    desc: Download and save online videos with resumable downloads
+    highlight: WIP
+
   # - title: Project 3
   #   url: overview-post
   #   desc: You can control visibility from _config.yml file
