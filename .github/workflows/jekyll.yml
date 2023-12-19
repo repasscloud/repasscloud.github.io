@@ -38,10 +38,12 @@ jobs:
         uses: actions/configure-pages@v3
       - name: Build with Jekyll
         run: |
+          chmod -R 777 . &&
+          gem install bundler &&
+          bundle install &&
           gem install bundler &&
           bundle config unset deployment &&
           bundle install &&
-          bundle add jekyll-sitemap &&
           bundle exec jekyll build --future --baseurl "${{ steps.pages.outputs.base_path }}"
         env:
           JEKYLL_ENV: production
