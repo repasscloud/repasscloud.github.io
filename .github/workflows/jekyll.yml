@@ -42,7 +42,7 @@ jobs:
           bundle config unset deployment &&
           bundle install &&
           bundle add jekyll-sitemap &&
-          bundle exec jekyll build --baseurl "${{ steps.pages.outputs.base_path }}"
+          bundle exec jekyll build --future --baseurl "${{ steps.pages.outputs.base_path }}"
         env:
           JEKYLL_ENV: production
       - name: Upload artifact
