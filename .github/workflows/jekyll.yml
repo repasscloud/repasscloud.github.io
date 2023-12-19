@@ -32,19 +32,27 @@ jobs:
       - name: Install Dependencies
         run: |
           gem install bundler
-          bundle install  # This will install all gems specified in your Gemfile, including jekyll-sitemap
+          bundle install
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v3
       - name: Build with Jekyll
         run: |
-          chmod -R 777 . &&
-          gem install bundler &&
-          bundle install &&
-          gem install bundler &&
-          bundle config unset deployment &&
-          bundle install &&
-          bundle exec jekyll build --future --baseurl "${{ steps.pages.outputs.base_path }}"
+          docker run -v $PWD:/srv/jekyll -v $PWD/_site:/srv/jekyll/_site \                                                                                                         ─╯
+          jekyll/builder:latest /bin/bash -c "chmod -R 777 /srv/jekyll && \
+          gem install bundler && \
+          bundle install && \
+          gem install bundler && \
+          bundle config unset deployment && \
+          bundle install && \
+          bundle exec jekyll build --future --baseurl '${{ steps.pages.outputs.base_path }}'"
+# chmod -R 777 . &&
+# gem install bundler &&
+# bundle install &&
+# gem install bundler &&
+# bundle config unset deployment &&
+# bundle install &&
+# bundle exec jekyll build --future --baseurl "${{ steps.pages.outputs.base_path }}"
         env:
           JEKYLL_ENV: production
       - name: Upload artifact
