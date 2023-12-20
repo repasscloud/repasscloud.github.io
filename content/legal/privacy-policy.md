@@ -2,7 +2,7 @@
 title = 'Privacy Policy'
 meta_title = "RePass Cloud Privacy Policy"
 description = "Explore our comprehensive privacy policy to understand how we protect your personal information and ensure your online privacy. Learn about the data we collect, how it's used, and your rights regarding your information."
-meta description = "Explore our comprehensive privacy policy to understand how we protect your personal information and ensure your online privacy. Learn about the data we collect, how it's used, and your rights regarding your information."
+meta_description = "Explore our comprehensive privacy policy to understand how we protect your personal information and ensure your online privacy. Learn about the data we collect, how it's used, and your rights regarding your information."
 date = 2023-05-17
 draft = false
 type = "page"
