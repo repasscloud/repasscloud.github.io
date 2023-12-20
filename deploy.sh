@@ -39,6 +39,8 @@ for file in "$directory"/*.html; do
     fi
 done
 
+echo "Replacement complete."
+
 # Update github repo
 git add .
 git commit -m 'republish site'
