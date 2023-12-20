@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Legal Documents on RePass Cloud</title>
-    <link>http://example.org/legal/</link>
+    <link>http://repasscloud.com/legal/</link>
     <description>Recent content in Legal Documents on RePass Cloud</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Wed, 17 May 2023 02:24:08 +1100</lastBuildDate>
-    <atom:link href="http://example.org/legal/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://repasscloud.com/legal/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Refund Policy</title>
-      <link>http://example.org/legal/refund_policy/</link>
+      <link>http://repasscloud.com/legal/refund_policy/</link>
       <pubDate>Wed, 17 May 2023 02:24:08 +1100</pubDate>
-      <guid>http://example.org/legal/refund_policy/</guid>
+      <guid>http://repasscloud.com/legal/refund_policy/</guid>
       <description>RepassCloud Digital Subscription Products Refund Policy This policy applies to all digital products offered by RepassCloud, including but not limited to OptechX, WanderConnect, AirAtlasPro, ActivusX, and LunaVPN, which are available as monthly, 6-month, and annual subscriptions. Some products may have different tiers or levels of service.&#xA;1. Eligibility for Refunds Customers are eligible to request a prorated refund for the unused portion of their subscription at any time. If a customer contacts us within 2 days of the start of a new subscription period, they are eligible for a full refund of that period.</description>
     </item>
   </channel>

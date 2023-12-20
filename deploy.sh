@@ -23,21 +23,16 @@ for dir in "${create_directories[@]}"; do
     fi
 done
 
-# Define the directory where HTML files are located
+# Define the directory where XML and HTML files are located
 directory="./docs"
 
 # Define the text to search for and the replacement text
 search="example.org"
 replace="repasscloud.com"
 
-# Loop through HTML files in the specified directory and replace the text
-for file in "$directory"/*.html; do
-    if [ -e "$file" ]; then
-        # Use sed to perform the replacement in-place
-        sed -i "s/$search/$replace/g" "$file"
-        echo "Replaced in $file"
-    fi
-done
+# Use grep to find all XML and HTML files in the specified directory
+# Then use sed to perform the replacement in-place
+grep -rl "$search" "$directory" | xargs sed -i "s/$search/$replace/g"
 
 echo "Replacement complete."
 

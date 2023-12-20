@@ -2,37 +2,37 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Projects on RePass Cloud</title>
-    <link>http://example.org/projects/</link>
+    <link>http://repasscloud.com/projects/</link>
     <description>Recent content in Projects on RePass Cloud</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <atom:link href="http://example.org/projects/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://repasscloud.com/projects/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Coming Soon: LunaVPN</title>
-      <link>http://example.org/projects/lunavpn/</link>
+      <link>http://repasscloud.com/projects/lunavpn/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://example.org/projects/lunavpn/</guid>
+      <guid>http://repasscloud.com/projects/lunavpn/</guid>
       <description>LunaVPN: Your Gateway to Online Privacy 🚀 Coming Soon! 🚀&#xA;Experience a new era of online privacy with LunaVPN. We&amp;rsquo;re bringing you a VPN service like no other.&#xA;Stay Tuned for: ✨ Cutting-Edge Technology: LunaVPN leverages WireGuard to provide lightning-fast and secure connections.&#xA;🔒 Isolated Instances: Each LunaVPN service is created specifically for you, ensuring your privacy and security.&#xA;🌐 Global Access: Access the internet securely from anywhere in the world.</description>
     </item>
     <item>
       <title>OptechX</title>
-      <link>http://example.org/projects/optechx/</link>
+      <link>http://repasscloud.com/projects/optechx/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://example.org/projects/optechx/</guid>
+      <guid>http://repasscloud.com/projects/optechx/</guid>
       <description>About OptechX OptechX is a cutting-edge Software-as-a-Service (SaaS) product that revolutionizes the process of building custom Windows Operating System Environment (SOE)1 images. Our platform enables seamless deployment of these custom images from the cloud, on-premises infrastructure, or even via hardware.&#xA;With OptechX, you can effortlessly generate tailored and optimized Windows OS images without the complexities associated with managing package dependencies, application binary versions, SOE development rules, security protocols, best practices, and the latest patches.</description>
     </item>
     <item>
       <title>TigerGrab 「とらグラブ」</title>
-      <link>http://example.org/projects/tigergrab/</link>
+      <link>http://repasscloud.com/projects/tigergrab/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://example.org/projects/tigergrab/</guid>
+      <guid>http://repasscloud.com/projects/tigergrab/</guid>
       <description>Tiger Grab 「とらグラブ」 is your effortless solution for Windows users seeking to preserve their favorite online videos. With a user-friendly interface, this program simplifies the process of downloading videos from a variety of sharing platforms.&#xA;Never miss out on cherished memories that may vanish from the internet. Tiger Grab lets you effortlessly retrieve and store videos, ensuring they remain accessible for years to come.&#xA;Experience hassle-free downloads with the ability to resume interrupted transfers.</description>
     </item>
     <item>
       <title>WanderConnect</title>
-      <link>http://example.org/projects/wanderconnect/</link>
+      <link>http://repasscloud.com/projects/wanderconnect/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://example.org/projects/wanderconnect/</guid>
+      <guid>http://repasscloud.com/projects/wanderconnect/</guid>
       <description>WanderConnect WanderConnect is your versatile companion for exploring, connecting, and creating memorable experiences. Whether you&amp;rsquo;re planning a solo adventure, a romantic date, or a family outing, WanderConnect is here to inspire and guide you.&#xA;Discover enchanting locations for romantic dates, from cozy cafes to scenic parks and charming restaurants. WanderConnect provides recommendations, ratings, and reviews, helping you choose the perfect spot to impress your partner and create a special connection.</description>
     </item>
   </channel>
