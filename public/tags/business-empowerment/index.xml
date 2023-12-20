@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>business empowerment on RePass Cloud</title>
+    <link>http://example.org/tags/business-empowerment/</link>
+    <description>Recent content in business empowerment on RePass Cloud</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Wed, 17 May 2023 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://example.org/tags/business-empowerment/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Introducing our new design</title>
+      <link>http://example.org/posts/2023-05-17/</link>
+      <pubDate>Wed, 17 May 2023 00:00:00 +0000</pubDate>
+      <guid>http://example.org/posts/2023-05-17/</guid>
+      <description>Repass Cloud Evolves for a Dynamic Future RePass Cloud is thrilled to announce an exciting transition as we move away from our original website design and embrace a fresh, modern look that truly represents our commitment to innovation and adaptability. The launch of our new website marks a significant milestone in our journey, and we are excited to share this evolution with you.&#xA;Our decision to revamp the website stems from our dedication to providing the best user experience and keeping up with the ever-changing digital landscape.</description>
+    </item>
+  </channel>
+</rss>

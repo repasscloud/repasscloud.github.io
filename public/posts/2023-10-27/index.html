@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+        :root {
+            --accent-color: #FF4D4D;
+        }
+    </style>
+
+    
+    
+    
+    
+    
+    
+
+    
+    <title>How to Install Winget on Windows Server 2022</title>
+    <meta name="description" content="🏗️ Architects of Innovation, 🛠️ Crafting the Future with Code">
+    <meta name="keywords" content='RePass Cloud, secure SaaS solutions, adaptable SaaS solutions, data security, innovation, reliability, digital success, automation, ai, ai automation, powershell, active directory, idm, optechx, wanderconnect, lunavpn, activusx, activusx pro, blog, Windows Server 2022, Winget installation, Active Directory automation, Microsoft, software installation, step-by-step guide'>
+
+    <meta property="og:url" content="http://example.org/posts/2023-10-27/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="How to Install Winget on Windows Server 2022">
+    <meta property="og:description" content="🏗️ Architects of Innovation, 🛠️ Crafting the Future with Code">
+    <meta property="og:image" content="http://example.org/images/repass-cloud-logo.png">
+    <meta property="og:image:secure_url" content="http://example.org/images/repass-cloud-logo.png">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="How to Install Winget on Windows Server 2022">
+    <meta name="twitter:description" content="🏗️ Architects of Innovation, 🛠️ Crafting the Future with Code">
+    <meta property="twitter:domain" content="http://example.org/posts/2023-10-27/">
+    <meta property="twitter:url" content="http://example.org/posts/2023-10-27/">
+    <meta name="twitter:image" content="http://example.org/images/repass-cloud-logo.png">
+
+    
+    <link rel="canonical" href="http://example.org/posts/2023-10-27/" />
+
+    
+    <link rel="stylesheet" type="text/css" href="/css/normalize.min.css" media="print">
+
+    
+    <link rel="stylesheet" type="text/css" href="/css/main.min.css">
+
+    
+    <link id="dark-theme" rel="stylesheet" href="/css/dark.min.css">
+
+    
+    <script src="/js/bundle.min.27043ee3e4fae9fba993230b5c2ba193e1f265beeea9c49a69d028f72b22ccb5.js" integrity="sha256-JwQ&#43;4&#43;T66fupkyMLXCuhk&#43;HyZb7uqcSaadAo9ysizLU="></script>
+
+    
+    
+</head>
+<body>
+        <script type="text/javascript">
+            
+            setThemeByUserPref();
+        </script><header class="header">
+    <nav class="header-nav">
+
+        
+        <div class="avatar">
+            <a href="http://example.org/">
+                <img src='/images/repass-cloud-logo.png' alt="avatar" />
+            </a>
+        </div>
+        
+
+        <div class="nav-title">
+            <a class="nav-brand" href="http://example.org/">RePass Cloud</a>
+        </div>
+
+        <div class="nav-links">
+            
+            <div class="nav-link">
+                <a href="http://example.org/posts/"><span data-feather='book'></span> Posts </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="http://example.org/projects/"><span data-feather='code'></span> Projects </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="http://example.org/tags/"><span data-feather='tag'></span> Tags </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://github.com/repasscloud/"><span data-feather='github'></span>  </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://twitter.com/repasscloud/"><span data-feather='twitter'></span>  </a>
+            </div>
+            
+
+            <span class="nav-icons-divider"></span>
+            <div class="nav-link dark-theme-toggle">
+                <span id="dark-theme-toggle-screen-reader-target" class="sr-only"></span>
+                <a>
+                    <span id="theme-toggle-icon" data-feather="moon"></span>
+                </a>
+            </div>
+
+            <div class="nav-link" id="hamburger-menu-toggle">
+                <span id="hamburger-menu-toggle-screen-reader-target" class="sr-only">menu</span>
+                <a>
+                    <span data-feather="menu"></span>
+                </a>
+            </div>
+
+            
+            <ul class="nav-hamburger-list visibility-hidden">
+                
+                <li class="nav-item">
+                    <a href="http://example.org/posts/"><span data-feather='book'></span> Posts </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="http://example.org/projects/"><span data-feather='code'></span> Projects </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="http://example.org/tags/"><span data-feather='tag'></span> Tags </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://github.com/repasscloud/"><span data-feather='github'></span>  </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://twitter.com/repasscloud/"><span data-feather='twitter'></span>  </a>
+                </li>
+                
+                <li class="nav-item dark-theme-toggle">
+                    <span id="dark-theme-toggle-screen-reader-target" class="sr-only">theme</span>
+                    <a>
+                        <span id="theme-toggle-icon" data-feather="moon"></span>
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+    </nav>
+</header>
+<main id="content">
+    <div class="post container">
+    <div class="post-header-section">
+        <h1>How to Install Winget on Windows Server 2022</h1>
+        <small role="doc-subtitle"></small>
+        <p class="post-date">October 27, 2023
+        
+        </p>
+
+        <ul class="post-tags">
+        
+            <li class="post-tag"><a href="http://example.org/tags/blog">blog</a></li>
+        
+            <li class="post-tag"><a href="http://example.org/tags/windows-server-2022">Windows Server 2022</a></li>
+        
+            <li class="post-tag"><a href="http://example.org/tags/winget-installation">Winget installation</a></li>
+        
+            <li class="post-tag"><a href="http://example.org/tags/active-directory-automation">Active Directory automation</a></li>
+        
+            <li class="post-tag"><a href="http://example.org/tags/microsoft">Microsoft</a></li>
+        
+            <li class="post-tag"><a href="http://example.org/tags/software-installation">software installation</a></li>
+        
+            <li class="post-tag"><a href="http://example.org/tags/step-by-step-guide">step-by-step guide</a></li>
+        
+        </ul>
+    </div>
+
+    <div class="post-content">
+        <p>
+            <p>When setting up a lab environment for deploying Active Directory automation tools, we recognized the efficiency of using <a href="https://github.com/microsoft/winget-cli">Winget</a> to install software across multiple machines. However, Windows Server 2022 does not readily support Winget from Microsoft.</p>
+<p>Our quest for solutions involved extensive research, with many references leading to more references. After navigating this information labyrinth, we decided to provide a quick guide for those looking to set up Winget on their <a href="https://www.microsoft.com/en-us/evalcenter/evaluate-windows-server-2022">Windows Server 2022</a> environment with minimal hassle.</p>
+<h2 id="prerequisites">Prerequisites</h2>
+<p>To follow this guide, you will need the following files:</p>
+<ul>
+<li><a href="https://api.github.com/repos/microsoft/winget-cli/releases/latest">Winget latest release</a></li>
+<li><a href="https://www.nuget.org/api/v2/package/Microsoft.UI.Xaml/2.7.3">Microsoft.UI.Xaml.2.7.3.nupkg</a></li>
+<li><a href="https://aka.ms/Microsoft.VCLibs.x64.14.00.Desktop.appx">Microsoft.VCLibs.x64.14.00.Desktop.appx</a></li>
+</ul>
+<h2 id="step-1-get-the-latest-winget-cli">Step 1: Get the Latest Winget CLI</h2>
+<p>Start by creating a new folder and navigating to it using PowerShell. Then, download Winget, UI.Xaml, and VCLibs into this folder:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-pwsh" data-lang="pwsh"><span style="display:flex;"><span><span style="color:#75715e"># Set TLS 1.2 as the security protocol</span>
+</span></span><span style="display:flex;"><span>[<span style="color:#66d9ef">System.Net.ServicePointManager</span>]::SecurityProtocol = [<span style="color:#66d9ef">System.Net.SecurityProtocolType</span>]::Tls12
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Download the latest Winget package files</span>
+</span></span><span style="display:flex;"><span>$files = Invoke-RestMethod -Uri <span style="color:#e6db74">&#34;https://api.github.com/repos/microsoft/winget-cli/releases/latest&#34;</span> | Select-Object -ExpandProperty assets | Select-Object -ExpandProperty browser_download_url
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">foreach</span> ($file <span style="color:#66d9ef">in</span> $files)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  Invoke-WebRequest -Uri $file -UseBasicParsing -Outfile .\$(Split-Path -Path $file -Leaf)
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Next, obtain the UI.Xaml NuGet package as a ZIP archive from nuget.org:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-pwsh" data-lang="pwsh"><span style="display:flex;"><span><span style="color:#75715e"># Download UI.Xaml nupkg as a ZIP archive</span>
+</span></span><span style="display:flex;"><span>Invoke-WebRequest -UseBasicParsing -Uri <span style="color:#e6db74">&#34;https://www.nuget.org/api/v2/package/Microsoft.UI.Xaml/2.7.3&#34;</span> -OutFile .\microsoft.ui.xaml.2.7.3.zip
+</span></span></code></pre></div><h2 id="step-2-prepare-files">Step 2: Prepare Files</h2>
+<p>Unzip the UI.Xaml archive to access the required files:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-pwsh" data-lang="pwsh"><span style="display:flex;"><span>Expand-Archive .\microsoft.ui.xaml.2.7.3.zip -DestinationPath .\microsoft.ui.xaml.2.7.3
+</span></span></code></pre></div><h2 id="step-3-install-prerequisite-libraries-and-winget">Step 3: Install Prerequisite Libraries and Winget</h2>
+<p>First, install the UI.Xaml package:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-pwsh" data-lang="pwsh"><span style="display:flex;"><span>Add-AppxPackage -Path .\microsoft.ui.xaml.2.7.<span style="color:#ae81ff">3</span>\tools\AppX\x64\Release\Microsoft.UI.Xaml.2.7.appx
+</span></span></code></pre></div><p>Next, install VC.Libs:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-pwsh" data-lang="pwsh"><span style="display:flex;"><span>Add-AppxPackage -Path .\Microsoft.VCLibs.x64.14.00.Desktop.appx
+</span></span></code></pre></div><p>Finally, install Winget:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-pwsh" data-lang="pwsh"><span style="display:flex;"><span>$licenseFile = Get-ChildItem -Path .\ -Filter *_License*.xml <span style="color:#f92672">-File</span> | Select-Object -ExpandProperty FullName
+</span></span><span style="display:flex;"><span>Add-AppxProvisionedPackage -Online -PackagePath .\Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.msixbundle -LicensePath $licenseFile
+</span></span></code></pre></div><p>Congratulations, you have successfully installed Winget on Windows Server 2022.</p>
+<p>Sincerely,</p>
+<p>The Repass Cloud Team</p>
+
+        </p>
+        
+    </div>
+
+    <div class="prev-next">
+        
+            
+                
+<div class="prev-post">
+    <p>
+        <a href="/posts/2023-08-02/">
+            &#8592;
+            Previous:
+            Demystifying Language and Regional Settings
+        </a>
+    </p>
+    <p class="prev-post-date">
+        August 2, 2023
+    </p>
+</div>
+
+
+
+<div class="next-post">
+    <p>
+        <a href="/posts/2023-12-11/">
+            Next:
+            Embracing the Future: Repass Cloud&#39;s Latest Website Redesign
+            &#8594;
+        </a>
+    </p>
+        <p class="next-post-date">
+            December 11, 2023
+        </p>
+</div>
+
+
+            
+        
+    </div>
+
+    
+    
+    <svg id="btt-button" class="arrow-logo" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 384 512" onclick="topFunction()" title="Go to top">
+        
+        <path d="M177 159.7l136 136c9.4 9.4 9.4 24.6 0 33.9l-22.6 22.6c-9.4 9.4-24.6 9.4-33.9 0L160 255.9l-96.4 96.4c-9.4 9.4-24.6 9.4-33.9 0L7 329.7c-9.4-9.4-9.4-24.6 0-33.9l136-136c9.4-9.5 24.6-9.5 34-.1z"/>
+    </svg>
+    
+    <script>
+        let backToTopButton = document.getElementById("btt-button");
+
+        window.onscroll = function() {
+            scrollFunction()
+        };
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                backToTopButton.style.display = "block";
+            } else {
+                backToTopButton.style.display = "none";
+            }
+        }
+
+        function topFunction() {
+            smoothScrollToTop();
+        }
+
+        function smoothScrollToTop() {
+            const scrollToTop = () => {
+                const c = document.documentElement.scrollTop || document.body.scrollTop;
+                if (c > 0) {
+                    window.requestAnimationFrame(scrollToTop);
+                    window.scrollTo(0, c - c / 8);
+                }
+            };
+            scrollToTop();
+        }
+    </script>
+    
+</div>
+
+<aside class="post-toc">
+    <nav id="toc">
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#prerequisites">Prerequisites</a></li>
+    <li><a href="#step-1-get-the-latest-winget-cli">Step 1: Get the Latest Winget CLI</a></li>
+    <li><a href="#step-2-prepare-files">Step 2: Prepare Files</a></li>
+    <li><a href="#step-3-install-prerequisite-libraries-and-winget">Step 3: Install Prerequisite Libraries and Winget</a></li>
+  </ul>
+</nav>
+    </nav>
+</aside>
+
+
+
+    
+
+        </main><footer class="footer">
+    
+    
+
+    
+    <span>&copy; 2023 RePass Cloud Pty Ltd</span>
+    
+    <span>
+        Made with &#10084;&#65039; using <a target="_blank" href="https://github.com/526avijitgupta/gokarna">Gokarna</a>
+    </span>
+</footer>
+</body>
+</html>
