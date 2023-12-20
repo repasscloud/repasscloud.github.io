@@ -6,6 +6,8 @@ type = "page"
 showTableOfContents = true
 +++
 
+_Last Updated: 2023-12-17_
+
 ## RepassCloud Digital Subscription Products Refund Policy
 
 This policy applies to all digital products offered by RepassCloud, including but not limited to OptechX, WanderConnect, AirAtlasPro, ActivusX, and LunaVPN, which are available as monthly, 6-month, and annual subscriptions. Some products may have different tiers or levels of service.
