@@ -86,7 +86,7 @@ enableRobotsTXT = true
   socialIcons = [
       {name = "twitter", url = "https://twitter.com/repasscloud/"},
       {name = "linkedin", url = "https://linkedin.com/repass-cloud/"},
-      {name = "email", url = "https://hello.repasscloud.com"},
+      {name = "email", url = "/contact/"},
       {name = "github", url = "https://github.com/repasscloud"}
     ]
   pygmentsStyle = "monokai"
