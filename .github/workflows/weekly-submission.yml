@@ -25,4 +25,4 @@ jobs:
       run: python script/submit2-google.py
 
     - name: Run the submission script (Bing)
-      run: python script/submit2-google.py
+      run: python script/submit2-bing.py
