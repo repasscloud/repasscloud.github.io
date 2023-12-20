@@ -36,6 +36,9 @@ grep -rl "$search" "$directory" | xargs sed -i "s/$search/$replace/g"
 
 echo "Replacement complete."
 
+# Update CNAME
+cp ./CNAME ./docs/CNAME
+
 # Update github repo
 git add .
 git commit -m 'republish site'
