@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://repasscloud.com/sitemap-index.xml
