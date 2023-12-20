@@ -85,7 +85,7 @@ enableRobotsTXT = true
   ShowBackToTopButton = true
   socialIcons = [
       {name = "twitter", url = "https://twitter.com/repasscloud/"},
-      {name = "linkedin", url = "https://linkedin.com/repass-cloud/"},
+      {name = "linkedin", url = "https://www.linkedin.com/company/repass-cloud"},
       {name = "email", url = "/contact/"},
       {name = "github", url = "https://github.com/repasscloud"}
     ]
