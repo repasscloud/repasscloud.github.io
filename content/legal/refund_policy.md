@@ -3,6 +3,7 @@ title = 'Refund Policy'
 date = 2023-05-17
 draft = false
 type = "page"
+showTableOfContents = true
 +++
 
 ## RepassCloud Digital Subscription Products Refund Policy
