@@ -9,6 +9,8 @@ type = "page"
 showTableOfContents = true
 +++
 
+_Last Updated: 2023-05-17_
+
 This privacy notice for RePass Cloud Pty Ltd (doing business as OptechX, WanderConnect, TigerGrab and LunaVPN.co) ('we', 'us', or 'our'), describes how and why we might collect, store, use, and/or share ('process') your information when you use our services ('Services'), such as when you:
 
 - Visit our website at https://repasscloud.com, https://lunavpn.co, https://optechx.com, or any website of ours that links to this privacy notice
