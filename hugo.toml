@@ -51,6 +51,12 @@ enableRobotsTXT = true
     weight = 5
     pre = "<span data-feather='twitter'></span>"
 
+    [[menu.main]]
+    identifier = "legal"
+    url = "/legal/"
+    weight = 6
+    pre = "<span data-feather='file-text'></span>"
+
 [params]
   avatarUrl = "/images/repass-cloud-logo.png"
   description = "🏗️ Architects of Innovation, 🛠️ Crafting the Future with Code"
