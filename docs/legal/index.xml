@@ -1,33 +1,40 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Legal Documents on RePass Cloud</title>
+    <title>RePass Cloud Legal Documents on RePass Cloud</title>
     <link>http://repasscloud.com/legal/</link>
-    <description>Recent content in Legal Documents on RePass Cloud</description>
+    <description>Recent content in RePass Cloud Legal Documents on RePass Cloud</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 17 May 2023 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 19 Dec 2023 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://repasscloud.com/legal/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Terms of Service</title>
+      <link>http://repasscloud.com/legal/terms-of-service/</link>
+      <pubDate>Tue, 19 Dec 2023 00:00:00 +0000</pubDate>
+      <guid>http://repasscloud.com/legal/terms-of-service/</guid>
+      <description>Last Updated: 2023-12-19&#xA;1. About the Website Welcome to RePass Cloud&amp;rsquo;s suite of products and services. This includes websites and services such as www.optechx.com (OptechX), www.lunavpn.co (LunaVPN), and others (collectively, the ‘Services’).&#xA;These Services are operated by RePass Cloud Pty Ltd, ACN/ABN 74 642 243 801. Access to and use of the Services, or any of their associated products, is provided by RePass Cloud Pty Ltd. Please read these terms and conditions (the ‘Terms’) carefully.</description>
+    </item>
     <item>
       <title>Privacy Policy</title>
       <link>http://repasscloud.com/legal/privacy-policy/</link>
       <pubDate>Wed, 17 May 2023 00:00:00 +0000</pubDate>
       <guid>http://repasscloud.com/legal/privacy-policy/</guid>
-      <description>This privacy notice for RePass Cloud Pty Ltd (doing business as OptechX, WanderConnect, TigerGrab and LunaVPN.co) (&amp;lsquo;we&amp;rsquo;, &amp;lsquo;us&amp;rsquo;, or &amp;lsquo;our&amp;rsquo;), describes how and why we might collect, store, use, and/or share (&amp;lsquo;process&amp;rsquo;) your information when you use our services (&amp;lsquo;Services&amp;rsquo;), such as when you:&#xA;Visit our website at https://repasscloud.com, https://lunavpn.co, https://optechx.com, or any website of ours that links to this privacy notice Engage with us in other related ways, including any sales, marketing, or events Questions or concerns?</description>
+      <description>Last Updated: 2023-05-17&#xA;This privacy notice for RePass Cloud Pty Ltd (doing business as OptechX, WanderConnect, TigerGrab and LunaVPN.co) (&amp;lsquo;we&amp;rsquo;, &amp;lsquo;us&amp;rsquo;, or &amp;lsquo;our&amp;rsquo;), describes how and why we might collect, store, use, and/or share (&amp;lsquo;process&amp;rsquo;) your information when you use our services (&amp;lsquo;Services&amp;rsquo;), such as when you:&#xA;Visit our website at https://repasscloud.com, https://lunavpn.co, https://optechx.com, or any website of ours that links to this privacy notice Engage with us in other related ways, including any sales, marketing, or events Questions or concerns?</description>
     </item>
     <item>
       <title>Refund Policy</title>
       <link>http://repasscloud.com/legal/refund-policy/</link>
       <pubDate>Wed, 17 May 2023 00:00:00 +0000</pubDate>
       <guid>http://repasscloud.com/legal/refund-policy/</guid>
-      <description>RepassCloud Digital Subscription Products Refund Policy This policy applies to all digital products offered by RepassCloud, including but not limited to OptechX, WanderConnect, AirAtlasPro, ActivusX, and LunaVPN, which are available as monthly, 6-month, and annual subscriptions. Some products may have different tiers or levels of service.&#xA;1. Eligibility for Refunds Customers are eligible to request a prorated refund for the unused portion of their subscription at any time. If a customer contacts us within 2 days of the start of a new subscription period, they are eligible for a full refund of that period.</description>
+      <description>Last Updated: 2023-12-17&#xA;RepassCloud Digital Subscription Products Refund Policy This policy applies to all digital products offered by RepassCloud, including but not limited to OptechX, WanderConnect, AirAtlasPro, ActivusX, and LunaVPN, which are available as monthly, 6-month, and annual subscriptions. Some products may have different tiers or levels of service.&#xA;1. Eligibility for Refunds Customers are eligible to request a prorated refund for the unused portion of their subscription at any time.</description>
     </item>
     <item>
       <title>Refund Policy</title>
       <link>http://repasscloud.com/legal/refund_policy/</link>
       <pubDate>Wed, 17 May 2023 00:00:00 +0000</pubDate>
       <guid>http://repasscloud.com/legal/refund_policy/</guid>
-      <description>RepassCloud Digital Subscription Products Refund Policy This policy applies to all digital products offered by RepassCloud, including but not limited to OptechX, WanderConnect, AirAtlasPro, ActivusX, and LunaVPN, which are available as monthly, 6-month, and annual subscriptions. Some products may have different tiers or levels of service.&#xA;1. Eligibility for Refunds Customers are eligible to request a prorated refund for the unused portion of their subscription at any time. If a customer contacts us within 2 days of the start of a new subscription period, they are eligible for a full refund of that period.</description>
+      <description>Last Updated: 2023-12-17&#xA;RepassCloud Digital Subscription Products Refund Policy This policy applies to all digital products offered by RepassCloud, including but not limited to OptechX, WanderConnect, AirAtlasPro, ActivusX, and LunaVPN, which are available as monthly, 6-month, and annual subscriptions. Some products may have different tiers or levels of service.&#xA;1. Eligibility for Refunds Customers are eligible to request a prorated refund for the unused portion of their subscription at any time.</description>
     </item>
   </channel>
 </rss>
