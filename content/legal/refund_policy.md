@@ -1,6 +1,6 @@
 +++
 title = 'Refund Policy'
-date = 2023-05-17T02:24:08+11:00
+date = 2023-05-17
 draft = false
 type = "page"
 +++
