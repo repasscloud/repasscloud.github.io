@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>non-English system configuration on RePass Cloud</title>
-    <link>http://repasscloud.com/tags/non-english-system-configuration/</link>
+    <link>https://repasscloud.com/tags/non-english-system-configuration/</link>
     <description>Recent content in non-English system configuration on RePass Cloud</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Wed, 02 Aug 2023 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://repasscloud.com/tags/non-english-system-configuration/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://repasscloud.com/tags/non-english-system-configuration/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Demystifying Language and Regional Settings</title>
-      <link>http://repasscloud.com/posts/2023-08-02/</link>
+      <link>https://repasscloud.com/posts/2023-08-02/</link>
       <pubDate>Wed, 02 Aug 2023 00:00:00 +0000</pubDate>
-      <guid>http://repasscloud.com/posts/2023-08-02/</guid>
+      <guid>https://repasscloud.com/posts/2023-08-02/</guid>
       <description>Demystifying Language and Regional Settings: A Guide to Avoid Confusion As an SOE (Standard Operating Environment) Builder, configuring language and regional settings in Windows can be a perplexing challenge. Windows operating systems cater to diverse linguistic and cultural communities worldwide, making it essential to get these settings right. The AutoUnattend.xml file plays a pivotal role in automating the setup process, but the complexities of four critical settings - InputLocale, SystemLocale, UILanguage, and UserLocale - can often lead to confusion during customization.</description>
     </item>
   </channel>
