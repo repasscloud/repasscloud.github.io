@@ -21,7 +21,7 @@ enableRobotsTXT = true
     # Display name
     name = "Posts"
     # Weights are used to determine the ordering
-    weight = 1
+    weight = 3
 
 
   [[menu.main]]
@@ -35,7 +35,7 @@ enableRobotsTXT = true
     identifier = "about"
     name = "About"
     url = "/about/"
-    weight = 3
+    weight = 1
     pre = "<span data-feather='package'></span>"
 
   [[menu.main]]

@@ -18,13 +18,15 @@ Click each project to learn more:
 1. [**OptechX**](/projects/optechx)  
    Build Windows OS SOE without the overhead in the cloud.
 
-2. [**WanderConnect**](/projects/wanderconnect)  
+2. [**LunaVPN**](/projects/lunavpn)  
+    Your ultimate online privacy solution, designed with cutting-edge technology and user-centric privacy in mind.
+
+3. [**WanderConnect**](/projects/wanderconnect) - _coming soon_  
    Your guide to unforgettable experiences and meaniningful connections.
 
-3. [**TigerGrab 「とらグラブ」**](/projects/tigergrab)  
+4. [**TigerGrab 「とらグラブ」**](/projects/tigergrab) - _coming soon_  
    Download and preserve online videos with Tiger Grab.
 
-4. [**LunaVPN**](/projects/lunavpn)  
-   Your ultimate online privacy solution, designed with cutting-edge technology and user-centric privacy in mind.
+
 
 At RePass Cloud, we're dedicated to crafting tailor-made software solutions that cater to both businesses and individuals. Our commitment to security, innovation, and reliability is at the heart of everything we do. Join us on this journey towards digital success.
