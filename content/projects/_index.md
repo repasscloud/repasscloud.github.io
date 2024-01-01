@@ -15,11 +15,11 @@ RePass Cloud is your dedicated source for crafting secure, adaptable SaaS soluti
 
 Click each project to learn more:
 
-1. [**OptechX**](/projects/optechx)  
-   Build Windows OS SOE without the overhead in the cloud.
-
-2. [**LunaVPN**](/projects/lunavpn)  
+1. [**LunaVPN**](/projects/lunavpn)  
     Your ultimate online privacy solution, designed with cutting-edge technology and user-centric privacy in mind.
+
+2. [**OptechX**](/projects/optechx)  
+   Build Windows OS SOE without the overhead in the cloud.
 
 3. [**WanderConnect**](/projects/wanderconnect) - _coming soon_  
    Your guide to unforgettable experiences and meaniningful connections.
