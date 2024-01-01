@@ -29,17 +29,7 @@ Welcome to [LunaVPN](https://lunavpn.co "LunaVPN Homepage"), your gateway to an 
 
 In an era where digital privacy is constantly under siege, LunaVPN stands as your unwavering guardian. Our commitment to safeguarding your online activities goes beyond mere words; it's a promise etched in our No-Logging Policy. We guarantee that your online actions leave no trace. LunaVPN never records your browsing history or tracks your online behavior. Your privacy remains intact, without compromise. With LunaVPN, you can browse the web, conduct transactions, and communicate online with the peace of mind that your personal and sensitive data is secure from any prying eyes, data trackers, or cyber threats.
 
-<div style="display: flex; align-items: center;">
-  <h3 style="margin: 0; padding-right: 10px;">LunaVPN's Secure Shield: WireGuard Protocol</h3>
-  <svg width="24" height="24">
-    <image xlink:href="/images/wireguard-svgrepo-com.svg" width="100%" height="100%" />
-  </svg>
-</div>
-
-<!-- <svg width="40" height="40">
-  <image xlink:href="/Users/danijeljw/Projects/repasscloud/repasscloud.github.io/wireguard-svgrepo-com.svg" width="100%" height="100%"/>
-</svg> -->
-
+### LunaVPN's Secure Shield: WireGuard Protocol
 
 LunaVPN's choice of the WireGuard protocol isn't accidental—it's intentional. We've meticulously selected the most advanced and efficient protocol to guarantee unbeatable speed and security. Rest easy knowing that your data is shielded by the latest in encryption and tunneling technology. WireGuard's robust encryption ensures that your online activities are safe from eavesdropping, data breaches, and any unauthorized access. With LunaVPN and WireGuard, you can enjoy online freedom without compromising on security.
 
