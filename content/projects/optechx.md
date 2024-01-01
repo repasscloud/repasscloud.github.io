@@ -74,11 +74,11 @@ Through these achievements and the ongoing roadmap initiatives, OptechX strives 
 
 OptechX was featured in the following publications:
 
-- [MENAFN](https://menafn.com/1104092525/Introducing-OptechX-A-Streamlined-Cloud-Based-Solution-to-Develop-Windows-SOE): A streamlined, cloud-based solution for Windows SOE development (Source: MENAFN)
-- [SproutNews](https://sproutnews.com/introducing-optechx-a-streamlined-cloud-based-%E2%80%A8solution-to-develop-windows-soe/): Revolutionizing Windows SOE development with a cloud-based solution (Source: SproutNews)
-- [BostonHerald](https://markets.financialcontent.com/bostonherald/article/marketersmedia-2022-4-26-introducing-optechx-a-streamlined-cloud-based-solution-to-develop-windows-soe): Simplify IT Challenges with OptechX Cloud-Based Solution (Source: BostonHerald)
-- [MarketersMedia Newsroom](https://news.marketersmedia.com/introducing-optechx-a-streamlined-cloud-based-solution-to-develop-windows-soe/89073922): OptechX Empowers IT Teams with Cloud-Based SOE Development (Source: MarketersMedia Newsroom)
-- [LinkedIn](https://www.linkedin.com/services/products/categories/os-imaging-and-deployment-software): OptechX featured in the OS Imaging and Deployment Software category on LinkedIn (Source: LinkedIn)
+- [MENAFN](https://menafn.com/1104092525/Introducing-OptechX-A-Streamlined-Cloud-Based-Solution-to-Develop-Windows-SOE "MENAFN News Article about OptechX by RePass Cloud"): A streamlined, cloud-based solution for Windows SOE development _(Source: MENAFN)_
+- [SproutNews](https://sproutnews.com/introducing-optechx-a-streamlined-cloud-based-%E2%80%A8solution-to-develop-windows-soe/ "SproutNews Article about OptechX by RePass Cloud"): Revolutionizing Windows SOE development with a cloud-based solution _(Source: SproutNews)_
+- [BostonHerald](https://markets.financialcontent.com/bostonherald/article/marketersmedia-2022-4-26-introducing-optechx-a-streamlined-cloud-based-solution-to-develop-windows-soe "Boston Herald News Article about OptechX by RePass Cloud"): Simplify IT Challenges with OptechX Cloud-Based Solution _(Source: BostonHerald)_
+- [MarketersMedia Newsroom](https://news.marketersmedia.com/introducing-optechx-a-streamlined-cloud-based-solution-to-develop-windows-soe/89073922 "MarketersMedia Newsroom Article about OptechX by RePass Cloud"): OptechX Empowers IT Teams with Cloud-Based SOE Development _(Source: MarketersMedia Newsroom)_
+- [LinkedIn](https://www.linkedin.com/services/products/categories/os-imaging-and-deployment-software "LinkedIn product guide featuring OptechX by RePass Cloud"): OptechX featured in the OS Imaging and Deployment Software category on LinkedIn _(Source: LinkedIn)_
 
 
 [^1]: A standard operating environment (SOE) is a standard implementation of an operating system and its associated software. _(source: [Wikipedia](https://en.wikipedia.org/wiki/Standard_Operating_Environment))_
