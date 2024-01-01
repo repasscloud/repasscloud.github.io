@@ -39,6 +39,10 @@ echo "Replacement complete."
 # Update CNAME
 cp ./CNAME ./docs/CNAME
 
+# Remove legacy love line
+sed -i '/Made with &#10084;&#65039; using <a target="_blank" href="https:\/\/github.com\/526avijitgupta\/gokarna">Gokarna<\/a>/d' ./docs/*.html
+
+
 # Update github repo
 git add .
 git commit -m 'republish site'
