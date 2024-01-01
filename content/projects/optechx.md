@@ -80,7 +80,6 @@ OptechX was featured in the following publications:
 - [MarketersMedia Newsroom](https://news.marketersmedia.com/introducing-optechx-a-streamlined-cloud-based-solution-to-develop-windows-soe/89073922): OptechX Empowers IT Teams with Cloud-Based SOE Development (Source: MarketersMedia Newsroom)
 - [LinkedIn](https://www.linkedin.com/services/products/categories/os-imaging-and-deployment-software): OptechX featured in the OS Imaging and Deployment Software category on LinkedIn (Source: LinkedIn)
 
----
 
 [^1]: A standard operating environment (SOE) is a standard implementation of an operating system and its associated software. _(source: [Wikipedia](https://en.wikipedia.org/wiki/Standard_Operating_Environment))_
 
