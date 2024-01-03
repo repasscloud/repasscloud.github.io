@@ -1,26 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>LunaVPN on RePass Cloud</title>
-    <link>https://repasscloud.com/tags/lunavpn/</link>
-    <description>Recent content in LunaVPN on RePass Cloud</description>
+    <title>vpn security on RePass Cloud</title>
+    <link>https://repasscloud.com/tags/vpn-security/</link>
+    <description>Recent content in vpn security on RePass Cloud</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Tue, 02 Jan 2024 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://repasscloud.com/tags/lunavpn/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://repasscloud.com/tags/vpn-security/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>LunaVPN: General Availability Launch - Embrace Privacy, Embrace Freedom!</title>
       <link>https://repasscloud.com/posts/2024-01-02/</link>
       <pubDate>Tue, 02 Jan 2024 00:00:00 +0000</pubDate>
       <guid>https://repasscloud.com/posts/2024-01-02/</guid>
       <description>LunaVPN: General Availability Launch - Embrace Privacy, Embrace Freedom! In the digital epoch where online privacy is not just a luxury but a necessity, we are ecstatic to announce the general availability of LunaVPN – your privacy-powered guardian in the virtual world. LunaVPN is not just another VPN; it&amp;rsquo;s a paradigm shift in how you experience the internet. Say hello to unrestricted, secure, and lightning-fast internet access!&#xA;Why LunaVPN is a Game-Changer Seamless Browsing with Global Reach: LunaVPN erases digital boundaries.</description>
-    </item>
-    <item>
-      <title>Introducing LunaVPN: Your Privacy-Powered Guardian</title>
-      <link>https://repasscloud.com/posts/2023-12-19/</link>
-      <pubDate>Tue, 19 Dec 2023 00:00:00 +0000</pubDate>
-      <guid>https://repasscloud.com/posts/2023-12-19/</guid>
-      <description>In today&amp;rsquo;s digital age, online security and privacy have become paramount. As the demand for VPN (Virtual Private Network) services continues to rise, building a VPN service with modern technology has never been more relevant. In this guide, we will walk you through the steps to create your own VPN service using cutting-edge tools and technologies.&#xA;The Foundation: .NET Back-End At the heart of our VPN service lies Microsoft&amp;rsquo;s .</description>
     </item>
   </channel>
 </rss>
