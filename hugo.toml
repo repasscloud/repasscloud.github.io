@@ -9,6 +9,8 @@ theme = "gokarna"
 # Automatically generate robots.txt
 enableRobotsTXT = true
 
+googleAnalytics = "G-RLMZK1PDGS"
+
 [menu]
   [[menu.main]]
     # Unique identifier for a menu item
