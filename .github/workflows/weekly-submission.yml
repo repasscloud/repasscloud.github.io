@@ -1,0 +1,28 @@
+name: Weekly Sitemap Submission
+
+on:
+  schedule:
+    - cron: '0 0 * * 0' # Run every Sunday at midnight UTC
+  workflow_dispatch:
+
+jobs:
+  sitemap_submission:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.x' # Replace with your desired Python version
+
+    - name: Install requests library
+      run: pip install requests
+
+    - name: Run the submission script (Google)
+      run: python script/submit2-google.py
+
+    - name: Run the submission script (Bing)
+      run: python script/submit2-bing.py
