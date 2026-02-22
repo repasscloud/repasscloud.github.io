@@ -12,91 +12,91 @@ enableRobotsTXT = true
 googleAnalytics = "G-RLMZK1PDGS"
 
 [menu]
-  [[menu.main]]
-    # Unique identifier for a menu item
-    identifier = "posts"
-    url = "/posts/"
-    # You can add extra information before the name (HTML format is supported), such as icons
-    pre = "<span data-feather='book'></span>"
-    # You can add extra information after the name (HTML format is supported), such as icons
-    post = ""
-    # Display name
-    name = "Posts"
-    # Weights are used to determine the ordering
-    weight = 3
+[[menu.main]]
+# Unique identifier for a menu item
+identifier = "posts"
+url = "/posts/"
+# You can add extra information before the name (HTML format is supported), such as icons
+pre = "<span data-feather='book'></span>"
+# You can add extra information after the name (HTML format is supported), such as icons
+post = ""
+# Display name
+name = "Posts"
+# Weights are used to determine the ordering
+weight = 3
 
 
-  [[menu.main]]
-    identifier = "projects"
-    name = "Projects"
-    url = "/projects/"
-    weight = 2
-    pre = "<span data-feather='code'></span>"
+[[menu.main]]
+identifier = "projects"
+name = "Projects"
+url = "/projects/"
+weight = 2
+pre = "<span data-feather='code'></span>"
 
-  [[menu.main]]
-    identifier = "about"
-    name = "About"
-    url = "/about/"
-    weight = 1
-    pre = "<span data-feather='package'></span>"
+[[menu.main]]
+identifier = "about"
+name = "About"
+url = "/about/"
+weight = 1
+pre = "<span data-feather='package'></span>"
 
-  [[menu.main]]
-    identifier = "tags"
-    url = "/tags/"
-    weight = 4
-    pre = "<span data-feather='tag'></span>"
-    
-  [[menu.main]]
-    identifier = "github"
-    url = "https://github.com/repasscloud/"
-    weight = 5
-    # We use feather-icons: https://feathericons.com/
-    pre = "<span data-feather='github'></span>"
+[[menu.main]]
+identifier = "tags"
+url = "/tags/"
+weight = 4
+pre = "<span data-feather='tag'></span>"
 
-  [[menu.main]]
-    identifier = "twitter"
-    url = "https://twitter.com/repasscloud/"
-    weight = 6
-    pre = "<span data-feather='twitter'></span>"
+[[menu.main]]
+identifier = "github"
+url = "https://github.com/repasscloud/"
+weight = 5
+# We use feather-icons: https://feathericons.com/
+pre = "<span data-feather='github'></span>"
 
-    [[menu.main]]
-    identifier = "legal"
-    url = "/legal/"
-    weight = 7
-    pre = "<span data-feather='file-text'></span>"
+[[menu.main]]
+identifier = "twitter"
+url = "https://twitter.com/repasscloud/"
+weight = 6
+pre = "<span data-feather='twitter'></span>"
+
+[[menu.main]]
+identifier = "legal"
+url = "/legal/"
+weight = 7
+pre = "<span data-feather='file-text'></span>"
 
 [params]
-  avatarUrl = "/images/repass-cloud-logo.png"
-  description = "🏗️ Architects of Innovation, 🛠️ Crafting the Future with Code"
-  footer = "RePass Cloud Pty Ltd"
-  metaKeywords = [
-      "RePass Cloud",
-      "secure SaaS solutions",
-      "adaptable SaaS solutions",
-      "data security",
-      "innovation",
-      "reliability",
-      "digital success",
-      "automation",
-      "ai",
-      "ai automation",
-      "powershell",
-      "active directory",
-      "idm",
-      "optechx",
-      "wanderconnect",
-      "lunavpn",
-      "activusx",
-      "activusx pro"
-    ]
-  accentColor = "#FF4D4D"
-  ShowBackToTopButton = true
-  socialIcons = [
-      {name = "twitter", url = "https://twitter.com/repasscloud/"},
-      {name = "linkedin", url = "https://www.linkedin.com/company/repass-cloud"},
-      {name = "email", url = "/contact/"},
-      {name = "github", url = "https://github.com/repasscloud"}
-    ]
-  pygmentsStyle = "monokai"
-  enableRobotsTXT = true
-  togglePreviousAndNextButtons = "true"
+avatarUrl = "/images/repass-cloud-logo.png"
+description = "🏗️ Architects of Innovation, 🛠️ Crafting the Future with Code"
+footer = "RePass Cloud Pty Ltd"
+metaKeywords = [
+  "RePass Cloud",
+  "secure SaaS solutions",
+  "adaptable SaaS solutions",
+  "data security",
+  "innovation",
+  "reliability",
+  "digital success",
+  "automation",
+  "ai",
+  "ai automation",
+  "powershell",
+  "active directory",
+  "idm",
+  "optechx",
+  "wanderconnect",
+  "lunavpn",
+  "activusx",
+  "activusx pro",
+]
+accentColor = "#FF4D4D"
+ShowBackToTopButton = true
+socialIcons = [
+  { name = "twitter", url = "https://twitter.com/repasscloud/" },
+  { name = "linkedin", url = "https://www.linkedin.com/company/repass-cloud" },
+  { name = "email", url = "/contact/" },
+  { name = "github", url = "https://github.com/repasscloud" },
+]
+pygmentsStyle = "monokai"
+enableRobotsTXT = true
+togglePreviousAndNextButtons = "true"

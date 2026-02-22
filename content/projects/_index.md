@@ -3,6 +3,7 @@ title = 'Projects'
 draft = false
 type = "page"
 showTableOfContents = true
+description = "Explore our portfolio of secure and innovative SaaS solutions. At RePass Cloud, we're dedicated to crafting tailor-made software for both businesses and individuals."
 metaDescription = "Explore our portfolio of secure and innovative SaaS solutions. At RePass Cloud, we're dedicated to crafting tailor-made software for both businesses and individuals."
 metaKeywords = ["RePass Cloud", "secure SaaS solutions", "adaptable SaaS solutions", "data security", "innovation", "reliability", "digital success", "software portfolio", "tailor-made solutions"]
 +++
