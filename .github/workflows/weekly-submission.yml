@@ -11,12 +11,12 @@ jobs:
 
     steps:
     - name: Checkout code
-      uses: actions/checkout@v2
+      uses: actions/checkout@v4
 
     - name: Set up Python
-      uses: actions/setup-python@v2
+      uses: actions/setup-python@v5
       with:
-        python-version: '3.x' # Replace with your desired Python version
+        python-version: '3.x'
 
     - name: Install requests library
       run: pip install requests
@@ -26,3 +26,10 @@ jobs:
 
     - name: Run the submission script (Bing)
       run: python script/submit2-bing.py
+
+    - name: Run the submission script (IndexNow)
+      env:
+        INDEXNOW_KEY: 3badb1c379dc4feca3c999fe3e98a9b2
+        INDEXNOW_HOST: repasscloud.com
+        INDEXNOW_SITEMAP_URL: https://repasscloud.com/sitemap.xml
+      run: bash script/submit2-indexnow.sh
