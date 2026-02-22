@@ -80,4 +80,4 @@ We work with organisations that value:
 
 For enquiries, partnerships, or product discussions, contact us at:
 
-Email: <mailto:hello@repasscloud.com>
+Email: <hello@repasscloud.com>

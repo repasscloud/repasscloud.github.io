@@ -60,4 +60,4 @@ This page is retained for historical reference only.
 For questions relating to historic OptechX usage, open source licensing, or
 records held by RePass Cloud, contact:
 
-Email: <mailto:hello@repasscloud.com>
+Email: <hello@repasscloud.com>

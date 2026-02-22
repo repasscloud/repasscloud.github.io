@@ -20,24 +20,4 @@ done
 # Build Hugo site
 hugo
 
-directory="./public"
-search="example.org"
-replace="repasscloud.com"
-
-# Replace domain in all generated files safely (handles spaces/newlines)
-grep -rlZ -- "$search" "$directory" | xargs -0 "$SED" -i "s/${search}/${replace}/g"
-echo "Domain replacement complete."
-
-# Update CNAME
-cp ./CNAME ./public/CNAME
-
-# Replace "Made with ❤️ using Gokarna" footer with Sydney line (both href variants)
-# NOTE: replacement must escape '&' as '\&' so it stays literal HTML entity.
-find ./public -type f -name "*.html" -exec gsed -i -E \
-  's#Made with &#10084;&#65039; using <a target="_blank" href="https://github\.com/(gokarna-theme/gokarna-hugo|526avijitgupta/gokarna)">Gokarna</a>#Made with \&#10084;\&#65039; in Sydney, Australia#g' \
-  {} +
-echo "Footer replacement complete."
-
-grep -RIn --include="*.html" 'Made with &#10084;&#65039;' ./docs | head -n 20
-
 echo "Deploy completed."

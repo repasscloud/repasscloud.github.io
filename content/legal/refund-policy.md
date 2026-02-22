@@ -80,7 +80,7 @@ service credits instead.
 
 To request a refund, contact us using one of the following:
 
-- Email: [hello@repasscloud.com](mailto:hello@repasscloud.com)
+- Email: <hello@repasscloud.com>
 - Your customer support portal (if provided)
 
 Include:
@@ -119,4 +119,4 @@ PO BOX 262
 Bondi Junction NSW 1355  
 Australia  
 
-Email: <mailto:hello@repasscloud.com>
+Email: <hello@repasscloud.com>

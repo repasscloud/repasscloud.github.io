@@ -44,4 +44,4 @@ This page is retained for historical reference only.
 For questions relating to historic TigerGrab usage or open source licensing,
 contact:
 
-Email: <mailto:hello@repasscloud.com>
+Email: <hello@repasscloud.com>

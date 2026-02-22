@@ -55,10 +55,10 @@ PO BOX 262
 Bondi Junction NSW 1355  
 Australia  
 
-Email: <mailto:hello@repasscloud.com>
+Email: <hello@repasscloud.com>
 
 If you are a customer administrator and need to raise a security or privacy
-issue urgently, email <mailto:hello@repasscloud.com> and include "Privacy" or "Security"
+issue urgently, email <hello@repasscloud.com> and include "Privacy" or "Security"
 in the subject.
 
 ## 4. Information We Collect
@@ -338,7 +338,7 @@ We do not share personal information for cross-context behavioural advertising.
 
 To request access, correction, deletion, or other rights, contact:
 
-- <mailto:hello@repasscloud.com>
+- <hello@repasscloud.com>
 
 If you are using Services through an organisation, your administrator may need
 to submit certain requests. We may need to verify identity before fulfilling
@@ -365,4 +365,4 @@ PO BOX 262
 Bondi Junction NSW 1355  
 Australia  
 
-Email: <mailto:hello@repasscloud.com>
+Email: <hello@repasscloud.com>

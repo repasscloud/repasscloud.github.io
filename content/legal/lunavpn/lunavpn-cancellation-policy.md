@@ -36,7 +36,7 @@ If you believe you are still being charged for LunaVPN:
 
 Contact:
 
-- Email: <mailto:hello@repasscloud.com>
+- Email: <hello@repasscloud.com>
 
 ## 3. Account Closure and Service Termination
 
@@ -53,7 +53,7 @@ that require limited retention (for example accounting records).
 
 If you have a specific privacy request relating to LunaVPN, contact:
 
-- Email: <mailto:hello@repasscloud.com>
+- Email: <hello@repasscloud.com>
 
 ## 5. Open Source Availability
 
@@ -76,4 +76,4 @@ PO BOX 262
 Bondi Junction NSW 1355  
 Australia  
 
-Email: <mailto:hello@repasscloud.com>
+Email: <hello@repasscloud.com>

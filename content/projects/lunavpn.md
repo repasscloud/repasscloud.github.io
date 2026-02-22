@@ -76,4 +76,4 @@ terms in the relevant repository.
 If you have a billing or privacy question relating to historic LunaVPN usage,
 contact:
 
-Email: <mailto:hello@repasscloud.com>
+Email: <hello@repasscloud.com>
