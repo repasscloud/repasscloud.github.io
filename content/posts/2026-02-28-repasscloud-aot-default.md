@@ -29,13 +29,13 @@ authors = ["Repass Cloud"]
 
 ## We Are Standardizing on AOT for All Console Software
 
-We’ve moved every internal CLI and distributed console utility at Repass Cloud to native Ahead-of-Time compilation. Not as an experiment. Not for benchmarks in a slide deck. As a default.
+We've moved every internal CLI and distributed console utility at Repass Cloud to native Ahead-of-Time compilation. Not as an experiment. Not for benchmarks in a slide deck. As a default.
 
-If it’s a console binary, it ships as AOT.
+If it's a console binary, it ships as AOT.
 
-This wasn’t ideological. It was operational. Once you run enough short-lived processes across CI runners, containers, cron hosts, and ephemeral environments, the cost of pretending the JIT is “free” becomes visible.
+This wasn't ideological. It was operational. Once you run enough short-lived processes across CI runners, containers, cron hosts, and ephemeral environments, the cost of pretending the JIT is “free” becomes visible.
 
-It isn’t free. It never was.
+It isn't free. It never was.
 
 ## What Actually Changes When You Remove the JIT
 
@@ -78,7 +78,7 @@ With AOT, the process is native from the moment it begins execution. There is no
 
 The difference is not theoretical. On our internal utilities, cold startup dropped from ~60–120 ms to low single-digit milliseconds on Linux. In CI runners under load, it matters.
 
-Short-lived processes don’t benefit from JIT optimization tiers. They die before tier 1 code matters. AOT gives you stable startup cost every time.
+Short-lived processes don't benefit from JIT optimization tiers. They die before tier 1 code matters. AOT gives you stable startup cost every time.
 
 ## Memory Layout and Runtime Services
 
@@ -110,7 +110,7 @@ Short-lived CLI tools benefit immediately. There is no warmup phase. There is no
 
 CI/CD runners benefit even more. Pipelines spawn processes constantly. Native AOT reduces aggregate runtime overhead across the entire pipeline. On ephemeral runners, startup cost is paid every single time.
 
-Scheduled tasks behave better. Cron jobs that run every minute don’t accumulate startup overhead over time. AOT makes them behave like static binaries rather than managed runtimes.
+Scheduled tasks behave better. Cron jobs that run every minute don't accumulate startup overhead over time. AOT makes them behave like static binaries rather than managed runtimes.
 
 Containerized workloads are a natural fit. Smaller images. Faster startup. No runtime JIT variability. In minimal Linux images, AOT binaries behave like Go binaries in terms of operational profile, while retaining .NET ergonomics.
 
@@ -241,7 +241,7 @@ When you publish for `linux-musl-x64`, you are targeting environments like Alpin
 - Error reporting semantics are not always identical.
 - Some edge-case locale behavior changes.
 
-Static linking is more natural under musl. You can produce highly self-contained binaries that run in extremely minimal containers. That’s attractive for scratch-like images.
+Static linking is more natural under musl. You can produce highly self-contained binaries that run in extremely minimal containers. That's attractive for scratch-like images.
 
 But there are trade-offs.
 
