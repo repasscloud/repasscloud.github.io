@@ -25,6 +25,12 @@ name = "Posts"
 # Weights are used to determine the ordering
 weight = 3
 
+[[menu.main]]
+identifier = "about"
+name = "About"
+url = "/about/"
+weight = 1
+pre = "<span data-feather='package'></span>"
 
 [[menu.main]]
 identifier = "projects"
@@ -34,11 +40,11 @@ weight = 2
 pre = "<span data-feather='code'></span>"
 
 [[menu.main]]
-identifier = "about"
-name = "About"
-url = "/about/"
-weight = 1
-pre = "<span data-feather='package'></span>"
+identifier = "careers"
+name = "Careers"
+url = "/careers/"
+weight = 3
+pre = "<span data-feather='briefcase'></span>"
 
 [[menu.main]]
 identifier = "tags"
