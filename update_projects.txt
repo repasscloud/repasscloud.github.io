@@ -1,0 +1,4 @@
+
+<!-- 7. [**LockWorkstation**](/projects/lockworkstation) — Lightweight Windows utility for programmatically locking a workstation from scripts, scheduled tasks, or remote management tooling. *Retired. Open source.*
+
+8. [**WSUS Commander Update Check V2**](/projects/wsuscmdrupdatecheckv2) — Windows desktop utility for querying and managing WSUS update status on client machines, with an Inno Setup installer for enterprise deployment. *Retired. Open source.* -->

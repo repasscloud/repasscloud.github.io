@@ -13,87 +13,88 @@ googleAnalytics = "G-RLMZK1PDGS"
 
 [menu]
 [[menu.main]]
-# Unique identifier for a menu item
-identifier = "posts"
-url = "/posts/"
-# You can add extra information before the name (HTML format is supported), such as icons
-pre = "<span data-feather='book'></span>"
-# You can add extra information after the name (HTML format is supported), such as icons
-post = ""
-# Display name
-name = "Posts"
-# Weights are used to determine the ordering
-weight = 3
-
-[[menu.main]]
 identifier = "about"
-name = "About"
 url = "/about/"
-weight = 1
 pre = "<span data-feather='package'></span>"
+post = ""
+name = "About"
+weight = 1
 
 [[menu.main]]
 identifier = "projects"
-name = "Projects"
 url = "/projects/"
-weight = 2
 pre = "<span data-feather='code'></span>"
+post = ""
+name = "Projects"
+weight = 2
+
+[[menu.main]]
+identifier = "case-studies"
+url = "/case-studies/"
+pre = "<span data-feather='award'></span>"
+post = ""
+name = "Case Studies"
+weight = 3
+
+[[menu.main]]
+identifier = "posts"
+url = "/posts/"
+pre = "<span data-feather='book'></span>"
+post = ""
+name = "Posts"
+weight = 4
 
 [[menu.main]]
 identifier = "careers"
-name = "Careers"
 url = "/careers/"
-weight = 3
 pre = "<span data-feather='briefcase'></span>"
-
-[[menu.main]]
-identifier = "tags"
-url = "/tags/"
-weight = 4
-pre = "<span data-feather='tag'></span>"
-
-[[menu.main]]
-identifier = "github"
-url = "https://github.com/repasscloud/"
+post = ""
+name = "Careers"
 weight = 5
-# We use feather-icons: https://feathericons.com/
-pre = "<span data-feather='github'></span>"
-
-[[menu.main]]
-identifier = "twitter"
-url = "https://twitter.com/repasscloud/"
-weight = 6
-pre = "<span data-feather='twitter'></span>"
-
-[[menu.main]]
-identifier = "legal"
-url = "/legal/"
-weight = 7
-pre = "<span data-feather='file-text'></span>"
 
 [params]
 avatarUrl = "/images/repass-cloud-logo.png"
-description = "🏗️ Architects of Innovation, 🛠️ Crafting the Future with Code"
+description = "Enterprise software, cloud automation, and operational tooling — built in Sydney, Australia."
 footer = "RePass Cloud Pty Ltd"
 metaKeywords = [
   "RePass Cloud",
-  "secure SaaS solutions",
-  "adaptable SaaS solutions",
-  "data security",
-  "innovation",
-  "reliability",
-  "digital success",
-  "automation",
-  "ai",
-  "ai automation",
-  "powershell",
-  "active directory",
-  "idm",
-  "optechx",
-  "wanderconnect",
-  "lunavpn",
-  "activusx",
-  "activusx pro",
+  "enterprise software Australia",
+  "cloud automation",
+  "Azure consultancy",
+  "AWS tooling",
+  "Google Cloud",
+  "PowerShell automation",
+  "PowerShell modules",
+  "SaaS platform",
+  "Cinturon360",
+  "IT automation",
+  "infrastructure tooling",
+  "Windows automation",
+  "Active Directory automation",
+  "Entra ID automation",
+  "Microsoft 365 automation",
+  "M365 identity management",
+  "user onboarding automation",
+  "user offboarding automation",
+  "identity lifecycle management",
+  "workforce automation",
+  "cloud cost management",
+  "FinOps",
+  "multi-cloud cost optimisation",
+  "SSL certificate management",
+  "enterprise SaaS Sydney",
+  "Windows SOE",
+  "WSUS",
+  "CVE tooling",
+  "security operations tooling",
+  "HR system integration",
+  "Oracle HCM integration",
+  "ServiceNow tooling",
+  "Windows Server",
+  "Hyper-V automation",
+  "SCCM deployment",
+  "software consultancy Sydney",
+  "RePass Cloud Pty Ltd",
 ]
 accentColor = "#FF4D4D"
 ShowBackToTopButton = true
@@ -106,3 +107,8 @@ socialIcons = [
 pygmentsStyle = "monokai"
 enableRobotsTXT = true
 togglePreviousAndNextButtons = "true"
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true

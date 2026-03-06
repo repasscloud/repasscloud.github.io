@@ -1,5 +1,4 @@
 <footer class="footer">
-    <!-- Option for user to inject custom html -->
     {{ if .Site.Params.CustomFooterHTML }}
     {{ .Site.Params.CustomFooterHTML | safeHTML }}
     {{ end }}
@@ -36,4 +35,13 @@
     <span>
         Made with &#10084;&#65039; in Sydney, Australia &#127462;&#127482;
     </span>
+
+    <div style="margin-top: 0.5rem; display: flex; gap: 0.75rem; justify-content: center;">
+        <a href="https://github.com/repasscloud/"><span data-feather='github'></span></a>
+        <a href="https://twitter.com/repasscloud/"><span data-feather='twitter'></span></a>
+        <a href="https://linkedin.com/company/repass-cloud"><span data-feather='linkedin'></span></a>
+        <a href="/case-studies/"><span data-feather='award'></span></a>
+        <a href="/legal/"><span data-feather='file-text'></span></a>
+        <a href="/contact/"><span data-feather='mail'></span></a>
+    </div>
 </footer>
