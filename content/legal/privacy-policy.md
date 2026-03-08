@@ -3,13 +3,13 @@ title = "Privacy Policy"
 meta_title = "RePass Cloud Pty Ltd Privacy Policy"
 description = "Privacy Policy for RePass Cloud Pty Ltd covering its websites, products, and services."
 meta_description = "Learn how RePass Cloud Pty Ltd collects, uses, discloses, stores, and protects personal information across its websites, products, and services."
-date = 2026-02-22
+date = 2026-03-07
 draft = false
 type = "page"
 showTableOfContents = true
 +++
 
-Last updated: 2026-02-22
+Last updated: 2026-03-07
 
 ## 1. Who We Are
 
@@ -160,15 +160,18 @@ We use personal information for the following purposes:
 - Authenticate users and manage sessions and access control.
 - Deliver support, troubleshoot issues, and respond to enquiries.
 - Maintain security, detect abuse, prevent fraud, and investigate incidents.
-- Monitor reliability and performance using internal telemetry.
+- Monitor reliability and performance using internal telemetry and website
+  analytics tools.
 - Comply with legal obligations and enforce our terms.
 - Business administration, including billing, accounting, and procurement.
 - Marketing communications where permitted by law and your preferences.
+- Improve and market our products and services using permitted analytics,
+  behavioural metrics, and advertising technologies.
 
 We do not sell personal information.
 
-We do not use third-party behavioural advertising analytics such as Google
-Analytics.
+We do not use Google Analytics. We may use Microsoft Clarity and Microsoft
+Advertising as described in Section 8.
 
 ## 6. Legal Bases for Processing
 
@@ -179,7 +182,7 @@ one or more of the following:
 - Legitimate interests: to secure and improve Services, prevent fraud, and
   protect our business and users.
 - Consent: where required for specific activities (for example certain marketing
-  communications, or optional features).
+  communications, analytics cookies, advertising cookies, or optional features).
 - Legal obligation: to comply with laws and respond to lawful requests.
 - Vital interests: to protect safety where applicable.
 
@@ -213,11 +216,22 @@ We use cookies and similar technologies primarily for:
 - Security controls
 - Preferences and settings
 - Performance and reliability
+- Website analytics, optimisation, and, where permitted, advertising and
+  marketing activities
 
-We do not use cookies for third-party targeted advertising.
+We partner with Microsoft Clarity and Microsoft Advertising to capture how you
+use and interact with our website through behavioral metrics, heatmaps, and
+session replay to improve and market our products/services. Website usage data
+is captured using first and third-party cookies and other tracking technologies
+to determine the popularity of products/services and online activity.
+Additionally, we use this information for site optimization, fraud/security
+purposes, and advertising. For more information about how Microsoft collects and
+uses your data, visit the
+[Microsoft Privacy Statement](https://www.microsoft.com/privacy/privacystatement).
 
 You can control cookies through your browser settings. Some features may not
-work properly if you disable cookies.
+work properly if you disable cookies. Where required by applicable law, we will
+request consent before using non-essential cookies or similar technologies.
 
 ## 9. Disclosure of Information
 
@@ -230,6 +244,8 @@ We may disclose information to:
 - Identity providers (for authentication and access management).
 - Payment processors (for billing and payments).
 - Security and operational vendors (for monitoring and incident response).
+- Analytics, advertising, and marketing vendors used to improve, measure, and
+  market our services, subject to applicable law.
 - Professional advisers (lawyers, auditors, insurers) under confidentiality.
 - Authorities where required by law or to protect rights and safety.
 - Business transferees in connection with a merger, acquisition, or sale.
@@ -332,7 +348,9 @@ activities as defined by law.
 
 We do not sell personal information.
 
-We do not share personal information for cross-context behavioural advertising.
+Where applicable law treats certain analytics, cookie-based advertising, or
+similar disclosures as "sharing" or targeted advertising, you may have the
+right to opt out of that processing.
 
 ## 15. Exercising Rights and Verification
 
