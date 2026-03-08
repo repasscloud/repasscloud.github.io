@@ -57,7 +57,7 @@ In reality:
 Once those conditions appear, the first-generation automation begins to show cracks.
 The diagram below shows the difference between that first-generation pattern and a governed automation layer:
 
-### Basic Automation — first-generation pattern
+### Basic Automation - first-generation pattern
 
 <img src="/images/m365-identity-automation-basic-pattern.svg" alt="Flowchart showing a basic Microsoft 365 identity automation pattern: HR export feeds into an admin script, which applies group and licence changes, with output written to a console log or text file." style="width: 50%; display: block; margin-left: 0;">
 
@@ -425,6 +425,6 @@ If Microsoft 365 identity automation has not delivered in your environment, the 
 
 Writing a command that adds a user to a group is the easy part.
 
-The surrounding system — the part that decides when the change should happen, who owns the decision, how long the access should remain valid, what should happen when source data is incomplete, and how the organisation proves later that the change was appropriate — that is the part that most first-pass efforts never reach.
+The surrounding system - the part that decides when the change should happen, who owns the decision, how long the access should remain valid, what should happen when source data is incomplete, and how the organisation proves later that the change was appropriate - that is the part that most first-pass efforts never reach.
 
 That gap is not a reason to avoid automation. It is a reason to approach it, with a complete design from the start.
