@@ -427,4 +427,4 @@ Writing a command that adds a user to a group is the easy part.
 
 The surrounding system — the part that decides when the change should happen, who owns the decision, how long the access should remain valid, what should happen when source data is incomplete, and how the organisation proves later that the change was appropriate — that is the part that most first-pass efforts never reach.
 
-That gap is not a reason to avoid automation. It is a reason to approach it with a complete design from the start.
+That gap is not a reason to avoid automation. It is a reason to approach it, with a complete design from the start.
