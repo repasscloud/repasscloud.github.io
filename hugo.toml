@@ -11,6 +11,8 @@ enableRobotsTXT = true
 
 googleAnalytics = "G-RLMZK1PDGS"
 
+ignoreFiles = ['/static/mermaid-src']
+
 [menu]
 [[menu.main]]
 identifier = "about"
