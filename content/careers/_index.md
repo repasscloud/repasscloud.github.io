@@ -18,4 +18,4 @@ We are a hybrid, digital-first team. Some of us are fully remote. Some work from
 - [Culture & Belonging](/careers/culture/) — how we work and what we value
 - [Candidate Preparation Guide](/careers/candidate-guide/) — what to expect and how to prepare
 - [Equal Opportunity Statement](/careers/equal-opportunity/) — our commitment and legislative framework
-- [Applicant Privacy Notice](/careers/privacy/) — how we handle your data under Australian Privacy Law
+- [Applicant Privacy Notice](/careers/applicant-privacy-notice/) — how we handle your data under Australian Privacy Law
