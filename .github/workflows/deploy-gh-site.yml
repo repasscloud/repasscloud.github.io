@@ -1,4 +1,3 @@
-# Sample workflow for building and deploying a Hugo site to GitHub Pages
 name: Deploy Hugo site to Pages
 
 on:
@@ -49,6 +48,14 @@ jobs:
       - name: Install Node.js dependencies
         run: "[[ -f package-lock.json || -f npm-shrinkwrap.json ]] && npm ci || true"
 
+      - name: Install Tectonic
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl --proto '=https' --tlsv1.2 -fsSL https://drop-sh.fullyjustified.net | sh
+          sudo mv tectonic /usr/local/bin/tectonic
+          tectonic --version
+
       - name: Clean output directories
         run: |
           for dir in public docs; do
@@ -56,6 +63,20 @@ jobs:
               rm -rf "$dir"
               echo "Removed directory: $dir"
             fi
+          done
+
+      - name: Compile all .tex files
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          find ./latex -type f -name '*.tex' | while IFS= read -r f; do
+            rel="${f#./latex/}"
+            outdir="./static/downloads/$(dirname "$rel")"
+
+            echo "Compiling $f -> $outdir"
+            mkdir -p "$outdir"
+            tectonic --outdir "$outdir" "$f"
           done
 
       - name: Build with Hugo
@@ -82,29 +103,3 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
-
-  tweet:
-    runs-on: ubuntu-latest
-    needs: deploy
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 2
-
-      - name: Check for new post
-        id: detect
-        run: |
-          NEW_POST=$(git diff --name-only --diff-filter=A HEAD~1 HEAD -- 'content/posts/*.md' | head -n 1)
-          echo "post=$NEW_POST" >> $GITHUB_OUTPUT
-
-      - name: Build post URL and title
-        if: steps.detect.outputs.post != ''
-        id: details
-        run: |
-          POST="${{ steps.detect.outputs.post }}"
-          SLUG=$(basename "$POST" .md)
-          URL="https://repasscloud.com/posts/${SLUG}/"
-          TITLE=$(grep '^title' "$POST" | head -n 1 | sed "s/title = '//;s/'//")
-          echo "url=$URL" >> $GITHUB_OUTPUT
-          echo "title=$TITLE" >> $GITHUB_OUTPUT

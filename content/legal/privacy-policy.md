@@ -3,13 +3,15 @@ title = "Privacy Policy"
 meta_title = "RePass Cloud Pty Ltd Privacy Policy"
 description = "Privacy Policy for RePass Cloud Pty Ltd covering its websites, products, and services."
 meta_description = "Learn how RePass Cloud Pty Ltd collects, uses, discloses, stores, and protects personal information across its websites, products, and services."
-date = 2026-03-07
+date = 2026-03-09
 draft = false
 type = "page"
 showTableOfContents = true
 +++
 
-Last updated: 2026-03-07
+Last updated: 2026-03-09
+
+> Download: [Privacy Policy (PDF)](/downloads/legal/privacy-policy.pdf)
 
 ## 1. Who We Are
 
@@ -24,14 +26,12 @@ This policy applies to all Services we operate that link to this Privacy Policy.
 
 Examples of sites and brands that may link to this Privacy Policy include:
 
-- <https://repasscloud.com>
-- <https://optechx.com>
+- [https://repasscloud.com](https://repasscloud.com)
 - Other RePass Cloud websites and service endpoints that link to this policy
 
-Legacy notice:
+Legacy services notice:
 
-- LunaVPN is not an active RePass Cloud service. The source code has been made
-  available as open source and it is not actively maintained or operated by us.
+- Some legacy or discontinued projects may still reference RePass Cloud. Where a service is no longer operated by us, this Privacy Policy does not apply to any independent third-party forks, deployments, or uses of that software.
 
 If you do not agree with this policy, do not use the Services.
 
@@ -319,12 +319,12 @@ you. You may also make a complaint.
 Australia regulator:
 
 - Office of the Australian Information Commissioner (OAIC)
-- <https://www.oaic.gov.au>
+- [https://www.oaic.gov.au](https://www.oaic.gov.au)
 
 New Zealand regulator:
 
 - Office of the Privacy Commissioner (NZ)
-- <https://www.privacy.org.nz>
+- [https://www.privacy.org.nz](https://www.privacy.org.nz)
 
 ### 14.2 EEA, United Kingdom, and Switzerland
 
