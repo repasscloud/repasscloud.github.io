@@ -5,11 +5,15 @@ date: 2025-01-01
 type: "page"
 ---
 
+Last updated: 2025-01-01
+
+> Download: [Equal Opportunity & Non-Discrimination Statement (PDF)](/downloads/legal/equal-opportunity-and-non-discrimination-statement.pdf)
+
 ## Our Commitment
 
-RePass&nbsp;Cloud is an equal opportunity employer and contractor. We are committed to building a team where talent, curiosity, and character determine success — not background, identity, or circumstance.
+RePass&nbsp;Cloud is an equal opportunity employer and contractor. We are committed to building a team where talent, curiosity, and character determine success - not background, identity, or circumstance.
 
-This statement applies to all employees, contractors, and third-party organisations engaged by RePass&nbsp;Cloud .
+This statement applies to all employees, contractors, and third-party organisations engaged by RePass&nbsp;Cloud.
 
 ## Legislative Framework
 
@@ -27,10 +31,10 @@ We do not discriminate on the basis of age, sex, gender identity, race, colour, 
 
 This policy applies to:
 
-- All stages of the hiring process — application, screening, interview, and offer
-- All engagements — full-time employees, part-time employees, and independent contractors
-- All geographies — we hire locally in Australia and internationally
-- Third-party organisations — when we award work to an external organisation, we expect them to uphold equivalent equal opportunity standards for their own employees and contractors
+- All stages of the hiring process - application, screening, interview, and offer
+- All engagements - full-time employees, part-time employees, and independent contractors
+- All geographies - we hire locally in Australia and internationally
+- Third-party organisations - when we award work to an external organisation, we expect them to uphold equivalent equal opportunity standards for their own employees and contractors
 
 ## Applicants with Disabilities
 
@@ -38,7 +42,7 @@ We are committed to providing reasonable accommodations to applicants with disab
 
 ## Criminal History
 
-RePass&nbsp;Cloud recognises that past convictions do not define a person's future. Applicants with a criminal record will be considered for all roles. Where a criminal history is directly relevant to the responsibilities of a role — for example, a history of financial fraud for a role with fiduciary responsibility — it will be taken into account proportionately. Where it is not relevant, it will not be considered.
+RePass&nbsp;Cloud recognises that past convictions do not define a person's future. Applicants with a criminal record will be considered for all roles. Where a criminal history is directly relevant to the responsibilities of a role - for example, a history of financial fraud for a role with fiduciary responsibility - it will be taken into account proportionately. Where it is not relevant, it will not be considered.
 
 We believe in second chances and in assessing candidates on the merit of who they are today.
 
@@ -50,7 +54,7 @@ All hiring and engagement decisions are made on the basis of:
 - Relevant experience
 - Professional conduct
 
-Professional conduct at RePass&nbsp;Cloud means how you engage with people, represent the brand, and operate with integrity — not how you dress or what you look like.
+Professional conduct at RePass&nbsp;Cloud means how you engage with people, represent the brand, and operate with integrity - not how you dress or what you look like.
 
 ## Reporting Concerns
 

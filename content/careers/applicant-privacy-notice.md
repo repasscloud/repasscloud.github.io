@@ -5,7 +5,9 @@ date: 2025-01-01
 type: "page"
 ---
 
-RePass Cloud Pty Ltd — Effective: 2025-01-01
+Last updated: 2025-01-01
+
+> Download: [Applicant Privacy Notice (PDF)](/downloads/legal/applicant-privacy-notice.pdf)
 
 ## 1. Who We Are
 
@@ -47,7 +49,7 @@ Where interviews are recorded, you will be informed and asked to consent before 
 
 In limited circumstances, we may share applicant information with third parties:
 
-- **With clients**, where a consulting engagement requires it and where you have given explicit written consent at the technical or final interview stage. Without your consent, we cannot proceed with the application — it will be marked as declined and all data deleted in accordance with this notice.
+- **With clients**, where a consulting engagement requires it and where you have given explicit written consent at the technical or final interview stage. Without your consent, we cannot proceed with the application - it will be marked as declined and all data deleted in accordance with this notice.
 - **With service providers** who assist us in running our recruitment process (e.g. background check providers), under appropriate confidentiality obligations.
 
 ## 6. Data Retention

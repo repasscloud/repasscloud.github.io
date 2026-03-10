@@ -1,13 +1,13 @@
 ---
 title: "How We Hire"
-description: "RePass Cloud's end-to-end hiring process — from application to offer."
+description: "RePass Cloud's end-to-end hiring process - from application to offer."
 date: 2025-01-01
 type: "page"
 ---
 
-We hire engineers and collaborators who build real things. Our process is designed to be thorough but respectful of your time — no endless take-home assignments, no puzzle games, no gatekeeping. We want to understand how you think, what you've shipped, and whether we're a good fit for each other.
+We hire engineers and collaborators who build real things. Our process is designed to be thorough but respectful of your time - no endless take-home assignments, no puzzle games, no gatekeeping. We want to understand how you think, what you've shipped, and whether we're a good fit for each other.
 
-The hiring decision may rest with a founder, an interview panel, or a consensus of the team involved — the structure is disclosed in the job advertisement for each role.
+The hiring decision may rest with a founder, an interview panel, or a consensus of the team involved - the structure is disclosed in the job advertisement for each role.
 
 ## The Process
 
