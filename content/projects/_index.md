@@ -12,7 +12,7 @@ metaKeywords = ["RePass Cloud projects", "Cinturon360", "enterprise SaaS platfor
 
 ### Cinturon360
 
-Cinturon360 is our actively developed and maintained enterprise SaaS platform. It is the operational control layer for organisations that need to manage complexity across customers, partners, internal teams, and business units — under structured governance, with full visibility and control.
+[Cinturon360](https://cinturon360.com) is our actively developed and maintained enterprise SaaS platform. It is the operational control layer for organisations that need to manage complexity across customers, partners, internal teams, and business units — under structured governance, with full visibility and control.
 
 Cinturon360 is built for organisations operating in layered environments where different entities require different levels of access, configuration, and accountability. It provides a governed foundation for operational workflows, tenant-aware configuration, secure API integrations, identity and access management, and full audit logging.
 
@@ -22,7 +22,7 @@ Cinturon360 is not a general-purpose workflow tool. It is a platform for running
 
 ## Custom Tooling & Automation
 
-Beyond [Cinturon360](https://cinturon360.com), RePass Cloud designs and builds a broad range of custom tools, automation systems, and operational software for enterprise and business customers. This includes cloud infrastructure tooling, Microsoft 365 and identity automation, finance workflow systems, FinOps platforms, PowerShell modules, and Windows environment utilities.
+Beyond Cinturon360, RePass Cloud designs and builds a broad range of custom tools, automation systems, and operational software for enterprise and business customers. This includes cloud infrastructure tooling, Microsoft 365 and identity automation, finance workflow systems, FinOps platforms, PowerShell modules, and Windows environment utilities.
 
 These engagements are not named products — they are purpose-built solutions delivered to specific organisations. A selection of real-world examples is documented in our [case studies](/case-studies/).
 
