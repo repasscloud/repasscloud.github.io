@@ -22,7 +22,7 @@ Cinturon360 is not a general-purpose workflow tool. It is a platform for running
 
 ## Custom Tooling & Automation
 
-Beyond Cinturon360, RePass Cloud designs and builds a broad range of custom tools, automation systems, and operational software for enterprise and business customers. This includes cloud infrastructure tooling, Microsoft 365 and identity automation, finance workflow systems, FinOps platforms, PowerShell modules, and Windows environment utilities.
+Beyond [Cinturon360](https://cinturon360.com), RePass Cloud designs and builds a broad range of custom tools, automation systems, and operational software for enterprise and business customers. This includes cloud infrastructure tooling, Microsoft 365 and identity automation, finance workflow systems, FinOps platforms, PowerShell modules, and Windows environment utilities.
 
 These engagements are not named products — they are purpose-built solutions delivered to specific organisations. A selection of real-world examples is documented in our [case studies](/case-studies/).
 
