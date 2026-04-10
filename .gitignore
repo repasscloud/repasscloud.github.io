@@ -1,19 +1,16 @@
 .DS_Store
 
-# Generated files by hugo
-/public/
+# Hugo build artifacts (no longer used — site migrated to Astro)
 /resources/_gen/
 /assets/jsconfig.json
 hugo_stats.json
-/docs/
-
-# Executable may be added to repository
 hugo.exe
 hugo.darwin
 hugo.linux
-
-# Temporary lock file while building
 /.hugo_build.lock
+
+# Astro build output (never commit)
+/dist/
 
 # Dependency directories (optional)
 /node_modules/
