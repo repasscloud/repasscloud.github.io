@@ -1,0 +1,3 @@
+# Files to exclude from Cloudflare Workers static asset upload
+_redirects
+_headers
