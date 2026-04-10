@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en"><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=64164&amp;path=livereload" data-no-instant defer></script>
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-RLMZK1PDGS"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-RLMZK1PDGS');
+    </script>
+    
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "vrt8149jl6");
+    </script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+        :root {
+            --accent-color: {
+                    {
+                    .Site.Params.AccentColor | default "#FF4D4D"
+                }
+            }
+
+            ;
+
+            --font-size: {
+                    {
+                    .Site.Params.FontSize | default "1.1rem"
+                }
+            }
+
+            ;
+        }
+    </style>
+    
+    
+    
+    
+
+    
+    <title>We Are Standardizing on AOT for All Console Software | RePass Cloud</title>
+    <meta name="description" content="Why Repass Cloud has standardized on Native AOT for all internal CLI and distributed console tooling, covering runtime mechanics, memory behavior, musl …">
+    <meta name="keywords" content='RePass Cloud, enterprise software Australia, cloud automation, Azure consultancy, AWS tooling, Google Cloud, PowerShell automation, PowerShell modules, SaaS platform, Cinturon360, IT automation, infrastructure tooling, Windows automation, Active Directory automation, Entra ID automation, Microsoft 365 automation, M365 identity management, user onboarding automation, user offboarding automation, identity lifecycle management, workforce automation, cloud cost management, FinOps, multi-cloud cost optimisation, SSL certificate management, enterprise SaaS Sydney, Windows SOE, WSUS, CVE tooling, security operations tooling, HR system integration, Oracle HCM integration, ServiceNow tooling, Windows Server, Hyper-V automation, SCCM deployment, software consultancy Sydney, RePass Cloud Pty Ltd, dotnet, aot, nativeaot, cli, devops, containers, linux, musl, systems, performance, backend, engineering'>
+
+    <meta property="og:url" content="http://localhost:64164/posts/2026-02-28-repasscloud-aot-default/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="We Are Standardizing on AOT for All Console Software | RePass Cloud">
+    <meta property="og:description" content="Why Repass Cloud has standardized on Native AOT for all internal CLI and distributed console tooling, covering runtime mechanics, memory behavior, musl …">
+    <meta property="og:image" content="http://localhost:64164/images/repass-cloud-logo.png">
+    <meta property="og:image:secure_url" content="http://localhost:64164/images/repass-cloud-logo.png">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="We Are Standardizing on AOT for All Console Software | RePass Cloud">
+    <meta name="twitter:description" content="Why Repass Cloud has standardized on Native AOT for all internal CLI and distributed console tooling, covering runtime mechanics, memory behavior, musl …">
+    <meta property="twitter:domain" content="http://localhost:64164/posts/2026-02-28-repasscloud-aot-default/">
+    <meta property="twitter:url" content="http://localhost:64164/posts/2026-02-28-repasscloud-aot-default/">
+    <meta name="twitter:image" content="http://localhost:64164/images/repass-cloud-logo.png">
+
+    
+    <link rel="canonical" href="http://localhost:64164/posts/2026-02-28-repasscloud-aot-default/">
+
+    
+    <link rel="stylesheet" type="text/css" href="/css/normalize.min.css" media="print">
+
+    
+    <link rel="stylesheet" type="text/css" href="/css/main.min.css">
+
+    
+    <link id="dark-theme" rel="stylesheet" href="/css/dark.min.css">
+
+    
+    <script src="/js/bundle.min.7136b4abac7b277aba8bc933917f4602d39a5c44f5590be687244bc86ef4f162.js" integrity="sha256-cTa0q6x7J3q6i8kzkX9GAtOaXET1WQvmhyRLyG708WI="></script>
+
+    
+    
+</head><body>
+        <script>
+            
+            setThemeByUserPref();
+        </script><header class="header">
+    <nav class="header-nav">
+
+        
+        <div class="avatar">
+            <a href="http://localhost:64164/">
+                <img src='/images/repass-cloud-logo.png' alt="avatar">
+            </a>
+        </div>
+        
+
+        <div class="nav-title">
+            <a class="nav-brand" href="http://localhost:64164/">RePass Cloud</a>
+        </div>
+
+        <div class="nav-links">
+            
+            <div class="nav-link">
+                <a href="http://localhost:64164/about/" aria-label="about" ><span data-feather='package'></span> About </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="http://localhost:64164/projects/" aria-label="projects" ><span data-feather='code'></span> Projects </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="http://localhost:64164/case-studies/" aria-label="case-studies" ><span data-feather='award'></span> Case Studies </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="http://localhost:64164/posts/" aria-label="posts" ><span data-feather='book'></span> Posts </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="http://localhost:64164/careers/" aria-label="careers" ><span data-feather='briefcase'></span> Careers </a>
+            </div>
+            
+
+            <span class="nav-icons-divider"></span>
+            <div class="nav-link dark-theme-toggle">
+                <span class="sr-only dark-theme-toggle-screen-reader-target">theme</span>
+                <a aria-hidden="true" role="switch">
+                    <span class="theme-toggle-icon" data-feather="moon"></span>
+                </a>
+            </div>
+
+            <div class="nav-link" id="hamburger-menu-toggle">
+                <span class="sr-only hamburger-menu-toggle-screen-reader-target">menu</span>
+                <a aria-checked="false" aria-labelledby="hamburger-menu-toggle" id="hamburger-menu-toggle-target" role="switch">
+                    <span data-feather="menu"></span>
+                </a>
+            </div>
+
+            
+            <ul class="nav-hamburger-list visibility-hidden">
+                
+                <li class="nav-item">
+                    <a href="http://localhost:64164/about/" ><span data-feather='package'></span> About </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="http://localhost:64164/projects/" ><span data-feather='code'></span> Projects </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="http://localhost:64164/case-studies/" ><span data-feather='award'></span> Case Studies </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="http://localhost:64164/posts/" ><span data-feather='book'></span> Posts </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="http://localhost:64164/careers/" ><span data-feather='briefcase'></span> Careers </a>
+                </li>
+                
+                <li class="nav-item dark-theme-toggle">
+                    <span class="sr-only dark-theme-toggle-screen-reader-target">theme</span>
+                    <a role="switch">
+                        <span class="theme-toggle-icon" data-feather="moon"></span>
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+    </nav>
+</header>
+<main id="content">
+    <div class="post container">
+    <div class="post-header-section">
+        <h1>We Are Standardizing on AOT for All Console Software</h1>
+
+        
+
+        
+	
+	
+	
+	
+        
+
+	
+
+	
+
+	
+          <small role="doc-subtitle">Why Repass Cloud has standardized on Native AOT for all internal CLI and distributed console tooling, covering runtime mechanics, memory behavior, musl considerations, and real-world migration trade-offs.</small>
+	
+
+	
+          <p class="post-date">
+              
+
+              February 28, 2026
+
+              
+          </p>
+	
+
+    </div>
+
+    <div class="post-content">
+        <h2 id="we-are-standardizing-on-aot-for-all-console-software">We Are Standardizing on AOT for All Console Software</h2>
+<p>We&rsquo;ve moved every internal CLI and distributed console utility at Repass Cloud to native Ahead-of-Time compilation. Not as an experiment. Not for benchmarks in a slide deck. As a default.</p>
+<p>If it&rsquo;s a console binary, it ships as AOT.</p>
+<p>This wasn&rsquo;t ideological. It was operational. Once you run enough short-lived processes across CI runners, containers, cron hosts, and ephemeral environments, the cost of pretending the JIT is “free” becomes visible.</p>
+<p>It isn&rsquo;t free. It never was.</p>
+<h2 id="what-actually-changes-when-you-remove-the-jit">What Actually Changes When You Remove the JIT</h2>
+<p>From a systems perspective, the JIT is a runtime compiler bolted into your process. IL is loaded, metadata tables are walked, type loaders activate, generic instantiations are resolved, and machine code is emitted into executable memory pages on demand. Tiered compilation may recompile hot paths. The runtime tracks method bodies, stubs, trampolines, and patchpoints.</p>
+<p>That machinery disappears in AOT.</p>
+<p>When you publish with NativeAOT, there is no runtime compiler inside the process. No method body emission. No IL-to-native translation at startup. No runtime code generation infrastructure waiting behind a callsite.</p>
+<p>The executable you ship already contains machine code for every reachable method body. Generics are materialized ahead of time. Interface dispatch stubs are generated at build time. The dependency graph is resolved statically.</p>
+<p>The startup path changes immediately.</p>
+<p>With JIT:</p>
+<ul>
+<li>The loader maps the runtime.</li>
+<li>CoreCLR initializes subsystems.</li>
+<li>Metadata tables are parsed.</li>
+<li>Type initialization triggers.</li>
+<li>Methods are compiled on first use.</li>
+<li>Tiered recompilation may kick in.</li>
+</ul>
+<p>With AOT:</p>
+<ul>
+<li>The OS loader maps a native binary.</li>
+<li>The runtime initializes minimal services.</li>
+<li>Execution begins.</li>
+</ul>
+<p>There is still a runtime. You still have GC. You still have type safety. You still have exception handling. But the compiler is gone.</p>
+<p>And when the compiler is gone, so are a lot of invisible costs.</p>
+<h2 id="startup-mechanics-in-practice">Startup Mechanics in Practice</h2>
+<p>On a JIT build, even trivial tools have measurable startup overhead. The first invocation is almost always slower due to cold compilation. In short-lived CLI tools, you rarely hit steady state.</p>
+<p>In CI pipelines, you often execute dozens or hundreds of short processes. Each invocation pays the startup tax. In containerized jobs, the container lifecycle amplifies that cost.</p>
+<p>With AOT, the process is native from the moment it begins execution. There is no IL warmup. No method body generation. No tiered compilation.</p>
+<p>The difference is not theoretical. On our internal utilities, cold startup dropped from ~60–120 ms to low single-digit milliseconds on Linux. In CI runners under load, it matters.</p>
+<p>Short-lived processes don&rsquo;t benefit from JIT optimization tiers. They die before tier 1 code matters. AOT gives you stable startup cost every time.</p>
+<h2 id="memory-layout-and-runtime-services">Memory Layout and Runtime Services</h2>
+<p>Removing the JIT changes memory behavior in subtle ways.</p>
+<p>JIT processes allocate executable memory pages for generated code. They maintain data structures for method tables, runtime helpers, and tiered compilation bookkeeping. They often have larger resident sets due to runtime compilation state.</p>
+<p>AOT binaries contain precompiled native code. There is no runtime code emission. Executable pages are fixed. There is no IL image to keep around for execution. The metadata footprint is trimmed aggressively because the linker removes unreachable types and methods.</p>
+<p>You still have:</p>
+<ul>
+<li>Garbage collection</li>
+<li>Exception handling</li>
+<li>Threading</li>
+<li>Basic runtime type information</li>
+</ul>
+<p>You do not have:</p>
+<ul>
+<li>Dynamic method generation</li>
+<li>Runtime IL emission</li>
+<li>Unbounded reflection access</li>
+<li>Implicit generic instantiation at runtime</li>
+</ul>
+<p>This matters in container environments. Smaller working sets mean denser scheduling. Less runtime variability means more predictable behavior under memory pressure.</p>
+<h2 id="why-aot-is-better-for-cli-and-distributed-tooling">Why AOT Is Better for CLI and Distributed Tooling</h2>
+<p>Short-lived CLI tools benefit immediately. There is no warmup phase. There is no “first call penalty.” Execution is deterministic. Startup cost becomes negligible.</p>
+<p>CI/CD runners benefit even more. Pipelines spawn processes constantly. Native AOT reduces aggregate runtime overhead across the entire pipeline. On ephemeral runners, startup cost is paid every single time.</p>
+<p>Scheduled tasks behave better. Cron jobs that run every minute don&rsquo;t accumulate startup overhead over time. AOT makes them behave like static binaries rather than managed runtimes.</p>
+<p>Containerized workloads are a natural fit. Smaller images. Faster startup. No runtime JIT variability. In minimal Linux images, AOT binaries behave like Go binaries in terms of operational profile, while retaining .NET ergonomics.</p>
+<p>Distributed binaries are easier to reason about. When you ship a single-file native executable, there is no runtime dependency surprise. No matching runtime required on the host. No “works on my machine” due to JIT differences.</p>
+<p>This is where AOT stops being a performance tweak and becomes an operational simplification.</p>
+<h2 id="what-you-give-up">What You Give Up</h2>
+<p>You give up laziness.</p>
+<p>Reflection that used to “just work” stops working. The linker removes unused metadata aggressively. If a serializer depends on discovering types dynamically without annotations, it breaks.</p>
+<p>System.Text.Json with source generation becomes mandatory in many cases. Reflection-based serializers need configuration. Activator.CreateInstance with arbitrary types becomes unsafe unless those types are rooted.</p>
+<p>Trimming becomes real. The linker removes code it believes is unreachable. If your application uses indirect references that the static analyzer cannot see, they vanish. Suddenly your code compiles but crashes at runtime with missing metadata exceptions.</p>
+<p>Dynamic code generation is gone. Expression.Compile works differently. Anything that relies on runtime IL emission is constrained or unsupported.</p>
+<p>Some libraries simply are not compatible. Many older libraries assume full reflection access. Some ORMs rely on dynamic proxy generation. Certain DI containers lean heavily on reflection and runtime code emission.</p>
+<p>The ecosystem is improving, but it is not universal.</p>
+<p>You trade runtime flexibility for build-time determinism.</p>
+<p>For CLI software, that trade is acceptable.</p>
+<h2 id="migration-in-reality">Migration in Reality</h2>
+<p>The project file change is straightforward:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#f92672">&lt;PropertyGroup&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;PublishAot&gt;</span>true<span style="color:#f92672">&lt;/PublishAot&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;SelfContained&gt;</span>true<span style="color:#f92672">&lt;/SelfContained&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;InvariantGlobalization&gt;</span>true<span style="color:#f92672">&lt;/InvariantGlobalization&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;/PropertyGroup&gt;</span>
+</span></span></code></pre></div><p>That is the easy part.</p>
+<p>The refactors begin immediately.</p>
+<p>The first breakpoints are usually:</p>
+<ul>
+<li>Reflection-based serializers</li>
+<li>Generic type discovery patterns</li>
+<li>Implicit assembly scanning</li>
+<li>Third-party libraries assuming dynamic loading</li>
+</ul>
+<p>Dependency injection configurations often need explicit registration. Assembly scanning for handlers or services must be replaced with compile-time registration or source generators.</p>
+<p>System.Text.Json should be switched to source generation:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span><span style="color:#a6e22e">[JsonSerializable(typeof(MyType))]</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">[JsonSourceGenerationOptions(WriteIndented = false)]</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">internal</span> <span style="color:#66d9ef">partial</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">AppJsonContext</span> : JsonSerializerContext
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Then use <code>AppJsonContext.Default.MyType</code>.</p>
+<p>If you do not do this, trimming will remove metadata and your serialization will fail at runtime.</p>
+<p>Expect linker warnings. Do not ignore them. Treat them as compile errors. The warnings are telling you which code paths the linker cannot reason about.</p>
+<p>Debugging AOT failures is different. When something breaks, it usually breaks early and loudly. Missing metadata exceptions. Type load failures. Serialization errors.</p>
+<p>The process is iterative:</p>
+<ul>
+<li>Enable AOT.</li>
+<li>Fix linker warnings.</li>
+<li>Replace dynamic patterns.</li>
+<li>Remove runtime code generation.</li>
+<li>Validate on target runtime.</li>
+</ul>
+<p>What usually breaks first is reflection. What breaks second is libraries.</p>
+<p>If your codebase relies heavily on dynamic plugin loading, AOT is not the right tool. For static CLI utilities with fixed dependency graphs, it works extremely well.</p>
+<h2 id="publishing-commands-we-use">Publishing Commands We Use</h2>
+<p>For Windows x64:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>dotnet publish -c Release -r win-x64 -p:PublishAot<span style="color:#f92672">=</span>true --self-contained true
+</span></span></code></pre></div><p>For Linux x64 (glibc):</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>dotnet publish -c Release -r linux-x64 -p:PublishAot<span style="color:#f92672">=</span>true --self-contained true
+</span></span></code></pre></div><p>For Linux musl (Alpine):</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>dotnet publish -c Release -r linux-musl-x64 -p:PublishAot<span style="color:#f92672">=</span>true --self-contained true
+</span></span></code></pre></div><p>For a fully optimized production build:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>dotnet publish -c Release <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>  -r linux-x64 <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>  -p:PublishAot<span style="color:#f92672">=</span>true <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>  -p:StripSymbols<span style="color:#f92672">=</span>true <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>  -p:InvariantGlobalization<span style="color:#f92672">=</span>true <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>  -p:DebuggerSupport<span style="color:#f92672">=</span>false <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>  -p:EnableUnsafeBinaryFormatterSerialization<span style="color:#f92672">=</span>false <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>  --self-contained true
+</span></span></code></pre></div><p>These builds produce single native executables. No runtime installation required. No shared framework dependency.</p>
+<h2 id="musl-is-not-glibc">musl Is Not glibc</h2>
+<p>If you have only ever deployed against glibc-based distributions, musl feels slightly off at first.</p>
+<p>glibc is large, feature-rich, and deeply integrated with many Linux distributions. musl is minimal and designed for static linking and predictable behavior.</p>
+<p>When you publish for <code>linux-musl-x64</code>, you are targeting environments like Alpine. The C runtime behaves differently in subtle ways:</p>
+<ul>
+<li>DNS resolution can behave differently under load.</li>
+<li>Thread stack sizes may differ.</li>
+<li>Error reporting semantics are not always identical.</li>
+<li>Some edge-case locale behavior changes.</li>
+</ul>
+<p>Static linking is more natural under musl. You can produce highly self-contained binaries that run in extremely minimal containers. That&rsquo;s attractive for scratch-like images.</p>
+<p>But there are trade-offs.</p>
+<p>Globalization support is often limited unless you bundle ICU. If you rely on culture-specific formatting, collation, or normalization, you must be explicit. Setting <code>&lt;InvariantGlobalization&gt;true&lt;/InvariantGlobalization&gt;</code> removes ICU dependency but also removes culture-aware behavior.</p>
+<p>TLS can behave differently depending on how OpenSSL is linked in the container. In some cases, certificate chains behave unexpectedly in minimal images.</p>
+<p>musl sometimes “feels weird” because it is strict and minimal. glibc smooths over more cases. musl exposes them.</p>
+<p>When is musl the right call?</p>
+<ul>
+<li>Minimal Alpine containers</li>
+<li>Fully static deployments</li>
+<li>Security-hardened minimal environments</li>
+<li>Situations where image size matters</li>
+</ul>
+<p>When is it not?</p>
+<ul>
+<li>Heavy globalization requirements</li>
+<li>Legacy library dependencies expecting glibc</li>
+<li>Environments where subtle libc differences are unacceptable</li>
+</ul>
+<p>We use musl deliberately in minimal container images. For broader Linux compatibility, we target <code>linux-x64</code>.</p>
+<h2 id="what-stays">What Stays</h2>
+<p>AOT does not turn .NET into C. You still have:</p>
+<ul>
+<li>Generics</li>
+<li>Async/await</li>
+<li>GC</li>
+<li>Memory safety</li>
+<li>Span and high-performance primitives</li>
+<li>Cross-platform consistency</li>
+</ul>
+<p>You are not writing unmanaged code. You are just removing runtime compilation.</p>
+<p>The mental model shifts. Instead of “the runtime will figure it out,” you assume “the compiler must know everything.”</p>
+<p>That constraint improves architecture. It forces explicit dependencies. It discourages dynamic scanning and implicit wiring.</p>
+<p>For console software, that discipline is beneficial.</p>
+<h2 id="the-operational-result">The Operational Result</h2>
+<p>Our CLI utilities are now:</p>
+<ul>
+<li>Faster to start</li>
+<li>Smaller to ship</li>
+<li>Deterministic in behavior</li>
+<li>Easier to deploy into minimal containers</li>
+<li>Free from runtime version alignment issues</li>
+</ul>
+<p>CI runners are measurably leaner. Container cold starts are reduced. Cron hosts behave predictably.</p>
+<p>The migration was not trivial, but it was controlled. Reflection was reduced. Serialization was made explicit. Dependencies were audited. Some libraries were replaced.</p>
+<p>The end state is simpler.</p>
+<p>We no longer treat JIT as the default for short-lived tooling. For long-running services with dynamic behavior requirements, JIT still makes sense. For internal tools and distributed CLI binaries, it does not.</p>
+<p>AOT is now the baseline.</p>
+<p>All new console software at Repass Cloud is compiled ahead of time by default.</p>
+
+        
+    </div>
+
+    <div class="prev-next">
+        
+    </div>
+
+    
+    
+        <svg id="btt-button" class="arrow-logo" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 384 512" onclick="scrollToTop()" title="Go to top">
+    
+    <path d="M177 159.7l136 136c9.4 9.4 9.4 24.6 0 33.9l-22.6 22.6c-9.4 9.4-24.6 9.4-33.9 0L160 255.9l-96.4 96.4c-9.4 9.4-24.6 9.4-33.9 0L7 329.7c-9.4-9.4-9.4-24.6 0-33.9l136-136c9.4-9.5 24.6-9.5 34-.1z"/>
+</svg>
+<script>
+    let backToTopButton = document.getElementById("btt-button");
+
+    window.onscroll = function() {
+        scrollFunction()
+    };
+
+    function scrollFunction() {
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            backToTopButton.style.display = "block";
+        } else {
+            backToTopButton.style.display = "none";
+        }
+    }
+
+    function scrollToTop() {
+        window.scrollTo(0, 0);
+    }
+</script>
+
+    
+    
+</div>
+
+<aside class="post-toc">
+    <nav id="toc">
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#we-are-standardizing-on-aot-for-all-console-software">We Are Standardizing on AOT for All Console Software</a></li>
+    <li><a href="#what-actually-changes-when-you-remove-the-jit">What Actually Changes When You Remove the JIT</a></li>
+    <li><a href="#startup-mechanics-in-practice">Startup Mechanics in Practice</a></li>
+    <li><a href="#memory-layout-and-runtime-services">Memory Layout and Runtime Services</a></li>
+    <li><a href="#why-aot-is-better-for-cli-and-distributed-tooling">Why AOT Is Better for CLI and Distributed Tooling</a></li>
+    <li><a href="#what-you-give-up">What You Give Up</a></li>
+    <li><a href="#migration-in-reality">Migration in Reality</a></li>
+    <li><a href="#publishing-commands-we-use">Publishing Commands We Use</a></li>
+    <li><a href="#musl-is-not-glibc">musl Is Not glibc</a></li>
+    <li><a href="#what-stays">What Stays</a></li>
+    <li><a href="#the-operational-result">The Operational Result</a></li>
+  </ul>
+</nav>
+    </nav>
+</aside>
+
+
+
+    
+
+        </main><footer class="footer">
+    
+
+    
+
+    
+
+    
+    
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+    <span>&copy; 2026 RePass Cloud Pty Ltd</span>
+    
+
+    <span>
+        Made with &#10084;&#65039; in Sydney, Australia &#127462;&#127482;
+    </span>
+
+    <div style="margin-top: 0.5rem; display: flex; gap: 0.75rem; justify-content: center;">
+        <a href="https://github.com/repasscloud/"><span data-feather='github'></span></a>
+        <a href="https://twitter.com/repasscloud/"><span data-feather='twitter'></span></a>
+        <a href="https://linkedin.com/company/repass-cloud"><span data-feather='linkedin'></span></a>
+        <a href="/case-studies/"><span data-feather='award'></span></a>
+        <a href="/legal/"><span data-feather='file-text'></span></a>
+        <a href="/contact/"><span data-feather='mail'></span></a>
+    </div>
+</footer></body>
+</html>

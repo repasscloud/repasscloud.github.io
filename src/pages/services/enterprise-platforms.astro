@@ -1,0 +1,189 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { CINTURON_URL } from '../../consts';
+
+const capabilities = [
+  {
+    icon: 'bi-diagram-3',
+    title: 'Multi-tenant SaaS architecture',
+    desc: 'Platforms built from day one to serve multiple customers, organisations, or brands from a single codebase — with complete data isolation, tenant-specific configuration, and delegated administration per customer.',
+  },
+  {
+    icon: 'bi-person-badge',
+    title: 'Microsoft Entra ID & identity integration',
+    desc: 'Deep integration with Microsoft Entra ID (formerly Azure AD) for federated authentication, SSO, and role propagation. We connect your identity source of truth to every downstream system that needs to know who someone is and what they can do.',
+  },
+  {
+    icon: 'bi-shield-lock',
+    title: 'Role-based access & delegated administration',
+    desc: 'Granular permission models that give the right people the right access — including partner administrators, resellers, and internal teams — without collapsing security boundaries or requiring custom workarounds per tenant.',
+  },
+  {
+    icon: 'bi-journal-check',
+    title: 'Audit logging & compliance',
+    desc: 'Every administrative action, configuration change, and access decision is captured in immutable audit logs. Platforms we build are designed to satisfy enterprise and government audit requirements from the start.',
+  },
+  {
+    icon: 'bi-arrow-left-right',
+    title: 'System integration & API design',
+    desc: 'Enterprise software doesn\'t live in isolation. We design clean API surfaces and integration layers that bridge your new platform to existing ERP, ITSM, HR, and identity systems — without brittle point-to-point hacks.',
+  },
+  {
+    icon: 'bi-graph-up',
+    title: 'Commercial licensing & subscription management',
+    desc: 'Built-in subscription tier management, feature flagging by plan, usage metering, and billing integration — so your platform can be sold and operated commercially without bolting on afterthought monetisation logic.',
+  },
+];
+
+const techStack = [
+  { label: '.NET / ASP.NET Core', badge: 'badge-secondary' },
+  { label: 'Azure', badge: 'badge-primary' },
+  { label: 'Microsoft Entra ID', badge: 'badge-secondary' },
+  { label: 'Blazor', badge: 'badge-secondary' },
+  { label: 'PostgreSQL / SQL Server', badge: 'badge-secondary' },
+  { label: 'REST & OData APIs', badge: 'badge-secondary' },
+];
+---
+
+<Layout
+  title="Enterprise Platform Development — RePass Cloud"
+  description="RePass Cloud designs and builds multi-tenant enterprise SaaS platforms with Microsoft Entra ID integration, role-based access, audit logging, and commercial licensing — production-grade from day one."
+>
+
+  <!-- Page header -->
+  <div style="background:var(--rpc-surface); border-bottom:1px solid var(--rpc-border); padding: 3rem 0 2rem;">
+    <div class="container">
+      <div class="section-label">Services</div>
+      <h1 style="font-size:clamp(1.5rem,3vw,2.25rem); margin-bottom:0.5rem;">Enterprise Platform Development</h1>
+      <p style="color:var(--rpc-muted); font-size:1rem; max-width:600px; margin:0;">
+        Multi-tenant SaaS, identity-integrated platforms, and governed operational tooling built
+        for organisations that operate at scale.
+      </p>
+    </div>
+  </div>
+
+  <!-- Intro -->
+  <section class="section-sm bg-surface">
+    <div class="container" style="max-width:820px;">
+      <p style="font-size:1.05rem; line-height:1.85; color:var(--rpc-text);">
+        Most enterprise software sprawl comes from the same root cause: systems that were built
+        for a single team, a single tenant, or a single moment in time — and then scaled
+        sideways with integrations and workarounds until nobody fully understands what touches what.
+      </p>
+      <p style="font-size:1.05rem; line-height:1.85; color:var(--rpc-text); margin-top:1rem;">
+        RePass Cloud builds platforms that are engineered for complexity from the beginning.
+        Multi-tenancy, identity, permissions, audit, and integration are not afterthoughts —
+        they are the architecture. The result is software that can grow with your organisation
+        without accumulating structural debt that makes each change progressively harder.
+      </p>
+    </div>
+  </section>
+
+  <!-- Capabilities -->
+  <section class="section">
+    <div class="container">
+      <div class="text-center" style="margin-bottom:3rem;">
+        <div class="section-label">What we deliver</div>
+        <h2>Platform engineering capabilities</h2>
+      </div>
+      <div class="grid-3">
+        {capabilities.map((c) => (
+          <div class="feature-card">
+            <div class="feature-icon"><i class={`bi ${c.icon}`}></i></div>
+            <h3>{c.title}</h3>
+            <p>{c.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Modern workplace bridge -->
+  <section class="section bg-surface">
+    <div class="container" style="max-width:820px;">
+      <div class="section-label">Modern workplace</div>
+      <h2 style="margin-bottom:1.25rem;">Bridging existing systems with new technology</h2>
+      <p style="line-height:1.85; color:var(--rpc-muted); margin-bottom:1rem;">
+        Organisations don't get to start fresh. They have Active Directory environments,
+        on-premises ERP systems, legacy HR platforms, and years of operational data stored
+        in systems that predate the cloud. The modern workplace sits on top of all of this
+        — Microsoft 365, Entra ID, Teams, SharePoint, Intune, Azure — and every new
+        capability has to coexist with what already exists.
+      </p>
+      <p style="line-height:1.85; color:var(--rpc-muted); margin-bottom:1rem;">
+        We specialise in platforms that act as the connective tissue between these layers.
+        That might mean a multi-tenant control plane that federates identity from both
+        on-premises AD and Entra ID. It might mean a SaaS product where tenant administrators
+        manage their own users via delegated admin, while the platform operator maintains
+        global visibility and audit. It might mean replacing a tangle of manual approvals
+        and spreadsheet workflows with governed, automated processes that integrate with
+        ServiceNow, Oracle HCM, or whatever the source of truth already is.
+      </p>
+      <p style="line-height:1.85; color:var(--rpc-muted);">
+        The goal is always the same: reduce friction, reduce spend, reduce manual error —
+        while making the entire system more observable, more auditable, and more resilient
+        than what it replaced.
+      </p>
+    </div>
+  </section>
+
+  <!-- Tech stack -->
+  <section class="section-sm">
+    <div class="container" style="max-width:820px;">
+      <div class="section-label">Technology</div>
+      <h3 style="margin-bottom:1rem;">Typical stack</h3>
+      <div class="tech-stack" style="flex-wrap:wrap; gap:0.5rem;">
+        {techStack.map((t) => (
+          <span class={`badge ${t.badge}`}>{t.label}</span>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Cinturon showcase -->
+  <section class="section bg-surface">
+    <div class="container">
+      <div class="showcase-split">
+        <div>
+          <div class="section-label">In production</div>
+          <h2>Cinturon360</h2>
+          <p style="color:var(--rpc-muted); line-height:1.75; margin-bottom:1.5rem;">
+            Cinturon360 is our flagship enterprise platform — a multi-tenant operational control
+            layer for organisations managing complexity across customers, partners, and internal
+            teams. It is built on the same architectural principles we bring to every engagement:
+            Entra ID federation, role-based delegation, full audit logging, and commercial
+            subscription management built in from day one.
+          </p>
+          <a href={CINTURON_URL} class="btn btn-primary" target="_blank" rel="noopener">
+            Visit Cinturon360 <i class="bi bi-box-arrow-up-right"></i>
+          </a>
+        </div>
+        <div class="showcase-visual">
+          <i class="bi bi-diagram-3-fill" style="font-size:3rem; margin-bottom:1rem;"></i>
+          <div style="font-size:1.25rem; font-weight:700; margin-bottom:0.5rem;">Cinturon360</div>
+          <div style="color:rgba(255,255,255,0.6); font-size:0.875rem;">
+            Multi-tenant · Entra ID · Audit-ready · Delegated admin
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-banner">
+    <div class="container">
+      <div class="section-label" style="color:rgba(255,255,255,0.5);">Work with us</div>
+      <h2>Need a platform built properly?</h2>
+      <p>Tell us about the system you need to build or the one you need to untangle.</p>
+      <div class="cta-actions">
+        <a href="/contact" class="btn btn-primary btn-lg">
+          Get in touch <i class="bi bi-arrow-right"></i>
+        </a>
+        <a href="/case-studies" class="btn btn-outline-light btn-lg">
+          See case studies
+        </a>
+      </div>
+    </div>
+  </section>
+
+</Layout>

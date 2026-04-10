@@ -18,3 +18,5 @@ hugo.linux
 # Dependency directories (optional)
 /node_modules/
 tt.html
+REPASSCLOUD_ASTRO_GUIDE.md
+new_post_idea.txt

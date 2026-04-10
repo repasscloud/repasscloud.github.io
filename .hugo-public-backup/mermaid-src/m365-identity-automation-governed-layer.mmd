@@ -1,0 +1,10 @@
+flowchart TD
+    A2[HR system / source data] --> B2[Rules engine evaluates conditions]
+    B2 --> C2{Ownership & approval check}
+    C2 -->|Auto-approved| D2[Execute change with schedule awareness]
+    C2 -->|Requires approval| E2[Route to owner]
+    E2 --> D2
+    D2 --> F2[Audit trail recorded]
+    F2 --> G2[Operator-facing report]
+    D2 -->|Failure| H2[Retry / exception queue]
+    H2 --> G2

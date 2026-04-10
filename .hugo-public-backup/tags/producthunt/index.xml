@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Producthunt on RePass Cloud</title>
+    <link>http://localhost:64164/tags/producthunt/</link>
+    <description>Recent content in Producthunt on RePass Cloud</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Mon, 08 Jan 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:64164/tags/producthunt/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>LunaVPN: Now on ProductHunt - Support Our Vision for a Private and Free Internet!</title>
+      <link>http://localhost:64164/posts/2024-01-08/</link>
+      <pubDate>Mon, 08 Jan 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:64164/posts/2024-01-08/</guid>
+      <description>&lt;p&gt;Today marks a milestone for us at LunaVPN, as we proudly announce our launch on &lt;a href=&#34;https://www.producthunt.com/posts/lunavpn-co&#34;&gt;ProductHunt&lt;/a&gt;! LunaVPN is more than just a VPN service; it&amp;rsquo;s our commitment to ensuring a private and free internet for everyone.&lt;/p&gt;&#xA;&lt;h2 id=&#34;what-makes-lunavpn-special&#34;&gt;What Makes LunaVPN Special?&lt;/h2&gt;&#xA;&lt;p&gt;&lt;strong&gt;Private VPN Servers On-Demand:&lt;/strong&gt; With LunaVPN, say goodbye to shared IPs and enjoy your very own private server.&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;Global Accessibility:&lt;/strong&gt; Connect to any content securely, from anywhere in the world, anytime.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

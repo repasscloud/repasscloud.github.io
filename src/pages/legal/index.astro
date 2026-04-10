@@ -1,0 +1,62 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout
+  title="Legal"
+  description="Legal documents for RePass Cloud Pty Ltd — Privacy Policy, Terms of Service, and Refund Policy."
+>
+  <div style="background:var(--rpc-surface); border-bottom:1px solid var(--rpc-border); padding: 3rem 0 2rem;">
+    <div class="container">
+      <div class="section-label">RePass Cloud Pty Ltd</div>
+      <h1 style="font-size:clamp(1.5rem,3vw,2rem); margin-bottom:0.5rem;">Legal</h1>
+      <p style="color:var(--rpc-muted); font-size:1rem; max-width:480px; margin:0;">
+        Legal policies and notices for RePass Cloud Pty Ltd and its services.
+      </p>
+    </div>
+  </div>
+
+  <section class="section-sm bg-surface">
+    <div class="container" style="max-width:720px;">
+      <div style="display:flex; flex-direction:column; gap:0.75rem;">
+
+        <a href="/legal/privacy-policy/" style="display:flex; align-items:center; gap:1rem; padding:1.25rem 1.5rem; background:var(--rpc-surface); border:1px solid var(--rpc-border); border-radius:var(--radius-4); text-decoration:none; color:inherit; transition:box-shadow 0.15s;">
+          <i class="bi bi-shield-check" style="font-size:1.25rem; color:var(--rpc-text-strong); flex-shrink:0;"></i>
+          <div style="flex:1;">
+            <div style="font-weight:600; color:var(--rpc-text-strong); margin-bottom:0.2rem;">Privacy Policy</div>
+            <div style="font-size:0.875rem; color:var(--rpc-muted);">How we collect, use, and protect personal information.</div>
+          </div>
+          <i class="bi bi-arrow-right" style="color:var(--rpc-muted);"></i>
+        </a>
+
+        <a href="/legal/terms-of-service/" style="display:flex; align-items:center; gap:1rem; padding:1.25rem 1.5rem; background:var(--rpc-surface); border:1px solid var(--rpc-border); border-radius:var(--radius-4); text-decoration:none; color:inherit; transition:box-shadow 0.15s;">
+          <i class="bi bi-file-text" style="font-size:1.25rem; color:var(--rpc-text-strong); flex-shrink:0;"></i>
+          <div style="flex:1;">
+            <div style="font-weight:600; color:var(--rpc-text-strong); margin-bottom:0.2rem;">Terms of Service</div>
+            <div style="font-size:0.875rem; color:var(--rpc-muted);">Terms governing access to and use of our websites, products, and services.</div>
+          </div>
+          <i class="bi bi-arrow-right" style="color:var(--rpc-muted);"></i>
+        </a>
+
+        <a href="/legal/refund-policy/" style="display:flex; align-items:center; gap:1rem; padding:1.25rem 1.5rem; background:var(--rpc-surface); border:1px solid var(--rpc-border); border-radius:var(--radius-4); text-decoration:none; color:inherit; transition:box-shadow 0.15s;">
+          <i class="bi bi-arrow-return-left" style="font-size:1.25rem; color:var(--rpc-text-strong); flex-shrink:0;"></i>
+          <div style="flex:1;">
+            <div style="font-weight:600; color:var(--rpc-text-strong); margin-bottom:0.2rem;">Refund Policy</div>
+            <div style="font-size:0.875rem; color:var(--rpc-muted);">Refund eligibility and process for paid subscriptions and services.</div>
+          </div>
+          <i class="bi bi-arrow-right" style="color:var(--rpc-muted);"></i>
+        </a>
+
+        <a href="/legal/lunavpn/lunavpn-cancellation-policy/" style="display:flex; align-items:center; gap:1rem; padding:1.25rem 1.5rem; background:var(--rpc-surface); border:1px solid var(--rpc-border); border-radius:var(--radius-4); text-decoration:none; color:inherit; transition:box-shadow 0.15s; opacity:0.7;">
+          <i class="bi bi-info-circle" style="font-size:1.25rem; color:var(--rpc-text-strong); flex-shrink:0;"></i>
+          <div style="flex:1;">
+            <div style="font-weight:600; color:var(--rpc-text-strong); margin-bottom:0.2rem;">LunaVPN Closure Notice</div>
+            <div style="font-size:0.875rem; color:var(--rpc-muted);">Notice confirming LunaVPN is closed and accounts are terminated.</div>
+          </div>
+          <i class="bi bi-arrow-right" style="color:var(--rpc-muted);"></i>
+        </a>
+
+      </div>
+    </div>
+  </section>
+</Layout>

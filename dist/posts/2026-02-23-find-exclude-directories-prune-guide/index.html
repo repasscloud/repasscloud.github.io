@@ -1,0 +1,112 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" type="image/x-icon" href="/favicon.ico"><link rel="icon" type="image/svg+xml" href="/img/repasscloud-logo.svg"><link rel="apple-touch-icon" sizes="180x180" href="/img/repasscloud-logo-36x36.png"><meta name="theme-color" content="#212529"><link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"><style>@font-face{font-family:"Atkinson Hyperlegible-ce43d65557a672a1";src:url("/_astro/fonts/6d3b2af058c6546e.woff2") format("woff2");font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-weight:400;font-style:italic;}@font-face{font-family:"Atkinson Hyperlegible-ce43d65557a672a1";src:url("/_astro/fonts/ad2ce7206bc8bbb7.woff2") format("woff2");font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-weight:400;font-style:normal;}@font-face{font-family:"Atkinson Hyperlegible-ce43d65557a672a1 fallback: Arial";src:local("Arial");font-display:swap;font-weight:400;font-style:italic;size-adjust:99.8204%;ascent-override:95.171%;descent-override:29.0522%;line-gap-override:0%;}@font-face{font-family:"Atkinson Hyperlegible-ce43d65557a672a1 fallback: Arial";src:local("Arial");font-display:swap;font-weight:400;font-style:normal;size-adjust:99.8204%;ascent-override:95.171%;descent-override:29.0522%;line-gap-override:0%;}:root{--font-atkinson:"Atkinson Hyperlegible-ce43d65557a672a1","Atkinson Hyperlegible-ce43d65557a672a1 fallback: Arial","Helvetica Neue",Helvetica,Arial,sans-serif;}</style><link rel="preload" href="/_astro/fonts/6d3b2af058c6546e.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="/_astro/fonts/ad2ce7206bc8bbb7.woff2" as="font" type="font/woff2" crossorigin><link rel="sitemap" href="/sitemap-index.xml"><link rel="alternate" type="application/rss+xml" title="RePass Cloud Blog" href="https://repasscloud.com/rss.xml"><link rel="canonical" href="https://repasscloud.com/posts/2026-02-23-find-exclude-directories-prune-guide/"><title>Using find with -prune to Exclude Directories (Linux / macOS Guide) | RePass Cloud</title><meta name="description" content="Technical guide explaining how to use the find command with -prune to efficiently exclude directories such as node_modules, .git, dist, and build folders."><meta name="robots" content="index, follow"><!-- Open Graph --><meta property="og:type" content="article"><meta property="og:url" content="https://repasscloud.com/posts/2026-02-23-find-exclude-directories-prune-guide/"><meta property="og:title" content="Using find with -prune to Exclude Directories (Linux / macOS Guide) | RePass Cloud"><meta property="og:description" content="Technical guide explaining how to use the find command with -prune to efficiently exclude directories such as node_modules, .git, dist, and build folders."><meta property="og:image" content="https://repasscloud.com/img/og-default.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:site_name" content="RePass Cloud"><meta property="og:locale" content="en_AU"><meta property="article:published_time" content="2026-02-23T00:00:00.000Z"><meta property="article:author" content="RePass Cloud"><!-- Twitter Card --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:site" content="@repasscloud"><meta name="twitter:title" content="Using find with -prune to Exclude Directories (Linux / macOS Guide) | RePass Cloud"><meta name="twitter:description" content="Technical guide explaining how to use the find command with -prune to efficiently exclude directories such as node_modules, .git, dist, and build folders."><meta name="twitter:image" content="https://repasscloud.com/img/og-default.png"><!-- Cloudflare Web Analytics (uncomment and add token when live) --><!-- <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "YOUR_TOKEN_HERE"}'></script> --> <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Using find with -prune to Exclude Directories (Linux / macOS Guide)","description":"Technical guide explaining how to use the find command with -prune to efficiently exclude directories such as node_modules, .git, dist, and build folders.","datePublished":"2026-02-23T00:00:00.000Z","author":{"@type":"Organization","name":"RePass Cloud Pty Ltd","url":"https://repasscloud.com"},"publisher":{"@type":"Organization","name":"RePass Cloud Pty Ltd","url":"https://repasscloud.com","logo":{"@type":"ImageObject","url":"https://repasscloud.com/img/repasscloud-logo.png"}}}</script> <link rel="stylesheet" href="/_astro/Layout.BoPID2Eo.css"></head> <body> <header class="site-header"> <div class="container"> <nav class="site-nav"> <!-- Brand --> <a href="/" class="site-nav-brand"> <span class="brand-mark">R</span> <span>RePass Cloud</span> </a> <!-- Desktop nav links --> <div class="site-nav-links"> <a href="/projects" class="site-nav-link"> Projects </a><a href="/posts" class="site-nav-link active"> Posts </a><a href="/careers" class="site-nav-link"> Careers </a> </div> <!-- Desktop CTA --> <div class="site-nav-actions"> <a href="/contact" class="btn btn-primary btn-sm">
+Contact us <i class="bi bi-arrow-right"></i> </a> </div> <!-- Mobile hamburger --> <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="mobile-menu"> <i class="bi bi-list" style="font-size: 1.5rem;"></i> </button> </nav> <!-- Mobile menu --> <div class="mobile-menu" id="mobile-menu" role="navigation"> <a href="/projects" class="site-nav-link">Projects</a><a href="/posts" class="site-nav-link">Posts</a><a href="/careers" class="site-nav-link">Careers</a> <a href="/contact" class="btn btn-primary">
+Contact us →
+</a> </div> </div> </header> <script type="module">const t=document.getElementById("mobile-menu-toggle"),i=document.getElementById("mobile-menu");t?.addEventListener("click",()=>{const n=i?.classList.toggle("open");t.setAttribute("aria-expanded",n?"true":"false");const e=t.querySelector("i");e&&(e.className=n?"bi bi-x":"bi bi-list",e.style.fontSize="1.5rem")});</script> <main>    <div class="post-hero"> <div class="container-narrow"> <div style="display:flex; gap:0.4rem; flex-wrap:wrap; margin-bottom:1rem;"> <span class="badge badge-secondary" style="background:rgba(255,255,255,0.12); color:rgba(255,255,255,0.75);"> linux </span><span class="badge badge-secondary" style="background:rgba(255,255,255,0.12); color:rgba(255,255,255,0.75);"> macos </span><span class="badge badge-secondary" style="background:rgba(255,255,255,0.12); color:rgba(255,255,255,0.75);"> unix </span><span class="badge badge-secondary" style="background:rgba(255,255,255,0.12); color:rgba(255,255,255,0.75);"> cli </span><span class="badge badge-secondary" style="background:rgba(255,255,255,0.12); color:rgba(255,255,255,0.75);"> find </span><span class="badge badge-secondary" style="background:rgba(255,255,255,0.12); color:rgba(255,255,255,0.75);"> devops </span><span class="badge badge-secondary" style="background:rgba(255,255,255,0.12); color:rgba(255,255,255,0.75);"> filesystem </span><span class="badge badge-secondary" style="background:rgba(255,255,255,0.12); color:rgba(255,255,255,0.75);"> engineering </span><span class="badge badge-secondary" style="background:rgba(255,255,255,0.12); color:rgba(255,255,255,0.75);"> shell </span><span class="badge badge-secondary" style="background:rgba(255,255,255,0.12); color:rgba(255,255,255,0.75);"> bash </span> </div> <h1>Using find with -prune to Exclude Directories (Linux / macOS Guide)</h1> <div class="post-hero-meta"> <time datetime="2026-02-23T00:00:00.000Z"> 23 February 2026 </time>  </div> </div> </div>  <div class="section-sm bg-surface"> <div class="container-narrow"> <div class="prose">  <h2 id="problem">Problem</h2>
+<p>When running find in large repositories, directories like node_modules, .git, and build folders can contain tens of thousands of files.</p>
+<p>This makes searches slow and wastes CPU time.</p>
+<p>The -prune option prevents find from descending into those directories, significantly improving performance.</p>
+<h2 id="using-find-with--prune-to-exclude-directories">Using <code>find</code> with <code>-prune</code> to Exclude Directories</h2>
+<p>This guide explains how to use the <code>-prune</code> option with the Unix <code>find</code>
+command to efficiently exclude directories from searches.</p>
+<p>This is useful for ignoring directories such as:</p>
+<ul>
+<li><code>node_modules</code></li>
+<li><code>.git</code></li>
+<li><code>dist</code></li>
+<li><code>build</code></li>
+<li>cache folders</li>
+<li>generated output directories</li>
+</ul>
+<p>Using <code>-prune</code> prevents <code>find</code> from descending into excluded
+directories, improving performance and reducing unnecessary filesystem
+traversal.</p>
+<h2 id="basic-syntax">Basic Syntax</h2>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">find</span><span style="color:#9ECBFF"> .</span><span style="color:#79B8FF"> -type</span><span style="color:#9ECBFF"> d</span><span style="color:#79B8FF"> -name</span><span style="color:#9ECBFF"> "dir_to_exclude"</span><span style="color:#79B8FF"> -prune</span><span style="color:#79B8FF"> -o</span><span style="color:#79B8FF"> -type</span><span style="color:#9ECBFF"> f</span><span style="color:#79B8FF"> -name</span><span style="color:#9ECBFF"> "*.svg"</span><span style="color:#79B8FF"> -print</span></span></code></pre>
+<h3 id="explanation">Explanation</h3>
+<ul>
+<li><code>-type d -name "dir_to_exclude" -prune</code><br>
+Stops descending into the specified directory.</li>
+<li><code>-o</code><br>
+Logical OR operator.</li>
+<li><code>-type f -name "*.svg" -print</code><br>
+Matches and prints SVG files.</li>
+</ul>
+<h2 id="example-exclude-a-single-directory">Example: Exclude a Single Directory</h2>
+<p>Exclude <code>node_modules</code>:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">find</span><span style="color:#9ECBFF"> .</span><span style="color:#79B8FF"> -type</span><span style="color:#9ECBFF"> d</span><span style="color:#79B8FF"> -name</span><span style="color:#9ECBFF"> "node_modules"</span><span style="color:#79B8FF"> -prune</span><span style="color:#79B8FF"> -o</span><span style="color:#79B8FF"> -type</span><span style="color:#9ECBFF"> f</span><span style="color:#79B8FF"> -name</span><span style="color:#9ECBFF"> "*.svg"</span><span style="color:#79B8FF"> -print</span></span></code></pre>
+<h2 id="example-exclude-multiple-directories">Example: Exclude Multiple Directories</h2>
+<p>Exclude <code>node_modules</code>, <code>.git</code>, and <code>dist</code>:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">find</span><span style="color:#9ECBFF"> .</span><span style="color:#79B8FF"> \</span></span>
+<span class="line"><span style="color:#79B8FF">  -type</span><span style="color:#9ECBFF"> d</span><span style="color:#79B8FF"> \(</span><span style="color:#79B8FF"> -name</span><span style="color:#9ECBFF"> "node_modules"</span><span style="color:#79B8FF"> -o</span><span style="color:#79B8FF"> -name</span><span style="color:#9ECBFF"> ".git"</span><span style="color:#79B8FF"> -o</span><span style="color:#79B8FF"> -name</span><span style="color:#9ECBFF"> "dist"</span><span style="color:#79B8FF"> \)</span><span style="color:#79B8FF"> -prune</span><span style="color:#79B8FF"> \</span></span>
+<span class="line"><span style="color:#79B8FF">  -o</span><span style="color:#79B8FF"> -type</span><span style="color:#9ECBFF"> f</span><span style="color:#79B8FF"> -name</span><span style="color:#9ECBFF"> "*.svg"</span><span style="color:#79B8FF"> -print</span></span></code></pre>
+<h2 id="example-exclude-by-full-path-more-precise">Example: Exclude by Full Path (More Precise)</h2>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">find</span><span style="color:#9ECBFF"> .</span><span style="color:#79B8FF"> \</span></span>
+<span class="line"><span style="color:#79B8FF">  -path</span><span style="color:#9ECBFF"> "./node_modules"</span><span style="color:#79B8FF"> -prune</span><span style="color:#79B8FF"> -o</span><span style="color:#79B8FF"> \</span></span>
+<span class="line"><span style="color:#79B8FF">  -path</span><span style="color:#9ECBFF"> "./dist"</span><span style="color:#79B8FF"> -prune</span><span style="color:#79B8FF"> -o</span><span style="color:#79B8FF"> \</span></span>
+<span class="line"><span style="color:#79B8FF">  -type</span><span style="color:#9ECBFF"> f</span><span style="color:#79B8FF"> -name</span><span style="color:#9ECBFF"> "*.svg"</span><span style="color:#79B8FF"> -print</span></span></code></pre>
+<p>This is useful when directory names may appear multiple times in
+different locations.</p>
+<h2 id="recommended-realworld-version">Recommended Real‑World Version</h2>
+<p>This version excludes common build and dependency directories:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">find</span><span style="color:#9ECBFF"> .</span><span style="color:#79B8FF"> \</span></span>
+<span class="line"><span style="color:#79B8FF">  -type</span><span style="color:#9ECBFF"> d</span><span style="color:#79B8FF"> \(</span><span style="color:#79B8FF"> -name</span><span style="color:#9ECBFF"> ".git"</span><span style="color:#79B8FF"> -o</span><span style="color:#79B8FF"> -name</span><span style="color:#9ECBFF"> "node_modules"</span><span style="color:#79B8FF"> -o</span><span style="color:#79B8FF"> -name</span><span style="color:#9ECBFF"> "dist"</span><span style="color:#79B8FF"> -o</span><span style="color:#79B8FF"> -name</span><span style="color:#9ECBFF"> "build"</span><span style="color:#79B8FF"> \)</span><span style="color:#79B8FF"> -prune</span><span style="color:#79B8FF"> \</span></span>
+<span class="line"><span style="color:#79B8FF">  -o</span><span style="color:#79B8FF"> -type</span><span style="color:#9ECBFF"> f</span><span style="color:#79B8FF"> -name</span><span style="color:#9ECBFF"> "*.svg"</span><span style="color:#79B8FF"> -print</span></span></code></pre>
+<p>This is the recommended approach for most projects.</p>
+<h2 id="alternative-method-using--not--path">Alternative Method Using <code>-not -path</code></h2>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">find</span><span style="color:#9ECBFF"> .</span><span style="color:#79B8FF"> -type</span><span style="color:#9ECBFF"> f</span><span style="color:#79B8FF"> -name</span><span style="color:#9ECBFF"> "*.svg"</span><span style="color:#79B8FF"> \</span></span>
+<span class="line"><span style="color:#79B8FF">  -not</span><span style="color:#79B8FF"> -path</span><span style="color:#9ECBFF"> "*/node_modules/*"</span><span style="color:#79B8FF"> \</span></span>
+<span class="line"><span style="color:#79B8FF">  -not</span><span style="color:#79B8FF"> -path</span><span style="color:#9ECBFF"> "*/.git/*"</span></span></code></pre>
+<h3 id="important-note">Important Note</h3>
+<p>This method still traverses excluded directories, making it slower than
+using <code>-prune</code>.</p>
+<p>Use <code>-prune</code> whenever performance matters.</p>
+<h2 id="summary">Summary</h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Method</th><th>Traverses excluded directories</th><th>Performance</th><th>Recommended</th></tr></thead><tbody><tr><td><code>-prune</code></td><td>No</td><td>Fast</td><td>Yes</td></tr><tr><td><code>-not -path</code></td><td>Yes</td><td>Slower</td><td>No</td></tr></tbody></table>
+<h2 id="when-to-use">When to Use</h2>
+<p>Use <code>-prune</code> when:</p>
+<ul>
+<li>Working with large repositories</li>
+<li>Ignoring dependency directories</li>
+<li>Ignoring build output</li>
+<li>Optimizing filesystem searches</li>
+</ul>
+<h2 id="example-use-case">Example Use Case</h2>
+<p>Find all SVG files in a project while ignoring dependency and build
+directories:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">find</span><span style="color:#9ECBFF"> .</span><span style="color:#79B8FF"> \</span></span>
+<span class="line"><span style="color:#79B8FF">  -type</span><span style="color:#9ECBFF"> d</span><span style="color:#79B8FF"> \(</span><span style="color:#79B8FF"> -name</span><span style="color:#9ECBFF"> ".git"</span><span style="color:#79B8FF"> -o</span><span style="color:#79B8FF"> -name</span><span style="color:#9ECBFF"> "node_modules"</span><span style="color:#79B8FF"> -o</span><span style="color:#79B8FF"> -name</span><span style="color:#9ECBFF"> "dist"</span><span style="color:#79B8FF"> -o</span><span style="color:#79B8FF"> -name</span><span style="color:#9ECBFF"> "build"</span><span style="color:#79B8FF"> \)</span><span style="color:#79B8FF"> -prune</span><span style="color:#79B8FF"> \</span></span>
+<span class="line"><span style="color:#79B8FF">  -o</span><span style="color:#79B8FF"> -type</span><span style="color:#9ECBFF"> f</span><span style="color:#79B8FF"> -name</span><span style="color:#9ECBFF"> "*.svg"</span><span style="color:#79B8FF"> -print</span></span></code></pre>  </div> <!-- Back link --> <div style="margin-top:3rem; padding-top:2rem; border-top:1px solid var(--rpc-border);"> <a href="/posts" class="btn btn-outline btn-sm"> <i class="bi bi-arrow-left"></i> Back to Posts
+</a> </div> </div> </div>  </main> <footer class="site-footer"> <div class="container"> <div class="footer-grid"> <!-- Brand --> <div> <div class="footer-brand"> <span class="brand-mark" style="background: rgba(255,255,255,0.15); color: #fff;">R</span> <span>RePass Cloud</span> </div> <p class="footer-tagline">Enterprise software &amp; cloud automation</p> <p style="font-size:0.8rem; color:rgba(255,255,255,0.4); max-width:220px; line-height:1.55;">
+Built in Sydney, Australia. Engineering-led software for organisations that need
+          production-grade tools.
+</p> </div> <!-- Company --> <div> <div class="footer-col-title">Company</div> <ul class="footer-links"> <li><a href="/about">About</a></li> <li><a href="/projects">Projects</a></li> <li><a href="/case-studies">Case Studies</a></li> <li><a href="/posts">Blog</a></li> <li><a href="/careers">Careers</a></li> <li><a href="/legal">Legal</a></li> </ul> </div> <!-- Products --> <div> <div class="footer-col-title">Products</div> <ul class="footer-links"> <li><a href="https://cinturon360.com" target="_blank" rel="noopener">Cinturon360 ↗</a></li> <li><a href="https://aethon.jobs" target="_blank" rel="noopener">Aethon ↗</a></li> </ul> </div> <!-- Services --> <div> <div class="footer-col-title">Services</div> <ul class="footer-links"> <li><a href="/services/enterprise-platforms">Enterprise Platforms</a></li> <li><a href="/services/cloud-tooling">Cloud Tooling</a></li> <li><a href="/services/m365-automation">M365 Automation</a></li> <li><a href="/services/powershell">PowerShell</a></li> </ul> </div> <!-- Connect --> <div> <div class="footer-col-title">Connect</div> <ul class="footer-links"> <li><a href="/contact">Contact us</a></li> <li><a href="https://github.com/repasscloud" target="_blank" rel="noopener">GitHub ↗</a></li> <li><a href="https://www.linkedin.com/company/repass-cloud" target="_blank" rel="noopener">LinkedIn ↗</a></li> <li><a href="https://twitter.com/repasscloud" target="_blank" rel="noopener">X / Twitter ↗</a></li> </ul> </div> </div> <div class="footer-bottom"> <div class="footer-bottom-copy">
+&copy; 2026 RePass Cloud Pty Ltd &mdash; Made with ❤️ in Sydney, Australia 🇦🇺
+        &nbsp;·&nbsp;
+<a href="/legal/privacy-policy" style="color:rgba(255,255,255,0.4); text-decoration:none;">Privacy</a>
+&nbsp;·&nbsp;
+<a href="/legal/terms-of-service" style="color:rgba(255,255,255,0.4); text-decoration:none;">Terms</a>
+&nbsp;·&nbsp;
+<a href="/legal" style="color:rgba(255,255,255,0.4); text-decoration:none;">Legal</a> </div> <div class="footer-social"> <a href="https://twitter.com/repasscloud" target="_blank" rel="noopener" aria-label="X / Twitter"> <i class="bi bi-twitter-x"></i> </a> <a href="https://www.linkedin.com/company/repass-cloud" target="_blank" rel="noopener" aria-label="LinkedIn"> <i class="bi bi-linkedin"></i> </a> <a href="https://github.com/repasscloud" target="_blank" rel="noopener" aria-label="GitHub"> <i class="bi bi-github"></i> </a> </div> </div> </div> </footer> </body></html>

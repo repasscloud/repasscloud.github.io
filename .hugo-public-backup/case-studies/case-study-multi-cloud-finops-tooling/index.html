@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en"><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-RLMZK1PDGS"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-RLMZK1PDGS');
+    </script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+        :root {
+            --accent-color: {
+                    {
+                    .Site.Params.AccentColor | default "#FF4D4D"
+                }
+            }
+
+            ;
+
+            --font-size: {
+                    {
+                    .Site.Params.FontSize | default "1.1rem"
+                }
+            }
+
+            ;
+        }
+    </style>
+    
+    
+    
+    
+
+    
+    <title>Multi-Cloud FinOps Tooling — Cost Governance Across a $7M USD Annual Cloud Estate | RePass Cloud</title>
+    <meta name="description" content="How RePass Cloud built a multi-cloud cost analysis and governance platform for an organisation spending $7M USD per year across AWS, Azure, and Google Cloud — …">
+    <meta name="keywords" content='RePass Cloud, secure SaaS solutions, adaptable SaaS solutions, data security, innovation, reliability, digital success, automation, ai, ai automation, powershell, active directory, idm, optechx, wanderconnect, lunavpn, activusx, activusx pro'>
+
+    <meta property="og:url" content="http://localhost:1313/case-studies/case-study-multi-cloud-finops-tooling/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Multi-Cloud FinOps Tooling — Cost Governance Across a $7M USD Annual Cloud Estate | RePass Cloud">
+    <meta property="og:description" content="How RePass Cloud built a multi-cloud cost analysis and governance platform for an organisation spending $7M USD per year across AWS, Azure, and Google Cloud — …">
+    <meta property="og:image" content="http://localhost:1313/images/repass-cloud-logo.png">
+    <meta property="og:image:secure_url" content="http://localhost:1313/images/repass-cloud-logo.png">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Multi-Cloud FinOps Tooling — Cost Governance Across a $7M USD Annual Cloud Estate | RePass Cloud">
+    <meta name="twitter:description" content="How RePass Cloud built a multi-cloud cost analysis and governance platform for an organisation spending $7M USD per year across AWS, Azure, and Google Cloud — …">
+    <meta property="twitter:domain" content="http://localhost:1313/case-studies/case-study-multi-cloud-finops-tooling/">
+    <meta property="twitter:url" content="http://localhost:1313/case-studies/case-study-multi-cloud-finops-tooling/">
+    <meta name="twitter:image" content="http://localhost:1313/images/repass-cloud-logo.png">
+
+    
+    <link rel="canonical" href="http://localhost:1313/case-studies/case-study-multi-cloud-finops-tooling/">
+
+    
+    <link rel="stylesheet" type="text/css" href="/css/normalize.min.css" media="print">
+
+    
+    <link rel="stylesheet" type="text/css" href="/css/main.min.css">
+
+    
+    <link id="dark-theme" rel="stylesheet" href="/css/dark.min.css">
+
+    
+    <script src="/js/bundle.min.7136b4abac7b277aba8bc933917f4602d39a5c44f5590be687244bc86ef4f162.js" integrity="sha256-cTa0q6x7J3q6i8kzkX9GAtOaXET1WQvmhyRLyG708WI="></script>
+
+    
+    
+</head><body>
+        <script>
+            
+            setThemeByUserPref();
+        </script><header class="header">
+    <nav class="header-nav">
+
+        
+        <div class="avatar">
+            <a href="http://localhost:1313/">
+                <img src='/images/repass-cloud-logo.png' alt="avatar">
+            </a>
+        </div>
+        
+
+        <div class="nav-title">
+            <a class="nav-brand" href="http://localhost:1313/">RePass Cloud</a>
+        </div>
+
+        <div class="nav-links">
+            
+            <div class="nav-link">
+                <a href="http://localhost:1313/about/" aria-label="about" ><span data-feather='package'></span> About </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="http://localhost:1313/projects/" aria-label="projects" ><span data-feather='code'></span> Projects </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="http://localhost:1313/posts/" aria-label="posts" ><span data-feather='book'></span> Posts </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="http://localhost:1313/careers/" aria-label="careers" ><span data-feather='briefcase'></span> Careers </a>
+            </div>
+            
+
+            <span class="nav-icons-divider"></span>
+            <div class="nav-link dark-theme-toggle">
+                <span class="sr-only dark-theme-toggle-screen-reader-target">theme</span>
+                <a aria-hidden="true" role="switch">
+                    <span class="theme-toggle-icon" data-feather="moon"></span>
+                </a>
+            </div>
+
+            <div class="nav-link" id="hamburger-menu-toggle">
+                <span class="sr-only hamburger-menu-toggle-screen-reader-target">menu</span>
+                <a aria-checked="false" aria-labelledby="hamburger-menu-toggle" id="hamburger-menu-toggle-target" role="switch">
+                    <span data-feather="menu"></span>
+                </a>
+            </div>
+
+            
+            <ul class="nav-hamburger-list visibility-hidden">
+                
+                <li class="nav-item">
+                    <a href="http://localhost:1313/about/" ><span data-feather='package'></span> About </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="http://localhost:1313/projects/" ><span data-feather='code'></span> Projects </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="http://localhost:1313/posts/" ><span data-feather='book'></span> Posts </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="http://localhost:1313/careers/" ><span data-feather='briefcase'></span> Careers </a>
+                </li>
+                
+                <li class="nav-item dark-theme-toggle">
+                    <span class="sr-only dark-theme-toggle-screen-reader-target">theme</span>
+                    <a role="switch">
+                        <span class="theme-toggle-icon" data-feather="moon"></span>
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+    </nav>
+</header>
+<main id="content">
+    
+
+    <div class="post container">
+
+    <div class="post-header-section">
+        <h1>Multi-Cloud FinOps Tooling — Cost Governance Across a $7M USD Annual Cloud Estate</h1>
+    </div>
+
+    <div class="post-content">
+        <p>Last updated: 2026-03-06</p>
+<p><a href="/case-studies/">← Back to Case Studies</a></p>
+<h2 id="overview">Overview</h2>
+<p><strong>Organisation size:</strong> ~5,000 employees
+<strong>Regions:</strong> Global
+<strong>Annual cloud spend:</strong> ~$7M USD across AWS, Azure, and Google Cloud
+<strong>Capability:</strong> Cloud Infrastructure Tooling, FinOps, Multi-Cloud Governance
+<strong>Clouds covered:</strong> Amazon Web Services, Microsoft Azure, Google Cloud Platform</p>
+<hr>
+<h2 id="the-problem">The Problem</h2>
+<p>An organisation spending approximately $7 million USD per year across AWS, Azure, and Google Cloud had no unified view of where that money was going or whether it was being spent efficiently.</p>
+<p>Cloud spend had grown organically across teams, accounts, and providers over several years. The result was a fragmented estate with no consistent governance:</p>
+<ul>
+<li>No single view of spend across all three clouds</li>
+<li>Resources provisioned without consistent ownership tagging</li>
+<li>Compute sized for historical peak demand that had long since passed</li>
+<li>Backup and storage retention never reviewed at scale</li>
+<li>Commitments and reservations not aligned to actual steady-state usage</li>
+<li>Non-production environments running continuously outside business hours</li>
+<li>Manual backup copies accumulating alongside managed backup policies</li>
+<li>Orphaned resources — disks, snapshots, endpoints, test environments — spread across accounts with no clear owner</li>
+</ul>
+<p>The organisation knew there was waste. They could not quantify it, assign it, or systematically remove it. Existing per-cloud billing dashboards showed spend but offered no workflow for acting on findings, tracking decisions, or verifying that savings had actually been realised.</p>
+<p>They needed more than a dashboard. They needed a system that could produce findings, manage the decision lifecycle, enforce accountability, and measure outcomes over time.</p>
+<hr>
+<h2 id="what-we-built">What We Built</h2>
+<p>We designed and delivered a multi-cloud cost analysis and governance platform operating across four layers.</p>
+<h3 id="layer-1-ingestion-and-normalisation">Layer 1: Ingestion and Normalisation</h3>
+<p>The platform ingests data daily from all three cloud providers, including:</p>
+<ul>
+<li>Billing exports and cost and usage reports</li>
+<li>Resource inventories across accounts, subscriptions, and projects</li>
+<li>Performance metrics for compute, storage, and network resources</li>
+<li>Backup and snapshot metadata</li>
+<li>Storage access and lifecycle metadata</li>
+<li>Native rightsizing and optimisation recommendations from AWS Cost Optimization Hub, Azure Advisor, and GCP Recommender</li>
+<li>Commitment and reservation coverage data</li>
+</ul>
+<p>All data is normalised into a common canonical schema that abstracts provider-specific naming conventions. A virtual machine is a virtual machine regardless of whether it lives in AWS, Azure, or GCP. A backup artifact is a backup artifact. This makes findings consistent and comparable across clouds without needing separate workflows per provider.</p>
+<h3 id="layer-2-findings-engine">Layer 2: Findings Engine</h3>
+<p>The platform runs a structured findings engine across the normalised data, producing categorised, evidence-backed findings with estimated savings, confidence scoring, and business risk assessment.</p>
+<p>Finding categories include:</p>
+<p><strong>Compute</strong></p>
+<ul>
+<li>Idle virtual machines — no meaningful CPU, memory, network, or disk activity over a 30, 60, or 90-day window</li>
+<li>Underutilised virtual machines — low multi-signal utilisation assessed across CPU, memory, disk throughput, and network usage</li>
+<li>Oversized virtual machines — current instance family and size compared against newer-generation equivalents and actual demand profiles</li>
+<li>Non-production compute running continuously — environments without scheduling outside business hours</li>
+</ul>
+<p><strong>Storage</strong></p>
+<ul>
+<li>Unattached and orphaned volumes — block disks and file shares no longer connected to active resources</li>
+<li>Object storage tiering candidates — data not accessed in 180 or 365 days identified for lifecycle movement to cheaper storage tiers</li>
+<li>Stale exports, log buckets, and temporary data areas — retained beyond reasonable operational windows</li>
+<li>Underutilised file shares — provisioned capacity significantly exceeding actual usage over extended periods</li>
+</ul>
+<p><strong>Backup and Protection</strong></p>
+<ul>
+<li>Manual backup copies — snapshot and backup artifacts created outside managed retention policies</li>
+<li>Snapshots retained beyond policy — chains retained longer than organisational policy requires</li>
+<li>Cross-region duplicate copies — backup copies replicated without a documented policy justification</li>
+<li>Backup sets linked to no active resource — orphaned vaults and containers from decommissioned workloads</li>
+</ul>
+<p><strong>Commitments and Commercial</strong></p>
+<ul>
+<li>Reservation and savings plan coverage gaps — predictable steady-state workloads still running on on-demand pricing</li>
+<li>Commitment underutilisation — reserved capacity purchased but not fully consumed</li>
+<li>Instance family mismatch — older generation resources where a newer equivalent offers better price-performance</li>
+</ul>
+<p><strong>Anomalies</strong></p>
+<ul>
+<li>Sudden month-on-month cost increases by service, account, or team</li>
+<li>Untagged or unowned spend — resources with no identifiable owner or cost centre attribution</li>
+</ul>
+<p>Each finding includes: estimated monthly cost affected, estimated monthly saving, estimated annual saving, confidence score, evidence window, suggested action, business risk assessment, and the data signals that triggered it.</p>
+<h3 id="layer-3-review-workflow">Layer 3: Review Workflow</h3>
+<p>The most important design principle of the platform is that identifying waste is not enough. Every finding moves through a structured decision lifecycle:</p>
+<ul>
+<li>Findings are assigned to the resource owner or responsible team</li>
+<li>Teams can accept a finding for action, defer it to a future date, or ignore it</li>
+<li>Ignores require a structured reason selected from a defined list, an approver, a written justification, and an expiry date</li>
+<li>Ignored spend does not disappear — it resurfaces automatically when the ignore expires and re-enters the review queue</li>
+<li>Every decision is logged with a full comment, approval, and timestamp history</li>
+</ul>
+<p>Structured ignore reasons include categories such as: business-required standby, licensing constraint, pending migration, seasonal peak preparation, compliance retention requirement, DR design, and recommendation assessed as incorrect.</p>
+<p>This prevents the two most common failure modes of cost governance tools: findings that are permanently dismissed with no accountability, and savings that are claimed but never verified.</p>
+<h3 id="layer-4-reporting-and-governance-views">Layer 4: Reporting and Governance Views</h3>
+<p>The platform produces two distinct reporting layers.</p>
+<p><strong>Operational view</strong> — used by engineering and platform teams:</p>
+<ul>
+<li>Current month spend by cloud, service family, team, and environment</li>
+<li>Active findings with aging and priority ranking</li>
+<li>Top resources by avoidable monthly cost</li>
+<li>Resources with no owner</li>
+<li>Production versus non-production spend split</li>
+<li>Newly detected anomalies</li>
+</ul>
+<p><strong>Executive FinOps view</strong> — used by finance and leadership:</p>
+<ul>
+<li>Total spend and month-on-month trend</li>
+<li>Committed versus on-demand spend ratio</li>
+<li>Realised savings year-to-date</li>
+<li>Forecasted savings in pipeline</li>
+<li>Ignored spend total by reason category</li>
+<li>Review compliance rate by team</li>
+<li>Cloud and provider spend breakdown</li>
+</ul>
+<hr>
+<h2 id="savings-framework">Savings Framework</h2>
+<p>The platform was designed to identify savings systematically across five categories, with realistic target ranges based on the characteristics of the estate:</p>
+<table>
+  <thead>
+      <tr>
+          <th>Category</th>
+          <th>Typical Target Range</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Compute rightsizing and non-production scheduling</td>
+          <td>10–15% of compute spend</td>
+      </tr>
+      <tr>
+          <td>Storage lifecycle, orphan cleanup, and tier optimisation</td>
+          <td>4–8% of total spend</td>
+      </tr>
+      <tr>
+          <td>Commitment, reservation, and savings plan alignment</td>
+          <td>5–10% of compute and database spend</td>
+      </tr>
+      <tr>
+          <td>Backup and DR cost optimisation</td>
+          <td>2–5% of total spend</td>
+      </tr>
+      <tr>
+          <td>Network rationalisation and tooling consolidation</td>
+          <td>1–3% of total spend</td>
+      </tr>
+  </tbody>
+</table>
+<p>A key design decision was to track three savings numbers separately throughout the platform:</p>
+<ul>
+<li><strong>Identified savings</strong> — findings raised with estimated value</li>
+<li><strong>Approved savings</strong> — findings accepted by owners and committed for action</li>
+<li><strong>Realised savings</strong> — savings verified as achieved and reflected in actual billing</li>
+</ul>
+<p>Conflating these three numbers is how cloud cost programmes overstate their impact. Keeping them separate gives the organisation an honest view of what has actually been achieved versus what is still in progress.</p>
+<hr>
+<h2 id="outcome">Outcome</h2>
+<ul>
+<li>A single, unified cost view across AWS, Azure, and Google Cloud — replacing fragmented per-cloud billing reviews</li>
+<li>Structured findings engine producing evidence-backed, categorised savings opportunities with ownership and confidence scoring</li>
+<li>Full decision workflow with audit history, structured ignore reasons, expiry-enforced accountability, and no permanent dismissals</li>
+<li>Savings ledger distinguishing identified, approved, and realised savings at all times</li>
+<li>Monthly governance cadence providing engineering teams, FinOps leads, and leadership with the right level of visibility at each layer</li>
+<li>Approximately <strong>$2 million USD in annual savings identified</strong> — representing approximately 28% of the organisation&rsquo;s total annual cloud spend — across compute, storage, backups, commitments, and orphaned resources</li>
+</ul>
+<hr>
+<h2 id="related-capabilities">Related Capabilities</h2>
+<p>This engagement is an example of our <a href="/about/#2-cloud-infrastructure-tooling">Cloud Infrastructure Tooling</a> capability. We build similar tools for organisations that need structured, multi-cloud cost governance — not just billing dashboards, but decision workflows, accountability frameworks, and verified savings tracking.</p>
+<p><strong>Email:</strong> <a href="mailto:hello@repasscloud.com">hello@repasscloud.com</a></p>
+
+    </div>
+    
+    
+        <svg id="btt-button" class="arrow-logo" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 384 512" onclick="scrollToTop()" title="Go to top">
+    
+    <path d="M177 159.7l136 136c9.4 9.4 9.4 24.6 0 33.9l-22.6 22.6c-9.4 9.4-24.6 9.4-33.9 0L160 255.9l-96.4 96.4c-9.4 9.4-24.6 9.4-33.9 0L7 329.7c-9.4-9.4-9.4-24.6 0-33.9l136-136c9.4-9.5 24.6-9.5 34-.1z"/>
+</svg>
+<script>
+    let backToTopButton = document.getElementById("btt-button");
+
+    window.onscroll = function() {
+        scrollFunction()
+    };
+
+    function scrollFunction() {
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            backToTopButton.style.display = "block";
+        } else {
+            backToTopButton.style.display = "none";
+        }
+    }
+
+    function scrollToTop() {
+        window.scrollTo(0, 0);
+    }
+</script>
+
+    
+</div>
+
+
+<aside class="post-toc">
+    <nav id="toc">
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#overview">Overview</a></li>
+    <li><a href="#the-problem">The Problem</a></li>
+    <li><a href="#what-we-built">What We Built</a>
+      <ul>
+        <li><a href="#layer-1-ingestion-and-normalisation">Layer 1: Ingestion and Normalisation</a></li>
+        <li><a href="#layer-2-findings-engine">Layer 2: Findings Engine</a></li>
+        <li><a href="#layer-3-review-workflow">Layer 3: Review Workflow</a></li>
+        <li><a href="#layer-4-reporting-and-governance-views">Layer 4: Reporting and Governance Views</a></li>
+      </ul>
+    </li>
+    <li><a href="#savings-framework">Savings Framework</a></li>
+    <li><a href="#outcome">Outcome</a></li>
+    <li><a href="#related-capabilities">Related Capabilities</a></li>
+  </ul>
+</nav>
+    </nav>
+</aside>
+
+
+
+        </main><footer class="footer">
+    
+
+    
+
+    
+
+    
+    
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+    <span>&copy; 2026 RePass Cloud Pty Ltd</span>
+    
+
+    <span>
+        Made with &#10084;&#65039; in Sydney, Australia &#127462;&#127482;
+    </span>
+
+    <div style="margin-top: 0.5rem; display: flex; gap: 0.75rem; justify-content: center;">
+        <a href="https://github.com/repasscloud/"><span data-feather='github'></span></a>
+        <a href="https://twitter.com/repasscloud/"><span data-feather='twitter'></span></a>
+        <a href="https://linkedin.com/company/repass-cloud"><span data-feather='linkedin'></span></a>
+        <a href="/legal/"><span data-feather='file-text'></span></a>
+        <a href="/contact/"><span data-feather='mail'></span></a>
+    </div>
+</footer></body>
+</html>

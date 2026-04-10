@@ -1,0 +1,106 @@
+---
+import Layout from './Layout.astro';
+import FormattedDate from '../components/FormattedDate.astro';
+import type { ImageMetadata } from 'astro';
+
+interface Props {
+  title: string;
+  description: string;
+  pubDate: Date;
+  updatedDate?: Date;
+  heroImage?: ImageMetadata;
+  tags?: string[];
+}
+
+const { title, description, pubDate, updatedDate, heroImage, tags } = Astro.props;
+
+// JSON-LD for BlogPosting
+const blogSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BlogPosting',
+  headline: title,
+  description,
+  datePublished: pubDate.toISOString(),
+  ...(updatedDate ? { dateModified: updatedDate.toISOString() } : {}),
+  author: {
+    '@type': 'Organization',
+    name: 'RePass Cloud Pty Ltd',
+    url: 'https://repasscloud.com',
+  },
+  publisher: {
+    '@type': 'Organization',
+    name: 'RePass Cloud Pty Ltd',
+    url: 'https://repasscloud.com',
+    logo: {
+      '@type': 'ImageObject',
+      url: 'https://repasscloud.com/img/repasscloud-logo.png',
+    },
+  },
+  ...(heroImage ? { image: new URL(heroImage.src, Astro.site).href } : {}),
+};
+---
+
+<Layout
+  title={title}
+  description={description}
+  image={heroImage}
+  type="article"
+  pubDate={pubDate.toISOString()}
+  updatedDate={updatedDate?.toISOString()}
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(blogSchema)} />
+  </Fragment>
+
+  <!-- Post hero -->
+  <div class="post-hero">
+    <div class="container-narrow">
+      {tags && tags.length > 0 && (
+        <div style="display:flex; gap:0.4rem; flex-wrap:wrap; margin-bottom:1rem;">
+          {tags.map((tag) => (
+            <span class="badge badge-secondary" style="background:rgba(255,255,255,0.12); color:rgba(255,255,255,0.75);">
+              {tag}
+            </span>
+          ))}
+        </div>
+      )}
+      <h1>{title}</h1>
+      <div class="post-hero-meta">
+        <FormattedDate date={pubDate} />
+        {updatedDate && (
+          <span> · Updated <FormattedDate date={updatedDate} /></span>
+        )}
+      </div>
+    </div>
+  </div>
+
+  {heroImage && (
+    <div style="background:var(--rpc-bg); padding: 2rem 0;">
+      <div class="container-narrow">
+        <img
+          src={heroImage.src}
+          alt={title}
+          style="width:100%; border-radius:var(--radius-4); box-shadow:var(--shadow-md);"
+          width={heroImage.width}
+          height={heroImage.height}
+        />
+      </div>
+    </div>
+  )}
+
+  <!-- Post body -->
+  <div class="section-sm bg-surface">
+    <div class="container-narrow">
+      <div class="prose">
+        <slot />
+      </div>
+
+      <!-- Back link -->
+      <div style="margin-top:3rem; padding-top:2rem; border-top:1px solid var(--rpc-border);">
+        <a href="/posts" class="btn btn-outline btn-sm">
+          <i class="bi bi-arrow-left"></i> Back to Posts
+        </a>
+      </div>
+    </div>
+  </div>
+</Layout>

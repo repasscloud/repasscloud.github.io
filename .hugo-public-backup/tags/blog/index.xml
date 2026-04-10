@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Blog on RePass Cloud</title>
+    <link>http://localhost:64164/tags/blog/</link>
+    <description>Recent content in Blog on RePass Cloud</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Tue, 19 Dec 2023 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:64164/tags/blog/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Introducing LunaVPN: Your Privacy-Powered Guardian</title>
+      <link>http://localhost:64164/posts/2023-12-19/</link>
+      <pubDate>Tue, 19 Dec 2023 00:00:00 +0000</pubDate>
+      <guid>http://localhost:64164/posts/2023-12-19/</guid>
+      <description>&lt;p&gt;&lt;img src=&#34;http://localhost:64164/images/blog_posts/lunavpn-technology-stack.png&#34; alt=&#34;LunaVPN technology stack&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;In today&amp;rsquo;s digital age, online security and privacy have become paramount. As the demand for VPN (Virtual Private Network) services continues to rise, building a VPN service with modern technology has never been more relevant. In this guide, we will walk you through the steps to create your own VPN service using cutting-edge tools and technologies.&lt;/p&gt;&#xA;&lt;h2 id=&#34;the-foundation-net-back-end&#34;&gt;The Foundation: .NET Back-End&lt;/h2&gt;&#xA;&lt;p&gt;At the heart of our VPN service lies Microsoft&amp;rsquo;s &lt;a href=&#34;https://dotnet.microsoft.com/en-us/&#34; title=&#34;.NET is the free, open-source, cross-platform for building modern apps and powerful cloud services&#34;&gt;.NET&lt;/a&gt;, a powerful and versatile framework for building high-performance back-end services. .NET provides the foundation for our VPN infrastructure, ensuring reliability and scalability.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>How to Install Winget on Windows Server 2022</title>
+      <link>http://localhost:64164/posts/2023-10-27/</link>
+      <pubDate>Fri, 27 Oct 2023 00:00:00 +0000</pubDate>
+      <guid>http://localhost:64164/posts/2023-10-27/</guid>
+      <description>&lt;p&gt;When setting up a lab environment for deploying Active Directory automation tools, we recognized the efficiency of using &lt;a href=&#34;https://github.com/microsoft/winget-cli&#34;&gt;Winget&lt;/a&gt; to install software across multiple machines. However, Windows Server 2022 does not readily support Winget from Microsoft.&lt;/p&gt;&#xA;&lt;p&gt;Our quest for solutions involved extensive research, with many references leading to more references. After navigating this information labyrinth, we decided to provide a quick guide for those looking to set up Winget on their &lt;a href=&#34;https://www.microsoft.com/en-us/evalcenter/evaluate-windows-server-2022&#34;&gt;Windows Server 2022&lt;/a&gt; environment with minimal hassle.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Demystifying Language and Regional Settings</title>
+      <link>http://localhost:64164/posts/2023-08-02/</link>
+      <pubDate>Wed, 02 Aug 2023 00:00:00 +0000</pubDate>
+      <guid>http://localhost:64164/posts/2023-08-02/</guid>
+      <description>&lt;h2 id=&#34;demystifying-language-and-regional-settings-a-guide-to-avoid-confusion&#34;&gt;Demystifying Language and Regional Settings: A Guide to Avoid Confusion&lt;/h2&gt;&#xA;&lt;p&gt;As an SOE (Standard Operating Environment) Builder, configuring language and regional settings in Windows can be a perplexing challenge. Windows operating systems cater to diverse linguistic and cultural communities worldwide,&#xA;making it essential to get these settings right. The AutoUnattend.xml file plays a pivotal role in automating the setup process, but the complexities of four critical settings - InputLocale, SystemLocale, UILanguage, and UserLocale - can often lead to confusion during customization. In this blog article, we will shed light on these settings from an SOE Builder&amp;rsquo;s perspective and explore how mastering them is the cornerstone of achieving a seamless non-English system configuration for end-users.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Introducing our new design</title>
+      <link>http://localhost:64164/posts/2023-05-17/</link>
+      <pubDate>Wed, 17 May 2023 00:00:00 +0000</pubDate>
+      <guid>http://localhost:64164/posts/2023-05-17/</guid>
+      <description>&lt;h2 id=&#34;repass-cloud-evolves-for-a-dynamic-future&#34;&gt;Repass Cloud Evolves for a Dynamic Future&lt;/h2&gt;&#xA;&lt;p&gt;RePass Cloud is thrilled to announce an exciting transition as we move away from our original website design and embrace a fresh, modern look that truly represents our commitment to innovation and adaptability. The launch of our new website marks a significant milestone in our journey, and we are excited to share this evolution with you.&lt;/p&gt;&#xA;&lt;p&gt;Our decision to revamp the website stems from our dedication to providing the best user experience and keeping up with the ever-changing digital landscape. The new design reflects our growth as a company and aligns with our vision to stay at the forefront of modern technology solutions.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

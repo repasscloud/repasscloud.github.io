@@ -1,0 +1,71 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import { CONTACT_EMAIL } from '../../../consts';
+---
+
+<Layout
+  title="Open Roles"
+  description="Current engineering opportunities at RePass Cloud Pty Ltd."
+>
+  <div style="background:var(--rpc-surface); border-bottom:1px solid var(--rpc-border); padding: 3rem 0 2rem;">
+    <div class="container">
+      <div class="section-label">Careers</div>
+      <h1 style="font-size:clamp(1.5rem,3vw,2rem); margin-bottom:0.5rem;">Open Roles</h1>
+      <p style="color:var(--rpc-muted); font-size:1rem; max-width:480px; margin:0;">
+        Current opportunities at RePass Cloud. We hire engineers who build real things.
+      </p>
+    </div>
+  </div>
+
+  <section class="section-sm bg-surface">
+    <div class="container" style="max-width:760px;">
+      <div class="aethon-card" style="background:var(--rpc-bg); border:1px solid var(--rpc-border); border-left: 4px solid var(--rpc-primary);">
+        <p style="color:var(--rpc-muted); line-height:1.75; margin-bottom:1.25rem;">
+          We don't always post open roles publicly. If you are a strong engineer interested in
+          enterprise software, cloud automation, identity systems, or developer tooling — get in
+          touch. Tell us what you build and why you're interested.
+        </p>
+        <a href="/contact" class="btn btn-primary">
+          Send us a message <i class="bi bi-arrow-right"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-sm">
+    <div class="container" style="max-width:760px;">
+      <div class="section-label">Listed roles</div>
+      <h2 style="font-size:1.25rem; margin-bottom:1.5rem;">Current openings</h2>
+      <div style="display:flex; flex-direction:column; gap:0.75rem;">
+
+        <a href="/careers/jobs/senior-dotnet-engineer/" style="display:flex; align-items:center; gap:1rem; padding:1.25rem 1.5rem; background:var(--rpc-surface); border:1px solid var(--rpc-border); border-radius:var(--radius-4); text-decoration:none; color:inherit;">
+          <i class="bi bi-code-slash" style="font-size:1.25rem; color:var(--rpc-text-strong); flex-shrink:0;"></i>
+          <div style="flex:1;">
+            <div style="font-weight:600; color:var(--rpc-text-strong); margin-bottom:0.2rem;">Senior .NET Engineer</div>
+            <div style="font-size:0.875rem; color:var(--rpc-muted);">Contract · Remote (Australia / International)</div>
+          </div>
+          <i class="bi bi-arrow-right" style="color:var(--rpc-muted);"></i>
+        </a>
+
+        <a href="/careers/jobs/platform-engineer/" style="display:flex; align-items:center; gap:1rem; padding:1.25rem 1.5rem; background:var(--rpc-surface); border:1px solid var(--rpc-border); border-radius:var(--radius-4); text-decoration:none; color:inherit;">
+          <i class="bi bi-hdd-stack" style="font-size:1.25rem; color:var(--rpc-text-strong); flex-shrink:0;"></i>
+          <div style="flex:1;">
+            <div style="font-weight:600; color:var(--rpc-text-strong); margin-bottom:0.2rem;">Platform Engineer</div>
+            <div style="font-size:0.875rem; color:var(--rpc-muted);">Contract · Remote</div>
+          </div>
+          <i class="bi bi-arrow-right" style="color:var(--rpc-muted);"></i>
+        </a>
+
+        <a href="/careers/jobs/infrastructure-automation-engineer/" style="display:flex; align-items:center; gap:1rem; padding:1.25rem 1.5rem; background:var(--rpc-surface); border:1px solid var(--rpc-border); border-radius:var(--radius-4); text-decoration:none; color:inherit;">
+          <i class="bi bi-gear" style="font-size:1.25rem; color:var(--rpc-text-strong); flex-shrink:0;"></i>
+          <div style="flex:1;">
+            <div style="font-weight:600; color:var(--rpc-text-strong); margin-bottom:0.2rem;">Infrastructure &amp; Automation Engineer</div>
+            <div style="font-size:0.875rem; color:var(--rpc-muted);">Contract · Remote</div>
+          </div>
+          <i class="bi bi-arrow-right" style="color:var(--rpc-muted);"></i>
+        </a>
+
+      </div>
+    </div>
+  </section>
+</Layout>

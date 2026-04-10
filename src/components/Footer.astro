@@ -1,0 +1,92 @@
+---
+import { CONTACT_EMAIL, CINTURON_URL, GITHUB_URL, AETHON_URL, TWITTER_URL, LINKEDIN_URL } from '../consts';
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+
+      <!-- Brand -->
+      <div>
+        <div class="footer-brand">
+          <span class="brand-mark" style="background: rgba(255,255,255,0.15); color: #fff;">R</span>
+          <span>RePass Cloud</span>
+        </div>
+        <p class="footer-tagline">Enterprise software &amp; cloud automation</p>
+        <p style="font-size:0.8rem; color:rgba(255,255,255,0.4); max-width:220px; line-height:1.55;">
+          Built in Sydney, Australia. Engineering-led software for organisations that need
+          production-grade tools.
+        </p>
+      </div>
+
+      <!-- Company -->
+      <div>
+        <div class="footer-col-title">Company</div>
+        <ul class="footer-links">
+          <li><a href="/about">About</a></li>
+          <li><a href="/projects">Projects</a></li>
+          <li><a href="/case-studies">Case Studies</a></li>
+          <li><a href="/posts">Blog</a></li>
+          <li><a href="/careers">Careers</a></li>
+          <li><a href="/legal">Legal</a></li>
+        </ul>
+      </div>
+
+      <!-- Products -->
+      <div>
+        <div class="footer-col-title">Products</div>
+        <ul class="footer-links">
+          <li><a href={CINTURON_URL} target="_blank" rel="noopener">Cinturon360 ↗</a></li>
+          <li><a href={AETHON_URL} target="_blank" rel="noopener">Aethon ↗</a></li>
+        </ul>
+      </div>
+
+      <!-- Services -->
+      <div>
+        <div class="footer-col-title">Services</div>
+        <ul class="footer-links">
+          <li><a href="/services/enterprise-platforms">Enterprise Platforms</a></li>
+          <li><a href="/services/cloud-tooling">Cloud Tooling</a></li>
+          <li><a href="/services/m365-automation">M365 Automation</a></li>
+          <li><a href="/services/powershell">PowerShell</a></li>
+        </ul>
+      </div>
+
+      <!-- Connect -->
+      <div>
+        <div class="footer-col-title">Connect</div>
+        <ul class="footer-links">
+          <li><a href="/contact">Contact us</a></li>
+          <li><a href={GITHUB_URL} target="_blank" rel="noopener">GitHub ↗</a></li>
+          <li><a href={LINKEDIN_URL} target="_blank" rel="noopener">LinkedIn ↗</a></li>
+          <li><a href={TWITTER_URL} target="_blank" rel="noopener">X / Twitter ↗</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <div class="footer-bottom-copy">
+        &copy; {year} RePass Cloud Pty Ltd &mdash; Made with ❤️ in Sydney, Australia 🇦🇺
+        &nbsp;·&nbsp;
+        <a href="/legal/privacy-policy" style="color:rgba(255,255,255,0.4); text-decoration:none;">Privacy</a>
+        &nbsp;·&nbsp;
+        <a href="/legal/terms-of-service" style="color:rgba(255,255,255,0.4); text-decoration:none;">Terms</a>
+        &nbsp;·&nbsp;
+        <a href="/legal" style="color:rgba(255,255,255,0.4); text-decoration:none;">Legal</a>
+      </div>
+      <div class="footer-social">
+        <a href={TWITTER_URL} target="_blank" rel="noopener" aria-label="X / Twitter">
+          <i class="bi bi-twitter-x"></i>
+        </a>
+        <a href={LINKEDIN_URL} target="_blank" rel="noopener" aria-label="LinkedIn">
+          <i class="bi bi-linkedin"></i>
+        </a>
+        <a href={GITHUB_URL} target="_blank" rel="noopener" aria-label="GitHub">
+          <i class="bi bi-github"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>

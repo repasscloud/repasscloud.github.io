@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Step-by-Step Guide on RePass Cloud</title>
+    <link>http://localhost:64164/tags/step-by-step-guide/</link>
+    <description>Recent content in Step-by-Step Guide on RePass Cloud</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Fri, 27 Oct 2023 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:64164/tags/step-by-step-guide/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>How to Install Winget on Windows Server 2022</title>
+      <link>http://localhost:64164/posts/2023-10-27/</link>
+      <pubDate>Fri, 27 Oct 2023 00:00:00 +0000</pubDate>
+      <guid>http://localhost:64164/posts/2023-10-27/</guid>
+      <description>&lt;p&gt;When setting up a lab environment for deploying Active Directory automation tools, we recognized the efficiency of using &lt;a href=&#34;https://github.com/microsoft/winget-cli&#34;&gt;Winget&lt;/a&gt; to install software across multiple machines. However, Windows Server 2022 does not readily support Winget from Microsoft.&lt;/p&gt;&#xA;&lt;p&gt;Our quest for solutions involved extensive research, with many references leading to more references. After navigating this information labyrinth, we decided to provide a quick guide for those looking to set up Winget on their &lt;a href=&#34;https://www.microsoft.com/en-us/evalcenter/evaluate-windows-server-2022&#34;&gt;Windows Server 2022&lt;/a&gt; environment with minimal hassle.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Blog Posts on RePass Cloud</title>
+    <link>http://localhost:64164/posts/</link>
+    <description>Recent content in Blog Posts on RePass Cloud</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Sat, 07 Mar 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:64164/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Why Most Microsoft 365 Identity Automation Fails in Real Environments</title>
+      <link>http://localhost:64164/posts/2026-03-07-why-most-microsoft-365-identity-automation-fails-in-real-environments/</link>
+      <pubDate>Sat, 07 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:64164/posts/2026-03-07-why-most-microsoft-365-identity-automation-fails-in-real-environments/</guid>
+      <description>&lt;p&gt;Most organisations do not struggle with Microsoft 365 because the platform is incapable. They struggle because the work around it is still being run like a collection of one-off admin tasks.&lt;/p&gt;&#xA;&lt;p&gt;A joiner starts on Monday and someone has to remember to assign licences.&#xA;A manager changes divisions and someone has to update groups.&#xA;A shared mailbox needs temporary access for a project and someone has to remove it later.&#xA;A distribution list needs to reflect roster changes every week and someone is still doing it by hand.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Export Microsoft 365 Mailboxes, Aliases, and Sizes with PowerShell</title>
+      <link>http://localhost:64164/posts/2026-03-06-export-microsoft-365-mialboxes-powershell/</link>
+      <pubDate>Fri, 06 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:64164/posts/2026-03-06-export-microsoft-365-mialboxes-powershell/</guid>
+      <description>&lt;h2 id=&#34;overview&#34;&gt;Overview&lt;/h2&gt;&#xA;&lt;p&gt;If you need a complete picture of your Microsoft 365 mailboxes — primary addresses, aliases, mailbox types, sizes, and item counts — Exchange Online PowerShell gives you everything in one place. This guide walks through connecting to Exchange Online, querying mailbox data, and producing a clean CSV export you can open directly in Excel, Google Sheets, or LibreOffice.&lt;/p&gt;&#xA;&lt;p&gt;This is the kind of task that comes up regularly in identity audits, mailbox consolidation projects, licence reviews, and migration planning.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>We Are Standardizing on AOT for All Console Software</title>
+      <link>http://localhost:64164/posts/2026-02-28-repasscloud-aot-default/</link>
+      <pubDate>Sat, 28 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:64164/posts/2026-02-28-repasscloud-aot-default/</guid>
+      <description>&lt;h2 id=&#34;we-are-standardizing-on-aot-for-all-console-software&#34;&gt;We Are Standardizing on AOT for All Console Software&lt;/h2&gt;&#xA;&lt;p&gt;We&amp;rsquo;ve moved every internal CLI and distributed console utility at Repass Cloud to native Ahead-of-Time compilation. Not as an experiment. Not for benchmarks in a slide deck. As a default.&lt;/p&gt;&#xA;&lt;p&gt;If it&amp;rsquo;s a console binary, it ships as AOT.&lt;/p&gt;&#xA;&lt;p&gt;This wasn&amp;rsquo;t ideological. It was operational. Once you run enough short-lived processes across CI runners, containers, cron hosts, and ephemeral environments, the cost of pretending the JIT is “free” becomes visible.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Using find with -prune to Exclude Directories (Linux / macOS Guide)</title>
+      <link>http://localhost:64164/posts/2026-02-23-find-exclude-directories-prune-guide/</link>
+      <pubDate>Mon, 23 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:64164/posts/2026-02-23-find-exclude-directories-prune-guide/</guid>
+      <description>&lt;h2 id=&#34;problem&#34;&gt;Problem&lt;/h2&gt;&#xA;&lt;p&gt;When running find in large repositories, directories like node_modules, .git, and build folders can contain tens of thousands of files.&lt;/p&gt;&#xA;&lt;p&gt;This makes searches slow and wastes CPU time.&lt;/p&gt;&#xA;&lt;p&gt;The -prune option prevents find from descending into those directories, significantly improving performance.&lt;/p&gt;&#xA;&lt;h2 id=&#34;using-find-with--prune-to-exclude-directories&#34;&gt;Using &lt;code&gt;find&lt;/code&gt; with &lt;code&gt;-prune&lt;/code&gt; to Exclude Directories&lt;/h2&gt;&#xA;&lt;p&gt;This guide explains how to use the &lt;code&gt;-prune&lt;/code&gt; option with the Unix &lt;code&gt;find&lt;/code&gt;&#xA;command to efficiently exclude directories from searches.&lt;/p&gt;&#xA;&lt;p&gt;This is useful for ignoring directories such as:&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>LunaVPN: Now on ProductHunt - Support Our Vision for a Private and Free Internet!</title>
+      <link>http://localhost:64164/posts/2024-01-08/</link>
+      <pubDate>Mon, 08 Jan 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:64164/posts/2024-01-08/</guid>
+      <description>&lt;p&gt;Today marks a milestone for us at LunaVPN, as we proudly announce our launch on &lt;a href=&#34;https://www.producthunt.com/posts/lunavpn-co&#34;&gt;ProductHunt&lt;/a&gt;! LunaVPN is more than just a VPN service; it&amp;rsquo;s our commitment to ensuring a private and free internet for everyone.&lt;/p&gt;&#xA;&lt;h2 id=&#34;what-makes-lunavpn-special&#34;&gt;What Makes LunaVPN Special?&lt;/h2&gt;&#xA;&lt;p&gt;&lt;strong&gt;Private VPN Servers On-Demand:&lt;/strong&gt; With LunaVPN, say goodbye to shared IPs and enjoy your very own private server.&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;Global Accessibility:&lt;/strong&gt; Connect to any content securely, from anywhere in the world, anytime.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>LunaVPN: General Availability Launch - Embrace Privacy, Embrace Freedom!</title>
+      <link>http://localhost:64164/posts/2024-01-02/</link>
+      <pubDate>Tue, 02 Jan 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:64164/posts/2024-01-02/</guid>
+      <description>&lt;p&gt;&lt;img src=&#34;http://localhost:64164/images/blog_posts/lunavpn-general-availability.png&#34; alt=&#34;LunaVPN General Availability&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;In the digital epoch where online privacy is not just a luxury but a necessity, we are ecstatic to announce the general availability of &lt;a href=&#34;https://lunavpn.co/&#34; title=&#34;LunaVPN.co&#34;&gt;LunaVPN&lt;/a&gt; – your privacy-powered guardian in the virtual world. LunaVPN is not just another VPN; it&amp;rsquo;s a paradigm shift in how you experience the internet. Say hello to unrestricted, secure, and lightning-fast internet access!&lt;/p&gt;&#xA;&lt;h2 id=&#34;why-lunavpn-is-a-game-changer&#34;&gt;Why LunaVPN is a Game-Changer&lt;/h2&gt;&#xA;&lt;p&gt;&lt;strong&gt;Seamless Browsing with Global Reach:&lt;/strong&gt; LunaVPN erases digital boundaries. Enjoy unrestricted access to content worldwide with our global network of servers, ensuring you&amp;rsquo;re always just a click away from your favorite sites and services.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Introducing LunaVPN: Your Privacy-Powered Guardian</title>
+      <link>http://localhost:64164/posts/2023-12-19/</link>
+      <pubDate>Tue, 19 Dec 2023 00:00:00 +0000</pubDate>
+      <guid>http://localhost:64164/posts/2023-12-19/</guid>
+      <description>&lt;p&gt;&lt;img src=&#34;http://localhost:64164/images/blog_posts/lunavpn-technology-stack.png&#34; alt=&#34;LunaVPN technology stack&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;In today&amp;rsquo;s digital age, online security and privacy have become paramount. As the demand for VPN (Virtual Private Network) services continues to rise, building a VPN service with modern technology has never been more relevant. In this guide, we will walk you through the steps to create your own VPN service using cutting-edge tools and technologies.&lt;/p&gt;&#xA;&lt;h2 id=&#34;the-foundation-net-back-end&#34;&gt;The Foundation: .NET Back-End&lt;/h2&gt;&#xA;&lt;p&gt;At the heart of our VPN service lies Microsoft&amp;rsquo;s &lt;a href=&#34;https://dotnet.microsoft.com/en-us/&#34; title=&#34;.NET is the free, open-source, cross-platform for building modern apps and powerful cloud services&#34;&gt;.NET&lt;/a&gt;, a powerful and versatile framework for building high-performance back-end services. .NET provides the foundation for our VPN infrastructure, ensuring reliability and scalability.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Embracing the Future: Repass Cloud&#39;s Latest Website Redesign</title>
+      <link>http://localhost:64164/posts/2023-12-11/</link>
+      <pubDate>Mon, 11 Dec 2023 00:00:00 +0000</pubDate>
+      <guid>http://localhost:64164/posts/2023-12-11/</guid>
+      <description>&lt;h2 id=&#34;a-glimpse-into-our-digital-evolution&#34;&gt;A Glimpse into Our Digital Evolution&lt;/h2&gt;&#xA;&lt;p&gt;RePass Cloud is embarking on an exciting journey of transformation once again, and we couldn&amp;rsquo;t be more thrilled to share it with you. As we bid farewell to our previous website design, we welcome a fresh and modern look that encapsulates our unwavering commitment to innovation and adaptability.&lt;/p&gt;&#xA;&lt;h3 id=&#34;the-move-to-hugo-embracing-modern-technology&#34;&gt;The Move to Hugo: Embracing Modern Technology&lt;/h3&gt;&#xA;&lt;p&gt;One of the most significant changes in our journey is the adoption of Hugo, a modern static site generator. While we have cherished our time with Jekyll, we recognize that staying up to date with the latest technology and deploying updates had become a cumbersome task.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>How to Install Winget on Windows Server 2022</title>
+      <link>http://localhost:64164/posts/2023-10-27/</link>
+      <pubDate>Fri, 27 Oct 2023 00:00:00 +0000</pubDate>
+      <guid>http://localhost:64164/posts/2023-10-27/</guid>
+      <description>&lt;p&gt;When setting up a lab environment for deploying Active Directory automation tools, we recognized the efficiency of using &lt;a href=&#34;https://github.com/microsoft/winget-cli&#34;&gt;Winget&lt;/a&gt; to install software across multiple machines. However, Windows Server 2022 does not readily support Winget from Microsoft.&lt;/p&gt;&#xA;&lt;p&gt;Our quest for solutions involved extensive research, with many references leading to more references. After navigating this information labyrinth, we decided to provide a quick guide for those looking to set up Winget on their &lt;a href=&#34;https://www.microsoft.com/en-us/evalcenter/evaluate-windows-server-2022&#34;&gt;Windows Server 2022&lt;/a&gt; environment with minimal hassle.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Demystifying Language and Regional Settings</title>
+      <link>http://localhost:64164/posts/2023-08-02/</link>
+      <pubDate>Wed, 02 Aug 2023 00:00:00 +0000</pubDate>
+      <guid>http://localhost:64164/posts/2023-08-02/</guid>
+      <description>&lt;h2 id=&#34;demystifying-language-and-regional-settings-a-guide-to-avoid-confusion&#34;&gt;Demystifying Language and Regional Settings: A Guide to Avoid Confusion&lt;/h2&gt;&#xA;&lt;p&gt;As an SOE (Standard Operating Environment) Builder, configuring language and regional settings in Windows can be a perplexing challenge. Windows operating systems cater to diverse linguistic and cultural communities worldwide,&#xA;making it essential to get these settings right. The AutoUnattend.xml file plays a pivotal role in automating the setup process, but the complexities of four critical settings - InputLocale, SystemLocale, UILanguage, and UserLocale - can often lead to confusion during customization. In this blog article, we will shed light on these settings from an SOE Builder&amp;rsquo;s perspective and explore how mastering them is the cornerstone of achieving a seamless non-English system configuration for end-users.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Introducing our new design</title>
+      <link>http://localhost:64164/posts/2023-05-17/</link>
+      <pubDate>Wed, 17 May 2023 00:00:00 +0000</pubDate>
+      <guid>http://localhost:64164/posts/2023-05-17/</guid>
+      <description>&lt;h2 id=&#34;repass-cloud-evolves-for-a-dynamic-future&#34;&gt;Repass Cloud Evolves for a Dynamic Future&lt;/h2&gt;&#xA;&lt;p&gt;RePass Cloud is thrilled to announce an exciting transition as we move away from our original website design and embrace a fresh, modern look that truly represents our commitment to innovation and adaptability. The launch of our new website marks a significant milestone in our journey, and we are excited to share this evolution with you.&lt;/p&gt;&#xA;&lt;p&gt;Our decision to revamp the website stems from our dedication to providing the best user experience and keeping up with the ever-changing digital landscape. The new design reflects our growth as a company and aligns with our vision to stay at the forefront of modern technology solutions.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

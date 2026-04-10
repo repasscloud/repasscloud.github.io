@@ -1,0 +1,172 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { CONTACT_EMAIL } from '../consts';
+---
+
+<Layout
+  title="Case Studies"
+  description="Real-world engagements from RePass Cloud covering Microsoft 365 identity automation, finance workflow automation, and multi-cloud FinOps tooling."
+>
+
+  <!-- Page header -->
+  <div style="background:var(--rpc-surface); border-bottom:1px solid var(--rpc-border); padding: 3rem 0 2rem;">
+    <div class="container">
+      <div class="section-label">Real-world work</div>
+      <h1 style="font-size:clamp(1.5rem,3vw,2rem); margin-bottom:0.5rem;">Case Studies</h1>
+      <p style="color:var(--rpc-muted); font-size:1rem; max-width:560px; margin:0;">
+        Documented engagements showing the breadth and depth of what we build. Enterprise identity
+        automation, finance workflows, and multi-cloud cost governance at scale.
+      </p>
+    </div>
+  </div>
+
+  <!-- Case studies -->
+  <section class="section">
+    <div class="container" style="max-width:900px;">
+      <div style="display:flex; flex-direction:column; gap:2rem;">
+
+        <!-- Case Study 1 -->
+        <div class="aethon-card" style="border-left: 4px solid var(--rpc-primary);">
+          <div class="section-label">Case Study · Enterprise / Retail (multi-brand)</div>
+          <h2 style="font-size:1.5rem; margin-bottom:1rem;">Microsoft 365 Identity &amp; Access Automation</h2>
+
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:1.5rem; margin-bottom:1.5rem;">
+            <div>
+              <div style="font-size:0.75rem; font-weight:600; text-transform:uppercase; letter-spacing:0.06em; color:var(--rpc-muted); margin-bottom:0.4rem;">Problem</div>
+              <p style="font-size:0.9rem; color:var(--rpc-text); line-height:1.65; margin:0;">
+                Manual daily IT management of Microsoft 365 access for approximately 2,100 employees
+                across multiple retail brands in Australia and New Zealand. Distribution lists, shared
+                mailbox access, licence assignments, and group memberships all required daily manual
+                intervention by IT staff.
+              </p>
+            </div>
+            <div>
+              <div style="font-size:0.75rem; font-weight:600; text-transform:uppercase; letter-spacing:0.06em; color:var(--rpc-muted); margin-bottom:0.4rem;">Solution</div>
+              <p style="font-size:0.9rem; color:var(--rpc-text); line-height:1.65; margin:0;">
+                Fully automated, rule-driven scheduling system with time-aware access control,
+                ownership-based approvals, and full audit logging. Eliminated all manual IT
+                intervention for day-to-day identity and access operations.
+              </p>
+            </div>
+          </div>
+
+          <div style="margin-bottom:1.25rem;">
+            <div style="font-size:0.75rem; font-weight:600; text-transform:uppercase; letter-spacing:0.06em; color:var(--rpc-muted); margin-bottom:0.5rem;">Outcome</div>
+            <div style="display:flex; align-items:center; gap:0.5rem;">
+              <i class="bi bi-check-circle-fill" style="color:var(--rpc-valid);"></i>
+              <span style="font-size:0.9rem; font-weight:600;">Zero daily manual IT intervention for access management</span>
+            </div>
+          </div>
+
+          <div class="tech-stack">
+            <span class="badge badge-secondary">Microsoft 365</span>
+            <span class="badge badge-secondary">Identity Automation</span>
+            <span class="badge badge-secondary">PowerShell</span>
+            <span class="badge badge-secondary">Entra ID</span>
+          </div>
+        </div>
+
+        <!-- Case Study 2 -->
+        <div class="aethon-card" style="border-left: 4px solid var(--rpc-primary);">
+          <div class="section-label">Case Study · Multi-brand Retail / Franchise</div>
+          <h2 style="font-size:1.5rem; margin-bottom:1rem;">Finance Workflow Automation — Petty Cash</h2>
+
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:1.5rem; margin-bottom:1.5rem;">
+            <div>
+              <div style="font-size:0.75rem; font-weight:600; text-transform:uppercase; letter-spacing:0.06em; color:var(--rpc-muted); margin-bottom:0.4rem;">Problem</div>
+              <p style="font-size:0.9rem; color:var(--rpc-text); line-height:1.65; margin:0;">
+                4 FTE accounts payable staff manually processing petty cash daily across 200+ brands
+                and 2,000+ locations across Australia, New Zealand, and Singapore. Manual reconciliation,
+                access provisioning, and approval routing consumed significant operational capacity.
+              </p>
+            </div>
+            <div>
+              <div style="font-size:0.75rem; font-weight:600; text-transform:uppercase; letter-spacing:0.06em; color:var(--rpc-muted); margin-bottom:0.4rem;">Solution</div>
+              <p style="font-size:0.9rem; color:var(--rpc-text); line-height:1.65; margin:0;">
+                End-to-end finance workflow automation integrated with Active Directory, Entra ID,
+                and Oracle HCM. Automated access provisioning, approval routing, reconciliation, and
+                reporting across all brands and regions.
+              </p>
+            </div>
+          </div>
+
+          <div style="margin-bottom:1.25rem;">
+            <div style="font-size:0.75rem; font-weight:600; text-transform:uppercase; letter-spacing:0.06em; color:var(--rpc-muted); margin-bottom:0.5rem;">Outcome</div>
+            <div style="display:flex; align-items:center; gap:0.5rem;">
+              <i class="bi bi-check-circle-fill" style="color:var(--rpc-valid);"></i>
+              <span style="font-size:0.9rem; font-weight:600;">Eliminated manual petty cash processing for 4 FTE accounts payable staff</span>
+            </div>
+          </div>
+
+          <div class="tech-stack">
+            <span class="badge badge-secondary">Business Process Automation</span>
+            <span class="badge badge-secondary">Entra ID</span>
+            <span class="badge badge-secondary">Active Directory</span>
+            <span class="badge badge-secondary">Oracle HCM</span>
+          </div>
+        </div>
+
+        <!-- Case Study 3 -->
+        <div class="aethon-card" style="border-left: 4px solid var(--rpc-primary);">
+          <div class="section-label">Case Study · Enterprise Technology (~5,000 employees, global)</div>
+          <h2 style="font-size:1.5rem; margin-bottom:1rem;">Multi-Cloud FinOps Tooling</h2>
+
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:1.5rem; margin-bottom:1.5rem;">
+            <div>
+              <div style="font-size:0.75rem; font-weight:600; text-transform:uppercase; letter-spacing:0.06em; color:var(--rpc-muted); margin-bottom:0.4rem;">Problem</div>
+              <p style="font-size:0.9rem; color:var(--rpc-text); line-height:1.65; margin:0;">
+                Approximately $7M USD per year in cloud spend across AWS, Azure, and GCP with no
+                unified spend visibility. Cloud costs could not be classified by workload, team, or
+                initiative. No mechanism to track savings decisions from identification through to
+                realisation.
+              </p>
+            </div>
+            <div>
+              <div style="font-size:0.75rem; font-weight:600; text-transform:uppercase; letter-spacing:0.06em; color:var(--rpc-muted); margin-bottom:0.4rem;">Solution</div>
+              <p style="font-size:0.9rem; color:var(--rpc-text); line-height:1.65; margin:0;">
+                Multi-cloud cost analysis and governance platform: classifies spend, produces
+                evidence-backed findings, manages decision lifecycle, and tracks realised savings
+                across all three cloud providers from a single interface.
+              </p>
+            </div>
+          </div>
+
+          <div style="margin-bottom:1.25rem;">
+            <div style="font-size:0.75rem; font-weight:600; text-transform:uppercase; letter-spacing:0.06em; color:var(--rpc-muted); margin-bottom:0.5rem;">Outcome</div>
+            <div style="display:flex; align-items:center; gap:0.5rem;">
+              <i class="bi bi-check-circle-fill" style="color:var(--rpc-valid);"></i>
+              <span style="font-size:0.9rem; font-weight:600;">Unified cost visibility and savings realisation tracking across $7M USD/year cloud estate</span>
+            </div>
+          </div>
+
+          <div class="tech-stack">
+            <span class="badge badge-secondary">FinOps</span>
+            <span class="badge badge-secondary">Multi-Cloud Governance</span>
+            <span class="badge badge-primary">AWS</span>
+            <span class="badge badge-primary">Azure</span>
+            <span class="badge badge-secondary">GCP</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-banner">
+    <div class="container">
+      <div class="section-label" style="color:rgba(255,255,255,0.5);">Work with us</div>
+      <h2>Have a similar challenge?</h2>
+      <p>
+        Tell us about your environment and what you're trying to solve. We work with organisations
+        that need enterprise software or automation built properly.
+      </p>
+      <div class="cta-actions">
+        <a href="/contact" class="btn btn-primary btn-lg">
+          Get in touch <i class="bi bi-arrow-right"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+
+</Layout>

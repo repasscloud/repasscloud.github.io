@@ -1,0 +1,295 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { SITE_TITLE, SITE_DESCRIPTION, CONTACT_EMAIL, CINTURON_URL, AETHON_URL } from '../consts';
+import { getCollection } from 'astro:content';
+import FormattedDate from '../components/FormattedDate.astro';
+
+const allPosts = await getCollection('posts');
+const recentPosts = allPosts
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  .slice(0, 3);
+
+const services = [
+  { icon: 'bi-cpu', title: 'Enterprise Platform Development', desc: 'Multi-tenant SaaS, identity integration, commercial licensing, and production-grade platform architecture.' },
+  { icon: 'bi-cloud', title: 'Cloud Infrastructure Tooling', desc: 'Cost analysis, SSL certificate management, VM automation, and infrastructure tooling across Azure and AWS.' },
+  { icon: 'bi-gear-fill', title: 'Business Operations & IT Tooling', desc: 'ServiceNow integration, performance monitoring, Active Directory automation, and operational utilities.' },
+  { icon: 'bi-microsoft', title: 'Microsoft 365 & Identity Automation', desc: 'User onboarding, lifecycle management, cross-system integrations, and governed identity workflows.' },
+  { icon: 'bi-terminal', title: 'PowerShell Automation & Scripting', desc: 'Enterprise automation modules and scripts across Windows, Azure, Active Directory, and cloud environments.' },
+  { icon: 'bi-shield-check', title: 'Security-first Engineering', desc: 'Every system we build is architected with security, compliance, and audit requirements from day one.' },
+];
+
+
+// JSON-LD Organization schema
+const orgSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'RePass Cloud Pty Ltd',
+  url: 'https://repasscloud.com',
+  logo: 'https://repasscloud.com/img/repasscloud-logo.png',
+  description: SITE_DESCRIPTION,
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'Sydney',
+    addressCountry: 'AU',
+  },
+  contactPoint: {
+    '@type': 'ContactPoint',
+    email: 'hello@repasscloud.com',
+    contactType: 'customer service',
+  },
+  sameAs: [
+    'https://github.com/repasscloud',
+    'https://www.linkedin.com/company/repass-cloud',
+    'https://twitter.com/repasscloud',
+  ],
+};
+---
+
+<Layout title={SITE_TITLE} description={SITE_DESCRIPTION}>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(orgSchema)} />
+  </Fragment>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-eyebrow">
+        <i class="bi bi-stars"></i>
+        Engineering-led software from Sydney
+      </div>
+      <h1>Enterprise software, cloud automation,<br />and operational tooling.</h1>
+      <p class="hero-lead">
+        RePass Cloud builds production-grade platforms, cloud infrastructure tools, and enterprise
+        automation for organisations that need things to actually work.
+      </p>
+      <div class="hero-actions">
+        <a href="/contact" class="btn btn-primary btn-lg">
+          Get in touch <i class="bi bi-arrow-right"></i>
+        </a>
+        <a href="/projects/" class="btn btn-outline-light btn-lg">
+          Our work
+        </a>
+      </div>
+      <div class="hero-trust">
+        <div class="hero-trust-item">
+          <i class="bi bi-building"></i>
+          Enterprise-grade, production-proven
+        </div>
+        <div class="hero-trust-item">
+          <i class="bi bi-shield-check"></i>
+          Security-first by design
+        </div>
+        <div class="hero-trust-item">
+          <span>🇦🇺</span>
+          Built in Sydney, Australia
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services grid -->
+  <section class="section bg-surface">
+    <div class="container">
+      <div class="text-center" style="margin-bottom:3rem;">
+        <div class="section-label">What we build</div>
+        <h2>Five core capability areas</h2>
+        <p class="text-muted" style="max-width:520px; margin:0.75rem auto 0;">
+          Engineering-led software across enterprise platforms, cloud infrastructure, identity
+          automation, and operational tooling.
+        </p>
+      </div>
+      <div class="grid-3">
+        {services.map((s) => (
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i class={`bi ${s.icon}`}></i>
+            </div>
+            <h3>{s.title}</h3>
+            <p>{s.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Cinturon360 showcase -->
+  <section class="section">
+    <div class="container">
+      <div class="showcase-split">
+        <div>
+          <div class="section-label">Flagship product</div>
+          <h2>Cinturon360</h2>
+          <p style="color:var(--rpc-muted); line-height:1.75; margin-bottom:1.5rem;">
+            The operational control layer for organisations that need to manage complexity across
+            customers, partners, and internal teams. Multi-tenant SaaS with Microsoft Entra ID
+            integration, role-based permissions, delegated administration, and full audit logging.
+          </p>
+          <div class="tech-stack" style="margin-bottom:1.75rem;">
+            <span class="badge badge-secondary">.NET</span>
+            <span class="badge badge-primary">Azure</span>
+            <span class="badge badge-secondary">Entra ID</span>
+            <span class="badge badge-secondary">Multi-tenant</span>
+          </div>
+          <a href={CINTURON_URL} class="btn btn-primary" target="_blank" rel="noopener">
+            Visit Cinturon360 <i class="bi bi-box-arrow-up-right"></i>
+          </a>
+        </div>
+        <div class="showcase-visual">
+          <i class="bi bi-diagram-3-fill" style="font-size:3rem; margin-bottom:1rem;"></i>
+          <div style="font-size:1.25rem; font-weight:700; margin-bottom:0.5rem;">Cinturon360</div>
+          <div style="color:rgba(255,255,255,0.6); font-size:0.875rem;">
+            Governed operational workflows · Audit-ready · Multi-tenant
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Case studies teaser -->
+  <section class="section bg-surface">
+    <div class="container">
+      <div class="text-center" style="margin-bottom:3rem;">
+        <div class="section-label">Real-world work</div>
+        <h2>Case studies</h2>
+        <p class="text-muted" style="max-width:520px; margin:0.75rem auto 0;">
+          Documented engagements showing what we build in practice — from identity automation to
+          multi-cloud FinOps tooling.
+        </p>
+      </div>
+      <div class="grid-3">
+        <div class="aethon-card" style="border-left: 4px solid var(--rpc-primary);">
+          <div class="section-label">Case Study · Enterprise / Retail</div>
+          <h3 style="margin-bottom:0.75rem;">Microsoft 365 Identity Automation</h3>
+          <p class="text-sm text-muted">
+            Fully automated, rule-driven identity management for ~2,100 employees across multiple
+            brands in AU/NZ. Zero daily manual IT intervention.
+          </p>
+          <div class="tech-stack" style="margin-top:1rem;">
+            <span class="badge badge-secondary">Microsoft 365</span>
+            <span class="badge badge-secondary">PowerShell</span>
+          </div>
+        </div>
+        <div class="aethon-card" style="border-left: 4px solid var(--rpc-primary);">
+          <div class="section-label">Case Study · Multi-brand Retail</div>
+          <h3 style="margin-bottom:0.75rem;">Finance Workflow Automation</h3>
+          <p class="text-sm text-muted">
+            End-to-end petty cash processing automation integrated with Active Directory, Entra ID,
+            and Oracle HCM. Eliminated 4 FTE manual workload.
+          </p>
+          <div class="tech-stack" style="margin-top:1rem;">
+            <span class="badge badge-secondary">Entra ID</span>
+            <span class="badge badge-secondary">Oracle HCM</span>
+          </div>
+        </div>
+        <div class="aethon-card" style="border-left: 4px solid var(--rpc-primary);">
+          <div class="section-label">Case Study · Enterprise Technology</div>
+          <h3 style="margin-bottom:0.75rem;">Multi-Cloud FinOps Tooling</h3>
+          <p class="text-sm text-muted">
+            Unified cost visibility across $7M USD/year cloud estate spanning AWS, Azure, and GCP.
+            Savings realisation tracking and governance platform.
+          </p>
+          <div class="tech-stack" style="margin-top:1rem;">
+            <span class="badge badge-primary">AWS</span>
+            <span class="badge badge-primary">Azure</span>
+            <span class="badge badge-secondary">GCP</span>
+          </div>
+        </div>
+      </div>
+      <div class="text-center" style="margin-top:2.5rem;">
+        <a href="/case-studies" class="btn btn-outline">
+          View all case studies <i class="bi bi-arrow-right"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Aethon showcase -->
+  <section class="section">
+    <div class="container">
+      <div class="showcase-split">
+        <div class="showcase-visual" style="order: -1;">
+          <i class="bi bi-people-fill" style="font-size:3rem; margin-bottom:1rem;"></i>
+          <div style="font-size:1.25rem; font-weight:700; margin-bottom:0.5rem;">Aethon</div>
+          <div style="color:rgba(255,255,255,0.6); font-size:0.875rem;">
+            Verified employers · Trusted recruiters · AI-backed marketplace
+          </div>
+        </div>
+        <div>
+          <div class="section-label">Also from RePass Cloud</div>
+          <h2>Aethon</h2>
+          <p style="color:var(--rpc-muted); line-height:1.75; margin-bottom:1.5rem;">
+            Hiring intelligence platform connecting verified employers, trusted recruiters, and
+            job seekers in a transparent, AI-backed marketplace. Built with the same
+            engineering rigour as Cinturon360.
+          </p>
+          <div class="tech-stack" style="margin-bottom:1.75rem;">
+            <span class="badge badge-secondary">.NET</span>
+            <span class="badge badge-secondary">Blazor</span>
+            <span class="badge badge-secondary">PostgreSQL</span>
+            <span class="badge badge-primary">AI</span>
+          </div>
+          <a href={AETHON_URL} class="btn btn-primary" target="_blank" rel="noopener">
+            Visit Aethon <i class="bi bi-box-arrow-up-right"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Recent posts teaser -->
+  {recentPosts.length > 0 && (
+    <section class="section bg-surface">
+      <div class="container">
+        <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:2rem; flex-wrap:wrap; gap:1rem;">
+          <div>
+            <div class="section-label">From the blog</div>
+            <h2 style="margin:0;">Latest posts</h2>
+          </div>
+          <a href="/posts" class="btn btn-outline btn-sm">
+            All posts <i class="bi bi-arrow-right"></i>
+          </a>
+        </div>
+        <div class="grid-3">
+          {recentPosts.map((post) => (
+            <a href={`/posts/${post.id}/`} class="blog-card">
+              <div class="blog-card-body">
+                <div class="blog-card-meta">
+                  <FormattedDate date={post.data.pubDate} />
+                </div>
+                <div class="blog-card-title">{post.data.title}</div>
+                <div class="blog-card-desc">{post.data.description}</div>
+                {post.data.tags && post.data.tags.length > 0 && (
+                  <div class="blog-card-tags">
+                    {post.data.tags.slice(0, 3).map((tag) => (
+                      <span class="badge badge-secondary">{tag}</span>
+                    ))}
+                  </div>
+                )}
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- CTA banner -->
+  <section class="cta-banner">
+    <div class="container">
+      <div class="section-label" style="color:rgba(255,255,255,0.5);">Get in touch</div>
+      <h2>Ready to build something that works?</h2>
+      <p>
+        Tell us about your project. We work with organisations that need enterprise software, cloud
+        automation, or operational tooling built properly.
+      </p>
+      <div class="cta-actions">
+        <a href="/contact" class="btn btn-primary btn-lg">
+          Contact us <i class="bi bi-arrow-right"></i>
+        </a>
+        <a href="/about" class="btn btn-outline-light btn-lg">
+          About us
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>

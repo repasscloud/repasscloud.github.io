@@ -1,0 +1,174 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+// Replace this with your key from https://web3forms.com
+// Enter hello@repasscloud.com on that page to get your key.
+const WEB3FORMS_KEY = '5cd9e130-d321-4d32-b2bd-e86817def487';
+---
+
+<Layout
+  title="Contact"
+  description="Get in touch with RePass Cloud Pty Ltd. We work with organisations that need enterprise software, cloud automation, or operational tooling."
+>
+
+  <!-- Page header -->
+  <div style="background:var(--rpc-surface); border-bottom:1px solid var(--rpc-border); padding: 3rem 0 2rem;">
+    <div class="container">
+      <div class="section-label">Get in touch</div>
+      <h1 style="font-size:clamp(1.5rem,3vw,2rem); margin-bottom:0.5rem;">Contact us</h1>
+      <p style="color:var(--rpc-muted); font-size:1rem; max-width:480px; margin:0;">
+        Tell us about your project. We'll get back to you within one business day.
+      </p>
+    </div>
+  </div>
+
+  <section class="section-sm bg-surface">
+    <div class="container" style="max-width:720px;">
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:3rem; align-items:start;">
+
+        <!-- Form -->
+        <div style="grid-column: 1 / -1;">
+          <form id="contact-form" style="display:flex; flex-direction:column; gap:1.25rem;">
+
+            <!-- Web3Forms access key — not your email address -->
+            <input type="hidden" name="access_key" value={WEB3FORMS_KEY} />
+            <!-- Subject line in your inbox -->
+            <input type="hidden" name="subject" value="New enquiry from repasscloud.com" />
+            <!-- Redirect after submission (we handle this with JS instead) -->
+            <input type="hidden" name="redirect" value="false" />
+            <!-- Honeypot anti-spam field — must stay empty -->
+            <input type="checkbox" name="botcheck" style="display:none;" />
+
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem;">
+              <div>
+                <label for="name" style="display:block; font-size:0.875rem; font-weight:600; margin-bottom:0.4rem; color:var(--rpc-text-strong);">
+                  Name <span style="color:var(--rpc-invalid);">*</span>
+                </label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  required
+                  placeholder="Jane Smith"
+                  style="width:100%; padding:0.625rem 0.875rem; border:1px solid var(--rpc-border); border-radius:var(--radius-3); font-size:0.9rem; color:var(--rpc-text); background:var(--rpc-surface); outline:none; transition:border-color 0.15s;"
+                />
+              </div>
+              <div>
+                <label for="email" style="display:block; font-size:0.875rem; font-weight:600; margin-bottom:0.4rem; color:var(--rpc-text-strong);">
+                  Email <span style="color:var(--rpc-invalid);">*</span>
+                </label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  required
+                  placeholder="jane@company.com"
+                  style="width:100%; padding:0.625rem 0.875rem; border:1px solid var(--rpc-border); border-radius:var(--radius-3); font-size:0.9rem; color:var(--rpc-text); background:var(--rpc-surface); outline:none; transition:border-color 0.15s;"
+                />
+              </div>
+            </div>
+
+            <div>
+              <label for="organisation" style="display:block; font-size:0.875rem; font-weight:600; margin-bottom:0.4rem; color:var(--rpc-text-strong);">
+                Organisation
+              </label>
+              <input
+                type="text"
+                id="organisation"
+                name="organisation"
+                placeholder="Acme Corp"
+                style="width:100%; padding:0.625rem 0.875rem; border:1px solid var(--rpc-border); border-radius:var(--radius-3); font-size:0.9rem; color:var(--rpc-text); background:var(--rpc-surface); outline:none; transition:border-color 0.15s;"
+              />
+            </div>
+
+            <div>
+              <label for="message" style="display:block; font-size:0.875rem; font-weight:600; margin-bottom:0.4rem; color:var(--rpc-text-strong);">
+                Message <span style="color:var(--rpc-invalid);">*</span>
+              </label>
+              <textarea
+                id="message"
+                name="message"
+                required
+                rows="6"
+                placeholder="Tell us about your project or what you're trying to solve..."
+                style="width:100%; padding:0.625rem 0.875rem; border:1px solid var(--rpc-border); border-radius:var(--radius-3); font-size:0.9rem; color:var(--rpc-text); background:var(--rpc-surface); outline:none; transition:border-color 0.15s; resize:vertical; font-family:inherit;"
+              ></textarea>
+            </div>
+
+            <!-- Success message (hidden by default) -->
+            <div id="form-success" style="display:none; padding:1rem 1.25rem; background:#d1fae5; border:1px solid #6ee7b7; border-radius:var(--radius-3); color:#065f46; font-size:0.9rem;">
+              <strong>Message sent.</strong> We'll get back to you within one business day.
+            </div>
+
+            <!-- Error message (hidden by default) -->
+            <div id="form-error" style="display:none; padding:1rem 1.25rem; background:#fee2e2; border:1px solid #fca5a5; border-radius:var(--radius-3); color:#991b1b; font-size:0.9rem;">
+              <strong>Something went wrong.</strong> Please try again or email us directly.
+            </div>
+
+            <div>
+              <button
+                type="submit"
+                id="submit-btn"
+                class="btn btn-primary"
+                style="min-width:160px;"
+              >
+                Send message <i class="bi bi-arrow-right"></i>
+              </button>
+            </div>
+
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+</Layout>
+
+<style>
+  input:focus, textarea:focus {
+    border-color: var(--rpc-primary) !important;
+    box-shadow: 0 0 0 3px var(--rpc-focus-ring);
+  }
+  #submit-btn:disabled {
+    opacity: 0.65;
+    cursor: not-allowed;
+  }
+</style>
+
+<script>
+  const form = document.getElementById('contact-form') as HTMLFormElement;
+  const submitBtn = document.getElementById('submit-btn') as HTMLButtonElement;
+  const successEl = document.getElementById('form-success')!;
+  const errorEl = document.getElementById('form-error')!;
+
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = 'Sending… <i class="bi bi-hourglass-split"></i>';
+    successEl.style.display = 'none';
+    errorEl.style.display = 'none';
+
+    try {
+      const data = new FormData(form);
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: data,
+      });
+      const json = await res.json();
+
+      if (json.success) {
+        successEl.style.display = 'block';
+        form.reset();
+      } else {
+        errorEl.style.display = 'block';
+      }
+    } catch {
+      errorEl.style.display = 'block';
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.innerHTML = 'Send message <i class="bi bi-arrow-right"></i>';
+    }
+  });
+</script>

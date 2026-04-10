@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en"><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=64164&amp;path=livereload" data-no-instant defer></script>
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-RLMZK1PDGS"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-RLMZK1PDGS');
+    </script>
+    
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "vrt8149jl6");
+    </script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+        :root {
+            --accent-color: {
+                    {
+                    .Site.Params.AccentColor | default "#FF4D4D"
+                }
+            }
+
+            ;
+
+            --font-size: {
+                    {
+                    .Site.Params.FontSize | default "1.1rem"
+                }
+            }
+
+            ;
+        }
+    </style>
+    
+    
+    
+    
+
+    
+    <title>Introducing LunaVPN: Your Privacy-Powered Guardian | RePass Cloud</title>
+    <meta name="description" content="Technical overview of LunaVPN architecture using .NET, WireGuard, Docker, Auth0, Stripe, and Alpine Linux to build a secure, scalable, privacy-focused VPN …">
+    <meta name="keywords" content='RePass Cloud, enterprise software Australia, cloud automation, Azure consultancy, AWS tooling, Google Cloud, PowerShell automation, PowerShell modules, SaaS platform, Cinturon360, IT automation, infrastructure tooling, Windows automation, Active Directory automation, Entra ID automation, Microsoft 365 automation, M365 identity management, user onboarding automation, user offboarding automation, identity lifecycle management, workforce automation, cloud cost management, FinOps, multi-cloud cost optimisation, SSL certificate management, enterprise SaaS Sydney, Windows SOE, WSUS, CVE tooling, security operations tooling, HR system integration, Oracle HCM integration, ServiceNow tooling, Windows Server, Hyper-V automation, SCCM deployment, software consultancy Sydney, RePass Cloud Pty Ltd, blog, LunaVPN, technology, online privacy'>
+
+    <meta property="og:url" content="http://localhost:64164/posts/2023-12-19/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Introducing LunaVPN: Your Privacy-Powered Guardian | RePass Cloud">
+    <meta property="og:description" content="Technical overview of LunaVPN architecture using .NET, WireGuard, Docker, Auth0, Stripe, and Alpine Linux to build a secure, scalable, privacy-focused VPN …">
+    <meta property="og:image" content="http://localhost:64164/images/blog_posts/lunavpn-technology-stack.png">
+    <meta property="og:image:secure_url" content="http://localhost:64164/images/blog_posts/lunavpn-technology-stack.png">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Introducing LunaVPN: Your Privacy-Powered Guardian | RePass Cloud">
+    <meta name="twitter:description" content="Technical overview of LunaVPN architecture using .NET, WireGuard, Docker, Auth0, Stripe, and Alpine Linux to build a secure, scalable, privacy-focused VPN …">
+    <meta property="twitter:domain" content="http://localhost:64164/posts/2023-12-19/">
+    <meta property="twitter:url" content="http://localhost:64164/posts/2023-12-19/">
+    <meta name="twitter:image" content="http://localhost:64164/images/blog_posts/lunavpn-technology-stack.png">
+
+    
+    <link rel="canonical" href="http://localhost:64164/posts/2023-12-19/">
+
+    
+    <link rel="stylesheet" type="text/css" href="/css/normalize.min.css" media="print">
+
+    
+    <link rel="stylesheet" type="text/css" href="/css/main.min.css">
+
+    
+    <link id="dark-theme" rel="stylesheet" href="/css/dark.min.css">
+
+    
+    <script src="/js/bundle.min.7136b4abac7b277aba8bc933917f4602d39a5c44f5590be687244bc86ef4f162.js" integrity="sha256-cTa0q6x7J3q6i8kzkX9GAtOaXET1WQvmhyRLyG708WI="></script>
+
+    
+    
+</head><body>
+        <script>
+            
+            setThemeByUserPref();
+        </script><header class="header">
+    <nav class="header-nav">
+
+        
+        <div class="avatar">
+            <a href="http://localhost:64164/">
+                <img src='/images/repass-cloud-logo.png' alt="avatar">
+            </a>
+        </div>
+        
+
+        <div class="nav-title">
+            <a class="nav-brand" href="http://localhost:64164/">RePass Cloud</a>
+        </div>
+
+        <div class="nav-links">
+            
+            <div class="nav-link">
+                <a href="http://localhost:64164/about/" aria-label="about" ><span data-feather='package'></span> About </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="http://localhost:64164/projects/" aria-label="projects" ><span data-feather='code'></span> Projects </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="http://localhost:64164/case-studies/" aria-label="case-studies" ><span data-feather='award'></span> Case Studies </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="http://localhost:64164/posts/" aria-label="posts" ><span data-feather='book'></span> Posts </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="http://localhost:64164/careers/" aria-label="careers" ><span data-feather='briefcase'></span> Careers </a>
+            </div>
+            
+
+            <span class="nav-icons-divider"></span>
+            <div class="nav-link dark-theme-toggle">
+                <span class="sr-only dark-theme-toggle-screen-reader-target">theme</span>
+                <a aria-hidden="true" role="switch">
+                    <span class="theme-toggle-icon" data-feather="moon"></span>
+                </a>
+            </div>
+
+            <div class="nav-link" id="hamburger-menu-toggle">
+                <span class="sr-only hamburger-menu-toggle-screen-reader-target">menu</span>
+                <a aria-checked="false" aria-labelledby="hamburger-menu-toggle" id="hamburger-menu-toggle-target" role="switch">
+                    <span data-feather="menu"></span>
+                </a>
+            </div>
+
+            
+            <ul class="nav-hamburger-list visibility-hidden">
+                
+                <li class="nav-item">
+                    <a href="http://localhost:64164/about/" ><span data-feather='package'></span> About </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="http://localhost:64164/projects/" ><span data-feather='code'></span> Projects </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="http://localhost:64164/case-studies/" ><span data-feather='award'></span> Case Studies </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="http://localhost:64164/posts/" ><span data-feather='book'></span> Posts </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="http://localhost:64164/careers/" ><span data-feather='briefcase'></span> Careers </a>
+                </li>
+                
+                <li class="nav-item dark-theme-toggle">
+                    <span class="sr-only dark-theme-toggle-screen-reader-target">theme</span>
+                    <a role="switch">
+                        <span class="theme-toggle-icon" data-feather="moon"></span>
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+    </nav>
+</header>
+<main id="content">
+    <div class="post container">
+    <div class="post-header-section">
+        <h1>Introducing LunaVPN: Your Privacy-Powered Guardian</h1>
+
+        
+
+        
+	
+	
+	
+	
+        
+
+	
+
+	
+
+	
+          <small role="doc-subtitle">Technical overview of LunaVPN architecture using .NET, WireGuard, Docker, Auth0, Stripe, and Alpine Linux to build a secure, scalable, privacy-focused VPN service.</small>
+	
+
+	
+          <p class="post-date">
+              
+
+              December 19, 2023
+
+              
+          </p>
+	
+
+    </div>
+
+    <div class="post-content">
+        <p><img src="/images/blog_posts/lunavpn-technology-stack.png" alt="LunaVPN technology stack"></p>
+<p>In today&rsquo;s digital age, online security and privacy have become paramount. As the demand for VPN (Virtual Private Network) services continues to rise, building a VPN service with modern technology has never been more relevant. In this guide, we will walk you through the steps to create your own VPN service using cutting-edge tools and technologies.</p>
+<h2 id="the-foundation-net-back-end">The Foundation: .NET Back-End</h2>
+<p>At the heart of our VPN service lies Microsoft&rsquo;s <a href="https://dotnet.microsoft.com/en-us/" title=".NET is the free, open-source, cross-platform for building modern apps and powerful cloud services">.NET</a>, a powerful and versatile framework for building high-performance back-end services. .NET provides the foundation for our VPN infrastructure, ensuring reliability and scalability.</p>
+<p>Imagine .NET as the solid bedrock on which your VPN service stands. It&rsquo;s like the engine of a high-speed train, propelling your VPN service forward with speed and efficiency. This ensures that your VPN can handle a multitude of users while maintaining optimal performance.</p>
+<h3 id="trusted-hosting-partners">Trusted Hosting Partners</h3>
+<p>To deliver a seamless VPN experience, we rely on trusted VPS (Virtual Private Server) hosting services provided by our partners. These partners offer robust infrastructure, ensuring the availability and performance of our VPN service.</p>
+<p>Think of our hosting partners as the guardians of your online privacy. They provide a secure environment for your VPN service to operate. Just like a well-guarded fortress, our hosting partners ensure that your data remains protected and accessible whenever you need it.</p>
+<h3 id="security-first-auth0">Security First: Auth0</h3>
+<p>Security is paramount when it comes to VPN services. We leverage <a href="https://auth0.com" title="Auth0 identity provider">Auth0</a>, a leading identity and access management platform, to enhance the security of our VPN service. Auth0 provides robust authentication and authorization mechanisms, safeguarding user data and access.</p>
+<p>Auth0 is like the vigilant gatekeeper of your VPN fortress. It ensures that only authorized individuals can enter. With its multi-factor authentication and advanced security features, Auth0 fortifies the walls of your VPN, making it virtually impenetrable to unauthorized access.</p>
+<h3 id="streamlined-payments-with-stripe">Streamlined Payments with Stripe</h3>
+<p>Handling payments securely is crucial for any VPN service. We utilize <a href="https://www.stripe.com/" title="Stripe payments provider">Stripe</a>, a trusted payment processing platform, to manage transactions with utmost security and convenience. Stripe&rsquo;s reliable payment solutions ensure a seamless user experience.</p>
+<p>Stripe acts as the financial guardian of your VPN experience. It&rsquo;s like the trustworthy treasurer who ensures that your payments are processed securely and efficiently. With Stripe, you can trust that your financial transactions are in safe hands.</p>
+<h3 id="alpine-linux-the-secure-choice">Alpine Linux: The Secure Choice</h3>
+<p>When it comes to the operating system, security is our top priority. We opt for <a href="https://www.alpinelinux.org/" title="Alpine Linux homepage">Alpine Linux</a>, a lightweight and security-focused Linux distribution. Alpine&rsquo;s minimalistic design reduces attack surfaces, making it an excellent choice for safeguarding our VPN infrastructure.</p>
+<p>Alpine Linux is like the fortified walls of your VPN fortress. It&rsquo;s lightweight yet incredibly strong, providing an extra layer of security. With Alpine Linux in place, potential vulnerabilities are minimized, ensuring that your VPN remains a fortress of privacy.</p>
+<p>Alpine Linux boasts specific security features that bolster its reputation as a secure choice for our VPN service. Its minimalistic nature means that only essential components are included, reducing the chances of exploitable weaknesses. Additionally, Alpine Linux&rsquo;s proactive approach to security updates ensures that your VPN infrastructure remains protected against emerging threats. This commitment to maintaining a robust defense system is why we trust Alpine Linux to be the bedrock of our VPN service&rsquo;s security.</p>
+<h3 id="wireguard-cutting-edge-vpn-technology">WireGuard: Cutting-Edge VPN Technology</h3>
+<p>Our VPN service is powered by WireGuard, a cutting-edge <a href="https://crm.org/news/types-of-vpn" title="vpn protocol article">VPN protocol</a> known for its speed, efficiency, and security. WireGuard ensures that data transmitted through our VPN service remains private and secure, providing our users with peace of mind.</p>
+<p>WireGuard is like the high-speed express lane of your VPN highway. It ensures that your data travels at lightning speed while remaining shielded from prying eyes. With WireGuard, you can enjoy a fast and secure VPN experience like never before.</p>
+<h3 id="docker-for-seamless-orchestration">Docker for Seamless Orchestration</h3>
+<p>To streamline the deployment and management of our VPN service, we employ Docker, a leading containerization platform. <a href="https://www.zdnet.com/article/what-is-docker-and-why-is-it-so-darn-popular/" title="What is Docker and why is it so darn popular?">Docker</a> enables us to package and distribute our VPN application efficiently, ensuring consistency and reliability across various environments.</p>
+<p>Docker acts as the conductor of your VPN orchestra. It orchestrates the various components of your VPN service, ensuring that everything runs smoothly. With Docker&rsquo;s help, your VPN service operates seamlessly, delivering a harmonious user experience.</p>
+<h3 id="continuous-integration-and-continuous-deployment-cicd">Continuous Integration and Continuous Deployment (CICD)</h3>
+<p>Maintaining the security of our VPN service is an ongoing process. We implement a robust CICD pipeline to deploy the latest security patches and updates as they become available. This proactive approach ensures that our VPN service remains resilient to emerging threats.</p>
+<p><a href="https://www.redhat.com/en/topics/devops/what-is-ci-cd" title="Red Hat CICD article">CICD</a> is like the vigilant guardian of your VPN fortress, constantly patrolling the walls and strengthening the defenses to ensure that your online privacy and security remain ironclad. Just as CI/CD processes continuously monitor, test, and deploy code to maintain software reliability, CICD for your VPN fortress ensures that any vulnerabilities or weaknesses are swiftly addressed, guaranteeing a robust shield against digital threats.</p>
+
+        
+    </div>
+
+    <div class="prev-next">
+        
+    </div>
+
+    
+    
+        <svg id="btt-button" class="arrow-logo" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 384 512" onclick="scrollToTop()" title="Go to top">
+    
+    <path d="M177 159.7l136 136c9.4 9.4 9.4 24.6 0 33.9l-22.6 22.6c-9.4 9.4-24.6 9.4-33.9 0L160 255.9l-96.4 96.4c-9.4 9.4-24.6 9.4-33.9 0L7 329.7c-9.4-9.4-9.4-24.6 0-33.9l136-136c9.4-9.5 24.6-9.5 34-.1z"/>
+</svg>
+<script>
+    let backToTopButton = document.getElementById("btt-button");
+
+    window.onscroll = function() {
+        scrollFunction()
+    };
+
+    function scrollFunction() {
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            backToTopButton.style.display = "block";
+        } else {
+            backToTopButton.style.display = "none";
+        }
+    }
+
+    function scrollToTop() {
+        window.scrollTo(0, 0);
+    }
+</script>
+
+    
+    
+</div>
+
+<aside class="post-toc">
+    <nav id="toc">
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#the-foundation-net-back-end">The Foundation: .NET Back-End</a>
+      <ul>
+        <li><a href="#trusted-hosting-partners">Trusted Hosting Partners</a></li>
+        <li><a href="#security-first-auth0">Security First: Auth0</a></li>
+        <li><a href="#streamlined-payments-with-stripe">Streamlined Payments with Stripe</a></li>
+        <li><a href="#alpine-linux-the-secure-choice">Alpine Linux: The Secure Choice</a></li>
+        <li><a href="#wireguard-cutting-edge-vpn-technology">WireGuard: Cutting-Edge VPN Technology</a></li>
+        <li><a href="#docker-for-seamless-orchestration">Docker for Seamless Orchestration</a></li>
+        <li><a href="#continuous-integration-and-continuous-deployment-cicd">Continuous Integration and Continuous Deployment (CICD)</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </nav>
+</aside>
+
+
+
+    
+
+        </main><footer class="footer">
+    
+
+    
+
+    
+
+    
+    
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+    <span>&copy; 2023 RePass Cloud Pty Ltd</span>
+    
+
+    <span>
+        Made with &#10084;&#65039; in Sydney, Australia &#127462;&#127482;
+    </span>
+
+    <div style="margin-top: 0.5rem; display: flex; gap: 0.75rem; justify-content: center;">
+        <a href="https://github.com/repasscloud/"><span data-feather='github'></span></a>
+        <a href="https://twitter.com/repasscloud/"><span data-feather='twitter'></span></a>
+        <a href="https://linkedin.com/company/repass-cloud"><span data-feather='linkedin'></span></a>
+        <a href="/case-studies/"><span data-feather='award'></span></a>
+        <a href="/legal/"><span data-feather='file-text'></span></a>
+        <a href="/contact/"><span data-feather='mail'></span></a>
+    </div>
+</footer></body>
+</html>

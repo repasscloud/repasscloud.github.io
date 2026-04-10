@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Engineering on RePass Cloud</title>
+    <link>http://localhost:64164/categories/engineering/</link>
+    <description>Recent content in Engineering on RePass Cloud</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Sat, 28 Feb 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:64164/categories/engineering/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>We Are Standardizing on AOT for All Console Software</title>
+      <link>http://localhost:64164/posts/2026-02-28-repasscloud-aot-default/</link>
+      <pubDate>Sat, 28 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:64164/posts/2026-02-28-repasscloud-aot-default/</guid>
+      <description>&lt;h2 id=&#34;we-are-standardizing-on-aot-for-all-console-software&#34;&gt;We Are Standardizing on AOT for All Console Software&lt;/h2&gt;&#xA;&lt;p&gt;We&amp;rsquo;ve moved every internal CLI and distributed console utility at Repass Cloud to native Ahead-of-Time compilation. Not as an experiment. Not for benchmarks in a slide deck. As a default.&lt;/p&gt;&#xA;&lt;p&gt;If it&amp;rsquo;s a console binary, it ships as AOT.&lt;/p&gt;&#xA;&lt;p&gt;This wasn&amp;rsquo;t ideological. It was operational. Once you run enough short-lived processes across CI runners, containers, cron hosts, and ephemeral environments, the cost of pretending the JIT is “free” becomes visible.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

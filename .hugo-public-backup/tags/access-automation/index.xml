@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Access Automation on RePass Cloud</title>
+    <link>http://localhost:64164/tags/access-automation/</link>
+    <description>Recent content in Access Automation on RePass Cloud</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Sat, 07 Mar 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:64164/tags/access-automation/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Why Most Microsoft 365 Identity Automation Fails in Real Environments</title>
+      <link>http://localhost:64164/posts/2026-03-07-why-most-microsoft-365-identity-automation-fails-in-real-environments/</link>
+      <pubDate>Sat, 07 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:64164/posts/2026-03-07-why-most-microsoft-365-identity-automation-fails-in-real-environments/</guid>
+      <description>&lt;p&gt;Most organisations do not struggle with Microsoft 365 because the platform is incapable. They struggle because the work around it is still being run like a collection of one-off admin tasks.&lt;/p&gt;&#xA;&lt;p&gt;A joiner starts on Monday and someone has to remember to assign licences.&#xA;A manager changes divisions and someone has to update groups.&#xA;A shared mailbox needs temporary access for a project and someone has to remove it later.&#xA;A distribution list needs to reflect roster changes every week and someone is still doing it by hand.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Macos on RePass Cloud</title>
+    <link>http://localhost:64164/tags/macos/</link>
+    <description>Recent content in Macos on RePass Cloud</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Mon, 23 Feb 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:64164/tags/macos/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Using find with -prune to Exclude Directories (Linux / macOS Guide)</title>
+      <link>http://localhost:64164/posts/2026-02-23-find-exclude-directories-prune-guide/</link>
+      <pubDate>Mon, 23 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:64164/posts/2026-02-23-find-exclude-directories-prune-guide/</guid>
+      <description>&lt;h2 id=&#34;problem&#34;&gt;Problem&lt;/h2&gt;&#xA;&lt;p&gt;When running find in large repositories, directories like node_modules, .git, and build folders can contain tens of thousands of files.&lt;/p&gt;&#xA;&lt;p&gt;This makes searches slow and wastes CPU time.&lt;/p&gt;&#xA;&lt;p&gt;The -prune option prevents find from descending into those directories, significantly improving performance.&lt;/p&gt;&#xA;&lt;h2 id=&#34;using-find-with--prune-to-exclude-directories&#34;&gt;Using &lt;code&gt;find&lt;/code&gt; with &lt;code&gt;-prune&lt;/code&gt; to Exclude Directories&lt;/h2&gt;&#xA;&lt;p&gt;This guide explains how to use the &lt;code&gt;-prune&lt;/code&gt; option with the Unix &lt;code&gt;find&lt;/code&gt;&#xA;command to efficiently exclude directories from searches.&lt;/p&gt;&#xA;&lt;p&gt;This is useful for ignoring directories such as:&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

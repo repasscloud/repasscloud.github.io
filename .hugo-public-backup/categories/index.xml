@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Categories on RePass Cloud</title>
+    <link>http://localhost:64164/categories/</link>
+    <description>Recent content in Categories on RePass Cloud</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Sat, 28 Feb 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:64164/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>DevOps</title>
+      <link>http://localhost:64164/categories/devops/</link>
+      <pubDate>Sat, 28 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:64164/categories/devops/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Engineering</title>
+      <link>http://localhost:64164/categories/engineering/</link>
+      <pubDate>Sat, 28 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:64164/categories/engineering/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Runtime</title>
+      <link>http://localhost:64164/categories/runtime/</link>
+      <pubDate>Sat, 28 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:64164/categories/runtime/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>CLI</title>
+      <link>http://localhost:64164/categories/cli/</link>
+      <pubDate>Mon, 23 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:64164/categories/cli/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Technical Guides</title>
+      <link>http://localhost:64164/categories/technical-guides/</link>
+      <pubDate>Mon, 23 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:64164/categories/technical-guides/</guid>
+      <description></description>
+    </item>
+  </channel>
+</rss>

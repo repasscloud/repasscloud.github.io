@@ -1,0 +1,8 @@
+# Hugo → Astro URL redirects (preserving Google-indexed URLs)
+# NOTE: This file is for Cloudflare Pages only — GitHub Pages ignores it.
+
+# Tags pages (Hugo generated these; not in Astro — redirect to posts)
+/tags/* /posts/ 301
+
+# Catch-all for any other Hugo pages not migrated
+# (add specific redirects here as needed)
