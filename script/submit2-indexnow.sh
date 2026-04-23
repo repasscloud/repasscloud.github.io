@@ -7,14 +7,14 @@ set -euo pipefail
 # Env vars:
 #   INDEXNOW_KEY            (required)  key filename without .txt
 #   INDEXNOW_HOST           (optional)  default: repasscloud.com
-#   INDEXNOW_SITEMAP_URL    (optional)  default: https://repasscloud.com/sitemap.xml
+#   INDEXNOW_SITEMAP_URL    (optional)  default: https://repasscloud.com/sitemap-index.xml
 #   INDEXNOW_KEY_LOCATION   (optional)  default: https://$HOST/$KEY.txt
 #   INDEXNOW_ENDPOINT       (optional)  default: https://api.indexnow.org/indexnow
 #   INDEXNOW_BATCH_SIZE     (optional)  default: 10000
 # -----------------------------------------------------------------------------
 
 HOST="${INDEXNOW_HOST:-repasscloud.com}"
-SITEMAP_URL="${INDEXNOW_SITEMAP_URL:-https://repasscloud.com/sitemap.xml}"
+SITEMAP_URL="${INDEXNOW_SITEMAP_URL:-https://repasscloud.com/sitemap-index.xml}"
 KEY="${INDEXNOW_KEY:-}"
 ENDPOINT="${INDEXNOW_ENDPOINT:-https://api.indexnow.org/indexnow}"
 BATCH_SIZE="${INDEXNOW_BATCH_SIZE:-10000}"
