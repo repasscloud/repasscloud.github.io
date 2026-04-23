@@ -8,7 +8,6 @@ import {
   SITE_DESCRIPTION,
   SITE_TITLE,
 } from '../consts';
-import { Font } from 'astro:assets';
 
 interface Props {
   title: string;
@@ -35,16 +34,16 @@ const pageTitle = title === SITE_TITLE ? title : `${title} | RePass Cloud`;
 const ogImage = image
   ? new URL(image.src, Astro.url).href
   : new URL(DEFAULT_OG_IMAGE, Astro.site).href;
-const hasGtm = GTM_CONTAINER_ID !== 'YOUR_GTM_CONTAINER_ID';
-const hasGa = GA_MEASUREMENT_ID !== 'YOUR_GA4_MEASUREMENT_ID';
+const hasGtm = GTM_CONTAINER_ID.startsWith('GTM-');
+const hasGa = GA_MEASUREMENT_ID.startsWith('G-');
 ---
 
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-<link rel="icon" type="image/svg+xml" href="/img/repasscloud-logo.svg" />
-<link rel="apple-touch-icon" sizes="180x180" href="/img/repasscloud-logo-36x36.png" />
-<meta name="theme-color" content="#09111f" />
+<link rel="icon" type="image/png" href="/favicon-32x32.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="/images/repass-cloud-logo.png" />
+<meta name="theme-color" content="#ffffff" />
 <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -52,9 +51,8 @@ const hasGa = GA_MEASUREMENT_ID !== 'YOUR_GA4_MEASUREMENT_ID';
   rel="stylesheet"
   href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
 />
-<Font cssVariable="--font-atkinson" preload />
 <link
-  href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap"
+  href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@500;600;700;800&display=swap"
   rel="stylesheet"
 />
 <link rel="sitemap" href="/sitemap-index.xml" />

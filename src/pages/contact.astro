@@ -1,6 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import { CONTACT_EMAIL } from '../consts';
+const CONTACT_EMAIL = 'hello@repasscloud.com';
 
 const WEB3FORMS_KEY = '5cd9e130-d321-4d32-b2bd-e86817def487';
 const challenges = [
@@ -8,113 +8,69 @@ const challenges = [
   'Cloud tooling, FinOps, or governance',
   'Microsoft 365 or identity automation',
   'PowerShell delivery or operational scripting',
-  'Something adjacent - we will route it',
+  'Other complex operational problem',
 ];
 ---
 
 <Layout
   title="Contact RePass Cloud"
-  description="Talk to RePass Cloud about enterprise software, workflow automation, cloud tooling, or identity-heavy operating environments."
+  description="Start a conversation with RePass Cloud about enterprise software, cloud tooling, and identity automation challenges."
 >
   <section class="page-hero">
     <div class="container">
-      <div class="hero-eyebrow">
-        <i class="bi bi-chat-dots"></i>
-        Contact RePass Cloud
-      </div>
+      <div class="hero-eyebrow"><i class="bi bi-chat-dots"></i> Contact</div>
       <h1>Start with the operating problem, not the feature list.</h1>
       <p class="hero-lead">
-        Tell us what is slow, fragile, manual, or difficult to govern. We will use that to scope
-        the right software or automation path.
+        Tell us what is slow, fragile, manual, or difficult to govern. We will map the right software and
+        automation path for your environment.
       </p>
     </div>
   </section>
 
   <section class="section bg-surface">
     <div class="container">
-      <div class="showcase-split" style="align-items:start;">
+      <div class="contact-grid">
         <div class="showcase-panel">
-          <div class="section-label">What to send us</div>
-          <h3 style="margin-bottom:1rem;">Useful first-contact context</h3>
-          <div style="display:grid; gap:0.85rem;">
-            <div class="hero-trust-item" style="justify-content:flex-start; width:100%;">
-              <i class="bi bi-check2-circle"></i>
-              The workflow or operational problem you are trying to fix.
-            </div>
-            <div class="hero-trust-item" style="justify-content:flex-start; width:100%;">
-              <i class="bi bi-check2-circle"></i>
-              The systems involved: Azure, AWS, M365, HR, ITSM, ERP, or internal apps.
-            </div>
-            <div class="hero-trust-item" style="justify-content:flex-start; width:100%;">
-              <i class="bi bi-check2-circle"></i>
-              The biggest risk today: manual effort, access issues, poor visibility, or control gaps.
-            </div>
+          <div class="section-label">Useful first-contact context</div>
+          <h3>What helps us respond quickly</h3>
+          <div class="hero-trust" style="margin-top:1rem;">
+            <div class="hero-trust-item"><i class="bi bi-check2-circle"></i> The workflow currently failing</div>
+            <div class="hero-trust-item"><i class="bi bi-check2-circle"></i> Systems involved (Azure, AWS, M365, HR, ITSM)</div>
+            <div class="hero-trust-item"><i class="bi bi-check2-circle"></i> Main risk (manual effort, access issues, control gaps)</div>
           </div>
-          <div style="margin-top:1.5rem; padding-top:1.5rem; border-top:1px solid var(--rpc-border);">
-            <div class="section-label">Direct contact</div>
-            <p style="color:var(--rpc-text-strong); font-weight:700; margin-bottom:0.5rem;">{CONTACT_EMAIL}</p>
-            <p class="text-muted">We usually reply within one business day.</p>
+          <div style="margin-top:1.5rem; border-top:1px solid var(--rpc-border); padding-top:1rem;">
+            <div class="section-label">Direct email</div>
+            <p style="font-weight:700; margin-bottom:0.25rem;">{CONTACT_EMAIL}</p>
+            <p class="text-muted">Typical response time is one business day.</p>
           </div>
         </div>
 
         <div class="prose-card">
-          <form id="contact-form" style="display:flex; flex-direction:column; gap:1rem;">
+          <form id="contact-form" class="contact-form">
             <input type="hidden" name="access_key" value={WEB3FORMS_KEY} />
             <input type="hidden" name="subject" value="New enquiry from repasscloud.com" />
             <input type="hidden" name="redirect" value="false" />
             <input type="checkbox" name="botcheck" style="display:none;" />
 
-            <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem;">
-              <div>
-                <label for="name" style="display:block; font-size:0.875rem; font-weight:700; margin-bottom:0.45rem; color:var(--rpc-text-strong);">
-                  Name
-                </label>
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  required
-                  placeholder="Jane Smith"
-                  style="width:100%; padding:0.9rem 1rem; border:1px solid var(--rpc-border); border-radius:var(--radius-md); font-size:0.95rem; color:var(--rpc-text); background:rgba(255,255,255,0.03); outline:none;"
-                />
+            <div class="form-row">
+              <div class="form-field">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" required placeholder="Jane Smith" />
               </div>
-              <div>
-                <label for="email" style="display:block; font-size:0.875rem; font-weight:700; margin-bottom:0.45rem; color:var(--rpc-text-strong);">
-                  Email
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  required
-                  placeholder="jane@company.com"
-                  style="width:100%; padding:0.9rem 1rem; border:1px solid var(--rpc-border); border-radius:var(--radius-md); font-size:0.95rem; color:var(--rpc-text); background:rgba(255,255,255,0.03); outline:none;"
-                />
+              <div class="form-field">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required placeholder="jane@company.com" />
               </div>
             </div>
 
-            <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem;">
-              <div>
-                <label for="organisation" style="display:block; font-size:0.875rem; font-weight:700; margin-bottom:0.45rem; color:var(--rpc-text-strong);">
-                  Organisation
-                </label>
-                <input
-                  type="text"
-                  id="organisation"
-                  name="organisation"
-                  placeholder="Company name"
-                  style="width:100%; padding:0.9rem 1rem; border:1px solid var(--rpc-border); border-radius:var(--radius-md); font-size:0.95rem; color:var(--rpc-text); background:rgba(255,255,255,0.03); outline:none;"
-                />
+            <div class="form-row">
+              <div class="form-field">
+                <label for="organisation">Organisation</label>
+                <input type="text" id="organisation" name="organisation" placeholder="Company name" />
               </div>
-              <div>
-                <label for="challenge" style="display:block; font-size:0.875rem; font-weight:700; margin-bottom:0.45rem; color:var(--rpc-text-strong);">
-                  Primary challenge
-                </label>
-                <select
-                  id="challenge"
-                  name="challenge"
-                  style="width:100%; padding:0.9rem 1rem; border:1px solid var(--rpc-border); border-radius:var(--radius-md); font-size:0.95rem; color:var(--rpc-text); background:rgba(255,255,255,0.03); outline:none;"
-                >
+              <div class="form-field">
+                <label for="challenge">Primary challenge</label>
+                <select id="challenge" name="challenge">
                   <option value="">Select one</option>
                   {challenges.map((challenge) => (
                     <option value={challenge}>{challenge}</option>
@@ -123,45 +79,36 @@ const challenges = [
               </div>
             </div>
 
-            <div>
-              <label for="environment" style="display:block; font-size:0.875rem; font-weight:700; margin-bottom:0.45rem; color:var(--rpc-text-strong);">
-                Environment
-              </label>
+            <div class="form-field">
+              <label for="environment">Environment</label>
               <input
                 type="text"
                 id="environment"
                 name="environment"
-                placeholder="Example: Azure, AWS, Entra ID, ServiceNow, Oracle HCM"
-                style="width:100%; padding:0.9rem 1rem; border:1px solid var(--rpc-border); border-radius:var(--radius-md); font-size:0.95rem; color:var(--rpc-text); background:rgba(255,255,255,0.03); outline:none;"
+                placeholder="Azure, AWS, Entra ID, ServiceNow, Oracle HCM"
               />
             </div>
 
-            <div>
-              <label for="message" style="display:block; font-size:0.875rem; font-weight:700; margin-bottom:0.45rem; color:var(--rpc-text-strong);">
-                What is happening today?
-              </label>
+            <div class="form-field">
+              <label for="message">What is happening today?</label>
               <textarea
                 id="message"
                 name="message"
                 required
-                rows="7"
-                placeholder="Describe the manual workflow, system gap, governance issue, or business problem you want solved."
-                style="width:100%; padding:0.9rem 1rem; border:1px solid var(--rpc-border); border-radius:var(--radius-md); font-size:0.95rem; color:var(--rpc-text); background:rgba(255,255,255,0.03); outline:none; resize:vertical; font-family:inherit;"
+                placeholder="Describe the workflow, system gap, governance issue, or risk you want solved."
               ></textarea>
             </div>
 
-            <div id="form-success" style="display:none; padding:1rem 1.25rem; background:#d1fae5; border:1px solid #6ee7b7; border-radius:var(--radius-md); color:#065f46; font-size:0.95rem;">
-              <strong>Message sent.</strong> We will get back to you within one business day.
+            <div id="form-success" class="form-message success" style="display:none;">
+              <strong>Message sent.</strong> We will get back to you shortly.
             </div>
 
-            <div id="form-error" style="display:none; padding:1rem 1.25rem; background:#fee2e2; border:1px solid #fca5a5; border-radius:var(--radius-md); color:#991b1b; font-size:0.95rem;">
+            <div id="form-error" class="form-message error" style="display:none;">
               <strong>Something went wrong.</strong> Please try again or email us directly.
             </div>
 
             <div>
-              <button type="submit" id="submit-btn" class="btn btn-primary" style="min-width:180px;">
-                Send enquiry <i class="bi bi-arrow-right"></i>
-              </button>
+              <button type="submit" id="submit-btn" class="btn btn-primary">Send enquiry <i class="bi bi-arrow-right"></i></button>
             </div>
           </form>
         </div>
@@ -170,56 +117,31 @@ const challenges = [
   </section>
 </Layout>
 
-<style>
-  input:focus,
-  textarea:focus,
-  select:focus {
-    border-color: var(--rpc-primary) !important;
-    box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.18);
-  }
-
-  select option {
-    color: #08111f;
-  }
-
-  #submit-btn:disabled {
-    opacity: 0.65;
-    cursor: not-allowed;
-  }
-
-  @media (max-width: 720px) {
-    #contact-form > div:first-of-type,
-    #contact-form > div:nth-of-type(2) {
-      grid-template-columns: 1fr !important;
-    }
-  }
-</style>
-
 <script>
   const form = document.getElementById('contact-form');
-  const submitBtn = document.getElementById('submit-btn');
+  const submitBtn = document.getElementById('submit-btn') as HTMLButtonElement | null;
   const successEl = document.getElementById('form-success');
   const errorEl = document.getElementById('form-error');
 
-  form?.addEventListener('submit', async (e) => {
-    e.preventDefault();
+  form?.addEventListener('submit', async (event) => {
+    event.preventDefault();
 
     if (!submitBtn || !successEl || !errorEl || !(form instanceof HTMLFormElement)) {
       return;
     }
 
     submitBtn.disabled = true;
-    submitBtn.innerHTML = 'Sending… <i class="bi bi-hourglass-split"></i>';
+    submitBtn.innerHTML = 'Sending... <i class="bi bi-hourglass-split"></i>';
     successEl.style.display = 'none';
     errorEl.style.display = 'none';
 
     try {
       const data = new FormData(form);
-      const res = await fetch('https://api.web3forms.com/submit', {
+      const response = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
         body: data,
       });
-      const json = await res.json();
+      const json = await response.json();
 
       if (json.success) {
         successEl.style.display = 'block';

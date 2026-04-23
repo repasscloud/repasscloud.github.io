@@ -36,7 +36,7 @@ This role focuses on improving reliability, automation, and scalability of syste
 
 ## How to Apply
 
-Contact us at [hello@repasscloud.com](mailto:hello@repasscloud.com) and include your CV and a short 2–5 minute introduction video explaining your experience and projects.
+Contact us at [contact page](/contact) and include your CV and a short 2–5 minute introduction video explaining your experience and projects.
 
 ---
 

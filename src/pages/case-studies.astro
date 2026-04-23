@@ -5,25 +5,31 @@ const studies = [
   {
     label: 'Enterprise retail identity',
     title: 'Microsoft 365 identity and access automation',
-    problem: 'Identity operations for approximately 2,100 staff across multiple AU and NZ brands were consuming daily manual IT effort across licences, groups, mailboxes, and access changes.',
-    solution: 'A rule-driven automation layer connected HR-triggered changes to downstream identity actions, approvals, and audit logging across Microsoft 365 and supporting systems.',
-    outcome: 'Zero daily manual intervention for routine access management.',
-    tags: ['Microsoft 365', 'Entra ID', 'PowerShell', 'Identity automation'],
+    problem:
+      'Identity operations across multiple brands consumed significant manual IT effort for account lifecycle, group access, and mailbox governance.',
+    solution:
+      'Rule-driven automation tied HR events to identity actions, approvals, and policy-safe controls across Microsoft 365 and adjacent systems.',
+    outcome: '2,100 staff lifecycle managed with zero daily manual IT intervention.',
+    tags: ['Microsoft 365', 'Entra ID', 'PowerShell'],
   },
   {
     label: 'Finance workflow operations',
-    title: 'Petty cash workflow automation across 200+ brands',
-    problem: 'Accounts payable teams were manually processing petty cash workflows at multi-brand scale, with approvals, reconciliation, and provisioning consuming the equivalent of four full-time roles.',
-    solution: 'An end-to-end workflow automation layer integrated with identity and HR systems to manage approvals, routing, reporting, and control points in one operating flow.',
-    outcome: 'Eliminated a 4 FTE manual processing burden.',
-    tags: ['Oracle HCM', 'Active Directory', 'Workflow automation', 'Entra ID'],
+    title: 'Petty cash automation across 200+ brands',
+    problem:
+      'Manual approval and reconciliation workflows created cost, delay, and control risk across a large retail footprint.',
+    solution:
+      'End-to-end workflow orchestration integrated identity, approvals, and reporting into one governed operating flow.',
+    outcome: 'Removed an estimated 4 FTE of repetitive processing workload.',
+    tags: ['Oracle HCM', 'Workflow automation', 'Identity'],
   },
   {
     label: 'Global cloud governance',
-    title: 'FinOps tooling for multi-cloud spend control',
-    problem: 'A global organisation had approximately $7M USD annual cloud spend across AWS, Azure, and GCP with no unified view of ownership, findings, or realised savings.',
-    solution: 'A governance product that classified spend, tracked actions, and gave engineering and finance one surface for savings identification, review, and evidence-backed follow-through.',
-    outcome: 'Unified cost visibility and realised-savings tracking across the estate.',
+    title: 'FinOps tooling for multi-cloud visibility',
+    problem:
+      'Cloud spend ownership and savings tracking were fragmented across AWS, Azure, and GCP with no unified decision view.',
+    solution:
+      'A governance product classified spend, tracked remediation actions, and connected cost findings to accountable teams.',
+    outcome: 'Unified visibility and realised-savings tracking across approximately $7M annual cloud spend.',
     tags: ['AWS', 'Azure', 'GCP', 'FinOps'],
   },
 ];
@@ -31,40 +37,37 @@ const studies = [
 
 <Layout
   title="Case Studies"
-  description="Selected RePass Cloud engagements covering identity automation, finance workflow delivery, and multi-cloud governance tooling."
+  description="Selected RePass Cloud work covering identity automation, workflow engineering, and cloud governance tooling in real environments."
 >
   <section class="page-hero">
     <div class="container">
-      <div class="hero-eyebrow">
-        <i class="bi bi-briefcase"></i>
-        Case studies
-      </div>
-      <h1>Examples of the kind of operating problems we solve.</h1>
+      <div class="hero-eyebrow"><i class="bi bi-briefcase"></i> Case studies</div>
+      <h1>Evidence from live enterprise environments.</h1>
       <p class="hero-lead">
-        These are not theoretical concept builds. They are examples of automation, governance, and
-        software delivery work in live enterprise environments.
+        Real constraints, real stakeholder pressure, real outcomes. These engagements show how we
+        turn complex operating problems into durable software systems.
       </p>
     </div>
   </section>
 
   <section class="section bg-surface">
     <div class="container" style="max-width:980px;">
-      <div style="display:grid; gap:1.5rem;">
+      <div style="display:grid; gap:1.1rem;">
         {studies.map((study) => (
           <div class="aethon-card">
             <div class="section-label">{study.label}</div>
-            <h2 style="font-size:clamp(1.45rem, 2.2vw, 2rem); margin-bottom:1rem;">{study.title}</h2>
-            <div class="grid-2" style="margin-bottom:1rem;">
-              <div class="prose-card" style="padding:1.25rem; background:rgba(255,255,255,0.03);">
+            <h2 style="font-size:clamp(1.35rem,2.2vw,1.9rem);">{study.title}</h2>
+            <div class="grid-2" style="margin-top:0.9rem;">
+              <div class="prose-card">
                 <div class="section-label">Problem</div>
                 <p class="text-sm text-muted">{study.problem}</p>
               </div>
-              <div class="prose-card" style="padding:1.25rem; background:rgba(255,255,255,0.03);">
+              <div class="prose-card">
                 <div class="section-label">Solution</div>
                 <p class="text-sm text-muted">{study.solution}</p>
               </div>
             </div>
-            <p style="font-weight:700; color:var(--rpc-text-strong); margin-bottom:1rem;">{study.outcome}</p>
+            <p style="margin-top:0.8rem; font-weight:700;">{study.outcome}</p>
             <div class="tech-stack">
               {study.tags.map((tag) => (
                 <span class="badge badge-secondary">{tag}</span>
@@ -78,16 +81,11 @@ const studies = [
 
   <section class="cta-banner">
     <div class="container">
-      <div class="section-label" style="color:rgba(255,255,255,0.5);">Next step</div>
-      <h2>If your environment has the same kind of failure modes, that is where we start.</h2>
-      <p>
-        Bring the workflow, the bottleneck, or the governance problem. We can work forward from
-        that into the right system shape.
-      </p>
+      <div class="section-label" style="color:rgba(255,255,255,0.55);">Next step</div>
+      <h2>If your environment has similar failure modes, we can help.</h2>
+      <p>Bring the workflow, the bottleneck, or the governance issue. We will map the path forward.</p>
       <div class="cta-actions">
-        <a href="/contact" class="btn btn-primary btn-lg">
-          Discuss your environment <i class="bi bi-arrow-right"></i>
-        </a>
+        <a href="/contact" class="btn btn-primary btn-lg">Discuss your environment <i class="bi bi-arrow-right"></i></a>
       </div>
     </div>
   </section>

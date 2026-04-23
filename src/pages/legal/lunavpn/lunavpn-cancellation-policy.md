@@ -28,7 +28,7 @@ If you believe you are still being charged for LunaVPN:
 
 - Check your payment provider statement for the merchant name.
 - Contact your bank or card provider to dispute unauthorised charges if needed.
-- Email us at [hello@repasscloud.com](mailto:hello@repasscloud.com) so we can help identify the source of the charge where possible.
+- Email us at [contact page](/contact) so we can help identify the source of the charge where possible.
 
 ## 3. Account Closure and Service Termination
 
@@ -44,7 +44,7 @@ accounts, subject to any legal obligations that require limited retention
 (for example accounting records).
 
 If you have a specific privacy request relating to LunaVPN, contact:
-[hello@repasscloud.com](mailto:hello@repasscloud.com)
+[contact page](/contact)
 
 ## 5. Open Source Availability
 
@@ -59,4 +59,4 @@ PO BOX 262
 Bondi Junction NSW 1355
 Australia
 
-Email: [hello@repasscloud.com](mailto:hello@repasscloud.com)
+Contact: [contact page](/contact)

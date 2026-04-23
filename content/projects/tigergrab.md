@@ -28,4 +28,4 @@ TigerGrab has been released as open source and is available on GitHub. RePass Cl
 
 For questions relating to historic TigerGrab usage or open source licensing, contact:
 
-**Email:** [hello@repasscloud.com](mailto:hello@repasscloud.com)
+**Contact:** [contact page](/contact)

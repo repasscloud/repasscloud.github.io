@@ -141,4 +141,4 @@ We are the right fit for organisations that value:
 
 For enquiries, partnerships, or product discussions, contact us at:
 
-**Email:** [hello@repasscloud.com](mailto:hello@repasscloud.com)
+**Contact:** [contact page](/contact)

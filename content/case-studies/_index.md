@@ -44,4 +44,4 @@ An organisation spending approximately $7 million USD per year across AWS, Azure
 
 If you have a problem that looks like it should be automated, or a cloud environment that is costing more than it should, we would like to hear about it.
 
-**Email:** [hello@repasscloud.com](mailto:hello@repasscloud.com)
+**Contact:** [contact page](/contact)

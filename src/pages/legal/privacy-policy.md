@@ -52,10 +52,10 @@ PO BOX 262
 Bondi Junction NSW 1355
 Australia
 
-Email: [hello@repasscloud.com](mailto:hello@repasscloud.com)
+Contact: [contact page](/contact)
 
 If you are a customer administrator and need to raise a security or privacy
-issue urgently, email [hello@repasscloud.com](mailto:hello@repasscloud.com) and include "Privacy" or
+issue urgently, email [contact page](/contact) and include "Privacy" or
 "Security" in the subject.
 
 ## 4. Information We Collect
@@ -229,6 +229,8 @@ You can control cookies through your browser settings. Some features may not
 work properly if you disable cookies. Where required by applicable law, we will
 request consent before using non-essential cookies or similar technologies.
 
+We do not use Google Analytics or Google advertising cookies.
+
 ## 9. Disclosure of Information
 
 We disclose personal information only as necessary to operate the Services, for
@@ -329,9 +331,9 @@ You may also lodge a complaint with your local supervisory authority.
 
 ### 14.3 United States State Privacy Laws
 
-Where applicable (for example California and other states), you may have rights
-to request access, correction, deletion, and to opt out of certain processing
-activities as defined by law.
+Where applicable (for example California under CCPA/CPRA and other state laws),
+you may have rights to request access, correction, deletion, and to opt out of
+certain processing activities as defined by law.
 
 We do not sell personal information.
 
@@ -342,7 +344,7 @@ right to opt out of that processing.
 ## 15. Exercising Rights and Verification
 
 To request access, correction, deletion, or other rights, contact:
-[hello@repasscloud.com](mailto:hello@repasscloud.com)
+[contact page](/contact)
 
 If you are using Services through an organisation, your administrator may need
 to submit certain requests. We may need to verify identity before fulfilling
@@ -366,4 +368,4 @@ PO BOX 262
 Bondi Junction NSW 1355
 Australia
 
-Email: [hello@repasscloud.com](mailto:hello@repasscloud.com)
+Contact: [contact page](/contact)

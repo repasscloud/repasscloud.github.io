@@ -1,55 +1,50 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import { CONTACT_EMAIL, CINTURON_URL } from '../consts';
+import { CINTURON_URL } from '../consts';
 
 const principles = [
   {
-    title: 'Engineering-led delivery',
-    description: 'We lead with architecture, constraints, and operational fit rather than selling a generic implementation pattern.',
+    title: 'Engineering before presentation',
+    description:
+      'We start with system behavior, control points, and integration realities before visual polish or documentation layers.',
   },
   {
-    title: 'Built for governance',
-    description: 'Identity, audit, approvals, and supportability are designed into the system because enterprise operations depend on them.',
+    title: 'Governance as a design input',
+    description:
+      'Auditability, permissions, evidence trails, and supportability are part of architecture decisions from the start.',
   },
   {
-    title: 'Useful in the estate you already have',
-    description: 'Azure, AWS, Microsoft 365, legacy systems, and on-prem dependencies are handled as the environment you actually run.',
+    title: 'Modernization without fantasy assumptions',
+    description:
+      'We design for the enterprise you have now, including legacy systems and hybrid constraints, not a fictional clean slate.',
   },
 ];
 
 const focusAreas = [
-  'Enterprise SaaS and internal control planes',
-  'Cloud governance, FinOps, and automation',
-  'Microsoft 365 identity lifecycle automation',
-  'Operational workflow software and integration layers',
-  'PowerShell modules, reporting, and support tooling',
-  'Security-aware access and audit design',
+  'Multi-tenant enterprise platforms',
+  'Cloud governance and FinOps tooling',
+  'Microsoft 365 and Entra identity automation',
+  'Workflow and approval automation',
+  'PowerShell delivery and operational tooling',
+  'Integration-heavy business systems',
 ];
 ---
 
 <Layout
   title="About RePass Cloud"
-  description="RePass Cloud is an Australian engineering-led software business focused on enterprise platforms, cloud tooling, workflow automation, and identity-heavy operating environments."
+  description="RePass Cloud is an engineering-led Australian software business delivering enterprise platforms, cloud automation, and identity-aware operational systems."
 >
   <section class="page-hero">
     <div class="container">
-      <div class="hero-eyebrow">
-        <i class="bi bi-building"></i>
-        RePass Cloud Pty Ltd
-      </div>
-      <h1>We build software for the operational realities large teams actually live with.</h1>
+      <div class="hero-eyebrow"><i class="bi bi-building"></i> About RePass Cloud</div>
+      <h1>We build enterprise software that can be operated, governed, and trusted.</h1>
       <p class="hero-lead">
-        RePass Cloud is an Australian engineering-led business focused on enterprise platforms,
-        workflow automation, identity-heavy operating environments, and cloud systems that have to
-        work under real scrutiny.
+        RePass Cloud is an engineering-led company focused on software systems for teams working across
+        cloud estates, identity-heavy workflows, and operational environments where reliability matters.
       </p>
       <div class="hero-actions">
-        <a href="/contact" class="btn btn-primary btn-lg">
-          Talk to us <i class="bi bi-arrow-right"></i>
-        </a>
-        <a href="/case-studies" class="btn btn-outline-light btn-lg">
-          View case studies
-        </a>
+        <a href="/contact" class="btn btn-primary btn-lg">Talk to us <i class="bi bi-arrow-right"></i></a>
+        <a href="/case-studies" class="btn btn-outline btn-lg">See case studies</a>
       </div>
     </div>
   </section>
@@ -58,27 +53,18 @@ const focusAreas = [
     <div class="container">
       <div class="showcase-split">
         <div>
-          <div class="section-label">Who we are</div>
-          <h2>Not a generalist digital agency. Not a body-shop consultancy.</h2>
-          <p class="section-intro" style="margin-top:1rem; margin-bottom:1rem;">
-            We work on software and automation systems where operational integrity matters: cloud
-            cost governance, enterprise identity, controlled workflows, and multi-tenant platforms
-            that have to survive growth, scrutiny, and internal complexity.
-          </p>
-          <p class="text-muted" style="line-height:1.85;">
-            That means we care about things many brochure projects skip over: permission models,
-            audit evidence, integration boundaries, supportability, failure modes, and how a system
-            behaves once it is no longer new.
+          <div class="section-label">What we are not</div>
+          <h2>Not a brochure agency. Not a staffing pass-through.</h2>
+          <p class="section-intro">
+            We are a technical delivery team that designs and ships enterprise systems where identity,
+            controls, integration, and support all have to work together in production.
           </p>
         </div>
         <div class="showcase-panel">
-          <div class="section-label">Where we focus</div>
-          <div style="display:grid; gap:0.8rem;">
+          <div class="section-label">Primary focus</div>
+          <div class="hero-trust">
             {focusAreas.map((item) => (
-              <div class="hero-trust-item" style="justify-content:flex-start; width:100%;">
-                <i class="bi bi-check2-circle"></i>
-                {item}
-              </div>
+              <div class="hero-trust-item"><i class="bi bi-check2-circle"></i> {item}</div>
             ))}
           </div>
         </div>
@@ -88,9 +74,9 @@ const focusAreas = [
 
   <section class="section">
     <div class="container">
-      <div class="text-center" style="margin-bottom:3rem;">
+      <div class="text-center" style="margin-bottom:2rem;">
         <div class="section-label">Operating principles</div>
-        <h2>How we approach the work</h2>
+        <h2>How we execute</h2>
       </div>
       <div class="grid-3">
         {principles.map((item) => (
@@ -109,27 +95,18 @@ const focusAreas = [
         <div>
           <div class="section-label">Flagship product</div>
           <h2>Cinturon360</h2>
-          <p style="color:var(--rpc-muted); line-height:1.8; margin-bottom:1.25rem;">
-            Cinturon360 demonstrates how we think: multi-tenant from the start, identity-aware,
-            permissioned, auditable, and built for organisations with partners, operators, and
-            governed workflows all sharing the same system.
+          <p class="text-muted">
+            Cinturon360 reflects our product standard: multi-tenant architecture, identity-aware controls,
+            delegated administration, and full auditability for operationally serious teams.
           </p>
-          <div class="tech-stack" style="margin-bottom:1.5rem;">
-            <span class="badge badge-secondary">Multi-tenant SaaS</span>
-            <span class="badge badge-primary">Azure</span>
-            <span class="badge badge-secondary">Entra ID</span>
-            <span class="badge badge-secondary">Audit logging</span>
-          </div>
-          <a href={CINTURON_URL} class="btn btn-primary" target="_blank" rel="noopener">
+          <a href={CINTURON_URL} class="btn btn-primary btn-sm" target="_blank" rel="noopener">
             Visit Cinturon360 <i class="bi bi-box-arrow-up-right"></i>
           </a>
         </div>
         <div class="showcase-visual">
-          <i class="bi bi-diagram-3-fill" style="font-size:3rem; margin-bottom:1rem;"></i>
-          <div style="font-size:1.25rem; font-weight:700; margin-bottom:0.5rem;">Operational control layer</div>
-          <div style="color:rgba(255,255,255,0.6); font-size:0.875rem;">
-            Identity-aware · Role-based · Audit-ready · Partner-capable
-          </div>
+          <i class="bi bi-diagram-3-fill" style="font-size:2.5rem;"></i>
+          <div style="font-weight:700; margin-top:0.6rem;">Identity-aware control software</div>
+          <div style="font-size:0.85rem; opacity:0.8; margin-top:0.4rem;">Multi-tenant · Audit-ready · Delegated admin</div>
         </div>
       </div>
     </div>
@@ -137,19 +114,12 @@ const focusAreas = [
 
   <section class="cta-banner">
     <div class="container">
-      <div class="section-label" style="color:rgba(255,255,255,0.5);">Contact</div>
-      <h2>Need a team that can work through the technical and operational mess, not around it?</h2>
-      <p>
-        Send us the problem statement, the workflow, or the current failure mode. We will start
-        there.
-      </p>
+      <div class="section-label" style="color:rgba(255,255,255,0.55);">Contact</div>
+      <h2>Need a technical partner who can work through complexity, not around it?</h2>
+      <p>Send us the workflow, control issue, or integration bottleneck. We will start there.</p>
       <div class="cta-actions">
-        <a href="/contact" class="btn btn-primary btn-lg">
-          Start the conversation <i class="bi bi-arrow-right"></i>
-        </a>
-        <a href={`mailto:${CONTACT_EMAIL}`} class="btn btn-outline-light btn-lg">
-          {CONTACT_EMAIL}
-        </a>
+        <a href="/contact" class="btn btn-primary btn-lg">Start the conversation <i class="bi bi-arrow-right"></i></a>
+        <a href="/contact" class="btn btn-outline-light btn-lg">Contact page</a>
       </div>
     </div>
   </section>

@@ -230,4 +230,4 @@ PO BOX 262
 Bondi Junction NSW 1355
 Australia
 
-Email: [hello@repasscloud.com](mailto:hello@repasscloud.com)
+Contact: [contact page](/contact)

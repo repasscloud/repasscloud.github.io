@@ -32,4 +32,4 @@ OptechX has been released as open source and is available on GitHub. RePass Clou
 
 For questions relating to historic OptechX usage, open source licensing, or records held by RePass Cloud, contact:
 
-**Email:** [hello@repasscloud.com](mailto:hello@repasscloud.com)
+**Contact:** [contact page](/contact)

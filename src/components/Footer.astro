@@ -2,41 +2,81 @@
 import {
   AETHON_URL,
   CINTURON_URL,
-  CONTACT_EMAIL,
   GITHUB_URL,
   LINKEDIN_URL,
   TWITTER_URL,
 } from '../consts';
+
+interface Props {
+  simple?: boolean;
+  showCallout?: boolean;
+}
+
+const { simple = false, showCallout = false } = Astro.props;
 const year = new Date().getFullYear();
 ---
 
 <footer class="site-footer">
   <div class="container">
-    <div class="footer-callout">
-      <div>
-        <p class="footer-callout-label">Rebuild what your teams depend on</p>
-        <h2>Need a platform, automation layer, or cloud workflow that actually fits the enterprise you have?</h2>
-        <p>
-          We design and ship operational systems for identity, cloud governance, workflow automation,
-          and multi-team SaaS delivery.
-        </p>
+    {simple ? (
+      <div class="footer-bottom footer-bottom-simple">
+        <div class="footer-bottom-copy">
+          &copy; {year} RePass Cloud Pty Ltd. Made with ❤️ in Sydney, AU 🇦🇺
+        </div>
+        <!-- CCPA opt-out — always visible per California law -->
+        <button
+          type="button"
+          class="footer-privacy-choices"
+          aria-label="Your Privacy Choices — Do Not Sell or Share My Personal Information"
+        >
+          <img src="/images/privacyoptions29x14.png" alt="Privacy options" width="29" height="14" />
+          Your Privacy Choices
+        </button>
+        <div class="footer-social">
+          <a href={TWITTER_URL} target="_blank" rel="noopener" aria-label="X / Twitter">
+            <i class="bi bi-twitter-x"></i>
+          </a>
+          <a href={LINKEDIN_URL} target="_blank" rel="noopener" aria-label="LinkedIn">
+            <i class="bi bi-linkedin"></i>
+          </a>
+          <a href={GITHUB_URL} target="_blank" rel="noopener" aria-label="GitHub">
+            <i class="bi bi-github"></i>
+          </a>
+        </div>
       </div>
-      <div class="footer-callout-actions">
-        <a href="/contact" class="btn btn-primary">Discuss a project</a>
-        <a href={`mailto:${CONTACT_EMAIL}`} class="btn btn-secondary">{CONTACT_EMAIL}</a>
+    ) : (
+      <Fragment>
+    {showCallout && (
+      <div class="footer-callout">
+        <div>
+          <p class="footer-callout-label">Built for enterprise pressure</p>
+          <h2>Need software and automation that can stand up in production and governance reviews?</h2>
+          <p>
+            RePass Cloud delivers control-plane software, identity automation, and cloud tooling for
+            teams that cannot afford brittle workflows.
+          </p>
+        </div>
+        <div class="footer-callout-actions">
+          <a href="/contact" class="btn btn-primary">Discuss a project</a>
+        </div>
       </div>
-    </div>
+    )}
 
     <div class="footer-grid">
       <div>
         <div class="footer-brand">
-          <span class="brand-mark footer-brand-mark"><span>R</span></span>
+          <img
+            src="https://repasscloud.com/images/repass-cloud-logo.png"
+            alt="RePass Cloud"
+            class="footer-logo"
+            loading="lazy"
+            decoding="async"
+          />
           <span>RePass Cloud</span>
         </div>
-        <p class="footer-tagline">Enterprise software, cloud architecture, and operational automation.</p>
+        <p class="footer-tagline">Enterprise software and cloud automation.</p>
         <p class="footer-copy">
-          Built in Sydney for teams operating across Azure, AWS, Microsoft 365, internal platforms,
-          and regulated business workflows.
+          Built in Sydney for teams operating across Azure, AWS, and Microsoft 365.
         </p>
       </div>
 
@@ -65,7 +105,7 @@ const year = new Date().getFullYear();
         <div class="footer-col-title">Products</div>
         <ul class="footer-links">
           <li><a href={CINTURON_URL} target="_blank" rel="noopener">Cinturon360 ↗</a></li>
-          <li><a href={AETHON_URL} target="_blank" rel="noopener">Aethon ↗</a></li>
+          <li><a href={AETHON_URL} target="_blank" rel="noopener">Aethon Jobs ↗</a></li>
         </ul>
       </div>
 
@@ -73,7 +113,6 @@ const year = new Date().getFullYear();
         <div class="footer-col-title">Connect</div>
         <ul class="footer-links">
           <li><a href="/contact">Contact</a></li>
-          <li><a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a></li>
           <li><a href={GITHUB_URL} target="_blank" rel="noopener">GitHub ↗</a></li>
           <li><a href={LINKEDIN_URL} target="_blank" rel="noopener">LinkedIn ↗</a></li>
           <li><a href={TWITTER_URL} target="_blank" rel="noopener">X / Twitter ↗</a></li>
@@ -93,8 +132,17 @@ const year = new Date().getFullYear();
 
     <div class="footer-bottom">
       <div class="footer-bottom-copy">
-        &copy; {year} RePass Cloud Pty Ltd. Designed for modern enterprise operations from Sydney, Australia.
+        &copy; {year} RePass Cloud Pty Ltd. Made with ❤️ in Sydney, AU 🇦🇺
       </div>
+      <!-- CCPA opt-out — always visible per California law -->
+      <button
+        type="button"
+        class="footer-privacy-choices"
+        aria-label="Your Privacy Choices — Do Not Sell or Share My Personal Information"
+      >
+        <img src="/images/privacyoptions29x14.png" alt="Privacy options" width="29" height="14" />
+        Your Privacy Choices
+      </button>
       <div class="footer-social">
         <a href={TWITTER_URL} target="_blank" rel="noopener" aria-label="X / Twitter">
           <i class="bi bi-twitter-x"></i>
@@ -107,6 +155,8 @@ const year = new Date().getFullYear();
         </a>
       </div>
     </div>
+      </Fragment>
+    )}
   </div>
 </footer>
 
@@ -116,4 +166,29 @@ const year = new Date().getFullYear();
       window.repasscloudOpenCookieBanner();
     }
   });
+  document.querySelectorAll('.footer-privacy-choices').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      if (typeof window.repasscloudOpenCookieBanner === 'function') {
+        window.repasscloudOpenCookieBanner();
+      }
+    });
+  });
 </script>
+
+<style>
+  .footer-privacy-choices {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #67708f;
+    font-size: 0.84rem;
+    padding: 0;
+    transition: color 0.15s;
+  }
+  .footer-privacy-choices:hover {
+    color: #a0a8c0;
+  }
+</style>

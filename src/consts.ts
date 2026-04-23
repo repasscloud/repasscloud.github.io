@@ -6,7 +6,6 @@ export const DEFAULT_OG_IMAGE = '/img/og-default.png';
 export const GTM_CONTAINER_ID = 'GTM-N5D945ZS';
 export const GA_MEASUREMENT_ID = 'YOUR_GA4_MEASUREMENT_ID';
 
-export const CONTACT_EMAIL = 'hello@repasscloud.com';
 export const CINTURON_URL = 'https://cinturon360.com';
 export const GITHUB_URL = 'https://github.com/repasscloud';
 export const AETHON_URL = 'https://aethon.jobs';

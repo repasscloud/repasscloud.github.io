@@ -42,4 +42,4 @@ WSUS Commander Update Check V2 is available open source on GitHub. Any use of th
 
 For questions relating to WSUS Commander Update Check V2 or open source licensing, contact:
 
-**Email:** [hello@repasscloud.com](mailto:hello@repasscloud.com)
+**Contact:** [contact page](/contact)

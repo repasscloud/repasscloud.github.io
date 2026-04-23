@@ -14,6 +14,7 @@ interface Props {
   pubDate?: string;
   updatedDate?: string;
   noIndex?: boolean;
+  simpleFooter?: boolean;
 }
 
 const {
@@ -24,9 +25,11 @@ const {
   pubDate,
   updatedDate,
   noIndex = false,
+  simpleFooter = false,
 } = Astro.props;
 
-const hasGtm = GTM_CONTAINER_ID !== 'YOUR_GTM_CONTAINER_ID';
+const hasGtm = GTM_CONTAINER_ID.startsWith('GTM-');
+const isHomePage = Astro.url.pathname === '/';
 ---
 
 <!doctype html>
@@ -58,7 +61,7 @@ const hasGtm = GTM_CONTAINER_ID !== 'YOUR_GTM_CONTAINER_ID';
     <main>
       <slot />
     </main>
-    <Footer />
+    <Footer simple={simpleFooter} showCallout={isHomePage && !simpleFooter} />
     <CookieConsent />
   </body>
 </html>

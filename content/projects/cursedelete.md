@@ -61,4 +61,4 @@ CurseDelete is available open source on GitHub under the MIT licence. Any use of
 
 For questions relating to CurseDelete or open source licensing, contact:
 
-**Email:** [hello@repasscloud.com](mailto:hello@repasscloud.com)
+**Contact:** [contact page](/contact)

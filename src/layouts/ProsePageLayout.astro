@@ -10,22 +10,47 @@ interface Props {
 }
 
 const { frontmatter } = Astro.props;
+const isLegalSubpage =
+  (Astro.url.pathname.startsWith('/legal/') && Astro.url.pathname !== '/legal/') ||
+  frontmatter.sectionLabel?.toLowerCase() === 'legal';
 ---
 
-<Layout title={frontmatter.title} description={frontmatter.description}>
-  <section class="page-hero">
-    <div class="container">
-      {frontmatter.sectionLabel && <div class="hero-eyebrow">{frontmatter.sectionLabel}</div>}
-      <h1>{frontmatter.title}</h1>
-      {frontmatter.description && <p class="hero-lead">{frontmatter.description}</p>}
-    </div>
-  </section>
-
-  <section class="section-sm bg-surface">
-    <div class="container-narrow">
-      <div class="prose post-content">
-        <slot />
+<Layout title={frontmatter.title} description={frontmatter.description} simpleFooter={isLegalSubpage}>
+  {isLegalSubpage ? (
+    <Fragment>
+      <div class="legal-header-bar">
+        <div class="container">
+          <div class="section-label">RePass Cloud Pty Ltd</div>
+          <h1 class="legal-header-title">{frontmatter.title}</h1>
+          {frontmatter.description && <p class="legal-header-desc">{frontmatter.description}</p>}
+        </div>
       </div>
-    </div>
-  </section>
+
+      <section class="section-sm legal-doc-section">
+        <div class="container legal-doc-container">
+          <div class="legal-doc-content">
+            <slot />
+          </div>
+        </div>
+      </section>
+    </Fragment>
+  ) : (
+    <Fragment>
+      <section class="page-hero">
+        <div class="container">
+          {frontmatter.sectionLabel && <div class="hero-eyebrow">{frontmatter.sectionLabel}</div>}
+          <h1>{frontmatter.title}</h1>
+          {frontmatter.description && <p class="hero-lead">{frontmatter.description}</p>}
+        </div>
+      </section>
+
+      <section class="section-sm bg-surface">
+        <div class="container-narrow">
+          <div class="prose post-content">
+            <slot />
+          </div>
+        </div>
+      </section>
+    </Fragment>
+  )}
 </Layout>

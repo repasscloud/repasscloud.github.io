@@ -65,7 +65,7 @@ Under the *Privacy Act 1988 (Cth)*, you have the right to:
 - Request correction of inaccurate or incomplete information
 - Make a complaint if you believe your privacy rights have been breached
 
-To exercise any of these rights, contact us at [hello@repasscloud.com](mailto:hello@repasscloud.com).
+To exercise any of these rights, contact us via the [contact page](/contact).
 
 ## 9. Agreement to This Notice
 
@@ -75,7 +75,7 @@ By submitting an application, you confirm that you have read and agree to this A
 
 **RePass Cloud Pty Ltd**
 Sydney, New South Wales, Australia
-[hello@repasscloud.com](mailto:hello@repasscloud.com)
+[contact page](/contact)
 
 If you are not satisfied with our response to a privacy concern, you may contact the Office of the Australian Information Commissioner (OAIC) at [oaic.gov.au](https://www.oaic.gov.au).
 

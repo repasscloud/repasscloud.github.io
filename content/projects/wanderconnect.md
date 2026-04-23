@@ -28,4 +28,4 @@ WanderConnect has been released as open source and is available on GitHub. RePas
 
 For questions relating to historic WanderConnect usage or open source licensing, contact:
 
-**Email:** [hello@repasscloud.com](mailto:hello@repasscloud.com)
+**Contact:** [contact page](/contact)

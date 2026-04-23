@@ -46,4 +46,4 @@ CveInfo is available open source on GitHub. Any use of the source code is at you
 
 For questions relating to CveInfo or open source licensing, contact:
 
-**Email:** [hello@repasscloud.com](mailto:hello@repasscloud.com)
+**Contact:** [contact page](/contact)

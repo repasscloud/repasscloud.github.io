@@ -38,7 +38,7 @@ The hiring decision for this role rests with the **interview panel**.
 
 ## How to Apply
 
-Contact us at [hello@repasscloud.com](mailto:hello@repasscloud.com) and include:
+Contact us at [contact page](/contact) and include:
 
 - Your resume or CV
 - GitHub profile or portfolio

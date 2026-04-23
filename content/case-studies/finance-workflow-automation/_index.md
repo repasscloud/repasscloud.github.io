@@ -101,4 +101,4 @@ The finance team receives the consolidated daily report at 6:00 PM, reviews it, 
 
 This engagement draws on our [Business Operations & IT Tooling](/about/#3-business-operations--it-tooling) and [Microsoft 365 & Identity Automation](/about/#microsoft-365--identity-automation) capabilities. We build similar automation for organisations that need to connect identity systems, operational data, and finance platforms to remove manual processing work at scale.
 
-**Email:** [hello@repasscloud.com](mailto:hello@repasscloud.com)
+**Contact:** [contact page](/contact)

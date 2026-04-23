@@ -51,7 +51,7 @@ Professional conduct at RePass Cloud means how you engage with people, represent
 
 ## Reporting Concerns
 
-Any applicant, employee, or contractor who believes they have experienced discrimination during a RePass Cloud hiring or engagement process is encouraged to raise the matter via [hello@repasscloud.com](mailto:hello@repasscloud.com). All concerns will be treated seriously and handled with appropriate confidentiality.
+Any applicant, employee, or contractor who believes they have experienced discrimination during a RePass Cloud hiring or engagement process is encouraged to raise the matter via [contact page](/contact). All concerns will be treated seriously and handled with appropriate confidentiality.
 
 ---
 

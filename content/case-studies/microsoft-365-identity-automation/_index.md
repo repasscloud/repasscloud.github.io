@@ -92,4 +92,4 @@ The system was built to run unattended on a daily schedule. It includes:
 
 This engagement is an example of our [Microsoft 365 & Identity Automation](/about/#microsoft-365--identity-automation) capability. We build similar automation for organisations that need dynamic, rule-driven control over Microsoft 365 identities, access, and communications — without manual IT intervention.
 
-**Email:** [hello@repasscloud.com](mailto:hello@repasscloud.com)
+**Contact:** [contact page](/contact)

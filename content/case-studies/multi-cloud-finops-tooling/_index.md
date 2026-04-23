@@ -169,4 +169,4 @@ Conflating these three numbers is how cloud cost programmes overstate their impa
 
 This engagement is an example of our [Cloud Infrastructure Tooling](/about/#2-cloud-infrastructure-tooling) capability. We build similar tools for organisations that need structured, multi-cloud cost governance — not just billing dashboards, but decision workflows, accountability frameworks, and verified savings tracking.
 
-**Email:** [hello@repasscloud.com](mailto:hello@repasscloud.com)
+**Contact:** [contact page](/contact)

@@ -40,4 +40,4 @@ LockWorkstation is available open source on GitHub. Any use of the source code i
 
 For questions relating to LockWorkstation or open source licensing, contact:
 
-**Email:** [hello@repasscloud.com](mailto:hello@repasscloud.com)
+**Contact:** [contact page](/contact)

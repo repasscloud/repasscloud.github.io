@@ -46,4 +46,4 @@ The LunaVPN source code has been made available as open source for community use
 
 If you have a billing or privacy question relating to historic LunaVPN usage, contact:
 
-**Email:** [hello@repasscloud.com](mailto:hello@repasscloud.com)
+**Contact:** [contact page](/contact)

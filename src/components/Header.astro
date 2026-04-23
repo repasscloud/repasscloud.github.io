@@ -13,12 +13,16 @@ const currentPath = Astro.url.pathname;
   <div class="container">
     <nav class="site-nav">
       <a href="/" class="site-nav-brand">
-        <span class="brand-mark">
-          <span>R</span>
-        </span>
+        <img
+          src="https://repasscloud.com/images/repass-cloud-logo.png"
+          alt="RePass Cloud"
+          class="site-logo"
+          loading="eager"
+          decoding="async"
+        />
         <span class="site-nav-brand-copy">
           <span class="site-nav-brand-name">RePass Cloud</span>
-          <span class="site-nav-brand-tag">Cloud platforms for modern enterprise</span>
+          <span class="site-nav-brand-tag">Software systems for modern enterprise operations</span>
         </span>
       </a>
 
@@ -34,9 +38,7 @@ const currentPath = Astro.url.pathname;
       </div>
 
       <div class="site-nav-actions">
-        <a href="/about" class="btn btn-secondary btn-sm nav-secondary-cta">
-          Why RePass Cloud
-        </a>
+        <a href="/about" class="btn btn-outline btn-sm nav-secondary-cta">Why RePass Cloud</a>
         <a href="/contact" class="btn btn-primary btn-sm">
           Start a conversation <i class="bi bi-arrow-right"></i>
         </a>
@@ -59,7 +61,7 @@ const currentPath = Astro.url.pathname;
           {label}
         </a>
       ))}
-      <a href="/about" class="btn btn-secondary btn-sm">Why RePass Cloud</a>
+      <a href="/about" class="btn btn-outline btn-sm">Why RePass Cloud</a>
       <a href="/contact" class="btn btn-primary btn-sm">Start a conversation</a>
     </div>
   </div>
@@ -69,13 +71,50 @@ const currentPath = Astro.url.pathname;
   const toggle = document.getElementById('mobile-menu-toggle');
   const menu = document.getElementById('mobile-menu');
 
+  const closeMenu = () => {
+    menu?.classList.remove('open');
+    toggle?.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+    const icon = toggle?.querySelector('i');
+    if (icon) {
+      icon.className = 'bi bi-list';
+      icon.style.fontSize = '1.5rem';
+    }
+  };
+
   toggle?.addEventListener('click', () => {
     const isOpen = menu?.classList.toggle('open');
     toggle?.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    document.body.style.overflow = isOpen ? 'hidden' : '';
     const icon = toggle.querySelector('i');
     if (icon) {
       icon.className = isOpen ? 'bi bi-x' : 'bi bi-list';
       icon.style.fontSize = '1.5rem';
+    }
+  });
+
+  menu?.querySelectorAll('a').forEach((link) => {
+    link.addEventListener('click', closeMenu);
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') {
+      closeMenu();
+    }
+  });
+
+  document.addEventListener('click', (event) => {
+    if (!menu?.classList.contains('open') || !toggle) {
+      return;
+    }
+
+    const target = event.target;
+    if (!(target instanceof Node)) {
+      return;
+    }
+
+    if (!menu.contains(target) && !toggle.contains(target)) {
+      closeMenu();
     }
   });
 </script>
