@@ -1,7 +1,7 @@
 import requests
 
 # Replace 'YOUR_SITEMAP_URL' with the URL of your sitemap.xml
-sitemap_url = 'https://repasscloud.com/sitemap.xml'
+sitemap_url = 'https://repasscloud.com/sitemap-index.xml'
 
 # Google Search Console URL for sitemap submission
 google_url = f'https://www.google.com/ping?sitemap={sitemap_url}'

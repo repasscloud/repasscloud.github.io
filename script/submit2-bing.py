@@ -1,7 +1,7 @@
 import requests
 
 # Replace 'YOUR_SITEMAP_URL' with the URL of your sitemap.xml
-sitemap_url = 'https://repasscloud.com/sitemap.xml'
+sitemap_url = 'https://repasscloud.com/sitemap-index.xml'
 
 # Bing URL for sitemap submission
 bing_url = f'http://www.bing.com/ping?sitemap={sitemap_url}'
