@@ -1,124 +1,116 @@
-# RePass Cloud Website (repasscloud.com)
+# RePass Cloud Website
 
-Static website source for **RePass Cloud**, built with **Hugo** and deployed via **GitHub Pages**.
+Source code for https://repasscloud.com.
 
-- **Website:** <https://repasscloud.com>  
-- **Repo:** <https://github.com/repasscloud/repasscloud.github.io>  
+This repository is now Astro-only (Hugo has been removed).
 
-## Tech
+## Stack
 
-- Hugo (static site generator)
-- Theme: Gokarna (theme submodule)
-- GitHub Actions (scheduled tasks + deployments)
+- Astro 6
+- TypeScript
+- MD/MDX content collections
+- GitHub Actions for build and promotion workflow
+- Tectonic for compiling legal PDFs from LaTeX
 
-## Local development
+## Requirements
 
-### Prereqs
+- Node.js 22.12+ (see `package.json` engines)
+- npm
 
-- Hugo (extended recommended)
-- Git
+## Local Development
 
-### Run locally
-
-```bash
-hugo server -D
-```
-
-Site will be available at:
-
-- <http://localhost:1313>
-
-### Build
+Install dependencies:
 
 ```bash
-hugo
+npm ci
 ```
 
-Output is written to `public/` by default.
-
-## Content
-
-Posts live under:
-
-- `content/posts/`
-
-### Front matter conventions
-
-For SEO, each post should include a unique meta description:
-
-```toml
-+++
-title = "..."
-date = 2024-01-01
-draft = false
-description = "A unique 120–160 character summary used for meta description and social previews."
-tags = ["..."]
-+++
-```
-
-## SEO maintenance
-
-### IndexNow (Bing + other IndexNow consumers)
-
-Script:
-
-- `script/submit2-indexnow.sh`
-
-Run locally:
+Start local dev server:
 
 ```bash
-INDEXNOW_KEY="YOUR_KEY" bash script/submit2-indexnow.sh
+npm run dev
 ```
 
-Recommended: store `INDEXNOW_KEY` as a GitHub Actions secret and run the script on a schedule.
+Build production site:
 
-### Google & Bing submission scripts
+```bash
+npm run build
+```
 
-Repo contains scheduled submission scripts referenced by workflow:
+Preview production output locally:
 
-- `script/submit2-google.py`
-- `script/submit2-bing.py`
+```bash
+npm run preview
+```
 
-## GitHub Actions
+## Project Structure
 
-Example scheduled workflow (weekly):
+- `src/pages/` route files and page content
+- `src/components/` reusable Astro components
+- `src/layouts/` page layouts
+- `src/content/posts/` blog posts used by Astro content collections
+- `src/styles/` site styling
+- `public/` static assets copied directly at build time
+- `static/` additional static assets including generated legal PDFs
+- `latex/downloads/legal/` LaTeX sources for legal PDFs
+- `.github/workflows/` CI/CD workflows
 
-- `.github/workflows/<your-workflow>.yml`
+## Writing Blog Posts
 
-It can run:
+Posts are loaded from `src/content/posts` via `src/content.config.ts`.
 
-- Google submission
-- Bing submission
-- IndexNow submission
+Example frontmatter:
 
-## Link building (inbound links)
+```yaml
+---
+title: "Post title"
+description: "Clear 120-160 character summary for SEO and social previews."
+pubDate: 2026-04-23
+tags:
+   - "tag one"
+   - "tag two"
+---
+```
 
-Search consoles may warn about low “high-quality inbound links”. Practical steps:
+Guidelines:
 
-1. Add official website links to:
-   - GitHub profile (organization + personal)
-   - LinkedIn company page
-   - LinkedIn personal profile
-   - Any SaaS/product directories you use
+- Keep `title` specific and outcome-oriented.
+- Keep `description` unique and useful in search snippets.
+- Use lowercase tags for consistency.
+- Prefer long-form, practical technical posts over short announcements.
 
-2. Add links from GitHub repositories:
-   - Add an “Official website” link in READMEs
-   - Pin repositories with a website link on the GitHub org profile
+## Legal PDFs
 
-3. Publish link-worthy content:
-   - Architecture overview pages
-   - Technical deep dives (how-to guides, benchmarks, incident writeups)
-   - Release announcements
-   - Open source tooling posts
+Legal documents are authored in LaTeX and compiled with Tectonic in CI.
 
-## Profiles / directories to update
+- Sources: `latex/downloads/legal/*.tex`
+- Outputs: `static/downloads/legal/*.pdf`
 
-- RePass Cloud site: <https://repasscloud.com>
-- GitHub org profile: <https://github.com/repasscloud>
-- LinkedIn company page: <https://www.linkedin.com/company/repass-cloud>
-- LinkedIn personal profile: <https://www.linkedin.com/in/djwynyard/>
-- Product directories: <https://repasscloud.com/projects/>
+If compiling locally, install Tectonic and run:
+
+```bash
+find ./latex -name "*.tex" | while IFS= read -r tex_file; do
+   output_dir="$(dirname "$tex_file")"
+   output_dir="${output_dir/#.\/latex/.\/static}"
+   mkdir -p "$output_dir"
+   tectonic "$tex_file" -o "$output_dir"
+done
+```
+
+## CI/CD
+
+- Main build/promotion pipeline: `.github/workflows/astro-build.yml`
+- Weekly search submission tasks: `.github/workflows/weekly-submission.yml`
+- SEO submission scripts in `script/`:
+   - `submit2-google.py`
+   - `submit2-bing.py`
+   - `submit2-indexnow.sh`
+
+## Notes
+
+- Site URL and sitemap integration are configured in `astro.config.mjs`.
+- This repo includes generated output directories (`dist/` and legal PDFs) during normal workflow operations.
 
 ## License
 
-If you want a license, add `LICENSE` (MIT/Apache/etc) and update this section.
+See `LICENSE`.
