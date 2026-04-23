@@ -74,8 +74,8 @@ jobs:
       - name: Publish PDF files
         run: |
           find ./latex -name "*.tex" | while IFS= read -r tex_file; do
-            output_dir="$(dirname "$tex_file")"
-            output_dir="${output_dir/#.\/latex/.\/static}"
+            output_dir="static/${tex_file#./latex/}"
+            output_dir="$(dirname "$output_dir")"
             mkdir -p "$output_dir"
             tectonic "$tex_file" -o "$output_dir"
           done
