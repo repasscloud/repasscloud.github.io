@@ -4,54 +4,75 @@ import { getCollection } from 'astro:content';
 import FormattedDate from '../../components/FormattedDate.astro';
 
 const allPosts = await getCollection('posts');
-const posts = allPosts.sort(
-  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
-);
+const posts = allPosts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+const [featuredPost, ...remainingPosts] = posts;
 ---
 
 <Layout
   title="Posts"
-  description="Engineering notes, product announcements, and technical write-ups from RePass Cloud covering enterprise software, cloud automation, and infrastructure."
+  description="Engineering notes, implementation write-ups, and product commentary from RePass Cloud covering software, cloud delivery, and enterprise automation."
 >
-
-  <!-- Page header -->
-  <div style="background:var(--rpc-surface); border-bottom:1px solid var(--rpc-border); padding: 3rem 0 2rem;">
+  <section class="page-hero">
     <div class="container">
-      <div class="section-label">Writing</div>
-      <h1 style="font-size:clamp(1.5rem,3vw,2rem); margin-bottom:0.5rem;">Posts</h1>
-      <p style="color:var(--rpc-muted); font-size:1rem; max-width:520px; margin:0;">
-        Engineering notes, product announcements, and technical write-ups from the RePass Cloud team.
+      <div class="hero-eyebrow">
+        <i class="bi bi-journal-text"></i>
+        Writing
+      </div>
+      <h1>Notes from delivery, product work, and enterprise automation.</h1>
+      <p class="hero-lead">
+        We write about the systems we build, the operational problems behind them, and the kinds of
+        technical decisions that matter once software is live.
       </p>
     </div>
-  </div>
+  </section>
 
-  <section class="section">
+  <section class="section bg-surface">
     <div class="container">
       {posts.length === 0 ? (
         <p class="text-muted">No posts yet. Check back soon.</p>
       ) : (
-        <div class="blog-grid">
-          {posts.map((post) => (
-            <a href={`/posts/${post.id}/`} class="blog-card">
+        <Fragment>
+          {featuredPost && (
+            <a href={`/posts/${featuredPost.id}/`} class="blog-card" style="margin-bottom:1.5rem; display:block;">
               <div class="blog-card-body">
+                <div class="section-label">Featured</div>
                 <div class="blog-card-meta">
-                  <FormattedDate date={post.data.pubDate} />
+                  <FormattedDate date={featuredPost.data.pubDate} />
                 </div>
-                <div class="blog-card-title">{post.data.title}</div>
-                <div class="blog-card-desc">{post.data.description}</div>
-                {post.data.tags && post.data.tags.length > 0 && (
+                <div class="blog-card-title">{featuredPost.data.title}</div>
+                <div class="blog-card-desc">{featuredPost.data.description}</div>
+                {featuredPost.data.tags && featuredPost.data.tags.length > 0 && (
                   <div class="blog-card-tags">
-                    {post.data.tags.slice(0, 4).map((tag) => (
+                    {featuredPost.data.tags.slice(0, 4).map((tag) => (
                       <span class="badge badge-secondary">{tag}</span>
                     ))}
                   </div>
                 )}
               </div>
             </a>
-          ))}
-        </div>
+          )}
+          <div class="grid-3">
+            {remainingPosts.map((post) => (
+              <a href={`/posts/${post.id}/`} class="blog-card">
+                <div class="blog-card-body">
+                  <div class="blog-card-meta">
+                    <FormattedDate date={post.data.pubDate} />
+                  </div>
+                  <div class="blog-card-title">{post.data.title}</div>
+                  <div class="blog-card-desc">{post.data.description}</div>
+                  {post.data.tags && post.data.tags.length > 0 && (
+                    <div class="blog-card-tags">
+                      {post.data.tags.slice(0, 4).map((tag) => (
+                        <span class="badge badge-secondary">{tag}</span>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              </a>
+            ))}
+          </div>
+        </Fragment>
       )}
     </div>
   </section>
-
 </Layout>

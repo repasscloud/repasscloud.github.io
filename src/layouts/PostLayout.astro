@@ -14,7 +14,6 @@ interface Props {
 
 const { title, description, pubDate, updatedDate, heroImage, tags } = Astro.props;
 
-// JSON-LD for BlogPosting
 const blogSchema = {
   '@context': 'https://schema.org',
   '@type': 'BlogPosting',
@@ -52,55 +51,50 @@ const blogSchema = {
     <script type="application/ld+json" set:html={JSON.stringify(blogSchema)} />
   </Fragment>
 
-  <!-- Post hero -->
-  <div class="post-hero">
+  <section class="page-hero">
     <div class="container-narrow">
       {tags && tags.length > 0 && (
-        <div style="display:flex; gap:0.4rem; flex-wrap:wrap; margin-bottom:1rem;">
+        <div class="tech-stack" style="margin-bottom:1rem;">
           {tags.map((tag) => (
-            <span class="badge badge-secondary" style="background:rgba(255,255,255,0.12); color:rgba(255,255,255,0.75);">
-              {tag}
-            </span>
+            <span class="badge badge-secondary">{tag}</span>
           ))}
         </div>
       )}
-      <h1>{title}</h1>
-      <div class="post-hero-meta">
+      <h1 style="max-width:18ch;">{title}</h1>
+      <p class="hero-lead" style="margin-top:1rem; max-width:60ch;">{description}</p>
+      <div class="meta-row" style="margin-top:1.25rem; color:var(--rpc-muted);">
         <FormattedDate date={pubDate} />
         {updatedDate && (
           <span> · Updated <FormattedDate date={updatedDate} /></span>
         )}
       </div>
     </div>
-  </div>
+  </section>
 
   {heroImage && (
-    <div style="background:var(--rpc-bg); padding: 2rem 0;">
+    <section class="section-sm">
       <div class="container-narrow">
         <img
           src={heroImage.src}
           alt={title}
-          style="width:100%; border-radius:var(--radius-4); box-shadow:var(--shadow-md);"
+          style="width:100%; border-radius:var(--radius-lg); box-shadow:var(--rpc-shadow);"
           width={heroImage.width}
           height={heroImage.height}
         />
       </div>
-    </div>
+    </section>
   )}
 
-  <!-- Post body -->
-  <div class="section-sm bg-surface">
+  <section class="section-sm bg-surface">
     <div class="container-narrow">
-      <div class="prose">
+      <div class="prose post-content">
         <slot />
       </div>
-
-      <!-- Back link -->
       <div style="margin-top:3rem; padding-top:2rem; border-top:1px solid var(--rpc-border);">
         <a href="/posts" class="btn btn-outline btn-sm">
-          <i class="bi bi-arrow-left"></i> Back to Posts
+          <i class="bi bi-arrow-left"></i> Back to posts
         </a>
       </div>
     </div>
-  </div>
+  </section>
 </Layout>

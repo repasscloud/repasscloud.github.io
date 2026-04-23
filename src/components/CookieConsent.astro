@@ -1,0 +1,104 @@
+---
+const privacyPath = '/legal/privacy-policy';
+---
+
+<div class="cookie-banner" id="cookie-banner" hidden>
+  <div class="cookie-banner__inner container">
+    <div class="cookie-banner__copy">
+      <p class="cookie-banner__eyebrow">Privacy choices</p>
+      <p class="cookie-banner__text">
+        We use analytics to understand how decision-makers evaluate RePass Cloud. No advertising
+        cookies are enabled. You can accept analytics or continue with essential-only browsing.
+      </p>
+      <a class="cookie-banner__link" href={privacyPath}>Learn more in our privacy policy</a>
+    </div>
+    <div class="cookie-banner__actions">
+      <button type="button" class="btn btn-secondary btn-sm" id="cookie-reject">
+        Essential only
+      </button>
+      <button type="button" class="btn btn-primary btn-sm" id="cookie-accept">
+        Accept analytics
+      </button>
+    </div>
+  </div>
+</div>
+
+<script is:inline>
+  (() => {
+    const STORAGE_KEY = 'repasscloud_consent';
+
+    const getBanner = () => document.getElementById('cookie-banner');
+
+    const updateConsent = (state) => {
+      if (typeof window.gtag !== 'function') {
+        return;
+      }
+
+      window.gtag('consent', 'update', {
+        analytics_storage: state,
+        ad_storage: 'denied',
+        ad_user_data: 'denied',
+        ad_personalization: 'denied',
+      });
+    };
+
+    const hideBanner = () => {
+      const banner = getBanner();
+      if (banner) {
+        banner.hidden = true;
+      }
+    };
+
+    const showBanner = () => {
+      const banner = getBanner();
+      if (banner) {
+        banner.hidden = false;
+      }
+    };
+
+    const persist = (value) => {
+      try {
+        window.localStorage.setItem(STORAGE_KEY, value);
+      } catch {
+        // Ignore storage failures and keep the banner visible.
+      }
+    };
+
+    const init = () => {
+      let stored;
+      try {
+        stored = window.localStorage.getItem(STORAGE_KEY);
+      } catch {
+        stored = null;
+      }
+
+      if (stored === 'granted') {
+        updateConsent('granted');
+      } else if (stored === 'denied') {
+        updateConsent('denied');
+      } else {
+        showBanner();
+      }
+
+      document.getElementById('cookie-accept')?.addEventListener('click', () => {
+        persist('granted');
+        updateConsent('granted');
+        hideBanner();
+      });
+
+      document.getElementById('cookie-reject')?.addEventListener('click', () => {
+        persist('denied');
+        updateConsent('denied');
+        hideBanner();
+      });
+    };
+
+    window.repasscloudOpenCookieBanner = showBanner;
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', init, { once: true });
+    } else {
+      init();
+    }
+  })();
+</script>

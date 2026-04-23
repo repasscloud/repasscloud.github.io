@@ -1,6 +1,10 @@
-export const SITE_TITLE = 'RePass Cloud — Enterprise Software & Cloud Automation';
+export const SITE_TITLE = 'RePass Cloud';
 export const SITE_DESCRIPTION =
-  'RePass Cloud Pty Ltd builds enterprise software, cloud automation, and operational tooling — engineered in Sydney, Australia.';
+  'RePass Cloud builds enterprise software, cloud platforms, and automation systems for modern teams operating across Azure, AWS, and Microsoft 365.';
+export const SITE_DOMAIN = 'https://repasscloud.com';
+export const DEFAULT_OG_IMAGE = '/img/og-default.png';
+export const GTM_CONTAINER_ID = 'GTM-N5D945ZS';
+export const GA_MEASUREMENT_ID = 'YOUR_GA4_MEASUREMENT_ID';
 
 export const CONTACT_EMAIL = 'hello@repasscloud.com';
 export const CINTURON_URL = 'https://cinturon360.com';

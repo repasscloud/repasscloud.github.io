@@ -1,6 +1,8 @@
 ---
 const navLinks = [
-  { href: '/projects', label: 'Projects' },
+  { href: '/services/enterprise-platforms', label: 'Services' },
+  { href: '/case-studies', label: 'Case Studies' },
+  { href: '/projects', label: 'Work' },
   { href: '/posts', label: 'Posts' },
   { href: '/careers', label: 'Careers' },
 ];
@@ -10,13 +12,16 @@ const currentPath = Astro.url.pathname;
 <header class="site-header">
   <div class="container">
     <nav class="site-nav">
-      <!-- Brand -->
       <a href="/" class="site-nav-brand">
-        <span class="brand-mark">R</span>
-        <span>RePass Cloud</span>
+        <span class="brand-mark">
+          <span>R</span>
+        </span>
+        <span class="site-nav-brand-copy">
+          <span class="site-nav-brand-name">RePass Cloud</span>
+          <span class="site-nav-brand-tag">Cloud platforms for modern enterprise</span>
+        </span>
       </a>
 
-      <!-- Desktop nav links -->
       <div class="site-nav-links">
         {navLinks.map(({ href, label }) => (
           <a
@@ -28,14 +33,15 @@ const currentPath = Astro.url.pathname;
         ))}
       </div>
 
-      <!-- Desktop CTA -->
       <div class="site-nav-actions">
+        <a href="/about" class="btn btn-secondary btn-sm nav-secondary-cta">
+          Why RePass Cloud
+        </a>
         <a href="/contact" class="btn btn-primary btn-sm">
-          Contact us <i class="bi bi-arrow-right"></i>
+          Start a conversation <i class="bi bi-arrow-right"></i>
         </a>
       </div>
 
-      <!-- Mobile hamburger -->
       <button
         class="mobile-menu-toggle"
         id="mobile-menu-toggle"
@@ -47,28 +53,29 @@ const currentPath = Astro.url.pathname;
       </button>
     </nav>
 
-    <!-- Mobile menu -->
     <div class="mobile-menu" id="mobile-menu" role="navigation">
       {navLinks.map(({ href, label }) => (
-        <a href={href} class="site-nav-link">{label}</a>
+        <a href={href} class={`site-nav-link${currentPath.startsWith(href) ? ' active' : ''}`}>
+          {label}
+        </a>
       ))}
-      <a href="/contact" class="btn btn-primary">
-        Contact us →
-      </a>
+      <a href="/about" class="btn btn-secondary btn-sm">Why RePass Cloud</a>
+      <a href="/contact" class="btn btn-primary btn-sm">Start a conversation</a>
     </div>
   </div>
 </header>
 
-<script>
+<script is:inline>
   const toggle = document.getElementById('mobile-menu-toggle');
   const menu = document.getElementById('mobile-menu');
+
   toggle?.addEventListener('click', () => {
     const isOpen = menu?.classList.toggle('open');
-    toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    toggle?.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
     const icon = toggle.querySelector('i');
     if (icon) {
       icon.className = isOpen ? 'bi bi-x' : 'bi bi-list';
-      (icon as HTMLElement).style.fontSize = '1.5rem';
+      icon.style.fontSize = '1.5rem';
     }
   });
 </script>

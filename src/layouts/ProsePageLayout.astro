@@ -13,22 +13,19 @@ const { frontmatter } = Astro.props;
 ---
 
 <Layout title={frontmatter.title} description={frontmatter.description}>
-  <!-- Page header -->
-  <div style="background:var(--rpc-surface); border-bottom:1px solid var(--rpc-border); padding: 3rem 0 2rem;">
+  <section class="page-hero">
     <div class="container">
-      {frontmatter.sectionLabel && (
-        <div class="section-label">{frontmatter.sectionLabel}</div>
-      )}
-      <h1 style="font-size:clamp(1.5rem,3vw,2rem); margin-bottom:0;">{frontmatter.title}</h1>
+      {frontmatter.sectionLabel && <div class="hero-eyebrow">{frontmatter.sectionLabel}</div>}
+      <h1>{frontmatter.title}</h1>
+      {frontmatter.description && <p class="hero-lead">{frontmatter.description}</p>}
     </div>
-  </div>
+  </section>
 
-  <!-- Prose content -->
-  <div class="section-sm bg-surface">
+  <section class="section-sm bg-surface">
     <div class="container-narrow">
-      <div class="prose">
+      <div class="prose post-content">
         <slot />
       </div>
     </div>
-  </div>
+  </section>
 </Layout>

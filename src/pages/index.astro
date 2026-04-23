@@ -9,17 +9,82 @@ const recentPosts = allPosts
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
   .slice(0, 3);
 
-const services = [
-  { icon: 'bi-cpu', title: 'Enterprise Platform Development', desc: 'Multi-tenant SaaS, identity integration, commercial licensing, and production-grade platform architecture.' },
-  { icon: 'bi-cloud', title: 'Cloud Infrastructure Tooling', desc: 'Cost analysis, SSL certificate management, VM automation, and infrastructure tooling across Azure and AWS.' },
-  { icon: 'bi-gear-fill', title: 'Business Operations & IT Tooling', desc: 'ServiceNow integration, performance monitoring, Active Directory automation, and operational utilities.' },
-  { icon: 'bi-microsoft', title: 'Microsoft 365 & Identity Automation', desc: 'User onboarding, lifecycle management, cross-system integrations, and governed identity workflows.' },
-  { icon: 'bi-terminal', title: 'PowerShell Automation & Scripting', desc: 'Enterprise automation modules and scripts across Windows, Azure, Active Directory, and cloud environments.' },
-  { icon: 'bi-shield-check', title: 'Security-first Engineering', desc: 'Every system we build is architected with security, compliance, and audit requirements from day one.' },
+const capabilityAreas = [
+  {
+    icon: 'bi-diagram-3',
+    title: 'Enterprise platforms',
+    description: 'Multi-tenant SaaS, internal control planes, identity-aware admin surfaces, and software that survives real operational complexity.',
+    href: '/services/enterprise-platforms',
+  },
+  {
+    icon: 'bi-cloud-arrow-up',
+    title: 'Cloud tooling',
+    description: 'Governance, FinOps, automation, certificate management, and cloud operations across Azure, AWS, and hybrid estates.',
+    href: '/services/cloud-tooling',
+  },
+  {
+    icon: 'bi-microsoft',
+    title: 'Identity automation',
+    description: 'Microsoft 365 lifecycle automation, Entra ID governance, approval workflows, and HR-to-identity integration.',
+    href: '/services/m365-automation',
+  },
+  {
+    icon: 'bi-terminal',
+    title: 'PowerShell delivery',
+    description: 'Production-grade scripting, modules, reporting, service automation, deployment orchestration, and operational runbooks.',
+    href: '/services/powershell',
+  },
 ];
 
+const outcomes = [
+  'Operational systems that fit existing enterprise environments instead of forcing a rebuild-first approach.',
+  'Architecture that accounts for identity, governance, audit, and support from day one.',
+  'Delivery that reduces manual work for IT, finance, and operations teams without creating new tooling sprawl.',
+  'Products and bespoke systems built with the same production discipline: security, evidence, and maintainability.',
+];
 
-// JSON-LD Organization schema
+const deliveryModel = [
+  {
+    step: '01',
+    title: 'Understand the operating problem',
+    description: 'We map the workflow, the systems already in play, and the control points that actually matter to the business.',
+  },
+  {
+    step: '02',
+    title: 'Design the control layer',
+    description: 'Identity, permissions, integration surfaces, reporting, and audit are designed before the implementation turns into a dependency web.',
+  },
+  {
+    step: '03',
+    title: 'Ship for live operations',
+    description: 'We deliver something your teams can run, support, observe, and extend without needing a permanent rescue project.',
+  },
+];
+
+const caseStudies = [
+  {
+    label: 'Enterprise retail identity',
+    title: 'Microsoft 365 identity automation',
+    outcome: '2,100 staff managed with zero daily manual IT intervention.',
+    description: 'Rule-driven lifecycle automation across multiple brands, mailboxes, licences, and access policies in Australia and New Zealand.',
+    tags: ['Microsoft 365', 'PowerShell', 'Entra ID'],
+  },
+  {
+    label: 'Finance workflow automation',
+    title: 'Petty cash processing at scale',
+    outcome: 'Eliminated a 4 FTE manual processing burden.',
+    description: 'Automated approvals, provisioning, reconciliation, and reporting across more than 200 brands and 2,000 locations.',
+    tags: ['Oracle HCM', 'Active Directory', 'Automation'],
+  },
+  {
+    label: 'Multi-cloud governance',
+    title: 'FinOps tooling for a global cloud estate',
+    outcome: 'Unified visibility across approximately $7M USD annual spend.',
+    description: 'A governance layer that classified spend, tracked decisions, and measured savings across AWS, Azure, and GCP.',
+    tags: ['AWS', 'Azure', 'GCP'],
+  },
+];
+
 const orgSchema = {
   '@context': 'https://schema.org',
   '@type': 'Organization',
@@ -34,8 +99,8 @@ const orgSchema = {
   },
   contactPoint: {
     '@type': 'ContactPoint',
-    email: 'hello@repasscloud.com',
-    contactType: 'customer service',
+    email: CONTACT_EMAIL,
+    contactType: 'sales',
   },
   sameAs: [
     'https://github.com/repasscloud',
@@ -50,85 +115,138 @@ const orgSchema = {
     <script type="application/ld+json" set:html={JSON.stringify(orgSchema)} />
   </Fragment>
 
-  <!-- Hero -->
   <section class="hero">
     <div class="container">
       <div class="hero-eyebrow">
         <i class="bi bi-stars"></i>
-        Engineering-led software from Sydney
+        Software, cloud, and automation for modern enterprise teams
       </div>
-      <h1>Enterprise software, cloud automation,<br />and operational tooling.</h1>
+      <h1>Build the control layer your enterprise actually needs.</h1>
       <p class="hero-lead">
-        RePass Cloud builds production-grade platforms, cloud infrastructure tools, and enterprise
-        automation for organisations that need things to actually work.
+        RePass Cloud designs and delivers enterprise software, identity automation, and cloud
+        tooling for teams working across Azure, AWS, Microsoft 365, and legacy operational systems.
       </p>
       <div class="hero-actions">
         <a href="/contact" class="btn btn-primary btn-lg">
-          Get in touch <i class="bi bi-arrow-right"></i>
+          Start a conversation <i class="bi bi-arrow-right"></i>
         </a>
-        <a href="/projects/" class="btn btn-outline-light btn-lg">
-          Our work
+        <a href="/case-studies" class="btn btn-outline-light btn-lg">
+          See proof of work
         </a>
       </div>
       <div class="hero-trust">
         <div class="hero-trust-item">
-          <i class="bi bi-building"></i>
-          Enterprise-grade, production-proven
-        </div>
-        <div class="hero-trust-item">
           <i class="bi bi-shield-check"></i>
-          Security-first by design
+          Audit-aware by design
         </div>
         <div class="hero-trust-item">
-          <span>🇦🇺</span>
-          Built in Sydney, Australia
+          <i class="bi bi-cloud-check"></i>
+          Azure, AWS, and Microsoft 365 delivery
+        </div>
+        <div class="hero-trust-item">
+          <span>AU</span>
+          Built from Sydney for enterprise operations
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Services grid -->
+  <section class="section bg-surface">
+    <div class="container">
+      <div class="showcase-split">
+        <div>
+          <div class="section-label">Why teams bring us in</div>
+          <h2>When the workflow matters, generic software stops being enough.</h2>
+          <p class="section-intro" style="margin-top:1rem; margin-bottom:1.25rem;">
+            We work where operational pressure, governance, and integration complexity all collide:
+            identity estates, multi-tenant platforms, cloud governance, workflow automation, and
+            the business systems that glue them together.
+          </p>
+          <div style="display:grid; gap:0.9rem; margin-top:1.5rem;">
+            {outcomes.map((item) => (
+              <div class="hero-trust-item" style="justify-content:flex-start; width:fit-content;">
+                <i class="bi bi-check2-circle"></i>
+                {item}
+              </div>
+            ))}
+          </div>
+        </div>
+        <div class="showcase-panel">
+          <div class="section-label">Positioning</div>
+          <h3 style="margin-bottom:1rem;">A software partner for operationally serious teams</h3>
+          <p style="margin-bottom:1rem; color:var(--rpc-muted);">
+            Not a design-first brochure consultancy. Not a staffing layer. We build the thing your
+            teams need to run, govern, and scale real work.
+          </p>
+          <div class="tech-stack">
+            <span class="badge badge-secondary">Enterprise SaaS</span>
+            <span class="badge badge-secondary">Identity</span>
+            <span class="badge badge-secondary">Workflow automation</span>
+            <span class="badge badge-primary">Cloud operations</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="text-center" style="margin-bottom:3rem;">
+        <div class="section-label">Capabilities</div>
+        <h2>Four core delivery areas</h2>
+        <p class="section-intro" style="margin:1rem auto 0; text-align:center;">
+          We combine product engineering discipline with enterprise integration experience so the
+          output is useful in production, not just convincing in a demo.
+        </p>
+      </div>
+      <div class="grid-2">
+        {capabilityAreas.map((capability) => (
+          <a href={capability.href} class="feature-card">
+            <div class="feature-icon"><i class={`bi ${capability.icon}`}></i></div>
+            <h3>{capability.title}</h3>
+            <p>{capability.description}</p>
+            <div class="meta-row" style="margin-top:1.2rem; color:var(--rpc-text-strong); font-weight:700;">
+              Explore capability <i class="bi bi-arrow-right"></i>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
   <section class="section bg-surface">
     <div class="container">
       <div class="text-center" style="margin-bottom:3rem;">
-        <div class="section-label">What we build</div>
-        <h2>Five core capability areas</h2>
-        <p class="text-muted" style="max-width:520px; margin:0.75rem auto 0;">
-          Engineering-led software across enterprise platforms, cloud infrastructure, identity
-          automation, and operational tooling.
-        </p>
+        <div class="section-label">Delivery model</div>
+        <h2>How we turn complex requirements into usable systems</h2>
       </div>
       <div class="grid-3">
-        {services.map((s) => (
+        {deliveryModel.map((item) => (
           <div class="feature-card">
-            <div class="feature-icon">
-              <i class={`bi ${s.icon}`}></i>
-            </div>
-            <h3>{s.title}</h3>
-            <p>{s.desc}</p>
+            <div class="section-label" style="margin-bottom:1rem;">Step {item.step}</div>
+            <h3>{item.title}</h3>
+            <p>{item.description}</p>
           </div>
         ))}
       </div>
     </div>
   </section>
 
-  <!-- Cinturon360 showcase -->
   <section class="section">
     <div class="container">
       <div class="showcase-split">
         <div>
-          <div class="section-label">Flagship product</div>
+          <div class="section-label">In production</div>
           <h2>Cinturon360</h2>
           <p style="color:var(--rpc-muted); line-height:1.75; margin-bottom:1.5rem;">
-            The operational control layer for organisations that need to manage complexity across
-            customers, partners, and internal teams. Multi-tenant SaaS with Microsoft Entra ID
-            integration, role-based permissions, delegated administration, and full audit logging.
+            Cinturon360 is our flagship product: a multi-tenant operational control layer for teams
+            managing customers, partners, internal operators, and governed business workflows.
           </p>
           <div class="tech-stack" style="margin-bottom:1.75rem;">
             <span class="badge badge-secondary">.NET</span>
             <span class="badge badge-primary">Azure</span>
             <span class="badge badge-secondary">Entra ID</span>
-            <span class="badge badge-secondary">Multi-tenant</span>
+            <span class="badge badge-secondary">Delegated admin</span>
           </div>
           <a href={CINTURON_URL} class="btn btn-primary" target="_blank" rel="noopener">
             Visit Cinturon360 <i class="bi bi-box-arrow-up-right"></i>
@@ -138,62 +256,37 @@ const orgSchema = {
           <i class="bi bi-diagram-3-fill" style="font-size:3rem; margin-bottom:1rem;"></i>
           <div style="font-size:1.25rem; font-weight:700; margin-bottom:0.5rem;">Cinturon360</div>
           <div style="color:rgba(255,255,255,0.6); font-size:0.875rem;">
-            Governed operational workflows · Audit-ready · Multi-tenant
+            Multi-tenant governance · Audit logging · Identity-aware operations
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Case studies teaser -->
   <section class="section bg-surface">
     <div class="container">
       <div class="text-center" style="margin-bottom:3rem;">
-        <div class="section-label">Real-world work</div>
-        <h2>Case studies</h2>
-        <p class="text-muted" style="max-width:520px; margin:0.75rem auto 0;">
-          Documented engagements showing what we build in practice — from identity automation to
-          multi-cloud FinOps tooling.
+        <div class="section-label">Case studies</div>
+        <h2>Proof in live environments</h2>
+        <p class="section-intro" style="margin:1rem auto 0; text-align:center;">
+          Real operating environments, real constraints, and outcomes that matter to the teams who
+          have to support them after launch.
         </p>
       </div>
       <div class="grid-3">
-        <div class="aethon-card" style="border-left: 4px solid var(--rpc-primary);">
-          <div class="section-label">Case Study · Enterprise / Retail</div>
-          <h3 style="margin-bottom:0.75rem;">Microsoft 365 Identity Automation</h3>
-          <p class="text-sm text-muted">
-            Fully automated, rule-driven identity management for ~2,100 employees across multiple
-            brands in AU/NZ. Zero daily manual IT intervention.
-          </p>
-          <div class="tech-stack" style="margin-top:1rem;">
-            <span class="badge badge-secondary">Microsoft 365</span>
-            <span class="badge badge-secondary">PowerShell</span>
+        {caseStudies.map((study) => (
+          <div class="aethon-card">
+            <div class="section-label">{study.label}</div>
+            <h3 style="margin-bottom:0.75rem;">{study.title}</h3>
+            <p class="text-sm text-muted" style="margin-bottom:0.9rem;">{study.description}</p>
+            <p style="font-weight:700; color:var(--rpc-text-strong); margin-bottom:1rem;">{study.outcome}</p>
+            <div class="tech-stack">
+              {study.tags.map((tag) => (
+                <span class="badge badge-secondary">{tag}</span>
+              ))}
+            </div>
           </div>
-        </div>
-        <div class="aethon-card" style="border-left: 4px solid var(--rpc-primary);">
-          <div class="section-label">Case Study · Multi-brand Retail</div>
-          <h3 style="margin-bottom:0.75rem;">Finance Workflow Automation</h3>
-          <p class="text-sm text-muted">
-            End-to-end petty cash processing automation integrated with Active Directory, Entra ID,
-            and Oracle HCM. Eliminated 4 FTE manual workload.
-          </p>
-          <div class="tech-stack" style="margin-top:1rem;">
-            <span class="badge badge-secondary">Entra ID</span>
-            <span class="badge badge-secondary">Oracle HCM</span>
-          </div>
-        </div>
-        <div class="aethon-card" style="border-left: 4px solid var(--rpc-primary);">
-          <div class="section-label">Case Study · Enterprise Technology</div>
-          <h3 style="margin-bottom:0.75rem;">Multi-Cloud FinOps Tooling</h3>
-          <p class="text-sm text-muted">
-            Unified cost visibility across $7M USD/year cloud estate spanning AWS, Azure, and GCP.
-            Savings realisation tracking and governance platform.
-          </p>
-          <div class="tech-stack" style="margin-top:1rem;">
-            <span class="badge badge-primary">AWS</span>
-            <span class="badge badge-primary">Azure</span>
-            <span class="badge badge-secondary">GCP</span>
-          </div>
-        </div>
+        ))}
       </div>
       <div class="text-center" style="margin-top:2.5rem;">
         <a href="/case-studies" class="btn btn-outline">
@@ -203,24 +296,22 @@ const orgSchema = {
     </div>
   </section>
 
-  <!-- Aethon showcase -->
   <section class="section">
     <div class="container">
       <div class="showcase-split">
-        <div class="showcase-visual" style="order: -1;">
+        <div class="showcase-visual" style="order:-1;">
           <i class="bi bi-people-fill" style="font-size:3rem; margin-bottom:1rem;"></i>
           <div style="font-size:1.25rem; font-weight:700; margin-bottom:0.5rem;">Aethon</div>
           <div style="color:rgba(255,255,255,0.6); font-size:0.875rem;">
-            Verified employers · Trusted recruiters · AI-backed marketplace
+            Verified employers · recruiter workflows · AI-assisted matching
           </div>
         </div>
         <div>
           <div class="section-label">Also from RePass Cloud</div>
           <h2>Aethon</h2>
           <p style="color:var(--rpc-muted); line-height:1.75; margin-bottom:1.5rem;">
-            Hiring intelligence platform connecting verified employers, trusted recruiters, and
-            job seekers in a transparent, AI-backed marketplace. Built with the same
-            engineering rigour as Cinturon360.
+            Aethon extends the same product and workflow discipline into hiring intelligence,
+            employer verification, and recruiter-grade marketplace workflows.
           </p>
           <div class="tech-stack" style="margin-bottom:1.75rem;">
             <span class="badge badge-secondary">.NET</span>
@@ -236,14 +327,13 @@ const orgSchema = {
     </div>
   </section>
 
-  <!-- Recent posts teaser -->
   {recentPosts.length > 0 && (
     <section class="section bg-surface">
       <div class="container">
         <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:2rem; flex-wrap:wrap; gap:1rem;">
           <div>
-            <div class="section-label">From the blog</div>
-            <h2 style="margin:0;">Latest posts</h2>
+            <div class="section-label">Insights</div>
+            <h2 style="margin:0;">Recent writing</h2>
           </div>
           <a href="/posts" class="btn btn-outline btn-sm">
             All posts <i class="bi bi-arrow-right"></i>
@@ -273,21 +363,20 @@ const orgSchema = {
     </section>
   )}
 
-  <!-- CTA banner -->
   <section class="cta-banner">
     <div class="container">
-      <div class="section-label" style="color:rgba(255,255,255,0.5);">Get in touch</div>
-      <h2>Ready to build something that works?</h2>
+      <div class="section-label" style="color:rgba(255,255,255,0.5);">Lead capture</div>
+      <h2>Talk to us about the operational problem behind the software request.</h2>
       <p>
-        Tell us about your project. We work with organisations that need enterprise software, cloud
-        automation, or operational tooling built properly.
+        We help teams modernise enterprise workflows, cloud operations, and identity-heavy
+        environments without pretending the legacy estate does not exist.
       </p>
       <div class="cta-actions">
         <a href="/contact" class="btn btn-primary btn-lg">
-          Contact us <i class="bi bi-arrow-right"></i>
+          Book the first conversation <i class="bi bi-arrow-right"></i>
         </a>
-        <a href="/about" class="btn btn-outline-light btn-lg">
-          About us
+        <a href={`mailto:${CONTACT_EMAIL}`} class="btn btn-outline-light btn-lg">
+          {CONTACT_EMAIL}
         </a>
       </div>
     </div>

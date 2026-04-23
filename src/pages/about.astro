@@ -1,233 +1,156 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import { CONTACT_EMAIL, CINTURON_URL } from '../consts';
+
+const principles = [
+  {
+    title: 'Engineering-led delivery',
+    description: 'We lead with architecture, constraints, and operational fit rather than selling a generic implementation pattern.',
+  },
+  {
+    title: 'Built for governance',
+    description: 'Identity, audit, approvals, and supportability are designed into the system because enterprise operations depend on them.',
+  },
+  {
+    title: 'Useful in the estate you already have',
+    description: 'Azure, AWS, Microsoft 365, legacy systems, and on-prem dependencies are handled as the environment you actually run.',
+  },
+];
+
+const focusAreas = [
+  'Enterprise SaaS and internal control planes',
+  'Cloud governance, FinOps, and automation',
+  'Microsoft 365 identity lifecycle automation',
+  'Operational workflow software and integration layers',
+  'PowerShell modules, reporting, and support tooling',
+  'Security-aware access and audit design',
+];
 ---
 
 <Layout
-  title="About"
-  description="RePass Cloud Pty Ltd is an Australian engineering-led software firm that designs, builds, and operates enterprise-grade software platforms and cloud infrastructure tooling."
+  title="About RePass Cloud"
+  description="RePass Cloud is an Australian engineering-led software business focused on enterprise platforms, cloud tooling, workflow automation, and identity-heavy operating environments."
 >
-
-  <!-- Hero -->
-  <section class="hero">
+  <section class="page-hero">
     <div class="container">
       <div class="hero-eyebrow">
         <i class="bi bi-building"></i>
         RePass Cloud Pty Ltd
       </div>
-      <h1>Engineering-led software<br />built for production.</h1>
+      <h1>We build software for the operational realities large teams actually live with.</h1>
       <p class="hero-lead">
-        We design, build, and operate enterprise-grade software platforms and cloud infrastructure
-        tooling for organisations that need reliable technology in production environments.
+        RePass Cloud is an Australian engineering-led business focused on enterprise platforms,
+        workflow automation, identity-heavy operating environments, and cloud systems that have to
+        work under real scrutiny.
       </p>
       <div class="hero-actions">
         <a href="/contact" class="btn btn-primary btn-lg">
-          Work with us <i class="bi bi-arrow-right"></i>
+          Talk to us <i class="bi bi-arrow-right"></i>
         </a>
         <a href="/case-studies" class="btn btn-outline-light btn-lg">
-          Case studies
+          View case studies
         </a>
       </div>
     </div>
   </section>
 
-  <!-- Who we are -->
   <section class="section bg-surface">
     <div class="container">
-      <div style="max-width:760px; margin:0 auto;">
-        <div class="section-label">Who we are</div>
-        <h2>Not a generic consultancy</h2>
-        <div style="color:var(--rpc-muted); line-height:1.8; font-size:1.05rem;">
-          <p>
-            RePass Cloud Pty Ltd is an Australian software engineering company and consultancy that
-            designs, builds, and operates enterprise-grade software platforms, cloud infrastructure
-            tooling, automation systems, and operational utilities for organisations that need
-            practical, reliable technology built to run in real environments.
+      <div class="showcase-split">
+        <div>
+          <div class="section-label">Who we are</div>
+          <h2>Not a generalist digital agency. Not a body-shop consultancy.</h2>
+          <p class="section-intro" style="margin-top:1rem; margin-bottom:1rem;">
+            We work on software and automation systems where operational integrity matters: cloud
+            cost governance, enterprise identity, controlled workflows, and multi-tenant platforms
+            that have to survive growth, scrutiny, and internal complexity.
           </p>
-          <p>
-            We are not a generic software consultancy. We are an engineering-led organisation that
-            builds serious operational software — from large multi-tenant SaaS platforms through to
-            focused tools that solve specific, painful problems across cloud infrastructure, Windows
-            environments, identity, reporting, file systems, and business operations.
+          <p class="text-muted" style="line-height:1.85;">
+            That means we care about things many brochure projects skip over: permission models,
+            audit evidence, integration boundaries, supportability, failure modes, and how a system
+            behaves once it is no longer new.
           </p>
-          <p>
-            Our primary cloud focus is <strong>Microsoft Azure</strong> and <strong>AWS</strong>,
-            with selective support for Google Cloud where required. Our delivery spans modern .NET
-            platform development, PowerShell scripting and module development, Windows systems
-            engineering, identity and access automation, and cloud-native design patterns.
-          </p>
+        </div>
+        <div class="showcase-panel">
+          <div class="section-label">Where we focus</div>
+          <div style="display:grid; gap:0.8rem;">
+            {focusAreas.map((item) => (
+              <div class="hero-trust-item" style="justify-content:flex-start; width:100%;">
+                <i class="bi bi-check2-circle"></i>
+                {item}
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Services -->
-  <section class="section" id="services">
-    <div class="container">
-      <div class="text-center" style="margin-bottom:3rem;">
-        <div class="section-label">What we do</div>
-        <h2>Five capability areas</h2>
-      </div>
-      <div class="grid-3">
-        <div class="feature-card">
-          <div class="feature-icon"><i class="bi bi-cpu"></i></div>
-          <h3>Enterprise Platform Development</h3>
-          <p>Multi-tenant SaaS architecture, identity integration, tenant-aware configuration, audit logging, API-driven integrations, and commercial licensing models. Cinturon360 is the primary example.</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon"><i class="bi bi-cloud"></i></div>
-          <h3>Cloud Infrastructure Tooling</h3>
-          <p>Cloud cost and spend analysis, SSL certificate lifecycle management, cloud infrastructure automation, and Windows Golden VM automation across Azure and AWS.</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon"><i class="bi bi-gear-fill"></i></div>
-          <h3>Business Operations & IT Tooling</h3>
-          <p>ServiceNow ticket management, IT reporting automation, Windows machine performance tooling, fast delete utilities, SSH credential management, and AD identity automation.</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon"><i class="bi bi-microsoft"></i></div>
-          <h3>Microsoft 365 & Identity Automation</h3>
-          <p>User onboarding/offboarding triggered from HR changes, distribution list management, shared mailbox automation, identity lifecycle management, and cross-system integrations.</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon"><i class="bi bi-terminal"></i></div>
-          <h3>PowerShell Automation & Scripting</h3>
-          <p>Reusable PowerShell modules and enterprise scripts for Windows, Azure, Active Directory, Microsoft 365, and enterprise IT environments — maintained and distributable across organisations.</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon"><i class="bi bi-shield-check"></i></div>
-          <h3>Security-first Engineering</h3>
-          <p>Identity-centric access controls, least privilege design, strong separation of concerns, and auditability baked into every system from the ground up — not bolted on afterwards.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Cinturon360 -->
-  <section class="section bg-surface" id="cinturon360">
-    <div class="container">
-      <div style="max-width:760px;">
-        <div class="section-label">Flagship product</div>
-        <h2>Cinturon360</h2>
-        <p style="color:var(--rpc-muted); line-height:1.8; margin-bottom:1.5rem;">
-          Cinturon360 is our actively developed and maintained enterprise SaaS platform. It is the
-          operational control layer for organisations that need to manage complexity, customers,
-          partners, and internal teams under structured governance without losing visibility or
-          agility.
-        </p>
-        <p style="color:var(--rpc-muted); line-height:1.8; margin-bottom:2rem;">
-          Cinturon360 is not just an automation tool. It is a platform for doing work in a
-          controlled, auditable, and scalable way — one that grows with the organisation rather
-          than becoming a source of technical debt.
-        </p>
-        <div style="display:flex; flex-wrap:wrap; gap:1.5rem; margin-bottom:2rem;">
-          <div style="display:flex; align-items:flex-start; gap:0.75rem;">
-            <i class="bi bi-check-circle-fill" style="color:var(--rpc-valid); margin-top:0.2rem;"></i>
-            <span style="font-size:0.9rem;">Multi-tenant with strong isolation</span>
-          </div>
-          <div style="display:flex; align-items:flex-start; gap:0.75rem;">
-            <i class="bi bi-check-circle-fill" style="color:var(--rpc-valid); margin-top:0.2rem;"></i>
-            <span style="font-size:0.9rem;">Microsoft Entra ID integration</span>
-          </div>
-          <div style="display:flex; align-items:flex-start; gap:0.75rem;">
-            <i class="bi bi-check-circle-fill" style="color:var(--rpc-valid); margin-top:0.2rem;"></i>
-            <span style="font-size:0.9rem;">Full audit logging</span>
-          </div>
-          <div style="display:flex; align-items:flex-start; gap:0.75rem;">
-            <i class="bi bi-check-circle-fill" style="color:var(--rpc-valid); margin-top:0.2rem;"></i>
-            <span style="font-size:0.9rem;">Role-based permissions</span>
-          </div>
-          <div style="display:flex; align-items:flex-start; gap:0.75rem;">
-            <i class="bi bi-check-circle-fill" style="color:var(--rpc-valid); margin-top:0.2rem;"></i>
-            <span style="font-size:0.9rem;">Regional hosting flexibility</span>
-          </div>
-        </div>
-        <a href={CINTURON_URL} class="btn btn-primary" target="_blank" rel="noopener">
-          Visit Cinturon360 <i class="bi bi-box-arrow-up-right"></i>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Technology stack -->
   <section class="section">
     <div class="container">
-      <div class="section-label">Technology focus</div>
-      <h2 style="margin-bottom:1.5rem;">What we build with</h2>
-      <div class="tech-stack" style="gap:0.75rem;">
-        <span class="badge badge-secondary" style="padding:0.4em 0.9em; font-size:0.85rem;">.NET</span>
-        <span class="badge badge-primary" style="padding:0.4em 0.9em; font-size:0.85rem;">Azure</span>
-        <span class="badge badge-secondary" style="padding:0.4em 0.9em; font-size:0.85rem;">AWS</span>
-        <span class="badge badge-secondary" style="padding:0.4em 0.9em; font-size:0.85rem;">Entra ID</span>
-        <span class="badge badge-secondary" style="padding:0.4em 0.9em; font-size:0.85rem;">Active Directory</span>
-        <span class="badge badge-secondary" style="padding:0.4em 0.9em; font-size:0.85rem;">Microsoft 365</span>
-        <span class="badge badge-secondary" style="padding:0.4em 0.9em; font-size:0.85rem;">Windows Server</span>
-        <span class="badge badge-secondary" style="padding:0.4em 0.9em; font-size:0.85rem;">PowerShell</span>
-        <span class="badge badge-secondary" style="padding:0.4em 0.9em; font-size:0.85rem;">Hyper-V</span>
-        <span class="badge badge-secondary" style="padding:0.4em 0.9em; font-size:0.85rem;">Google Cloud</span>
-        <span class="badge badge-secondary" style="padding:0.4em 0.9em; font-size:0.85rem;">Docker</span>
-        <span class="badge badge-secondary" style="padding:0.4em 0.9em; font-size:0.85rem;">WireGuard</span>
-      </div>
-    </div>
-  </section>
-
-  <!-- Principles -->
-  <section class="section bg-surface">
-    <div class="container">
       <div class="text-center" style="margin-bottom:3rem;">
-        <div class="section-label">How we work</div>
-        <h2>Our engineering principles</h2>
+        <div class="section-label">Operating principles</div>
+        <h2>How we approach the work</h2>
       </div>
       <div class="grid-3">
-        <div class="principle-card">
-          <div class="principle-icon"><i class="bi bi-shield-lock-fill"></i></div>
-          <div class="principle-title">Security-first by design</div>
-          <div class="principle-desc">Every system we build is architected with security and compliance requirements from day one, not bolted on afterwards.</div>
+        {principles.map((item) => (
+          <div class="feature-card">
+            <h3>{item.title}</h3>
+            <p>{item.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-surface">
+    <div class="container">
+      <div class="showcase-split">
+        <div>
+          <div class="section-label">Flagship product</div>
+          <h2>Cinturon360</h2>
+          <p style="color:var(--rpc-muted); line-height:1.8; margin-bottom:1.25rem;">
+            Cinturon360 demonstrates how we think: multi-tenant from the start, identity-aware,
+            permissioned, auditable, and built for organisations with partners, operators, and
+            governed workflows all sharing the same system.
+          </p>
+          <div class="tech-stack" style="margin-bottom:1.5rem;">
+            <span class="badge badge-secondary">Multi-tenant SaaS</span>
+            <span class="badge badge-primary">Azure</span>
+            <span class="badge badge-secondary">Entra ID</span>
+            <span class="badge badge-secondary">Audit logging</span>
+          </div>
+          <a href={CINTURON_URL} class="btn btn-primary" target="_blank" rel="noopener">
+            Visit Cinturon360 <i class="bi bi-box-arrow-up-right"></i>
+          </a>
         </div>
-        <div class="principle-card">
-          <div class="principle-icon"><i class="bi bi-gear-fill"></i></div>
-          <div class="principle-title">Engineering-led, not sales-led</div>
-          <div class="principle-desc">We focus on getting the implementation right. Our products exist because we saw problems in the market and built tools to fix them.</div>
-        </div>
-        <div class="principle-card">
-          <div class="principle-icon"><i class="bi bi-arrow-repeat"></i></div>
-          <div class="principle-title">Automation over manual process</div>
-          <div class="principle-desc">If a human is doing something a machine can do reliably, we automate it. That frees people to do the work that actually matters.</div>
-        </div>
-        <div class="principle-card">
-          <div class="principle-icon"><i class="bi bi-cpu"></i></div>
-          <div class="principle-title">Production-proven</div>
-          <div class="principle-desc">We build for real environments with real load, compliance requirements, and audit obligations. Everything is designed to run in production.</div>
-        </div>
-        <div class="principle-card">
-          <div class="principle-icon"><i class="bi bi-file-earmark-check"></i></div>
-          <div class="principle-title">Compliance &amp; audit-ready</div>
-          <div class="principle-desc">Governance, access control, audit logging, and evidence trails are built in — not an afterthought.</div>
-        </div>
-        <div class="principle-card">
-          <div class="principle-icon"><i class="bi bi-geo-alt-fill"></i></div>
-          <div class="principle-title">Built in Australia</div>
-          <div class="principle-desc">Our team, our infrastructure, and our support are Australian. Data sovereignty and local compliance requirements are things we understand.</div>
+        <div class="showcase-visual">
+          <i class="bi bi-diagram-3-fill" style="font-size:3rem; margin-bottom:1rem;"></i>
+          <div style="font-size:1.25rem; font-weight:700; margin-bottom:0.5rem;">Operational control layer</div>
+          <div style="color:rgba(255,255,255,0.6); font-size:0.875rem;">
+            Identity-aware · Role-based · Audit-ready · Partner-capable
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- CTA banner -->
   <section class="cta-banner">
     <div class="container">
-      <div class="section-label" style="color:rgba(255,255,255,0.5);">Work with us</div>
-      <h2>Let's build something together.</h2>
+      <div class="section-label" style="color:rgba(255,255,255,0.5);">Contact</div>
+      <h2>Need a team that can work through the technical and operational mess, not around it?</h2>
       <p>
-        We work with organisations that need enterprise software, cloud automation, or operational
-        tooling built properly — not quickly patched, not over-engineered.
+        Send us the problem statement, the workflow, or the current failure mode. We will start
+        there.
       </p>
       <div class="cta-actions">
         <a href="/contact" class="btn btn-primary btn-lg">
-          Get in touch <i class="bi bi-arrow-right"></i>
+          Start the conversation <i class="bi bi-arrow-right"></i>
+        </a>
+        <a href={`mailto:${CONTACT_EMAIL}`} class="btn btn-outline-light btn-lg">
+          {CONTACT_EMAIL}
         </a>
       </div>
     </div>
   </section>
-
 </Layout>

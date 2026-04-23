@@ -1,39 +1,66 @@
 ---
-import { CONTACT_EMAIL, CINTURON_URL, GITHUB_URL, AETHON_URL, TWITTER_URL, LINKEDIN_URL } from '../consts';
+import {
+  AETHON_URL,
+  CINTURON_URL,
+  CONTACT_EMAIL,
+  GITHUB_URL,
+  LINKEDIN_URL,
+  TWITTER_URL,
+} from '../consts';
 const year = new Date().getFullYear();
 ---
 
 <footer class="site-footer">
   <div class="container">
-    <div class="footer-grid">
+    <div class="footer-callout">
+      <div>
+        <p class="footer-callout-label">Rebuild what your teams depend on</p>
+        <h2>Need a platform, automation layer, or cloud workflow that actually fits the enterprise you have?</h2>
+        <p>
+          We design and ship operational systems for identity, cloud governance, workflow automation,
+          and multi-team SaaS delivery.
+        </p>
+      </div>
+      <div class="footer-callout-actions">
+        <a href="/contact" class="btn btn-primary">Discuss a project</a>
+        <a href={`mailto:${CONTACT_EMAIL}`} class="btn btn-secondary">{CONTACT_EMAIL}</a>
+      </div>
+    </div>
 
-      <!-- Brand -->
+    <div class="footer-grid">
       <div>
         <div class="footer-brand">
-          <span class="brand-mark" style="background: rgba(255,255,255,0.15); color: #fff;">R</span>
+          <span class="brand-mark footer-brand-mark"><span>R</span></span>
           <span>RePass Cloud</span>
         </div>
-        <p class="footer-tagline">Enterprise software &amp; cloud automation</p>
-        <p style="font-size:0.8rem; color:rgba(255,255,255,0.4); max-width:220px; line-height:1.55;">
-          Built in Sydney, Australia. Engineering-led software for organisations that need
-          production-grade tools.
+        <p class="footer-tagline">Enterprise software, cloud architecture, and operational automation.</p>
+        <p class="footer-copy">
+          Built in Sydney for teams operating across Azure, AWS, Microsoft 365, internal platforms,
+          and regulated business workflows.
         </p>
       </div>
 
-      <!-- Company -->
       <div>
         <div class="footer-col-title">Company</div>
         <ul class="footer-links">
           <li><a href="/about">About</a></li>
-          <li><a href="/projects">Projects</a></li>
           <li><a href="/case-studies">Case Studies</a></li>
+          <li><a href="/projects">Selected Work</a></li>
           <li><a href="/posts">Blog</a></li>
           <li><a href="/careers">Careers</a></li>
-          <li><a href="/legal">Legal</a></li>
         </ul>
       </div>
 
-      <!-- Products -->
+      <div>
+        <div class="footer-col-title">Capabilities</div>
+        <ul class="footer-links">
+          <li><a href="/services/enterprise-platforms">Enterprise Platforms</a></li>
+          <li><a href="/services/cloud-tooling">Cloud Tooling</a></li>
+          <li><a href="/services/m365-automation">M365 Automation</a></li>
+          <li><a href="/services/powershell">PowerShell Delivery</a></li>
+        </ul>
+      </div>
+
       <div>
         <div class="footer-col-title">Products</div>
         <ul class="footer-links">
@@ -42,39 +69,31 @@ const year = new Date().getFullYear();
         </ul>
       </div>
 
-      <!-- Services -->
-      <div>
-        <div class="footer-col-title">Services</div>
-        <ul class="footer-links">
-          <li><a href="/services/enterprise-platforms">Enterprise Platforms</a></li>
-          <li><a href="/services/cloud-tooling">Cloud Tooling</a></li>
-          <li><a href="/services/m365-automation">M365 Automation</a></li>
-          <li><a href="/services/powershell">PowerShell</a></li>
-        </ul>
-      </div>
-
-      <!-- Connect -->
       <div>
         <div class="footer-col-title">Connect</div>
         <ul class="footer-links">
-          <li><a href="/contact">Contact us</a></li>
+          <li><a href="/contact">Contact</a></li>
+          <li><a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a></li>
           <li><a href={GITHUB_URL} target="_blank" rel="noopener">GitHub ↗</a></li>
           <li><a href={LINKEDIN_URL} target="_blank" rel="noopener">LinkedIn ↗</a></li>
           <li><a href={TWITTER_URL} target="_blank" rel="noopener">X / Twitter ↗</a></li>
         </ul>
       </div>
 
+      <div>
+        <div class="footer-col-title">Legal</div>
+        <ul class="footer-links">
+          <li><a href="/legal/privacy-policy">Privacy</a></li>
+          <li><a href="/legal/terms-of-service">Terms</a></li>
+          <li><a href="/legal/refund-policy">Refunds</a></li>
+          <li><button type="button" class="footer-manage-cookies">Manage cookies</button></li>
+        </ul>
+      </div>
     </div>
 
     <div class="footer-bottom">
       <div class="footer-bottom-copy">
-        &copy; {year} RePass Cloud Pty Ltd &mdash; Made with ❤️ in Sydney, Australia 🇦🇺
-        &nbsp;·&nbsp;
-        <a href="/legal/privacy-policy" style="color:rgba(255,255,255,0.4); text-decoration:none;">Privacy</a>
-        &nbsp;·&nbsp;
-        <a href="/legal/terms-of-service" style="color:rgba(255,255,255,0.4); text-decoration:none;">Terms</a>
-        &nbsp;·&nbsp;
-        <a href="/legal" style="color:rgba(255,255,255,0.4); text-decoration:none;">Legal</a>
+        &copy; {year} RePass Cloud Pty Ltd. Designed for modern enterprise operations from Sydney, Australia.
       </div>
       <div class="footer-social">
         <a href={TWITTER_URL} target="_blank" rel="noopener" aria-label="X / Twitter">
@@ -90,3 +109,11 @@ const year = new Date().getFullYear();
     </div>
   </div>
 </footer>
+
+<script is:inline>
+  document.querySelector('.footer-manage-cookies')?.addEventListener('click', () => {
+    if (typeof window.repasscloudOpenCookieBanner === 'function') {
+      window.repasscloudOpenCookieBanner();
+    }
+  });
+</script>

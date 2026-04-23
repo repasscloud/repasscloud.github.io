@@ -1,9 +1,10 @@
 ---
 import BaseHead from '../components/BaseHead.astro';
+import CookieConsent from '../components/CookieConsent.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import type { ImageMetadata } from 'astro';
-import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+import { GTM_CONTAINER_ID, SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 
 interface Props {
   title?: string;
@@ -12,6 +13,7 @@ interface Props {
   type?: 'website' | 'article';
   pubDate?: string;
   updatedDate?: string;
+  noIndex?: boolean;
 }
 
 const {
@@ -21,7 +23,10 @@ const {
   type = 'website',
   pubDate,
   updatedDate,
+  noIndex = false,
 } = Astro.props;
+
+const hasGtm = GTM_CONTAINER_ID !== 'YOUR_GTM_CONTAINER_ID';
 ---
 
 <!doctype html>
@@ -34,14 +39,26 @@ const {
       type={type}
       pubDate={pubDate}
       updatedDate={updatedDate}
+      noIndex={noIndex}
     />
     <slot name="head" />
   </head>
   <body>
+    {hasGtm && (
+      <noscript>
+        <iframe
+          src={`https://www.googletagmanager.com/ns.html?id=${GTM_CONTAINER_ID}`}
+          height="0"
+          width="0"
+          style="display:none;visibility:hidden"
+        ></iframe>
+      </noscript>
+    )}
     <Header />
     <main>
       <slot />
     </main>
     <Footer />
+    <CookieConsent />
   </body>
 </html>

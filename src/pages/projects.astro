@@ -1,173 +1,155 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import { CINTURON_URL, GITHUB_URL, AETHON_URL } from '../consts';
+import { AETHON_URL, CINTURON_URL, GITHUB_URL } from '../consts';
 
-const retiredProjects = [
+const activeProducts = [
+  {
+    name: 'Cinturon360',
+    badge: 'Active product',
+    description: 'A multi-tenant operational control layer for governed work, delegated administration, partner workflows, and audit-heavy environments.',
+    href: CINTURON_URL,
+    icon: 'bi-diagram-3-fill',
+    tags: ['.NET', 'Azure', 'Entra ID', 'Multi-tenant'],
+  },
+  {
+    name: 'Aethon',
+    badge: 'Active product',
+    description: 'A hiring intelligence platform focused on verified employers, trusted recruiters, and better workflow integrity across hiring activity.',
+    href: AETHON_URL,
+    icon: 'bi-people-fill',
+    tags: ['.NET', 'Blazor', 'PostgreSQL', 'AI'],
+  },
+];
+
+const archiveProjects = [
   {
     name: 'LunaVPN',
     icon: 'bi-shield-lock',
-    desc: 'Privacy-focused VPN service built on the WireGuard protocol with dedicated isolated instances.',
+    desc: 'WireGuard-based privacy service retained as historical open-source work.',
     github: 'https://github.com/repasscloud/lunavpn',
   },
   {
     name: 'OptechX',
     icon: 'bi-windows',
-    desc: 'SaaS platform for building custom Windows Standard Operating Environment images for enterprise deployment.',
+    desc: 'Windows SOE image tooling and platform concepts from earlier product work.',
     github: 'https://github.com/repasscloud/optechx',
   },
   {
     name: 'WanderConnect',
     icon: 'bi-geo-alt',
-    desc: 'App concept for discovering local experiences and planning memorable outings.',
+    desc: 'Experience discovery concept retained as part of the product archive.',
     github: 'https://github.com/repasscloud/wanderconnect',
   },
   {
-    name: 'TigerGrab 「とらグラブ」',
+    name: 'TigerGrab',
     icon: 'bi-camera-video',
-    desc: 'Windows utility for downloading and preserving online videos for personal archiving.',
+    desc: 'Windows utility project preserved as historical open-source tooling.',
     github: 'https://github.com/repasscloud/tigergrab',
   },
   {
     name: 'CurseDelete',
     icon: 'bi-trash3',
-    desc: 'Cross-platform command-line utility for recursively deleting directories at high speed across Windows, macOS, and Linux.',
+    desc: 'High-speed recursive delete utility for Windows, macOS, and Linux workflows.',
     github: 'https://github.com/repasscloud/cursedelete',
   },
   {
     name: 'CveInfo',
     icon: 'bi-bug',
-    desc: 'Command-line utility for querying CVE vulnerability information for security operations and patch management workflows.',
+    desc: 'CLI tooling for vulnerability and patch-management workflows.',
     github: 'https://github.com/repasscloud/cveinfo',
   },
 ];
 ---
 
 <Layout
-  title="Projects"
-  description="RePass Cloud builds enterprise SaaS platforms, cloud infrastructure tooling, and automation systems. Cinturon360 is our primary active platform. Retired projects are open source on GitHub."
+  title="Projects and Products"
+  description="Active RePass Cloud products plus selected historical and open-source projects retained for portfolio and reference purposes."
 >
-
-  <!-- Page header -->
-  <div style="background:var(--rpc-surface); border-bottom:1px solid var(--rpc-border); padding: 3rem 0 2rem;">
+  <section class="page-hero">
     <div class="container">
-      <div class="section-label">What we build</div>
-      <h1 style="font-size:clamp(1.5rem,3vw,2rem); margin-bottom:0.5rem;">Projects</h1>
-      <p style="color:var(--rpc-muted); font-size:1rem; max-width:520px; margin:0;">
-        Active products, custom tooling, and retired open-source projects from RePass Cloud.
+      <div class="hero-eyebrow">
+        <i class="bi bi-box-seam"></i>
+        Projects and products
+      </div>
+      <h1>Current products up front. Historical work kept in context.</h1>
+      <p class="hero-lead">
+        RePass Cloud actively invests in product and tooling work, while keeping retired projects
+        available as portfolio and open-source reference material.
       </p>
     </div>
-  </div>
+  </section>
 
-  <!-- Active projects -->
-  <section class="section">
+  <section class="section bg-surface">
     <div class="container">
-      <div class="section-label">Active</div>
-      <h2 style="margin-bottom:2rem;">Active products</h2>
+      <div class="section-label">Active products</div>
+      <h2 style="margin-bottom:2rem;">Where our current product energy is going</h2>
       <div class="grid-2">
-
-        <!-- Cinturon360 -->
-        <div class="aethon-card" style="border-top: 3px solid var(--rpc-primary);">
-          <div style="display:flex; align-items:flex-start; justify-content:space-between; margin-bottom:1rem;">
-            <div class="feature-icon" style="margin-bottom:0;">
-              <i class="bi bi-diagram-3-fill"></i>
+        {activeProducts.map((product) => (
+          <div class="aethon-card">
+            <div style="display:flex; align-items:flex-start; justify-content:space-between; gap:1rem; margin-bottom:1rem;">
+              <div class="feature-icon" style="margin-bottom:0;"><i class={`bi ${product.icon}`}></i></div>
+              <span class="badge badge-secondary">{product.badge}</span>
             </div>
-            <span class="badge badge-success">Active · SaaS Platform</span>
-          </div>
-          <h3 style="margin-bottom:0.75rem;">Cinturon360</h3>
-          <p style="color:var(--rpc-muted); font-size:0.9rem; line-height:1.7; margin-bottom:1.25rem;">
-            The operational control layer for organisations that need to manage complexity across
-            customers, partners, and teams. Multi-tenant SaaS with Microsoft Entra ID integration,
-            role-based permissions, delegated administration, and audit logging.
-          </p>
-          <div class="tech-stack" style="margin-bottom:1.5rem;">
-            <span class="badge badge-secondary">.NET</span>
-            <span class="badge badge-primary">Azure</span>
-            <span class="badge badge-secondary">Entra ID</span>
-            <span class="badge badge-secondary">Multi-tenant</span>
-          </div>
-          <a href={CINTURON_URL} class="btn btn-primary btn-sm" target="_blank" rel="noopener">
-            Visit Cinturon360 <i class="bi bi-box-arrow-up-right"></i>
-          </a>
-        </div>
-
-        <!-- Aethon -->
-        <div class="aethon-card" style="border-top: 3px solid var(--rpc-primary);">
-          <div style="display:flex; align-items:flex-start; justify-content:space-between; margin-bottom:1rem;">
-            <div class="feature-icon" style="margin-bottom:0;">
-              <i class="bi bi-people-fill"></i>
+            <h3 style="margin-bottom:0.75rem;">{product.name}</h3>
+            <p style="color:var(--rpc-muted); margin-bottom:1rem;">{product.description}</p>
+            <div class="tech-stack" style="margin-bottom:1.25rem;">
+              {product.tags.map((tag) => (
+                <span class="badge badge-secondary">{tag}</span>
+              ))}
             </div>
-            <span class="badge badge-success">Active · SaaS Platform</span>
+            <a href={product.href} class="btn btn-primary btn-sm" target="_blank" rel="noopener">
+              Visit product <i class="bi bi-box-arrow-up-right"></i>
+            </a>
           </div>
-          <h3 style="margin-bottom:0.75rem;">Aethon</h3>
-          <p style="color:var(--rpc-muted); font-size:0.9rem; line-height:1.7; margin-bottom:1.25rem;">
-            Hiring intelligence platform connecting verified employers, trusted recruiters, and job
-            seekers in a transparent, AI-backed marketplace.
-          </p>
-          <div class="tech-stack" style="margin-bottom:1.5rem;">
-            <span class="badge badge-secondary">.NET</span>
-            <span class="badge badge-secondary">Blazor</span>
-            <span class="badge badge-secondary">PostgreSQL</span>
-            <span class="badge badge-primary">AI</span>
-          </div>
-          <a href={AETHON_URL} class="btn btn-primary btn-sm" target="_blank" rel="noopener">
-            Visit Aethon <i class="bi bi-box-arrow-up-right"></i>
-          </a>
-        </div>
+        ))}
       </div>
     </div>
   </section>
 
-  <!-- Custom tooling note -->
-  <section class="section-sm bg-surface">
+  <section class="section">
     <div class="container">
-      <div class="aethon-card" style="background:var(--rpc-bg); border:none; max-width:720px;">
-        <div class="section-label">Custom work</div>
-        <h3 style="margin-bottom:0.75rem;">Bespoke tooling &amp; automation</h3>
-        <p style="color:var(--rpc-muted); font-size:0.95rem; line-height:1.75; margin-bottom:1rem;">
-          Beyond named products, RePass Cloud designs and builds custom tools, automation systems,
-          and operational software for enterprise customers. This includes cloud infrastructure
-          tooling, Microsoft 365 identity automation, finance workflow systems, FinOps platforms,
-          PowerShell modules, and Windows utilities.
+      <div class="showcase-panel" style="max-width:840px;">
+        <div class="section-label">Custom delivery</div>
+        <h3 style="margin-bottom:0.85rem;">Not everything we build is a named product.</h3>
+        <p style="color:var(--rpc-muted); margin-bottom:1rem;">
+          A large part of our work is bespoke: identity automation, cloud governance tools, finance
+          workflow systems, reporting layers, control planes, and specialist operational software
+          built for a specific enterprise environment.
         </p>
         <a href="/case-studies" class="btn btn-outline btn-sm">
-          View case studies <i class="bi bi-arrow-right"></i>
+          See relevant case studies <i class="bi bi-arrow-right"></i>
         </a>
       </div>
     </div>
   </section>
 
-  <!-- Retired / open source -->
-  <section class="section">
+  <section class="section bg-surface">
     <div class="container">
-      <div class="section-label">Open source</div>
-      <h2 style="margin-bottom:0.5rem;">Retired projects</h2>
-      <p class="text-muted" style="margin-bottom:2.5rem; max-width:560px;">
-        These projects were built and operated by RePass Cloud and have since been retired. All are
-        available open source on GitHub. No hosted services or support are provided.
+      <div class="section-label">Historical archive</div>
+      <h2 style="margin-bottom:0.75rem;">Retired and open-source work</h2>
+      <p class="text-muted" style="max-width:680px; margin-bottom:2rem;">
+        These projects are retained for historical reference, portfolio continuity, and open-source
+        access. They are not current product priorities and should be treated as archived work.
       </p>
       <div class="grid-3">
-        {retiredProjects.map((p) => (
-          <div class="aethon-card" style="opacity:0.85;">
-            <div style="display:flex; align-items:flex-start; justify-content:space-between; margin-bottom:0.75rem;">
-              <div class="feature-icon" style="margin-bottom:0; width:40px; height:40px; font-size:1.25rem;">
-                <i class={`bi ${p.icon}`}></i>
-              </div>
-              <span class="badge badge-secondary">Retired · Open Source</span>
+        {archiveProjects.map((project) => (
+          <div class="feature-card" style="opacity:0.88;">
+            <div class="feature-icon"><i class={`bi ${project.icon}`}></i></div>
+            <h3>{project.name}</h3>
+            <p>{project.desc}</p>
+            <div style="margin-top:1rem;">
+              <a href={project.github} class="btn btn-outline btn-sm" target="_blank" rel="noopener">
+                <i class="bi bi-github"></i> GitHub
+              </a>
             </div>
-            <h3 style="font-size:1rem; margin-bottom:0.5rem;">{p.name}</h3>
-            <p style="color:var(--rpc-muted); font-size:0.85rem; line-height:1.6; margin-bottom:1rem;">{p.desc}</p>
-            <a href={p.github} class="btn btn-outline btn-sm" target="_blank" rel="noopener">
-              <i class="bi bi-github"></i> GitHub
-            </a>
           </div>
         ))}
       </div>
       <div style="margin-top:2rem;">
         <a href={GITHUB_URL} class="btn btn-outline" target="_blank" rel="noopener">
-          <i class="bi bi-github"></i> All repos on GitHub
+          View all repositories <i class="bi bi-arrow-right"></i>
         </a>
       </div>
     </div>
   </section>
-
 </Layout>

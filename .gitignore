@@ -11,6 +11,10 @@ hugo.linux
 
 # Astro build output (never commit)
 /dist/
+/.astro/
+
+# Local reference copy used during redesign work
+/.cinturon360-astro-copy/
 
 # Dependency directories (optional)
 /node_modules/
