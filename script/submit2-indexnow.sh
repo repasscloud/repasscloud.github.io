@@ -116,17 +116,33 @@ PY
 
   echo "Submitting batch   : ${count} URLs"
 
-  http_status="$(curl -sS -o "$resp_file" -w "%{http_code}" \
-    -X POST "$ENDPOINT" \
-    -H "Content-Type: application/json; charset=utf-8" \
-    --data-binary @"$json_file")"
+  local attempt=1
+  local max_attempts=4
+  local delay=10
+  while [[ "$attempt" -le "$max_attempts" ]]; do
+    http_status="$(curl -sS -o "$resp_file" -w "%{http_code}" \
+      -X POST "$ENDPOINT" \
+      -H "Content-Type: application/json; charset=utf-8" \
+      --data-binary @"$json_file")"
 
-  echo "HTTP status        : ${http_status}"
-  if [[ "$http_status" -lt 200 || "$http_status" -ge 300 ]]; then
+    echo "HTTP status        : ${http_status} (attempt ${attempt}/${max_attempts})"
+
+    if [[ "$http_status" -ge 200 && "$http_status" -lt 300 ]]; then
+      return 0
+    fi
+
+    if [[ "$http_status" -ge 500 && "$attempt" -lt "$max_attempts" ]]; then
+      echo "Transient server error; retrying in ${delay}s..."
+      sleep "$delay"
+      delay=$((delay * 2))
+      attempt=$((attempt + 1))
+      continue
+    fi
+
     echo "Response body:"
     cat "$resp_file"
     exit 1
-  fi
+  done
 }
 
 # --- Fill & submit batches from urls_file (no mapfile/readarray dependency) ---
