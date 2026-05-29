@@ -123,4 +123,16 @@ jobs:
             --body "Auto merge OK" \
           || true
 
-          gh pr merge dev --merge
+          attempt=1
+          max_attempts=5
+          delay=15
+          until gh pr merge dev --merge; do
+            if [[ "$attempt" -ge "$max_attempts" ]]; then
+              echo "::error::PR merge failed after ${max_attempts} attempts."
+              exit 1
+            fi
+            echo "Merge attempt ${attempt} failed; retrying in ${delay}s..."
+            sleep "$delay"
+            delay=$((delay * 2))
+            attempt=$((attempt + 1))
+          done
