@@ -4,7 +4,7 @@ export const SITE_DESCRIPTION =
 export const SITE_DOMAIN = 'https://repasscloud.com';
 export const DEFAULT_OG_IMAGE = '/img/og-default.png';
 export const GTM_CONTAINER_ID = 'GTM-N5D945ZS';
-export const GA_MEASUREMENT_ID = 'YOUR_GA4_MEASUREMENT_ID';
+export const GA_MEASUREMENT_ID = 'G-RLMZK1PDGS';
 
 export const CINTURON_URL = 'https://cinturon360.com';
 export const GITHUB_URL = 'https://github.com/repasscloud';
