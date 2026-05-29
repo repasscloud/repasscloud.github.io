@@ -131,8 +131,8 @@ PY
       return 0
     fi
 
-    if [[ "$http_status" -ge 500 && "$attempt" -lt "$max_attempts" ]]; then
-      echo "Transient server error; retrying in ${delay}s..."
+    if [[ ( "$http_status" -ge 500 || "$http_status" -eq 429 ) && "$attempt" -lt "$max_attempts" ]]; then
+      echo "Transient error (${http_status}); retrying in ${delay}s..."
       sleep "$delay"
       delay=$((delay * 2))
       attempt=$((attempt + 1))
