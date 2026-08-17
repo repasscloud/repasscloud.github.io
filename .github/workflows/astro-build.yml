@@ -77,7 +77,20 @@ jobs:
             output_dir="static/${tex_file#./latex/}"
             output_dir="$(dirname "$output_dir")"
             mkdir -p "$output_dir"
-            tectonic "$tex_file" -o "$output_dir"
+
+            attempt=1
+            max_attempts=3
+            delay=10
+            until tectonic "$tex_file" -o "$output_dir"; do
+              if [[ "$attempt" -ge "$max_attempts" ]]; then
+                echo "::error::tectonic failed for $tex_file after ${max_attempts} attempts."
+                exit 1
+              fi
+              echo "tectonic attempt ${attempt} failed for $tex_file (likely a flaky bundle download); retrying in ${delay}s..."
+              sleep "$delay"
+              delay=$((delay * 2))
+              attempt=$((attempt + 1))
+            done
           done
 
       - name: Build with Astro
