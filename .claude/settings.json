@@ -1,5 +1,20 @@
 {
   "permissions": {
+    "allow": [
+      "Bash(ls -la ~/Library/Caches/ms-playwright/ 2>&1 | head -10)",
+      "Read(//Users/danijeljw/Library/Caches/ms-playwright/**)",
+      "Bash(node --experimental-vm-modules /private/tmp/claude-501/-Users-danijeljw-Developer-repasscloud-github-io/36a2ab75-0f49-4cfe-aeeb-4ec29cfaaf8f/scratchpad/check-site.mjs)",
+      "Bash(NODE_PATH=/Users/danijeljw/.npm/_npx/e41f203b7505f1fb/node_modules node /private/tmp/claude-501/-Users-danijeljw-Developer-repasscloud-github-io/36a2ab75-0f49-4cfe-aeeb-4ec29cfaaf8f/scratchpad/check-site.mjs)",
+      "Bash(mkdir -p /private/tmp/claude-501/-Users-danijeljw-Developer-repasscloud-github-io/36a2ab75-0f49-4cfe-aeeb-4ec29cfaaf8f/scratchpad/node_modules)",
+      "Bash(ln -sf /Users/danijeljw/.npm/_npx/e41f203b7505f1fb/node_modules/playwright /private/tmp/claude-501/-Users-danijeljw-Developer-repasscloud-github-io/36a2ab75-0f49-4cfe-aeeb-4ec29cfaaf8f/scratchpad/node_modules/playwright)",
+      "Bash(ln -sf /Users/danijeljw/.npm/_npx/e41f203b7505f1fb/node_modules/playwright-core /private/tmp/claude-501/-Users-danijeljw-Developer-repasscloud-github-io/36a2ab75-0f49-4cfe-aeeb-4ec29cfaaf8f/scratchpad/node_modules/playwright-core)",
+      "Bash(node /private/tmp/claude-501/-Users-danijeljw-Developer-repasscloud-github-io/36a2ab75-0f49-4cfe-aeeb-4ec29cfaaf8f/scratchpad/check-site.mjs)",
+      "Bash(lsof -ti:4321 -sTCP:LISTEN)",
+      "Bash(xargs -r kill)",
+      "Bash(rm -rf /private/tmp/claude-501/-Users-danijeljw-Developer-repasscloud-github-io/36a2ab75-0f49-4cfe-aeeb-4ec29cfaaf8f/scratchpad/node_modules)",
+      "Bash(git restore *)",
+      "Bash(git commit -m ' *)"
+    ],
     "defaultMode": "bypassPermissions"
   }
 }
