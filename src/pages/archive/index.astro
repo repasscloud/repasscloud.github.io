@@ -1,0 +1,47 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { GITHUB_URL } from '../../consts';
+import { archiveProjects } from '../../data/products';
+---
+
+<Layout
+  title="Archive"
+  description="Retired and legacy RePass Cloud projects kept accessible for reference and continuity. For current products, see the Products page."
+>
+  <section class="page-hero">
+    <div class="container">
+      <div class="hero-eyebrow"><i class="bi bi-archive"></i> Archive</div>
+      <h1>Legacy and open-source work.</h1>
+      <p class="hero-lead">
+        These projects are retired and are not current product priorities. They are kept here for
+        transparency and reference. For what RePass Cloud actively builds and operates today, see
+        <a href="/products">Products</a>.
+      </p>
+    </div>
+  </section>
+
+  <section class="section bg-surface">
+    <div class="container">
+      <div class="grid-3">
+        {archiveProjects.map((project) => (
+          <div class="feature-card">
+            <div class="feature-icon"><i class={`bi ${project.icon}`}></i></div>
+            <h3>{project.name}</h3>
+            <p>{project.description}</p>
+            {project.note && <p class="text-sm" style="font-weight:700; margin-top:0.5rem;">{project.note}</p>}
+            {project.githubUrl && (
+              <a href={project.githubUrl} class="btn btn-outline btn-sm" target="_blank" rel="noopener" style="margin-top:0.6rem;">
+                <i class="bi bi-github"></i> GitHub
+              </a>
+            )}
+          </div>
+        ))}
+      </div>
+      <div style="margin-top:1.3rem;">
+        <a href={GITHUB_URL} class="btn btn-outline" target="_blank" rel="noopener">
+          View all repositories <i class="bi bi-arrow-right"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>

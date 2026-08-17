@@ -1,0 +1,105 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { products } from '../../data/products';
+
+const itemListSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  itemListElement: products.map((product, index) => ({
+    '@type': 'ListItem',
+    position: index + 1,
+    name: product.name,
+    url: new URL(product.href, 'https://repasscloud.com').href,
+  })),
+};
+---
+
+<Layout
+  title="Products"
+  description="Software products designed, built, and operated by RePass Cloud, including CurseDelete 2, Cinturon360, and Aethon Jobs."
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(itemListSchema)} />
+  </Fragment>
+
+  <section class="page-hero">
+    <div class="container">
+      <div class="hero-eyebrow"><i class="bi bi-box-seam"></i> Products</div>
+      <h1>Software products RePass Cloud designs, builds, and operates.</h1>
+      <p class="hero-lead">
+        Some products live directly on repasscloud.com. Others have their own dedicated product
+        websites — this page catalogues all of them and explains how each one relates to the company.
+      </p>
+    </div>
+  </section>
+
+  <section class="section bg-surface">
+    <div class="container">
+      <div class="grid-2">
+        {products.map((product) => (
+          <div class="aethon-card">
+            <div class="feature-icon"><i class={`bi ${product.icon}`}></i></div>
+            <div class="section-label">{product.statusLabel}</div>
+            <h2 style="font-size:clamp(1.2rem,2vw,1.6rem); margin-top:0.35rem;">{product.name}</h2>
+            <p class="text-muted" style="margin-top:0.4rem;">{product.description}</p>
+            <div class="tech-stack" style="margin-top:0.8rem;">
+              {product.tags.map((tag) => (
+                <span class="badge badge-secondary">{tag}</span>
+              ))}
+            </div>
+            <p class="text-sm text-muted" style="margin-top:0.9rem;">
+              {product.destination === 'internal'
+                ? 'Full product details are on repasscloud.com.'
+                : `Full product details are on ${product.name}’s own website.`}
+            </p>
+            <div style="margin-top:0.6rem; display:flex; gap:0.6rem; flex-wrap:wrap;">
+              <a
+                href={product.href}
+                class="btn btn-primary btn-sm"
+                target={product.destination === 'external' ? '_blank' : undefined}
+                rel={product.destination === 'external' ? 'noopener' : undefined}
+              >
+                {product.destination === 'external' ? (
+                  <Fragment>Visit {product.name} <i class="bi bi-box-arrow-up-right"></i></Fragment>
+                ) : (
+                  <Fragment>View product <i class="bi bi-arrow-right"></i></Fragment>
+                )}
+              </a>
+              {product.githubUrl && (
+                <a href={product.githubUrl} class="btn btn-outline btn-sm" target="_blank" rel="noopener">
+                  <i class="bi bi-github"></i> GitHub
+                </a>
+              )}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="showcase-panel" style="max-width:900px;">
+        <div class="section-label">Beyond named products</div>
+        <h3>Not everything we build is a product.</h3>
+        <p class="text-muted">
+          A significant part of RePass Cloud's work is bespoke enterprise software: identity
+          automation, workflow systems, and integration-heavy control layers delivered directly for
+          client environments. See selected examples in case studies.
+        </p>
+        <a href="/case-studies" class="btn btn-outline btn-sm">See case studies <i class="bi bi-arrow-right"></i></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-surface">
+    <div class="container">
+      <div class="section-label">Retired</div>
+      <h3 style="margin-bottom:0.6rem;">Looking for older projects?</h3>
+      <p class="text-muted" style="max-width:64ch;">
+        Legacy and open-source projects that are no longer active products are kept in the
+        <a href="/archive">archive</a> for reference and continuity.
+      </p>
+    </div>
+  </section>
+</Layout>

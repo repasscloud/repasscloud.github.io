@@ -1,0 +1,78 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+import FormattedDate from '../../components/FormattedDate.astro';
+
+const allPosts = await getCollection('posts');
+const posts = allPosts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+const [featuredPost, ...remainingPosts] = posts;
+---
+
+<Layout
+  title="News"
+  description="Company updates, product announcements, and engineering notes from RePass Cloud covering software, cloud delivery, and enterprise automation."
+>
+  <section class="page-hero">
+    <div class="container">
+      <div class="hero-eyebrow">
+        <i class="bi bi-journal-text"></i>
+        News
+      </div>
+      <h1>News &amp; Insights</h1>
+      <p class="hero-lead">
+        Company news, product updates, and engineering notes from the systems we build and the
+        operational problems behind them.
+      </p>
+    </div>
+  </section>
+
+  <section class="section bg-surface">
+    <div class="container">
+      {posts.length === 0 ? (
+        <p class="text-muted">No news yet. Check back soon.</p>
+      ) : (
+        <Fragment>
+          {featuredPost && (
+            <a href={`/news/${featuredPost.id}/`} class="blog-card" style="margin-bottom:1.5rem; display:block;">
+              <div class="blog-card-body">
+                <div class="section-label">Featured</div>
+                <div class="blog-card-meta">
+                  <FormattedDate date={featuredPost.data.pubDate} />
+                </div>
+                <div class="blog-card-title">{featuredPost.data.title}</div>
+                <div class="blog-card-desc">{featuredPost.data.description}</div>
+                {featuredPost.data.tags && featuredPost.data.tags.length > 0 && (
+                  <div class="blog-card-tags">
+                    {featuredPost.data.tags.slice(0, 4).map((tag) => (
+                      <span class="badge badge-secondary">{tag}</span>
+                    ))}
+                  </div>
+                )}
+              </div>
+            </a>
+          )}
+          <div class="grid-3">
+            {remainingPosts.map((post) => (
+              <a href={`/news/${post.id}/`} class="blog-card">
+                <div class="blog-card-body">
+                  <div class="blog-card-meta">
+                    <FormattedDate date={post.data.pubDate} />
+                  </div>
+                  <div class="blog-card-title">{post.data.title}</div>
+                  <div class="blog-card-desc">{post.data.description}</div>
+                  {post.data.tags && post.data.tags.length > 0 && (
+                    <div class="blog-card-tags">
+                      {post.data.tags.slice(0, 4).map((tag) => (
+                        <span class="badge badge-secondary">{tag}</span>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              </a>
+            ))}
+          </div>
+        </Fragment>
+      )}
+    </div>
+  </section>
+</Layout>

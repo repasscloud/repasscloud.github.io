@@ -5,14 +5,14 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 export async function GET(context) {
   const posts = await getCollection('posts');
   return rss({
-    title: SITE_TITLE,
+    title: `${SITE_TITLE} News`,
     description: SITE_DESCRIPTION,
     site: context.site,
     items: posts
       .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
       .map((post) => ({
         ...post.data,
-        link: `/posts/${post.id}/`,
+        link: `/news/${post.id}/`,
       })),
   });
 }

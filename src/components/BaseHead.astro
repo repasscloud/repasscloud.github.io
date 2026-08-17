@@ -13,27 +13,38 @@ interface Props {
   title: string;
   description?: string;
   image?: ImageMetadata;
+  /** Absolute or site-relative path to a static OG image (takes priority over `image`). */
+  ogImagePath?: string;
   type?: 'website' | 'article';
   pubDate?: string;
   updatedDate?: string;
   noIndex?: boolean;
+  /** Site-relative path to use as the canonical URL instead of the current route. */
+  canonical?: string;
 }
 
-const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const {
   title,
   description = SITE_DESCRIPTION,
   image,
+  ogImagePath,
   type = 'website',
   pubDate,
   updatedDate,
   noIndex = false,
+  canonical,
 } = Astro.props;
 
+const canonicalURL = canonical
+  ? new URL(canonical, Astro.site)
+  : new URL(Astro.url.pathname, Astro.site);
+
 const pageTitle = title === SITE_TITLE ? title : `${title} | RePass Cloud`;
-const ogImage = image
-  ? new URL(image.src, Astro.url).href
-  : new URL(DEFAULT_OG_IMAGE, Astro.site).href;
+const ogImage = ogImagePath
+  ? new URL(ogImagePath, Astro.site).href
+  : image
+    ? new URL(image.src, Astro.url).href
+    : new URL(DEFAULT_OG_IMAGE, Astro.site).href;
 const hasGtm = GTM_CONTAINER_ID.startsWith('GTM-');
 const hasGa = GA_MEASUREMENT_ID.startsWith('G-');
 ---
@@ -59,7 +70,7 @@ const hasGa = GA_MEASUREMENT_ID.startsWith('G-');
 <link
   rel="alternate"
   type="application/rss+xml"
-  title="RePass Cloud Blog"
+  title="RePass Cloud News"
   href={new URL('rss.xml', Astro.site)}
 />
 <link rel="canonical" href={canonicalURL} />
