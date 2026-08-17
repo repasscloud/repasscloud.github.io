@@ -1,6 +1,5 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import { CINTURON_URL } from '../consts';
 
 const principles = [
   {
@@ -14,36 +13,37 @@ const principles = [
       'Auditability, permissions, evidence trails, and supportability are part of architecture decisions from the start.',
   },
   {
-    title: 'Modernization without fantasy assumptions',
+    title: 'Product ownership',
     description:
-      'We design for the enterprise you have now, including legacy systems and hybrid constraints, not a fictional clean slate.',
+      'Products we ship, we also operate and support ourselves — the same accountability applies whether it is a product or a client system.',
   },
 ];
 
 const focusAreas = [
+  'Software product engineering (Rust, .NET)',
   'Multi-tenant enterprise platforms',
   'Cloud governance and FinOps tooling',
   'Microsoft 365 and Entra identity automation',
-  'Workflow and approval automation',
   'PowerShell delivery and operational tooling',
   'Integration-heavy business systems',
 ];
 ---
 
 <Layout
-  title="About RePass Cloud"
-  description="RePass Cloud is an engineering-led Australian software business delivering enterprise platforms, cloud automation, and identity-aware operational systems."
+  title="Company"
+  description="RePass Cloud is an Australian software company that designs, builds, owns, and operates software products and enterprise technical systems."
 >
   <section class="page-hero">
     <div class="container">
-      <div class="hero-eyebrow"><i class="bi bi-building"></i> About RePass Cloud</div>
-      <h1>We build enterprise software that can be operated, governed, and trusted.</h1>
+      <div class="hero-eyebrow"><i class="bi bi-building"></i> Company</div>
+      <h1>An Australian software company that builds and operates its own products.</h1>
       <p class="hero-lead">
-        RePass Cloud is an engineering-led company focused on software systems for teams working across
-        cloud estates, identity-heavy workflows, and operational environments where reliability matters.
+        RePass Cloud designs, builds, owns, and operates software products, and delivers serious
+        enterprise engineering work for teams working across cloud estates and identity-heavy
+        workflows.
       </p>
       <div class="hero-actions">
-        <a href="/contact" class="btn btn-primary btn-lg">Talk to us <i class="bi bi-arrow-right"></i></a>
+        <a href="/products" class="btn btn-primary btn-lg">Explore our products <i class="bi bi-arrow-right"></i></a>
         <a href="/case-studies" class="btn btn-outline btn-lg">See case studies</a>
       </div>
     </div>
@@ -53,15 +53,16 @@ const focusAreas = [
     <div class="container">
       <div class="showcase-split">
         <div>
-          <div class="section-label">What we are not</div>
-          <h2>Not a brochure agency. Not a staffing pass-through.</h2>
+          <div class="section-label">What we do</div>
+          <h2>Product ownership, plus enterprise delivery depth.</h2>
           <p class="section-intro">
-            We are a technical delivery team that designs and ships enterprise systems where identity,
-            controls, integration, and support all have to work together in production.
+            We build and operate our own named products, and we design and ship enterprise systems
+            where identity, controls, integration, and support all have to work together in
+            production.
           </p>
         </div>
         <div class="showcase-panel">
-          <div class="section-label">Primary focus</div>
+          <div class="section-label">Technical areas</div>
           <div class="hero-trust">
             {focusAreas.map((item) => (
               <div class="hero-trust-item"><i class="bi bi-check2-circle"></i> {item}</div>
@@ -93,15 +94,13 @@ const focusAreas = [
     <div class="container">
       <div class="showcase-split">
         <div>
-          <div class="section-label">Flagship product</div>
-          <h2>Cinturon360</h2>
+          <div class="section-label">Products</div>
+          <h2>Where to find what we build</h2>
           <p class="text-muted">
-            Cinturon360 reflects our product standard: multi-tenant architecture, identity-aware controls,
-            delegated administration, and full auditability for operationally serious teams.
+            Current products include CurseDelete 2, hosted directly on repasscloud.com, and
+            Cinturon360, our multi-tenant operational control platform.
           </p>
-          <a href={CINTURON_URL} class="btn btn-primary btn-sm" target="_blank" rel="noopener">
-            Visit Cinturon360 <i class="bi bi-box-arrow-up-right"></i>
-          </a>
+          <a href="/products" class="btn btn-primary btn-sm">See all products <i class="bi bi-arrow-right"></i></a>
         </div>
         <div class="showcase-visual">
           <i class="bi bi-diagram-3-fill" style="font-size:2.5rem;"></i>
@@ -112,15 +111,11 @@ const focusAreas = [
     </div>
   </section>
 
-  <section class="cta-banner">
-    <div class="container">
-      <div class="section-label" style="color:rgba(255,255,255,0.55);">Contact</div>
-      <h2>Need a technical partner who can work through complexity, not around it?</h2>
-      <p>Send us the workflow, control issue, or integration bottleneck. We will start there.</p>
-      <div class="cta-actions">
-        <a href="/contact" class="btn btn-primary btn-lg">Start the conversation <i class="bi bi-arrow-right"></i></a>
-        <a href="/contact" class="btn btn-outline-light btn-lg">Contact page</a>
-      </div>
+  <section class="section">
+    <div class="container" style="text-align:center; max-width:60ch;">
+      <p class="text-muted">
+        Have a genuine enquiry? <a href="/contact">Contact us</a>.
+      </p>
     </div>
   </section>
 </Layout>
