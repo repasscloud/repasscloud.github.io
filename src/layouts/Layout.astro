@@ -10,10 +10,12 @@ interface Props {
   title?: string;
   description?: string;
   image?: ImageMetadata;
+  ogImagePath?: string;
   type?: 'website' | 'article';
   pubDate?: string;
   updatedDate?: string;
   noIndex?: boolean;
+  canonical?: string;
   simpleFooter?: boolean;
 }
 
@@ -21,15 +23,16 @@ const {
   title = SITE_TITLE,
   description = SITE_DESCRIPTION,
   image,
+  ogImagePath,
   type = 'website',
   pubDate,
   updatedDate,
   noIndex = false,
+  canonical,
   simpleFooter = false,
 } = Astro.props;
 
 const hasGtm = GTM_CONTAINER_ID.startsWith('GTM-');
-const isHomePage = Astro.url.pathname === '/';
 ---
 
 <!doctype html>
@@ -39,10 +42,12 @@ const isHomePage = Astro.url.pathname === '/';
       title={title}
       description={description}
       image={image}
+      ogImagePath={ogImagePath}
       type={type}
       pubDate={pubDate}
       updatedDate={updatedDate}
       noIndex={noIndex}
+      canonical={canonical}
     />
     <slot name="head" />
   </head>
@@ -61,7 +66,7 @@ const isHomePage = Astro.url.pathname === '/';
     <main>
       <slot />
     </main>
-    <Footer simple={simpleFooter} showCallout={isHomePage && !simpleFooter} />
+    <Footer simple={simpleFooter} />
     <CookieConsent />
   </body>
 </html>

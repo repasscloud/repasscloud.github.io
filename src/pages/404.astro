@@ -331,10 +331,10 @@ const pageDescription = "This page doesn't exist. Navigate back to the RePass Cl
 
 <script>
   (function () {
-    const canvas = /** @type {HTMLCanvasElement|null} */ (document.getElementById('c404'));
+    const canvas = document.getElementById('c404') as HTMLCanvasElement;
     if (!canvas) return;
 
-    const ctx = /** @type {CanvasRenderingContext2D|null} */ (canvas.getContext('2d'));
+    const ctx = canvas.getContext('2d') as CanvasRenderingContext2D;
     if (!ctx) return;
 
     function resizeCanvas() {
@@ -358,7 +358,18 @@ const pageDescription = "This page doesn't exist. Navigate back to the RePass Cl
             : '255,255,255',
     }));
 
-    const shooters = Array.from({ length: 5 }, (_, i) => ({
+    interface Shooter {
+      active: boolean;
+      x: number;
+      y: number;
+      vx: number;
+      vy: number;
+      life: number;
+      maxLife: number;
+      cooldown: number;
+    }
+
+    const shooters: Shooter[] = Array.from({ length: 5 }, (_, i) => ({
       active: false,
       x: 0,
       y: 0,
@@ -369,7 +380,7 @@ const pageDescription = "This page doesn't exist. Navigate back to the RePass Cl
       cooldown: 80 + i * 90 + Math.random() * 200,
     }));
 
-    function activateShooter(s) {
+    function activateShooter(s: Shooter) {
       s.active = true;
       s.x = 0.08 + Math.random() * 0.45;
       s.y = 0.02 + Math.random() * 0.28;
@@ -381,7 +392,7 @@ const pageDescription = "This page doesn't exist. Navigate back to the RePass Cl
       s.cooldown = 250 + Math.random() * 600;
     }
 
-    function frame(t) {
+    function frame(t: number) {
       const W = canvas.width;
       const H = canvas.height;
       ctx.clearRect(0, 0, W, H);
@@ -434,7 +445,7 @@ const pageDescription = "This page doesn't exist. Navigate back to the RePass Cl
     }
     requestAnimationFrame(frame);
 
-    const astro = document.getElementById('astro404');
+    const astro = document.getElementById('astro404') as HTMLElement;
     if (!astro) return;
 
     let theta = 0;

@@ -1,19 +1,21 @@
 ---
 import {
-  AETHON_URL,
-  CINTURON_URL,
   GITHUB_URL,
   LINKEDIN_URL,
   TWITTER_URL,
 } from '../consts';
+import { products } from '../data/products';
 
 interface Props {
   simple?: boolean;
-  showCallout?: boolean;
 }
 
-const { simple = false, showCallout = false } = Astro.props;
+const { simple = false } = Astro.props;
 const year = new Date().getFullYear();
+
+const cursedelete = products.find((p) => p.slug === 'cursedelete');
+const cinturon = products.find((p) => p.slug === 'cinturon360');
+const aethon = products.find((p) => p.slug === 'aethon-jobs');
 ---
 
 <footer class="site-footer">
@@ -46,22 +48,6 @@ const year = new Date().getFullYear();
       </div>
     ) : (
       <Fragment>
-    {showCallout && (
-      <div class="footer-callout">
-        <div>
-          <p class="footer-callout-label">Built for enterprise pressure</p>
-          <h2>Need software and automation that can stand up in production and governance reviews?</h2>
-          <p>
-            RePass Cloud delivers control-plane software, identity automation, and cloud tooling for
-            teams that cannot afford brittle workflows.
-          </p>
-        </div>
-        <div class="footer-callout-actions">
-          <a href="/contact" class="btn btn-primary">Discuss a project</a>
-        </div>
-      </div>
-    )}
-
     <div class="footer-grid">
       <div>
         <div class="footer-brand">
@@ -74,38 +60,39 @@ const year = new Date().getFullYear();
           />
           <span>RePass Cloud</span>
         </div>
-        <p class="footer-tagline">Enterprise software and cloud automation.</p>
+        <p class="footer-tagline">Software products and engineering systems.</p>
         <p class="footer-copy">
-          Built in Sydney for teams operating across Azure, AWS, and Microsoft 365.
+          Designed, built, and operated from Sydney, Australia.
         </p>
       </div>
 
       <div>
         <div class="footer-col-title">Company</div>
         <ul class="footer-links">
-          <li><a href="/about">About</a></li>
+          <li><a href="/about">Company</a></li>
           <li><a href="/case-studies">Case Studies</a></li>
-          <li><a href="/projects">Selected Work</a></li>
-          <li><a href="/posts">Blog</a></li>
           <li><a href="/careers">Careers</a></li>
-        </ul>
-      </div>
-
-      <div>
-        <div class="footer-col-title">Capabilities</div>
-        <ul class="footer-links">
-          <li><a href="/services/enterprise-platforms">Enterprise Platforms</a></li>
-          <li><a href="/services/cloud-tooling">Cloud Tooling</a></li>
-          <li><a href="/services/m365-automation">M365 Automation</a></li>
-          <li><a href="/services/powershell">PowerShell Delivery</a></li>
+          <li><a href="/news">News</a></li>
         </ul>
       </div>
 
       <div>
         <div class="footer-col-title">Products</div>
         <ul class="footer-links">
-          <li><a href={CINTURON_URL} target="_blank" rel="noopener">Cinturon360 ↗</a></li>
-          <li><a href={AETHON_URL} target="_blank" rel="noopener">Aethon Jobs ↗</a></li>
+          {cursedelete && <li><a href={cursedelete.href}>{cursedelete.name}</a></li>}
+          {cinturon && <li><a href={cinturon.href} target="_blank" rel="noopener">{cinturon.name} ↗</a></li>}
+          {aethon && <li><a href={aethon.href} target="_blank" rel="noopener">{aethon.name} ↗</a></li>}
+          <li><a href="/archive">Archive / Open Source</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="footer-col-title">Engineering</div>
+        <ul class="footer-links">
+          <li><a href="/services/enterprise-platforms">Enterprise Platforms</a></li>
+          <li><a href="/services/cloud-tooling">Cloud Tooling</a></li>
+          <li><a href="/services/m365-automation">M365 / Identity Automation</a></li>
+          <li><a href="/services/powershell">PowerShell</a></li>
         </ul>
       </div>
 

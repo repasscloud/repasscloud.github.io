@@ -1,28 +1,30 @@
 ---
 import Layout from '../layouts/Layout.astro';
-const CONTACT_EMAIL = 'hello@repasscloud.com';
+import { CONTACT_EMAIL } from '../consts';
 
 const WEB3FORMS_KEY = '5cd9e130-d321-4d32-b2bd-e86817def487';
 const challenges = [
-  'Enterprise platform or workflow software',
-  'Cloud tooling, FinOps, or governance',
-  'Microsoft 365 or identity automation',
-  'PowerShell delivery or operational scripting',
-  'Other complex operational problem',
+  'Product / licensing',
+  'Product support',
+  'Partnerships',
+  'Business / engineering enquiry',
+  'Careers',
+  'Privacy / legal',
+  'Other',
 ];
 ---
 
 <Layout
-  title="Contact RePass Cloud"
-  description="Start a conversation with RePass Cloud about enterprise software, cloud tooling, and identity automation challenges."
+  title="Contact"
+  description="Contact RePass Cloud about products, licensing, partnerships, or engineering enquiries."
 >
   <section class="page-hero">
     <div class="container">
       <div class="hero-eyebrow"><i class="bi bi-chat-dots"></i> Contact</div>
-      <h1>Start with the operating problem, not the feature list.</h1>
+      <h1>Get in touch with RePass Cloud.</h1>
       <p class="hero-lead">
-        Tell us what is slow, fragile, manual, or difficult to govern. We will map the right software and
-        automation path for your environment.
+        Product and licensing questions, partnership enquiries, and engineering questions are all
+        welcome. Tell us what you need and we will point you the right way.
       </p>
     </div>
   </section>
@@ -32,16 +34,15 @@ const challenges = [
       <div class="contact-grid">
         <div class="showcase-panel">
           <div class="section-label">Useful first-contact context</div>
-          <h3>What helps us respond quickly</h3>
+          <h3>What helps us respond well</h3>
           <div class="hero-trust" style="margin-top:1rem;">
-            <div class="hero-trust-item"><i class="bi bi-check2-circle"></i> The workflow currently failing</div>
-            <div class="hero-trust-item"><i class="bi bi-check2-circle"></i> Systems involved (Azure, AWS, M365, HR, ITSM)</div>
-            <div class="hero-trust-item"><i class="bi bi-check2-circle"></i> Main risk (manual effort, access issues, control gaps)</div>
+            <div class="hero-trust-item"><i class="bi bi-check2-circle"></i> Which product or engineering area this concerns</div>
+            <div class="hero-trust-item"><i class="bi bi-check2-circle"></i> Systems involved, if relevant (Azure, AWS, M365)</div>
+            <div class="hero-trust-item"><i class="bi bi-check2-circle"></i> What you are trying to achieve</div>
           </div>
           <div style="margin-top:1.5rem; border-top:1px solid var(--rpc-border); padding-top:1rem;">
             <div class="section-label">Direct email</div>
             <p style="font-weight:700; margin-bottom:0.25rem;">{CONTACT_EMAIL}</p>
-            <p class="text-muted">Typical response time is one business day.</p>
           </div>
         </div>
 

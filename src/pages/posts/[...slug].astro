@@ -1,26 +1,15 @@
 ---
-import { getCollection, render } from 'astro:content';
-import PostLayout from '../../layouts/PostLayout.astro';
+import RedirectPage from '../../components/RedirectPage.astro';
+import { newsSlugRedirects } from '../../data/newsRedirects';
 
-export async function getStaticPaths() {
-  const posts = await getCollection('posts');
-  return posts.map((post) => ({
-    params: { slug: post.id },
-    props: post,
+export function getStaticPaths() {
+  return Object.entries(newsSlugRedirects).map(([oldSlug, newSlug]) => ({
+    params: { slug: oldSlug },
+    props: { newSlug },
   }));
 }
 
-const post = Astro.props;
-const { Content } = await render(post);
+const { newSlug } = Astro.props;
 ---
 
-<PostLayout
-  title={post.data.title}
-  description={post.data.description}
-  pubDate={post.data.pubDate}
-  updatedDate={post.data.updatedDate}
-  heroImage={post.data.heroImage}
-  tags={post.data.tags}
->
-  <Content />
-</PostLayout>
+<RedirectPage to={`/news/${newSlug}/`} title="This post has moved to News" />

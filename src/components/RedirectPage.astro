@@ -1,0 +1,23 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+interface Props {
+  /** Site-relative destination path, e.g. "/news/my-post/". */
+  to: string;
+  title: string;
+}
+
+const { to, title } = Astro.props;
+---
+
+<Layout title={title} description={`This page has moved to ${to}.`} noIndex={true} canonical={to}>
+  <Fragment slot="head">
+    <meta http-equiv="refresh" content={`0; url=${to}`} />
+  </Fragment>
+  <section class="section">
+    <div class="container" style="text-align:center; padding: 5rem 0;">
+      <p class="text-muted">This page has moved.</p>
+      <p><a href={to} class="btn btn-primary btn-sm">Continue to the new page <i class="bi bi-arrow-right"></i></a></p>
+    </div>
+  </section>
+</Layout>

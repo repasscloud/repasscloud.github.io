@@ -1,10 +1,10 @@
 ---
 const navLinks = [
-  { href: '/services/enterprise-platforms', label: 'Services' },
+  { href: '/products', label: 'Products' },
+  { href: '/about', label: 'Company' },
   { href: '/case-studies', label: 'Case Studies' },
-  { href: '/projects', label: 'Work' },
-  { href: '/posts', label: 'Posts' },
-  { href: '/careers', label: 'Careers' },
+  { href: '/news', label: 'News' },
+  { href: '/contact', label: 'Contact' },
 ];
 const currentPath = Astro.url.pathname;
 ---
@@ -22,7 +22,7 @@ const currentPath = Astro.url.pathname;
         />
         <span class="site-nav-brand-copy">
           <span class="site-nav-brand-name">RePass Cloud</span>
-          <span class="site-nav-brand-tag">Software systems for modern enterprise operations</span>
+          <span class="site-nav-brand-tag">Software products and engineering systems</span>
         </span>
       </a>
 
@@ -35,13 +35,6 @@ const currentPath = Astro.url.pathname;
             {label}
           </a>
         ))}
-      </div>
-
-      <div class="site-nav-actions">
-        <a href="/about" class="btn btn-outline btn-sm nav-secondary-cta">Why RePass Cloud</a>
-        <a href="/contact" class="btn btn-primary btn-sm">
-          Start a conversation <i class="bi bi-arrow-right"></i>
-        </a>
       </div>
 
       <button
@@ -61,8 +54,6 @@ const currentPath = Astro.url.pathname;
           {label}
         </a>
       ))}
-      <a href="/about" class="btn btn-outline btn-sm">Why RePass Cloud</a>
-      <a href="/contact" class="btn btn-primary btn-sm">Start a conversation</a>
     </div>
   </div>
 </header>
