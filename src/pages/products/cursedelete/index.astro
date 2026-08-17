@@ -31,8 +31,8 @@ const features = [
 const editions = [
   { key: 'community', name: 'Community', price: 'Free', who: 'Personal use, developers, homelabs, evaluation', cta: 'Get Community' },
   { key: 'education', name: 'Education', price: 'Free', who: 'Students, teachers, recognised schools and universities', cta: 'Get Education' },
-  { key: 'business', name: 'Business', price: 'Commercial', who: 'IT departments, DevOps teams, MSPs, file-server admins, build/release infrastructure', cta: 'Purchase Business' },
-  { key: 'enterprise', name: 'Enterprise', price: 'Custom', who: 'Organisation-wide deployment, negotiated scale, priority support', cta: 'Purchase Enterprise' },
+  { key: 'business', name: 'Business', price: '$199 AUD', who: 'IT departments, DevOps teams, MSPs, file-server admins, build/release infrastructure', cta: 'Purchase Business' },
+  { key: 'enterprise', name: 'Enterprise', price: '$1499 AUD', who: 'Organisation-wide deployment, negotiated scale, priority support', cta: 'Purchase Enterprise' },
 ] as const;
 
 const softwareSchema = {
@@ -238,7 +238,7 @@ cargo build --release -p cursdel-cli
         <div class="section-label">Licensing enquiries</div>
         <p class="text-muted">
           Payment is handled by Stripe; licensing is issued separately after purchase. For questions
-          about editions, scale, or negotiated Enterprise terms, email
+          about editions, scale, or negotiated Enterprise terms, email{' '}
           <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>.
         </p>
       </div>
