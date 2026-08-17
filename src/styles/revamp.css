@@ -136,6 +136,23 @@ pre code {
   padding: 0;
 }
 
+.terminal-block {
+  background: #0c1020;
+  color: #39ff14;
+  border: none;
+  border-radius: var(--radius-md);
+  padding: 1rem;
+  font-size: 0.82rem;
+  line-height: 1.6;
+  overflow-x: auto;
+}
+
+.terminal-block code {
+  background: transparent;
+  color: inherit;
+  padding: 0;
+}
+
 blockquote {
   border-left: 3px solid var(--rpc-primary);
   margin: 1.4rem 0;

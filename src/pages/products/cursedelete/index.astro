@@ -122,7 +122,7 @@ const breadcrumbSchema = {
         </div>
         <div class="showcase-panel">
           <div class="section-label">Quick start</div>
-          <pre style="background:#0c1020; color:#d7dae8; border-radius:var(--radius-md); padding:1rem; font-size:0.82rem; overflow-x:auto; line-height:1.6;"><code>$ cursdel /tmp/scratch/old-build --dry-run
+          <pre class="terminal-block"><code>$ cursdel /tmp/scratch/old-build --dry-run
 CurseDelete 2
 
 Target:       /tmp/scratch/old-build
@@ -188,7 +188,7 @@ No files were modified.</code></pre>
           No prebuilt release binaries are published yet. Building from source is currently the only
           way to get <code>cursdel</code>. Requires a current stable Rust toolchain.
         </p>
-        <pre style="background:#0c1020; color:#d7dae8; border-radius:var(--radius-md); padding:1rem; font-size:0.82rem; overflow-x:auto; margin-top:0.75rem;"><code>git clone {CURSEDELETE_GITHUB_URL}.git
+        <pre class="terminal-block" style="margin-top:0.75rem;"><code>git clone {CURSEDELETE_GITHUB_URL}.git
 cd cursedelete-2
 cargo build --release -p cursdel-cli
 ./target/release/cursdel --version</code></pre>
