@@ -44,13 +44,19 @@ When changing the site, prefer small, reviewable updates and preserve this produ
 
 - `src/consts.ts`
   - Global constants for site title, description, domains, product links, GitHub, LinkedIn, Twitter, GTM, GA, contact email, and default/CurseDelete Open Graph images.
-  - `CURSEDELETE_PURCHASE_URL` is the single place a Stripe-hosted purchase link goes. It is currently empty (no verified link exists) — the CurseDelete product page falls back to a licensing-enquiry contact link when it is empty. Do not fabricate a URL here.
+  - `CURSEDELETE_STRIPE_LINKS` holds one Stripe-hosted purchase link per edition (`community`/`education`/`business`/`enterprise`). These are currently Stripe **test-mode** links (`buy.stripe.com/test_...`) — swap for live-mode links before real launch. Do not fabricate a URL for a product that doesn't have a verified one; if a future product has no purchase link yet, follow the pattern that used to live here: leave it unset and branch the page's purchase section on that, with a licensing-enquiry contact fallback instead of a broken/fake link.
+  - `CURSEDELETE_VERSION` is a single static string (currently `'v2.0.0'`) shown in the hero, the `/products/` card, and `SoftwareApplication` schema. Update it by hand when a new CurseDelete release ships — it is not fetched automatically.
+  - `CURSEDELETE_ICON` / `CURSEDELETE_CHANGELOG_URL` point at the real product icon (`public/img/cursedelete-icon.png`, sourced from the cursedelete-2 repo via `sharp`) and its raw `CHANGELOG.md` URL.
   - Update repeated brand URLs here rather than scattering hard-coded links.
 
 - `src/data/products.ts`
   - Single source of truth for product cards: `products` (active products — CurseDelete 2, Cinturon360, Aethon Jobs) and `archiveProjects` (retired/legacy projects).
   - Used by the homepage, `/products/`, and the Footer. Add new products here, not as separate hardcoded arrays in page files.
   - `Product.destination` is `'internal'` (has a real page under `/products/<slug>/`) or `'external'` (links out to the product's own site).
+  - `Product.iconImage`, `.version`, and `.changelogUrl` are the standard pattern going forward for any product with real brand art, a published version, and a `CHANGELOG.md` — not CurseDelete-specific. `iconImage` takes priority over the `icon` Bootstrap-icon-class fallback when set.
+
+- `src/components/Changelog.astro`
+  - Reusable component: pass a raw markdown `url` (Keep a Changelog format — `## [version] - date` headings, `### Section` subheadings, `- item` bullets) and it fetches + parses it at build time, rendering nothing (not a broken build) if the fetch fails. Use this for any future product with a changelog rather than writing a one-off parser.
 
 - `src/data/newsRedirects.ts`
   - Maps every legacy `/posts/<slug>/` URL to its canonical `/news/<slug>/` destination. Add an entry here whenever a post's filename/slug changes, so the old indexed URL keeps resolving.
@@ -134,7 +140,8 @@ When changing the site, prefer small, reviewable updates and preserve this produ
 
 - `src/pages/products/cursedelete/index.astro`
   - Dedicated CurseDelete 2 product page at `/products/cursedelete/` (URL has no version number so future versions don't need a migration). Content is sourced from the real `repasscloud/cursedelete-2` GitHub repository (README, `docs/LICENSING.md`) — do not add features, pricing, or platform-support claims that aren't verifiable there. Adds `SoftwareApplication` and `BreadcrumbList` schema; deliberately no `Offer`/ratings since none are verified.
-  - Purchase section branches on `CURSEDELETE_PURCHASE_URL` (see `src/consts.ts`) — populate that constant when a real Stripe link exists; do not add a shopping cart, Stripe Elements, or license-issuance logic to this site. The public site only ever links out to a Stripe-hosted payment page.
+  - Purchase section links each edition card to its own entry in `CURSEDELETE_STRIPE_LINKS` (see `src/consts.ts`, currently test-mode links). Do not add a shopping cart, Stripe Elements, or license-issuance logic to this site — the public site only ever links out to a Stripe-hosted payment page per edition.
+  - Also renders `<Changelog url={CURSEDELETE_CHANGELOG_URL} />` under a "Release notes" section.
 
 - `src/pages/archive/index.astro`
   - Retired/legacy projects (LunaVPN, OptechX, WanderConnect, TigerGrab, CveInfo, legacy pre-Rust CurseDelete) from `src/data/products.ts`'s `archiveProjects`. Kept separate from `/products/` so retired work doesn't compete visually with active products.
@@ -197,14 +204,13 @@ Preview production build locally:
 npm run preview
 ```
 
-Run Astro directly when needed:
+Run type checking:
 
 ```bash
-npx astro check
-npx astro build
+npm run check
 ```
 
-If `astro check` is not available, inspect dependencies first. Do not add packages unless the task requires it.
+`@astrojs/check` and `typescript` are installed as devDependencies specifically for this. If they're ever removed, inspect dependencies before reinstalling — don't add packages unless the task requires it.
 
 ## Branching and Deployment Workflow
 
@@ -400,7 +406,8 @@ Before finishing UI changes, check:
 1. Add an entry to the `products` array in `src/data/products.ts` (or `archiveProjects` for retired work).
 2. If the product has its own on-site page, create it under `src/pages/products/<slug>/index.astro` and set `destination: 'internal'`, `href: '/products/<slug>/'`.
 3. If the product's primary experience lives elsewhere, set `destination: 'external'` and `href`/`externalUrl` to that site.
-4. Run `npm run build` and confirm the card renders correctly on the homepage, `/products/`, and in the Footer's Products column (all read from the same data source).
+4. If real brand art, a version, and a `CHANGELOG.md` exist, set `iconImage` (optimize via `sharp`, following `script/generate-og-images.mjs`'s pattern, or a similar one-off script), `version`, and `changelogUrl` — this is the standard for products going forward, not CurseDelete-specific. Render the changelog with `<Changelog url={product.changelogUrl} />`.
+5. Run `npm run build` and confirm the card renders correctly on the homepage, `/products/`, and in the Footer's Products column (all read from the same data source).
 
 ### Add a new page
 
@@ -454,6 +461,7 @@ Before committing:
 
 ```bash
 npm ci
+npm run check
 npm run build
 ```
 
@@ -474,7 +482,7 @@ These are not automatic changes. Raise them as separate tasks unless instructed:
 2. Legacy Hugo folders remain present. Clean them only after confirming no assets/content are still needed.
 3. CI uses Node `25`, while `package.json` allows Node `>=22.12.0`. Consider aligning this to an LTS version if requested.
 4. The auto-merge workflow from `dev` to `main` is powerful. Do not alter it casually.
-5. `CURSEDELETE_PURCHASE_URL` (`src/consts.ts`) is intentionally unset — no verified Stripe-hosted purchase link exists yet. Populate it once one exists; do not fabricate a URL in the meantime.
+5. `CURSEDELETE_STRIPE_LINKS` (`src/consts.ts`) currently point at Stripe **test-mode** checkout pages (`buy.stripe.com/test_...`). Swap for live-mode links before real launch.
 6. `SITE_IMPROVEMENT_PLAN.md` previously recommended a services-first/engagement-funnel direction. It has been superseded by `docs/REPASSCLOUD-SITE-REBUILD-CLAUDE-PROMPT.md` and its content replaced with a pointer to that supersession — do not resurrect the old plan's recommendations.
 
 ## Response Style for Claude
