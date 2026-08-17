@@ -48,16 +48,26 @@ npm run preview
 - `src/pages/` route files and page content
 - `src/components/` reusable Astro components
 - `src/layouts/` page layouts
-- `src/content/posts/` blog posts used by Astro content collections
+- `src/data/products.ts` single source of truth for product cards (homepage, `/products/`, footer)
+- `src/data/newsRedirects.ts` legacy `/posts/<slug>/` → `/news/<slug>/` URL map
+- `src/content/posts/` news/article content used by Astro content collections
 - `src/styles/` site styling
 - `public/` static assets copied directly at build time
 - `static/` additional static assets including generated legal PDFs
 - `latex/downloads/legal/` LaTeX sources for legal PDFs
 - `.github/workflows/` CI/CD workflows
 
+## Information Architecture
+
+- `/products/` — RePass Cloud's product portfolio (CurseDelete 2 hosted locally; Cinturon360 and Aethon Jobs link out to their own sites).
+- `/products/cursedelete/` — dedicated CurseDelete 2 product page.
+- `/archive/` — retired/legacy projects, kept separate from active products.
+- `/news/` — company/product/engineering news (user-facing label for the `posts` content collection).
+- `/posts/` and `/projects` still resolve — they are thin redirect/alias pages that preserve previously indexed URLs and point to `/news/` and `/archive/` respectively. See `CLAUDE.md`'s "URL Migration and Redirect Pattern" section before changing either.
+
 ## Writing Blog Posts
 
-Posts are loaded from `src/content/posts` via `src/content.config.ts`.
+Posts are loaded from `src/content/posts` via `src/content.config.ts` and rendered at `/news/<slug>/`. The collection is still named `posts` internally to avoid churn — only the public-facing label changed.
 
 Example frontmatter:
 

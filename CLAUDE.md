@@ -19,7 +19,9 @@ Primary stack:
 
 Maintain the live Astro site. Do not convert the project back to Hugo. Do not assume Hugo files are active source-of-truth unless specifically asked.
 
-When changing the site, prefer small, reviewable updates and preserve the current positioning: enterprise software, cloud automation, Microsoft 365 identity automation, PowerShell delivery, and product links for Cinturon360 and Aethon.
+**RePass Cloud positioning (2026 site rebuild):** RePass Cloud is presented primarily as an Australian software company that designs, builds, owns, and operates software products and enterprise technical systems — not as a consultancy/lead-generation site. Products (CurseDelete 2, Cinturon360, Aethon Jobs) get first-class navigation and homepage presence. Enterprise engineering/service capabilities (cloud automation, Microsoft 365 identity automation, PowerShell delivery) remain present and are used as credibility/SEO content, but are secondary to the product/company identity. See `docs/REPASSCLOUD-SITE-REBUILD-CLAUDE-PROMPT.md` for the full rebuild brief this structure implements.
+
+When changing the site, prefer small, reviewable updates and preserve this product-first positioning. Do not reintroduce a services-first/engagement-funnel framing (see "Contact and CTA philosophy" below).
 
 ## Important Files
 
@@ -41,8 +43,17 @@ When changing the site, prefer small, reviewable updates and preserve the curren
   - Ignores `themes/**` for Vite file watching because the old Hugo theme has circular symlink behaviour.
 
 - `src/consts.ts`
-  - Global constants for site title, description, domains, product links, GitHub, LinkedIn, Twitter, GTM, GA, and default Open Graph image.
+  - Global constants for site title, description, domains, product links, GitHub, LinkedIn, Twitter, GTM, GA, contact email, and default/CurseDelete Open Graph images.
+  - `CURSEDELETE_PURCHASE_URL` is the single place a Stripe-hosted purchase link goes. It is currently empty (no verified link exists) — the CurseDelete product page falls back to a licensing-enquiry contact link when it is empty. Do not fabricate a URL here.
   - Update repeated brand URLs here rather than scattering hard-coded links.
+
+- `src/data/products.ts`
+  - Single source of truth for product cards: `products` (active products — CurseDelete 2, Cinturon360, Aethon Jobs) and `archiveProjects` (retired/legacy projects).
+  - Used by the homepage, `/products/`, and the Footer. Add new products here, not as separate hardcoded arrays in page files.
+  - `Product.destination` is `'internal'` (has a real page under `/products/<slug>/`) or `'external'` (links out to the product's own site).
+
+- `src/data/newsRedirects.ts`
+  - Maps every legacy `/posts/<slug>/` URL to its canonical `/news/<slug>/` destination. Add an entry here whenever a post's filename/slug changes, so the old indexed URL keeps resolving.
 
 ### Layouts and global page shell
 
@@ -55,7 +66,12 @@ When changing the site, prefer small, reviewable updates and preserve the curren
 - `src/components/BaseHead.astro`
   - Imports global CSS from `src/styles/revamp.css`.
   - Owns canonical URLs, page titles, meta descriptions, robots tags, Open Graph tags, Twitter cards, RSS link, sitemap link, GA/GTM scripts, and default analytics consent state.
+  - Accepts an optional `canonical` prop (site-relative path) to override the canonical URL — used by legacy alias/redirect pages so the canonical always points at the current preferred URL, not the alias itself.
+  - Accepts an optional `ogImagePath` prop (site-relative path to a static image) that takes priority over the `image` (Astro `ImageMetadata`) prop and the `DEFAULT_OG_IMAGE` fallback — used for product-specific OG images like CurseDelete's.
   - Use this for SEO/head changes rather than duplicating head markup in pages.
+
+- `src/components/RedirectPage.astro`
+  - Renders a `noIndex` page with a meta-refresh redirect and a canonical override pointing at the new URL. This is the static-hosting-compatible pattern for preserving legacy URLs (GitHub Pages does not support custom HTTP redirects). Used by `/posts/*` and `/projects` alias routes.
 
 - `src/layouts/PostLayout.astro`
   - Standard blog/article layout.
@@ -67,24 +83,20 @@ When changing the site, prefer small, reviewable updates and preserve the curren
 
 - `src/components/Header.astro`
   - Main navigation and mobile menu script.
-  - Current top-level nav links:
-    - Services
-    - Case Studies
-    - Work
-    - Posts
-    - Careers
-  - CTA links to `/about` and `/contact`.
+  - Current top-level nav links: Products, Company (`/about`), Case Studies, News, Contact.
+  - No persistent sales CTA button in the header — Contact is a normal nav item. Careers is deliberately not in primary nav; it lives in the Footer's Company column.
   - If adding new top-level pages, update `navLinks` here and confirm active link behaviour.
 
 - `src/components/Footer.astro`
-  - Footer columns, social links, product links, legal links, cookie controls, and privacy choices button.
-  - Product links are imported from `src/consts.ts`.
+  - Footer columns: Company, Products, Engineering, Connect, Legal.
+  - Products column reads from `src/data/products.ts` rather than hardcoding product names/links.
+  - No footer callout/CTA banner — the `showCallout` prop was removed as part of the reduced-CTA rework.
   - Cookie/privacy buttons call `window.repasscloudOpenCookieBanner()`.
 
-### Content collections and posts
+### Content collections, News, and legacy Posts routes
 
 - `src/content.config.ts`
-  - Defines the `posts` content collection.
+  - Defines the `posts` content collection. The collection/loader name intentionally stays `posts` internally — only the user-facing IA label changed to "News". Renaming the collection would be pointless churn.
   - Posts are loaded from `src/content/posts/**/*.{md,mdx}`.
   - Required front matter:
     - `title: string`
@@ -95,22 +107,40 @@ When changing the site, prefer small, reviewable updates and preserve the curren
     - `heroImage: image`
     - `tags: string[]`
 
-- `src/pages/posts/[...slug].astro`
-  - Generates static routes for every post in the `posts` collection.
-  - Uses `render(post)` and `PostLayout`.
+- `src/pages/news/index.astro` and `src/pages/news/[...slug].astro`
+  - Canonical, indexable News routes (`/news/`, `/news/<slug>/`). This is where new post content actually renders — uses `render(post)` and `PostLayout`.
+
+- `src/pages/posts/index.astro` and `src/pages/posts/[...slug].astro`
+  - Legacy alias routes only. Render `RedirectPage` (meta-refresh + `noIndex` + canonical override) pointing at the matching `/news/...` URL. `[...slug].astro` gets its static paths from `src/data/newsRedirects.ts`, **not** from the live `posts` collection — so a post's slug can change without breaking the old indexed URL, as long as `newsRedirects.ts` is updated to map old → new.
+  - Do not add new content here. Do not delete these files without an explicit instruction to drop legacy URL compatibility.
 
 - `src/pages/rss.xml.js`
-  - Generates the RSS feed from the posts collection.
+  - Generates the RSS feed from the posts collection, linking to `/news/<slug>/`.
   - Sorts posts by `pubDate` descending.
 
 ### Homepage
 
 - `src/pages/index.astro`
-  - Main homepage.
-  - Pulls recent posts from the `posts` collection.
-  - Defines homepage capability cards and case study cards inline.
-  - Adds Organization schema JSON-LD.
-  - Product spotlights link to Cinturon360 and Aethon via constants.
+  - Main homepage. Hero is company/product-led (not a consulting pitch) — see "Contact and CTA philosophy" below.
+  - Section order: hero → short company positioning → product portfolio (from `src/data/products.ts`) → capabilities → case studies → News.
+  - Pulls recent posts from the `posts` collection, links to `/news/<slug>/`.
+  - Defines homepage capability cards and case study cards inline; product cards come from `src/data/products.ts`.
+  - Adds `Organization` and `WebSite` schema JSON-LD (no sales-only `contactPoint`).
+
+### Products, Archive, and CurseDelete
+
+- `src/pages/products/index.astro`
+  - Canonical `/products/` catalogue page. Renders from `src/data/products.ts`. Adds `ItemList` schema.
+
+- `src/pages/products/cursedelete/index.astro`
+  - Dedicated CurseDelete 2 product page at `/products/cursedelete/` (URL has no version number so future versions don't need a migration). Content is sourced from the real `repasscloud/cursedelete-2` GitHub repository (README, `docs/LICENSING.md`) — do not add features, pricing, or platform-support claims that aren't verifiable there. Adds `SoftwareApplication` and `BreadcrumbList` schema; deliberately no `Offer`/ratings since none are verified.
+  - Purchase section branches on `CURSEDELETE_PURCHASE_URL` (see `src/consts.ts`) — populate that constant when a real Stripe link exists; do not add a shopping cart, Stripe Elements, or license-issuance logic to this site. The public site only ever links out to a Stripe-hosted payment page.
+
+- `src/pages/archive/index.astro`
+  - Retired/legacy projects (LunaVPN, OptechX, WanderConnect, TigerGrab, CveInfo, legacy pre-Rust CurseDelete) from `src/data/products.ts`'s `archiveProjects`. Kept separate from `/products/` so retired work doesn't compete visually with active products.
+
+- `src/pages/projects.astro`
+  - Legacy alias only — redirects to `/archive/` via `RedirectPage`. Do not restore product/archive content here.
 
 ### Styles
 
@@ -118,6 +148,7 @@ When changing the site, prefer small, reviewable updates and preserve the curren
   - Global styling system for the current site.
   - Use existing class patterns before introducing new CSS.
   - Prefer reusable utility/card/grid classes already present in the file.
+  - Brand palette (do not drift toward generic corporate blue): black `#000000`, pink `#e35f9a`, purple `#ab2df3`, gold `#ffbe16`, magenta `#e92bcf` — defined as `--rpc-*`/`--color-*` custom properties near the top of the file.
 
 ### Automation and deployment
 
@@ -187,21 +218,40 @@ Preferred workflow:
 
 Do not push directly to `main` unless explicitly instructed.
 
+## URL Migration and Redirect Pattern
+
+Treat indexed URLs as a public API. GitHub Pages does not support custom server-side HTTP redirects (no Netlify-style `_redirects`), so legacy URL compatibility uses a static fallback pattern via `src/components/RedirectPage.astro`:
+
+- The alias page's route renders `<RedirectPage to="/new/path/" title="..." />`, which sets `noIndex`, a canonical override pointing at the new URL, and a `<meta http-equiv="refresh">` redirect.
+- Alias routes (`/posts/**`, `/projects`) are excluded from the sitemap via the `filter` function in `astro.config.mjs` — only canonical URLs should be indexable.
+- When renaming or moving a page that has ever been live/indexed, add an alias route instead of deleting the old one. For post slug changes specifically, update `src/data/newsRedirects.ts`.
+
+## Contact and CTA Philosophy
+
+The site deliberately keeps Contact low-key: one nav item, one footer link, and — where genuinely useful — a single restrained text link on a page (e.g. "Questions about this capability? Contact us."). Do not add:
+
+- Full-width `cta-banner` sections pushing "Start a conversation" / "Book a call" / "Discuss a project".
+- Repeated CTA buttons across multiple sections of the same page.
+- Floating/sticky contact buttons or modal lead forms.
+
+Product pages use product-specific actions instead (Purchase, GitHub, Documentation, Visit product website) rather than funnelling everyone toward `/contact`.
+
 ## Content Editing Rules
 
 When adding or editing pages/posts:
 
-- Keep the tone direct, technical, and enterprise-focused.
-- Avoid hype-heavy marketing language.
+- Keep the tone direct, technical, calm, and credible — engineering-led, not ad-agency.
+- Avoid hype-heavy marketing language ("revolutionary", "world-class", "unlock", "empower", "transform", "cutting-edge" unless technically necessary).
 - Prefer concrete capabilities, outcomes, proof points, and operational constraints.
 - Use Australian English where natural.
-- Keep RePass Cloud positioning centred on:
-  - enterprise software systems
-  - cloud automation and governance
+- Lead with product/company identity first, enterprise engineering capability second:
+  - software products RePass Cloud designs, builds, owns, and operates
+  - enterprise software systems and cloud automation
   - Microsoft 365 / Entra ID lifecycle automation
   - PowerShell tooling
   - production-grade internal platforms
   - audit-aware delivery
+- Never invent metrics, client names, testimonials, employee/customer counts, prices, or certifications. Only state facts that are verifiable from this repo, the relevant product repo, or existing content.
 
 For blog posts in `src/content/posts/`, always include valid front matter:
 
@@ -228,10 +278,10 @@ For every page-level change, check:
 
 - Page has a useful title.
 - Page has a unique meta description.
-- Canonical URL remains correct through `BaseHead.astro`.
-- Open Graph image resolves.
-- `noIndex` is only used for pages that should not be indexed.
-- Internal links use clean site paths, for example `/contact`, `/projects`, `/services/cloud-tooling`.
+- Canonical URL remains correct through `BaseHead.astro` (pass a `canonical` prop only for legacy alias pages).
+- Open Graph image resolves (`DEFAULT_OG_IMAGE`/`CURSEDELETE_OG_IMAGE` in `src/consts.ts`, actual files under `public/img/`).
+- `noIndex` is only used for pages that should not be indexed (currently: legacy `/posts/**` and `/projects` aliases).
+- Internal links use clean site paths, for example `/contact`, `/products`, `/products/cursedelete`, `/news`, `/archive`, `/services/cloud-tooling`.
 - External links use `target="_blank"` and `rel="noopener"` where appropriate.
 
 For blog posts:
@@ -343,7 +393,14 @@ Before finishing UI changes, check:
 2. Add required front matter.
 3. Write content using normal Markdown.
 4. Run `npm run build`.
-5. Confirm the post appears in `/posts`, its route renders under `/posts/<slug>/`, and RSS includes it.
+5. Confirm the post appears in `/news`, its route renders under `/news/<slug>/`, and RSS includes it. New posts do **not** need an entry in `src/data/newsRedirects.ts` — that file only covers slugs that were already publicly indexed under `/posts/`.
+
+### Add a new product
+
+1. Add an entry to the `products` array in `src/data/products.ts` (or `archiveProjects` for retired work).
+2. If the product has its own on-site page, create it under `src/pages/products/<slug>/index.astro` and set `destination: 'internal'`, `href: '/products/<slug>/'`.
+3. If the product's primary experience lives elsewhere, set `destination: 'external'` and `href`/`externalUrl` to that site.
+4. Run `npm run build` and confirm the card renders correctly on the homepage, `/products/`, and in the Footer's Products column (all read from the same data source).
 
 ### Add a new page
 
@@ -413,11 +470,12 @@ Then inspect:
 
 These are not automatic changes. Raise them as separate tasks unless instructed:
 
-1. `README.md` may still describe Hugo as the active static site generator. Update it to Astro when asked.
-2. `deploy.sh` still builds with Hugo. Treat it as legacy or rewrite it for Astro when asked.
-3. Legacy Hugo folders remain present. Clean them only after confirming no assets/content are still needed.
-4. CI uses Node `25`, while `package.json` allows Node `>=22.12.0`. Consider aligning this to an LTS version if requested.
-5. The auto-merge workflow from `dev` to `main` is powerful. Do not alter it casually.
+1. `deploy.sh` still builds with Hugo. Treat it as legacy or rewrite it for Astro when asked.
+2. Legacy Hugo folders remain present. Clean them only after confirming no assets/content are still needed.
+3. CI uses Node `25`, while `package.json` allows Node `>=22.12.0`. Consider aligning this to an LTS version if requested.
+4. The auto-merge workflow from `dev` to `main` is powerful. Do not alter it casually.
+5. `CURSEDELETE_PURCHASE_URL` (`src/consts.ts`) is intentionally unset — no verified Stripe-hosted purchase link exists yet. Populate it once one exists; do not fabricate a URL in the meantime.
+6. `SITE_IMPROVEMENT_PLAN.md` previously recommended a services-first/engagement-funnel direction. It has been superseded by `docs/REPASSCLOUD-SITE-REBUILD-CLAUDE-PROMPT.md` and its content replaced with a pointer to that supersession — do not resurrect the old plan's recommendations.
 
 ## Response Style for Claude
 
