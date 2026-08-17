@@ -1,0 +1,164 @@
+---
+/**
+ * Renders a Keep a Changelog-style CHANGELOG.md, fetched at build time from
+ * a raw markdown URL. Reusable across any product page — pass a product's
+ * `changelogUrl` from src/data/products.ts. Skips "Unreleased" sections
+ * with no content, and renders nothing (no broken build) if the fetch
+ * fails or the file can't be parsed.
+ */
+interface Props {
+  url: string;
+}
+
+const { url } = Astro.props;
+
+interface ChangelogEntry {
+  version: string;
+  date?: string;
+  bodyHtml: string;
+}
+
+function escapeHtml(value: string): string {
+  return value
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;');
+}
+
+function renderBody(lines: string[]): string {
+  let html = '';
+  let inList = false;
+
+  for (const raw of lines) {
+    const line = raw.trimEnd();
+
+    if (/^\[.+\]:\s/.test(line)) continue; // link reference definitions
+    if (line.trim() === '') continue;
+
+    const heading = line.match(/^###\s+(.*)/);
+    if (heading) {
+      if (inList) {
+        html += '</ul>';
+        inList = false;
+      }
+      html += `<h4>${escapeHtml(heading[1])}</h4>`;
+      continue;
+    }
+
+    const item = line.match(/^-\s+(.*)/);
+    if (item) {
+      if (!inList) {
+        html += '<ul>';
+        inList = true;
+      }
+      html += `<li>${escapeHtml(item[1])}</li>`;
+      continue;
+    }
+
+    // Indented continuation of the previous bullet.
+    if (inList && /^\s+\S/.test(raw)) {
+      html = html.replace(/<\/li>$/, ` ${escapeHtml(line.trim())}</li>`);
+      continue;
+    }
+
+    if (inList) {
+      html += '</ul>';
+      inList = false;
+    }
+    html += `<p>${escapeHtml(line)}</p>`;
+  }
+
+  if (inList) html += '</ul>';
+  return html;
+}
+
+let entries: ChangelogEntry[] = [];
+
+try {
+  const res = await fetch(url);
+  if (res.ok) {
+    const text = await res.text();
+    const rawLines = text.split('\n');
+
+    type Section = { version: string; date?: string; lines: string[] };
+    const sections: Section[] = [];
+    let current: Section | null = null;
+
+    for (const line of rawLines) {
+      const heading = line.match(/^##\s+\[([^\]]+)\](?:\s*-\s*(.+))?/);
+      if (heading) {
+        if (current) sections.push(current);
+        current = { version: heading[1], date: heading[2]?.trim(), lines: [] };
+        continue;
+      }
+      if (current) current.lines.push(line);
+    }
+    if (current) sections.push(current);
+
+    entries = sections
+      .map((s) => ({ version: s.version, date: s.date, bodyHtml: renderBody(s.lines) }))
+      .filter((e) => e.bodyHtml.length > 0);
+  }
+} catch {
+  // Build-time fetch failed (network, rate limit, etc.) — render nothing
+  // rather than breaking the build.
+  entries = [];
+}
+---
+
+{entries.length > 0 && (
+  <div class="changelog">
+    {entries.map((entry) => (
+      <div class="changelog-entry">
+        <div class="changelog-entry-header">
+          <span class="badge badge-primary">{entry.version}</span>
+          {entry.date && <span class="text-sm text-muted">{entry.date}</span>}
+        </div>
+        <div class="changelog-body" set:html={entry.bodyHtml} />
+      </div>
+    ))}
+  </div>
+)}
+
+<style>
+  .changelog {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  .changelog-entry {
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--rpc-border);
+  }
+  .changelog-entry:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+  .changelog-entry-header {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-bottom: 0.6rem;
+  }
+  .changelog-body :global(h4) {
+    font-size: 0.95rem;
+    font-weight: 700;
+    margin: 0.75rem 0 0.35rem;
+    color: var(--rpc-text-strong);
+  }
+  .changelog-body :global(ul) {
+    margin: 0 0 0.5rem;
+    padding-left: 1.25rem;
+  }
+  .changelog-body :global(li) {
+    font-size: 0.9rem;
+    color: var(--rpc-muted);
+    line-height: 1.6;
+    margin-bottom: 0.3rem;
+  }
+  .changelog-body :global(p) {
+    font-size: 0.9rem;
+    color: var(--rpc-muted);
+    line-height: 1.6;
+  }
+</style>

@@ -167,7 +167,13 @@ const websiteSchema = {
       <div class="grid-3">
         {homepageProducts.map((product) => (
           <div class="aethon-card">
-            <div class="feature-icon"><i class={`bi ${product.icon}`}></i></div>
+            <div class="feature-icon">
+              {product.iconImage ? (
+                <img src={product.iconImage} alt="" width="24" height="24" loading="lazy" decoding="async" style="object-fit:contain;" />
+              ) : (
+                <i class={`bi ${product.icon}`}></i>
+              )}
+            </div>
             <h3>{product.name}</h3>
             <p class="text-muted" style="margin-top:0.4rem;">{product.tagline}</p>
             <div class="tech-stack" style="margin-top:0.7rem;">

@@ -1,10 +1,14 @@
 ---
 import Layout from '../../../layouts/Layout.astro';
+import Changelog from '../../../components/Changelog.astro';
 import {
   CONTACT_EMAIL,
+  CURSEDELETE_CHANGELOG_URL,
   CURSEDELETE_GITHUB_URL,
+  CURSEDELETE_ICON,
   CURSEDELETE_OG_IMAGE,
-  CURSEDELETE_PURCHASE_URL,
+  CURSEDELETE_STRIPE_LINKS,
+  CURSEDELETE_VERSION,
 } from '../../../consts';
 
 const platforms = [
@@ -25,11 +29,11 @@ const features = [
 ];
 
 const editions = [
-  { name: 'Community', price: 'Free', who: 'Personal use, developers, homelabs, evaluation' },
-  { name: 'Education', price: 'Free', who: 'Students, teachers, recognised schools and universities' },
-  { name: 'Business', price: 'Commercial', who: 'IT departments, DevOps teams, MSPs, file-server admins, build/release infrastructure' },
-  { name: 'Enterprise', price: 'Custom', who: 'Organisation-wide deployment, negotiated scale, priority support' },
-];
+  { key: 'community', name: 'Community', price: 'Free', who: 'Personal use, developers, homelabs, evaluation', cta: 'Get Community' },
+  { key: 'education', name: 'Education', price: 'Free', who: 'Students, teachers, recognised schools and universities', cta: 'Get Education' },
+  { key: 'business', name: 'Business', price: 'Commercial', who: 'IT departments, DevOps teams, MSPs, file-server admins, build/release infrastructure', cta: 'Purchase Business' },
+  { key: 'enterprise', name: 'Enterprise', price: 'Custom', who: 'Organisation-wide deployment, negotiated scale, priority support', cta: 'Purchase Enterprise' },
+] as const;
 
 const softwareSchema = {
   '@context': 'https://schema.org',
@@ -37,9 +41,11 @@ const softwareSchema = {
   name: 'CurseDelete 2',
   applicationCategory: 'DeveloperApplication',
   operatingSystem: 'macOS, Windows, Linux',
+  softwareVersion: CURSEDELETE_VERSION,
   description:
     'CurseDelete 2 is a native, high-performance deletion engine for files and directory trees, built in Rust, with streaming deletion, adaptive concurrency, and structural root protection.',
   url: 'https://repasscloud.com/products/cursedelete/',
+  image: new URL(CURSEDELETE_ICON, 'https://repasscloud.com').href,
   author: {
     '@type': 'Organization',
     name: 'RePass Cloud Pty Ltd',
@@ -56,7 +62,6 @@ const breadcrumbSchema = {
   ],
 };
 
-const hasPurchaseUrl = CURSEDELETE_PURCHASE_URL.length > 0;
 ---
 
 <Layout
@@ -71,7 +76,10 @@ const hasPurchaseUrl = CURSEDELETE_PURCHASE_URL.length > 0;
 
   <section class="page-hero">
     <div class="container">
-      <div class="hero-eyebrow"><i class="bi bi-lightning-charge-fill"></i> RePass Cloud product</div>
+      <div class="hero-eyebrow">
+        <img src={CURSEDELETE_ICON} alt="" width="20" height="20" style="vertical-align:-4px; margin-right:0.35rem;" />
+        RePass Cloud product
+      </div>
       <h1>CurseDelete 2</h1>
       <p class="hero-lead">
         A native, high-performance deletion engine for files and directory trees that refuse to die.
@@ -85,9 +93,9 @@ const hasPurchaseUrl = CURSEDELETE_PURCHASE_URL.length > 0;
         <a href="#licensing" class="btn btn-outline btn-lg">Licensing and editions</a>
       </div>
       <div class="hero-trust">
+        <div class="hero-trust-item"><i class="bi bi-tag"></i> Current version: {CURSEDELETE_VERSION}</div>
         <div class="hero-trust-item"><i class="bi bi-cpu"></i> Rust, cross-platform (macOS, Windows, Linux)</div>
         <div class="hero-trust-item"><i class="bi bi-terminal"></i> CLI binary: <code>cursdel</code></div>
-        <div class="hero-trust-item"><i class="bi bi-flag"></i> Pre-release — no versioned binaries published yet</div>
       </div>
     </div>
   </section>
@@ -212,29 +220,39 @@ cargo build --release -p cursdel-cli
             <h3>{edition.name}</h3>
             <p style="font-weight:700; margin-top:0.3rem;">{edition.price}</p>
             <p class="text-sm text-muted" style="margin-top:0.4rem;">{edition.who}</p>
+            <div style="margin-top:0.8rem;">
+              <a
+                href={CURSEDELETE_STRIPE_LINKS[edition.key]}
+                class="btn btn-primary btn-sm"
+                target="_blank"
+                rel="noopener"
+              >
+                {edition.cta} <i class="bi bi-box-arrow-up-right"></i>
+              </a>
+            </div>
           </div>
         ))}
       </div>
 
       <div class="showcase-panel" style="max-width:900px; margin:2rem auto 0;">
-        <div class="section-label">Purchase a licence</div>
-        {hasPurchaseUrl ? (
-          <Fragment>
-            <h3>Buy a Business or Enterprise licence</h3>
-            <p class="text-muted">Payment is handled by Stripe. Licensing is issued separately after purchase.</p>
-            <a href={CURSEDELETE_PURCHASE_URL} class="btn btn-primary btn-sm" target="_blank" rel="noopener">
-              Purchase licence <i class="bi bi-box-arrow-up-right"></i>
-            </a>
-          </Fragment>
-        ) : (
-          <Fragment>
-            <h3>Licensing enquiries</h3>
-            <p class="text-muted">
-              A self-service purchase link is not yet live. For Business or Enterprise licensing,
-              email <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>.
-            </p>
-          </Fragment>
-        )}
+        <div class="section-label">Licensing enquiries</div>
+        <p class="text-muted">
+          Payment is handled by Stripe; licensing is issued separately after purchase. For questions
+          about editions, scale, or negotiated Enterprise terms, email
+          <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="text-center" style="margin-bottom:2rem;">
+        <div class="section-label">Release notes</div>
+        <h2>Changelog</h2>
+      </div>
+      <div class="showcase-panel" style="max-width:800px; margin:0 auto;">
+        <Changelog url={CURSEDELETE_CHANGELOG_URL} />
       </div>
     </div>
   </section>

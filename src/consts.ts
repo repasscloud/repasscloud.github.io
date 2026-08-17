@@ -17,10 +17,21 @@ export const CONTACT_EMAIL = 'hello@repasscloud.com';
 
 export const CURSEDELETE_GITHUB_URL = 'https://github.com/repasscloud/cursedelete-2';
 export const CURSEDELETE_OG_IMAGE = '/img/og-cursedelete.png';
+export const CURSEDELETE_ICON = '/img/cursedelete-icon.png';
+export const CURSEDELETE_CHANGELOG_URL =
+  'https://raw.githubusercontent.com/repasscloud/cursedelete-2/refs/heads/main/CHANGELOG.md';
 
-// No live Stripe-hosted purchase link has been verified in this repository, the
-// cursedelete-2 repository, or its documentation as of this writing. Populate this
-// constant with the Stripe payment link once one exists — do not fabricate a URL.
-// Until it is set, the CurseDelete purchase section on /products/cursedelete/ falls
-// back to a licensing-enquiry contact link instead of a broken or invented one.
-export const CURSEDELETE_PURCHASE_URL = '';
+// Update this when a new CurseDelete 2 version is published — it's the
+// single place the product page's displayed version comes from.
+export const CURSEDELETE_VERSION = 'v2.0.0';
+
+// Stripe-hosted purchase pages, one per edition (Community/Education are
+// free but still issue a licence through Stripe Checkout). These are
+// currently Stripe *test-mode* links (buy.stripe.com/test_...) — swap for
+// live-mode links before this goes to production.
+export const CURSEDELETE_STRIPE_LINKS: Record<'community' | 'education' | 'business' | 'enterprise', string> = {
+  community: 'https://buy.stripe.com/test_dRm3cogwS8zYd7seNuffy04',
+  education: 'https://buy.stripe.com/test_fZu28kfsOdUiebwdJqffy05',
+  business: 'https://buy.stripe.com/test_dRm9AM0xU8zYd7s20Iffy07',
+  enterprise: 'https://buy.stripe.com/test_cNieV6bcy7vUd7s34Mffy08',
+};

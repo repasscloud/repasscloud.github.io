@@ -1,7 +1,10 @@
 import {
   AETHON_URL,
   CINTURON_URL,
+  CURSEDELETE_CHANGELOG_URL,
   CURSEDELETE_GITHUB_URL,
+  CURSEDELETE_ICON,
+  CURSEDELETE_VERSION,
 } from '../consts';
 
 export type ProductStatus = 'active' | 'preview';
@@ -25,7 +28,14 @@ export interface Product {
   /** Set when destination is 'external'. */
   externalUrl?: string;
   githubUrl?: string;
+  /** Bootstrap Icons class, used as a fallback when iconImage isn't set. */
   icon: string;
+  /** Real product artwork (site-relative path); takes priority over `icon` when set. */
+  iconImage?: string;
+  /** Current published version, e.g. "v2.0.0". Update when publishing a new release. */
+  version?: string;
+  /** Raw markdown URL for a Keep a Changelog-style CHANGELOG.md, rendered via <Changelog>. */
+  changelogUrl?: string;
   tags: string[];
   showOnHomepage: boolean;
 }
@@ -43,6 +53,9 @@ export const products: Product[] = [
     href: '/products/cursedelete/',
     githubUrl: CURSEDELETE_GITHUB_URL,
     icon: 'bi-lightning-charge-fill',
+    iconImage: CURSEDELETE_ICON,
+    version: CURSEDELETE_VERSION,
+    changelogUrl: CURSEDELETE_CHANGELOG_URL,
     tags: ['Rust', 'CLI', 'macOS', 'Windows', 'Linux'],
     showOnHomepage: true,
   },
