@@ -882,6 +882,57 @@ button {
   box-shadow: var(--rpc-shadow-soft);
 }
 
+.link-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.6rem;
+}
+
+.link-row {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  padding: 0.9rem 1.1rem;
+  background: var(--rpc-surface);
+  border: 1px solid var(--rpc-border);
+  border-radius: var(--radius-md);
+  color: var(--rpc-text);
+  text-decoration: none;
+  transition: border-color 0.18s ease, box-shadow 0.18s ease;
+}
+
+.link-row:hover {
+  color: var(--rpc-text);
+  border-color: #cbb8ea;
+  box-shadow: var(--rpc-shadow-soft);
+}
+
+.link-row-icon {
+  font-size: 1.15rem;
+  color: var(--rpc-muted);
+  flex-shrink: 0;
+}
+
+.link-row-label {
+  flex: 1;
+  font-weight: 600;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.link-row-label .text-sm {
+  display: block;
+  font-weight: 500;
+  margin-top: 0.15rem;
+}
+
+.link-row-arrow {
+  color: var(--rpc-muted);
+  flex-shrink: 0;
+}
+
 .contact-grid {
   display: grid;
   grid-template-columns: 0.95fr 1.05fr;
