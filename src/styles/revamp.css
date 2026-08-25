@@ -858,6 +858,17 @@ button {
   gap: 0.45rem;
 }
 
+.cookie-banner__actions .btn-outline-light {
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.45);
+}
+
+.cookie-banner__actions .btn-outline-light:hover {
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.7);
+  background: rgba(255, 255, 255, 0.08);
+}
+
 .prose {
   color: #2d3653;
 }
