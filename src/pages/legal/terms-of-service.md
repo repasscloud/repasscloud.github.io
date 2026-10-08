@@ -1,8 +1,8 @@
 ---
 layout: ../../layouts/ProsePageLayout.astro
 title: Terms of Service
-description: Terms governing access to and use of websites, products, and services operated by RePass Cloud Pty Ltd.
-sectionLabel: Legal
+description: "Terms of Service for RePass Cloud Pty Ltd, governing access to and use of our websites, software products, subscriptions and professional services."
+seoTitle: "Terms of Service | RePass Cloud Pty Ltd"
 ---
 
 Last updated: 2026-02-22

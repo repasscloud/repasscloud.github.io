@@ -1,8 +1,8 @@
 ---
 layout: ../../layouts/ProsePageLayout.astro
 title: Applicant Privacy Notice
-description: How RePass Cloud collects, uses, and manages your personal information during the hiring process.
-sectionLabel: Careers
+description: "How RePass Cloud collects, uses, stores and deletes the personal information of job applicants and candidates during the hiring process, and your rights."
+seoTitle: "Applicant Privacy Notice | Careers at RePass Cloud"
 ---
 
 Last updated: 2025-01-01

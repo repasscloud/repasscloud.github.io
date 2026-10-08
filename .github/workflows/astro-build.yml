@@ -74,7 +74,8 @@ jobs:
       - name: Publish PDF files
         run: |
           find ./latex -name "*.tex" | while IFS= read -r tex_file; do
-            output_dir="static/${tex_file#./latex/}"
+            # Astro serves public/, so PDFs must land there to be published.
+            output_dir="public/${tex_file#./latex/}"
             output_dir="$(dirname "$output_dir")"
             mkdir -p "$output_dir"
 

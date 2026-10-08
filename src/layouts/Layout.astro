@@ -16,7 +16,8 @@ interface Props {
   updatedDate?: string;
   noIndex?: boolean;
   canonical?: string;
-  simpleFooter?: boolean;
+  exactTitle?: boolean;
+  ogImageAlt?: string;
 }
 
 const {
@@ -29,14 +30,15 @@ const {
   updatedDate,
   noIndex = false,
   canonical,
-  simpleFooter = false,
+  exactTitle = false,
+  ogImageAlt,
 } = Astro.props;
 
 const hasGtm = GTM_CONTAINER_ID.startsWith('GTM-');
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en-AU">
   <head>
     <BaseHead
       title={title}
@@ -48,6 +50,8 @@ const hasGtm = GTM_CONTAINER_ID.startsWith('GTM-');
       updatedDate={updatedDate}
       noIndex={noIndex}
       canonical={canonical}
+      exactTitle={exactTitle}
+      ogImageAlt={ogImageAlt}
     />
     <slot name="head" />
   </head>
@@ -63,10 +67,10 @@ const hasGtm = GTM_CONTAINER_ID.startsWith('GTM-');
       </noscript>
     )}
     <Header />
-    <main>
+    <main id="main">
       <slot />
     </main>
-    <Footer simple={simpleFooter} />
+    <Footer />
     <CookieConsent />
   </body>
 </html>

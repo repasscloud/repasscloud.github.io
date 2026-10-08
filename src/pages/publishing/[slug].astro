@@ -1,0 +1,290 @@
+---
+import { Image } from 'astro:assets';
+import Layout from '../../layouts/Layout.astro';
+import { COMPANY_LEGAL_NAME, PUBLISHING_OG_IMAGE, SITE_DOMAIN } from '../../consts';
+import { books, formatReleaseDate, SERIES, type Book } from '../../data/books';
+
+export function getStaticPaths() {
+  return books.filter((b) => b.page).map((book) => ({ params: { slug: book.slug }, props: { book } }));
+}
+
+interface Props {
+  book: Book;
+}
+
+const { book } = Astro.props;
+const pageUrl = new URL(`/publishing/${book.slug}/`, SITE_DOMAIN).href;
+const release = book.releaseDate ? formatReleaseDate(book.releaseDate) : undefined;
+const primaryStore = book.kindleStores?.[0];
+const otherStores = book.kindleStores?.slice(1) ?? [];
+
+const bookSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Book',
+  '@id': `${pageUrl}#book`,
+  name: book.title,
+  ...(book.subtitle ? { alternativeHeadline: book.subtitle } : {}),
+  url: pageUrl,
+  author: { '@type': 'Person', name: SERIES.author, url: SERIES.authorUrl },
+  publisher: { '@type': 'Organization', name: COMPANY_LEGAL_NAME, url: SITE_DOMAIN },
+  isPartOf: { '@type': 'BookSeries', name: SERIES.name, url: new URL('/publishing/', SITE_DOMAIN).href },
+  position: book.number,
+  inLanguage: 'en',
+  genre: book.category,
+  description: book.summary?.join(' '),
+  ...(book.cover ? { image: new URL(book.cover.src, SITE_DOMAIN).href } : {}),
+  ...(book.releaseDate ? { datePublished: book.releaseDate } : {}),
+  workExample: book.editions
+    ?.filter((e) => e.isbn)
+    .map((e) => ({
+      '@type': 'Book',
+      name: `${book.title} (${e.label})`,
+      isbn: e.isbn,
+      bookFormat: `https://schema.org/${e.format}`,
+      ...(book.releaseDate ? { datePublished: book.releaseDate } : {}),
+    })),
+};
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Publishing', item: new URL('/publishing/', SITE_DOMAIN).href },
+    { '@type': 'ListItem', position: 2, name: book.title, item: pageUrl },
+  ],
+};
+---
+
+<Layout
+  title={`${book.title}: ${SERIES.name} Book ${book.number} | RePass Cloud`}
+  exactTitle
+  description={`${book.title} explains what AI is, what it can do and where it fails, in plain English with no technical skills needed. Out ${release}.`}
+  ogImagePath={PUBLISHING_OG_IMAGE}
+  ogImageAlt={`${book.title}, Book ${book.number} of ${SERIES.name}`}
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(bookSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  </Fragment>
+
+  <section class="book-hero">
+    <div class="wrap book-grid">
+      <div class="book-cover">
+        {book.cover && (
+          <Image src={book.cover} alt={book.coverAlt ?? `Cover of ${book.title}`} widths={[320, 480, 640, 900]} sizes="(max-width: 960px) 260px, 360px" loading="eager" fetchpriority="high" />
+        )}
+      </div>
+      <div>
+        <ol class="breadcrumb">
+          <li><a href="/publishing/">Publishing</a></li>
+          <li aria-current="page">Book {book.number}</li>
+        </ol>
+        <p class="kicker">{SERIES.name}, Book {book.number} of {books.length}</p>
+        <h1>{book.title}</h1>
+        {book.subtitle && <p class="book-sub">{book.subtitle}</p>}
+        <p class="byline">By {SERIES.author}. Published by {COMPANY_LEGAL_NAME}.</p>
+
+        <dl class="facts">
+          {release && <div><dt>Release</dt><dd>{release}</dd></div>}
+          <div><dt>Formats</dt><dd>Kindle, EPUB, PDF, paperback</dd></div>
+          <div><dt>Level</dt><dd>{book.descriptor}</dd></div>
+        </dl>
+
+        <div class="actions">
+          {primaryStore && (
+            <a class="btn btn-primary" href={primaryStore.href} target="_blank" rel="noopener">Pre-order on Kindle (Amazon AU) ↗</a>
+          )}
+          <a class="btn btn-quiet" href={SERIES.purchaseUrl} target="_blank" rel="noopener">Buy direct from how-to-use-ai.com ↗</a>
+        </div>
+        <p class="muted small" style="margin-top:14px">
+          Direct EPUB and PDF editions go on sale at how-to-use-ai.com on release day. Launch list members
+          get 80% off the direct digital edition: <a href={SERIES.launchListUrl} target="_blank" rel="noopener">join the launch list ↗</a>.
+        </p>
+
+        {otherStores.length > 0 && (
+          <details class="stores">
+            <summary>Kindle in other countries</summary>
+            <ul>
+              {otherStores.map((s) => (
+                <li><a href={s.href} target="_blank" rel="noopener">{s.label} ↗</a></li>
+              ))}
+            </ul>
+          </details>
+        )}
+      </div>
+    </div>
+  </section>
+
+  <section class="section band">
+    <div class="wrap split-wide">
+      <div>
+        <h2 style="margin-bottom:20px">About the book</h2>
+        {book.summary?.map((p) => <p class="book-summary">{p}</p>)}
+      </div>
+      <div>
+        {book.highlightsLead && <h3 style="margin-bottom:14px">{book.highlightsLead}</h3>}
+        <ul class="learn">
+          {book.highlights?.map((h) => <li>{h}</li>)}
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap split">
+      <div>
+        <h2 style="margin-bottom:20px">Editions</h2>
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead><tr><th scope="col">Edition</th><th scope="col">ISBN</th><th scope="col">Availability</th></tr></thead>
+            <tbody>
+              {book.editions?.map((e) => (
+                <tr>
+                  <th scope="row" style="color:var(--ink);font-size:1rem">{e.label}</th>
+                  <td style="white-space:nowrap">{e.isbnDisplay ?? (e.label === 'Kindle' ? `ASIN ${book.kindleAsin}` : '')}</td>
+                  <td class="muted">{e.availability}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div>
+        <h2 style="margin-bottom:20px">For bookshops, libraries and media</h2>
+        <dl class="kv">
+          <div><dt>Publisher</dt><dd>{COMPANY_LEGAL_NAME}</dd></div>
+          <div><dt>Category</dt><dd>{book.category}</dd></div>
+          <div><dt>Author</dt><dd>{SERIES.author}</dd></div>
+          <div><dt>Review copies</dt><dd><a href="/contact/?topic=media">Contact the publisher</a></dd></div>
+          <div><dt>Cover and logos</dt><dd><a href="/brand/">Brand and press assets</a></dd></div>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-sm band">
+    <div class="wrap">
+      <p class="muted" style="margin:0">
+        Next in the series: <strong>{books[book.number]?.title}</strong>, in development.{' '}
+        <a class="text-link" href="/publishing/">See all five books</a>
+      </p>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .book-hero {
+    padding: 72px 0 88px;
+  }
+
+  .book-grid {
+    display: grid;
+    grid-template-columns: 360px 1fr;
+    gap: 72px;
+    align-items: start;
+  }
+
+  .book-cover {
+    position: sticky;
+    top: 100px;
+    border-radius: 3px 8px 8px 3px;
+    overflow: hidden;
+    box-shadow: 0 30px 60px -24px rgba(10, 22, 51, 0.55);
+  }
+
+  .book-cover :global(img) {
+    width: 100%;
+    height: auto;
+  }
+
+  .book-hero h1 {
+    font-size: clamp(2.4rem, 5vw, 4rem);
+  }
+
+  .book-sub {
+    margin: 14px 0 0;
+    font-size: 1.35rem;
+    font-style: italic;
+    color: var(--ink-2);
+  }
+
+  .byline {
+    margin: 18px 0 0;
+    color: var(--ink-2);
+  }
+
+  .stores {
+    margin-top: 22px;
+    border-top: 1px solid var(--line);
+    padding-top: 14px;
+  }
+
+  .stores summary {
+    cursor: pointer;
+    font-weight: 600;
+    color: var(--violet);
+  }
+
+  .stores ul {
+    columns: 3 150px;
+    margin: 14px 0 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .stores li {
+    padding: 4px 0;
+    break-inside: avoid;
+  }
+
+  .book-summary {
+    font-size: 1.12rem;
+    color: #2a2533;
+  }
+
+  .learn {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .learn li {
+    position: relative;
+    padding: 12px 0 12px 30px;
+    border-top: 1px solid var(--line-strong);
+  }
+
+  .learn li::before {
+    content: '';
+    position: absolute;
+    left: 4px;
+    top: 19px;
+    width: 12px;
+    height: 7px;
+    border-left: 2px solid var(--violet);
+    border-bottom: 2px solid var(--violet);
+    transform: rotate(-45deg);
+  }
+
+  @media (max-width: 960px) {
+    .book-grid {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+
+    .book-cover {
+      position: static;
+      width: 260px;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .book-hero {
+      padding: 48px 0 64px;
+    }
+
+    .book-cover {
+      width: 200px;
+    }
+  }
+</style>

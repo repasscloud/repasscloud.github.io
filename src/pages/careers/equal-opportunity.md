@@ -1,8 +1,8 @@
 ---
 layout: ../../layouts/ProsePageLayout.astro
 title: Equal Opportunity & Non-Discrimination Statement
-description: RePass Cloud's commitment to equal opportunity employment and contractor engagement.
-sectionLabel: Careers
+description: "RePass Cloud's commitment to equal opportunity and non-discrimination in hiring, employment and contractor engagement, and how to raise a concern with us."
+seoTitle: "Equal Opportunity Statement | Careers at RePass Cloud"
 ---
 
 Last updated: 2025-01-01

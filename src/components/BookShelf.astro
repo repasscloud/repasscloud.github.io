@@ -1,0 +1,145 @@
+---
+/**
+ * The How-To-Use-AI.com series as a bookshelf: Book 1 face-out with its real
+ * cover, later volumes as spines in each book's accent colour.
+ */
+import { Image } from 'astro:assets';
+import { books, SERIES } from '../data/books';
+
+const [first, ...rest] = books;
+const heights = [360, 392, 344, 376];
+---
+
+<div class="shelf" role="list" aria-label={`The ${SERIES.name} series, ${books.length} books`}>
+  <a class="face" role="listitem" href={`/publishing/${first.slug}/`}>
+    {first.cover && (
+      <Image src={first.cover} alt={`Book ${first.number}: ${first.title}`} widths={[270, 400, 540]} sizes="(max-width: 600px) 170px, 270px" loading="eager" fetchpriority="high" />
+    )}
+  </a>
+  {rest.map((b, i) => (
+    <div class="spine" role="listitem" style={`--h:${heights[i % heights.length]}px;--bg:${b.accent};--fg:${b.onAccent}`}>
+      <span class="spine-title">{b.title}</span>
+      <span class="spine-n" aria-label={`Book ${b.number}, ${b.statusLabel.toLowerCase()}`}>{b.number}</span>
+    </div>
+  ))}
+</div>
+
+<style>
+  .shelf {
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    gap: 7px;
+    height: 470px;
+    padding-right: 8px;
+    border-bottom: 10px solid #3a3446;
+  }
+
+  .face {
+    display: block;
+    width: 270px;
+    margin-right: 16px;
+    border-radius: 2px 6px 0 0;
+    overflow: hidden;
+    box-shadow: -14px 0 30px -12px rgba(0, 0, 0, 0.6);
+  }
+
+  .face :global(img) {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  .spine {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 54px;
+    height: var(--h);
+    border-radius: 3px 3px 0 0;
+    background: var(--bg);
+    color: var(--fg);
+    box-shadow: inset -6px 0 0 rgba(0, 0, 0, 0.12);
+  }
+
+  .spine-title {
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    white-space: nowrap;
+    max-height: calc(100% - 44px);
+    margin-bottom: 26px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-weight: 700;
+    font-size: 0.88rem;
+  }
+
+  .spine-n {
+    position: absolute;
+    bottom: 12px;
+    font-weight: 800;
+    font-size: 0.85rem;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .face,
+    .spine {
+      transform-origin: bottom;
+      animation: stand 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+    }
+
+    .spine:nth-child(2) { animation-delay: 0.08s; }
+    .spine:nth-child(3) { animation-delay: 0.16s; }
+    .spine:nth-child(4) { animation-delay: 0.24s; }
+    .spine:nth-child(5) { animation-delay: 0.32s; }
+
+    @keyframes stand {
+      from {
+        opacity: 0;
+        transform: scaleY(0.2);
+      }
+      to {
+        opacity: 1;
+        transform: none;
+      }
+    }
+  }
+
+  @media (max-width: 960px) {
+    .shelf {
+      justify-content: flex-start;
+      height: 400px;
+    }
+
+    .face {
+      width: 230px;
+    }
+
+    .spine {
+      height: calc(var(--h) * 0.82);
+    }
+  }
+
+  @media (max-width: 600px) {
+    .shelf {
+      height: 290px;
+      gap: 5px;
+      padding-right: 0;
+    }
+
+    .face {
+      width: 165px;
+      margin-right: 8px;
+    }
+
+    .spine {
+      width: 36px;
+      height: calc(var(--h) * 0.62);
+    }
+
+    .spine-title {
+      font-size: 0.72rem;
+    }
+  }
+</style>

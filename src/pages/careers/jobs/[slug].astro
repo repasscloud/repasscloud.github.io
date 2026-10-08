@@ -1,0 +1,118 @@
+---
+import { render } from 'astro:content';
+import Layout from '../../../layouts/Layout.astro';
+import FormattedDate from '../../../components/FormattedDate.astro';
+import { BRAND_LOGO_PNG, COMPANY_LEGAL_NAME, SITE_DOMAIN } from '../../../consts';
+import { applyHref, employmentLabel, getOpenJobs, locationLabel, type Job } from '../../../lib/jobs';
+
+export async function getStaticPaths() {
+  const jobs = await getOpenJobs();
+  return jobs.map((job) => ({ params: { slug: job.id }, props: { job } }));
+}
+
+interface Props {
+  job: Job;
+}
+
+const { job } = Astro.props;
+const { Content } = await render(job);
+const d = job.data;
+const apply = applyHref(job);
+const external = apply.startsWith('http');
+
+const jobSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'JobPosting',
+  title: d.title,
+  description: job.rendered?.html ?? d.summary,
+  datePosted: d.datePosted.toISOString().slice(0, 10),
+  ...(d.closes ? { validThrough: d.closes.toISOString().slice(0, 10) + 'T23:59:59+10:00' } : {}),
+  employmentType: d.employmentType,
+  directApply: !external,
+  hiringOrganization: {
+    '@type': 'Organization',
+    name: COMPANY_LEGAL_NAME,
+    sameAs: SITE_DOMAIN,
+    logo: new URL(BRAND_LOGO_PNG, SITE_DOMAIN).href,
+  },
+  ...(d.remote
+    ? {
+        jobLocationType: 'TELECOMMUTE',
+        applicantLocationRequirements: d.applicantCountries.map((c) => ({ '@type': 'Country', name: c })),
+      }
+    : {}),
+  ...(d.location
+    ? {
+        jobLocation: {
+          '@type': 'Place',
+          address: {
+            '@type': 'PostalAddress',
+            addressLocality: d.location.locality,
+            ...(d.location.region ? { addressRegion: d.location.region } : {}),
+            addressCountry: d.location.country,
+          },
+        },
+      }
+    : {}),
+  ...(d.salary
+    ? {
+        baseSalary: {
+          '@type': 'MonetaryAmount',
+          currency: d.salary.currency,
+          value: {
+            '@type': 'QuantitativeValue',
+            ...(d.salary.max ? { minValue: d.salary.min, maxValue: d.salary.max } : { value: d.salary.min }),
+            unitText: d.salary.unit,
+          },
+        },
+      }
+    : {}),
+  ...(d.department ? { occupationalCategory: d.department } : {}),
+};
+
+const extra = ` ${employmentLabel(job)}, ${locationLabel(job)}.`;
+const description = d.summary.length + extra.length <= 165 ? d.summary + extra : d.summary;
+---
+
+<Layout title={`${d.title}: ${employmentLabel(job)} Role at RePass Cloud`} exactTitle description={description}>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(jobSchema)} />
+  </Fragment>
+
+  <section class="page-hero">
+    <div class="wrap-narrow">
+      <ol class="breadcrumb">
+        <li><a href="/careers/">Careers</a></li>
+        <li aria-current="page">{d.title}</li>
+      </ol>
+      <h1 class="job-title">{d.title}</h1>
+      <p class="lead">{d.summary}</p>
+      <dl class="facts">
+        <div><dt>Type</dt><dd>{employmentLabel(job)}</dd></div>
+        <div><dt>Location</dt><dd>{locationLabel(job)}</dd></div>
+        <div><dt>Posted</dt><dd><FormattedDate date={d.datePosted} /></dd></div>
+        {d.closes && <div><dt>Applications close</dt><dd><FormattedDate date={d.closes} /></dd></div>}
+      </dl>
+      <div class="actions">
+        <a class="btn btn-primary" href={apply} {...(external ? { target: '_blank', rel: 'noopener' } : {})}>Apply for this role</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-sm">
+    <div class="wrap-narrow">
+      <div class="prose"><Content /></div>
+      <hr />
+      <p class="muted small">
+        Read <a href="/careers/how-we-hire/">how we hire</a> and our <a href="/careers/applicant-privacy-notice/">applicant privacy notice</a>.{' '}
+        <a href="/careers/">All open roles</a>
+      </p>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .job-title {
+    font-size: clamp(2.1rem, 4.4vw, 3.2rem);
+  }
+</style>

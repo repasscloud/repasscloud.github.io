@@ -1,57 +1,69 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import { COMPANY_ABN, COMPANY_LEGAL_NAME } from '../../consts';
 
-const legalLinks = [
-  { href: '/legal/privacy-policy/', icon: 'bi-shield-check', title: 'Privacy Policy', desc: 'How we collect, use, and protect personal information.' },
-  { href: '/legal/terms-of-service/', icon: 'bi-file-text', title: 'Terms of Service', desc: 'Terms governing access to and use of our websites, products, and services.' },
-  { href: '/legal/refund-policy/', icon: 'bi-arrow-return-left', title: 'Refund Policy', desc: 'Refund eligibility and process for paid subscriptions and services.' },
+const policies = [
+  { href: '/legal/privacy-policy/', title: 'Privacy Policy', desc: 'How we collect, use and protect personal information.' },
+  { href: '/legal/terms-of-service/', title: 'Terms of Service', desc: 'Terms for using our websites, products and services.' },
+  { href: '/legal/refund-policy/', title: 'Refund Policy', desc: 'Refund eligibility and process for paid products and services.' },
 ];
 
-const legacyLinks = [
-  { href: '/legal/lunavpn/lunavpn-cancellation-policy/', icon: 'bi-info-circle', title: 'LunaVPN Closure Notice', desc: 'Notice confirming LunaVPN is closed and accounts are terminated.' },
+const notices = [
+  { href: '/legal/lunavpn/lunavpn-cancellation-policy/', title: 'LunaVPN closure notice', desc: 'Confirms LunaVPN is closed and accounts are terminated.' },
+  { href: '/careers/applicant-privacy-notice/', title: 'Applicant privacy notice', desc: 'How we handle personal information during hiring.' },
 ];
 ---
 
 <Layout
-  title="Legal"
-  description="Legal documents for RePass Cloud Pty Ltd — Privacy Policy, Terms of Service, and Refund Policy."
+  title="Legal Policies: Privacy, Terms and Refunds | RePass Cloud"
+  exactTitle
+  description="Legal policies for RePass Cloud Pty Ltd, ABN 74 642 243 801: the privacy policy, terms of service, refund policy and notices for our products and websites."
 >
   <section class="page-hero">
-    <div class="container">
-      <div class="hero-eyebrow"><i class="bi bi-file-earmark-text"></i> RePass Cloud Pty Ltd</div>
+    <div class="wrap-narrow">
       <h1>Legal</h1>
-      <p class="hero-lead">Legal policies and notices for RePass Cloud Pty Ltd and its services.</p>
+      <p class="lead">Policies and notices for {COMPANY_LEGAL_NAME} (ABN {COMPANY_ABN}) and its products, services and websites.</p>
     </div>
   </section>
 
-  <section class="section-sm bg-surface">
-    <div class="container container-narrow">
+  <section class="section-sm">
+    <div class="wrap-narrow">
+      <h2 class="list-title">Policies</h2>
       <ul class="link-list">
-        {legalLinks.map((link) => (
-          <li>
-            <a href={link.href} class="link-row">
-              <i class={`bi ${link.icon} link-row-icon`}></i>
-              <span class="link-row-label">
-                {link.title}
-                <span class="text-sm text-muted">{link.desc}</span>
-              </span>
-              <i class="bi bi-arrow-right link-row-arrow"></i>
-            </a>
-          </li>
-        ))}
-        {legacyLinks.map((link) => (
-          <li>
-            <a href={link.href} class="link-row" style="opacity:0.7;">
-              <i class={`bi ${link.icon} link-row-icon`}></i>
-              <span class="link-row-label">
-                {link.title}
-                <span class="text-sm text-muted">{link.desc}</span>
-              </span>
-              <i class="bi bi-arrow-right link-row-arrow"></i>
-            </a>
-          </li>
-        ))}
+        {policies.map((l) => <li><a href={l.href}>{l.title}</a><span>{l.desc}</span></li>)}
+      </ul>
+      <h2 class="list-title">Notices</h2>
+      <ul class="link-list">
+        {notices.map((l) => <li><a href={l.href}>{l.title}</a><span>{l.desc}</span></li>)}
       </ul>
     </div>
   </section>
 </Layout>
+
+<style>
+  .list-title {
+    font-size: 1.2rem;
+    margin: 0 0 8px;
+  }
+
+  .link-list {
+    list-style: none;
+    margin: 0 0 48px;
+    padding: 0;
+  }
+
+  .link-list li {
+    padding: 16px 0;
+    border-top: 1px solid var(--line);
+  }
+
+  .link-list a {
+    display: block;
+    font-weight: 600;
+    font-size: 1.12rem;
+  }
+
+  .link-list span {
+    color: var(--ink-2);
+  }
+</style>

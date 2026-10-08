@@ -2,7 +2,7 @@
 layout: ../../../layouts/ProsePageLayout.astro
 title: LunaVPN Closure and Account Cancellation Notice
 description: Notice confirming LunaVPN is closed, subscriptions are cancelled, accounts are terminated, and support is no longer provided.
-sectionLabel: Legal
+seoTitle: "LunaVPN Closure and Account Cancellation Notice | RePass Cloud"
 ---
 
 Last updated: 2026-02-22

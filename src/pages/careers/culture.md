@@ -1,8 +1,8 @@
 ---
 layout: ../../layouts/ProsePageLayout.astro
 title: Culture & Belonging
-description: How we work, what we value, and who we are at RePass Cloud.
-sectionLabel: Careers
+description: "How RePass Cloud works: our values, remote-friendly ways of working, ownership, and the kind of engineering culture we build for everyone on the team."
+seoTitle: "Culture and Belonging | Careers at RePass Cloud"
 ---
 
 ## Who We Are

@@ -1,8 +1,8 @@
 ---
 layout: ../../layouts/ProsePageLayout.astro
 title: Privacy Policy
-description: Privacy Policy for RePass Cloud Pty Ltd covering its websites, products, and services.
-sectionLabel: Legal
+description: "Privacy Policy for RePass Cloud Pty Ltd: what personal information we collect through our websites, products and services, how we use it, and your rights."
+seoTitle: "Privacy Policy | RePass Cloud Pty Ltd"
 ---
 
 Last updated: 2026-03-09

@@ -5,52 +5,52 @@ interface Props {
   frontmatter: {
     title: string;
     description?: string;
+    /** Optional full <title>; defaults to "<title> | RePass Cloud". */
+    seoTitle?: string;
     sectionLabel?: string;
+    noIndex?: boolean;
   };
 }
 
 const { frontmatter } = Astro.props;
-const isLegalSubpage =
-  (Astro.url.pathname.startsWith('/legal/') && Astro.url.pathname !== '/legal/') ||
-  frontmatter.sectionLabel?.toLowerCase() === 'legal';
+const path = Astro.url.pathname;
+const section = path.startsWith('/legal/')
+  ? { href: '/legal/', label: 'Legal' }
+  : path.startsWith('/careers/')
+    ? { href: '/careers/', label: 'Careers' }
+    : null;
 ---
 
-<Layout title={frontmatter.title} description={frontmatter.description} simpleFooter={isLegalSubpage}>
-  {isLegalSubpage ? (
-    <Fragment>
-      <div class="legal-header-bar">
-        <div class="container">
-          <div class="section-label">RePass Cloud Pty Ltd</div>
-          <h1 class="legal-header-title">{frontmatter.title}</h1>
-          {frontmatter.description && <p class="legal-header-desc">{frontmatter.description}</p>}
-        </div>
+<Layout
+  title={frontmatter.seoTitle ?? frontmatter.title}
+  exactTitle={Boolean(frontmatter.seoTitle)}
+  description={frontmatter.description}
+  noIndex={frontmatter.noIndex}
+>
+  <section class="page-hero">
+    <div class="wrap-narrow">
+      {section && (
+        <ol class="breadcrumb">
+          <li><a href={section.href}>{section.label}</a></li>
+          <li aria-current="page">{frontmatter.title}</li>
+        </ol>
+      )}
+      <h1 class="prose-title">{frontmatter.title}</h1>
+      {frontmatter.description && <p class="lead">{frontmatter.description}</p>}
+    </div>
+  </section>
+
+  <section class="section-sm">
+    <div class="wrap-narrow">
+      <div class="prose">
+        <slot />
       </div>
-
-      <section class="section-sm legal-doc-section">
-        <div class="container legal-doc-container">
-          <div class="legal-doc-content">
-            <slot />
-          </div>
-        </div>
-      </section>
-    </Fragment>
-  ) : (
-    <Fragment>
-      <section class="page-hero">
-        <div class="container">
-          {frontmatter.sectionLabel && <div class="hero-eyebrow">{frontmatter.sectionLabel}</div>}
-          <h1>{frontmatter.title}</h1>
-          {frontmatter.description && <p class="hero-lead">{frontmatter.description}</p>}
-        </div>
-      </section>
-
-      <section class="section-sm bg-surface">
-        <div class="container-narrow">
-          <div class="prose post-content">
-            <slot />
-          </div>
-        </div>
-      </section>
-    </Fragment>
-  )}
+    </div>
+  </section>
 </Layout>
+
+<style>
+  .prose-title {
+    font-size: clamp(2rem, 4vw, 3rem);
+  }
+</style>

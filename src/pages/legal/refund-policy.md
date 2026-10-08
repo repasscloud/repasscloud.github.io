@@ -1,8 +1,8 @@
 ---
 layout: ../../layouts/ProsePageLayout.astro
 title: Refund Policy
-description: Refund eligibility and process for paid subscriptions and digital services operated by RePass Cloud Pty Ltd.
-sectionLabel: Legal
+description: "Refund Policy for RePass Cloud Pty Ltd: when refunds apply to software licences, subscriptions and digital products, and how to request one from us."
+seoTitle: "Refund Policy | RePass Cloud Pty Ltd"
 ---
 
 Last updated: 2026-02-22

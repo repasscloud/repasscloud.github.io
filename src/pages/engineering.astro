@@ -1,0 +1,150 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { CINTURON_URL, ENGINEERING_OG_IMAGE } from '../consts';
+import { capabilities, outcomes } from '../data/engineering';
+---
+
+<Layout
+  title="Enterprise Identity and Cloud Engineering"
+  description="RePass Cloud builds enterprise platforms, cloud governance tooling, Microsoft 365 identity automation and production PowerShell for teams that need audit evidence."
+  ogImagePath={ENGINEERING_OG_IMAGE}
+>
+  <section class="page-hero">
+    <div class="wrap">
+      <h1>The engineering behind our products</h1>
+      <p class="lead">
+        Alongside our own products, we design and build enterprise systems where identity, controls and
+        audit evidence have to hold up in production. Everything here is work we have shipped.
+      </p>
+      <nav class="jump" aria-label="On this page">
+        {capabilities.map((c) => <a href={`#${c.id}`}>{c.title}</a>)}
+        <a href="#selected-work">Selected work</a>
+      </nav>
+    </div>
+  </section>
+
+  {capabilities.map((c, i) => (
+    <section class={`section${i % 2 === 1 ? ' band' : ''}`} id={c.id}>
+      <div class="wrap split-wide">
+        <div>
+          <h2 style="margin-bottom:20px">{c.title}</h2>
+          <p class="muted">{c.intro}</p>
+          {c.note && (
+            <p class="note small">
+              {c.note} <a href={CINTURON_URL} target="_blank" rel="noopener">cinturon360.com ↗</a>
+            </p>
+          )}
+        </div>
+        <ul class="scope">
+          {c.scope.map((s) => <li>{s}</li>)}
+        </ul>
+      </div>
+    </section>
+  ))}
+
+  <section class="section ink-band" id="selected-work">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Selected work</h2>
+        <p style="color:var(--on-ink-2)">Client names are withheld. Figures come from the systems as delivered.</p>
+      </div>
+      <div class="work">
+        {outcomes.map((o) => (
+          <article>
+            <p class="work-ctx">{o.context}</p>
+            <h3>{o.headline}</h3>
+            <dl>
+              <dt>Problem</dt><dd>{o.problem}</dd>
+              <dt>Approach</dt><dd>{o.approach}</dd>
+            </dl>
+            <ul class="tags" aria-label="Technology">
+              {o.tags.map((t) => <li class="tag work-tag">{t}</li>)}
+            </ul>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section-sm">
+    <div class="wrap">
+      <p class="muted" style="margin:0">Questions about this kind of work? <a href="/contact/?topic=engineering">Send us a message</a>.</p>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .jump {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 22px;
+    margin-top: 32px;
+    font-weight: 600;
+  }
+
+  .scope {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 32px;
+  }
+
+  .scope li {
+    padding: 14px 0;
+    border-top: 2px solid var(--ink);
+    font-weight: 500;
+  }
+
+  .work {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+  }
+
+  .work article {
+    border-top: 1px solid var(--ink-line);
+    padding-top: 24px;
+  }
+
+  .work-ctx {
+    margin: 0 0 10px;
+    color: #f0a3c6;
+    font-weight: 600;
+    font-size: 0.92rem;
+  }
+
+  .work h3 {
+    font-size: 1.4rem;
+    margin-bottom: 18px;
+  }
+
+  .work dt {
+    color: #fff;
+    font-weight: 600;
+    font-size: 0.92rem;
+  }
+
+  .work dd {
+    margin: 2px 0 14px;
+    font-size: 0.97rem;
+  }
+
+  .work-tag {
+    background: #2b2536;
+    color: var(--on-ink-2);
+  }
+
+  @media (max-width: 960px) {
+    .work {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .scope {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

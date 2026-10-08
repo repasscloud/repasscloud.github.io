@@ -1,8 +1,14 @@
 export const SITE_TITLE = 'RePass Cloud';
+// Homepage <title>. Kept at 50-60 characters for search results.
+export const HOME_TITLE = 'RePass Cloud | Australian Software Products and AI Books';
 export const SITE_DESCRIPTION =
-  'RePass Cloud is an Australian software company that designs, builds, owns, and operates software products and enterprise technical systems.';
+  'RePass Cloud is an Australian software company and publisher. We build and run CurseDelete 2, Cinturon360 and Aethon Jobs, and publish How-To-Use-AI.com.';
 export const SITE_DOMAIN = 'https://repasscloud.com';
 export const DEFAULT_OG_IMAGE = '/img/og-default.png';
+export const PUBLISHING_OG_IMAGE = '/img/og-publishing.png';
+export const ENGINEERING_OG_IMAGE = '/img/og-engineering.png';
+export const BRAND_MARK = '/brand/repasscloud-mark.svg';
+export const BRAND_LOGO_PNG = '/brand/png/repasscloud-mark-512.png';
 export const GTM_CONTAINER_ID = 'GTM-N5D945ZS';
 export const GA_MEASUREMENT_ID = 'G-RLMZK1PDGS';
 
@@ -14,6 +20,8 @@ export const TWITTER_URL = 'https://twitter.com/repasscloud';
 export const LINKEDIN_URL = 'https://www.linkedin.com/company/repass-cloud';
 
 export const CONTACT_EMAIL = 'hello@repasscloud.com';
+export const COMPANY_LEGAL_NAME = 'RePass Cloud Pty Ltd';
+export const COMPANY_ABN = '74 642 243 801';
 
 export const CURSEDELETE_GITHUB_URL = 'https://github.com/repasscloud/cursedelete-2';
 export const CURSEDELETE_OG_IMAGE = '/img/og-cursedelete.png';
