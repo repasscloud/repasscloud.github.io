@@ -1,0 +1,56 @@
+---
+import { Image } from 'astro:assets';
+import { SERIES } from '../data/books';
+
+interface Props {
+  heading?: string;
+}
+
+const { heading = 'About the author' } = Astro.props;
+---
+
+<div class="author">
+  <Image class="author-photo" src={SERIES.authorPhoto} alt={SERIES.authorPhotoAlt} widths={[160, 240, 320]} sizes="160px" />
+  <div>
+    <h2>{heading}</h2>
+    {SERIES.authorBio.map((p) => <p class="muted">{p}</p>)}
+    <p class="small">
+      <a href={SERIES.authorUrl} target="_blank" rel="noopener">Author page ↗</a>
+      &nbsp;&nbsp;
+      <a href={SERIES.authorSite} target="_blank" rel="noopener">Useful Stash ↗</a>
+    </p>
+  </div>
+</div>
+
+<style>
+  .author {
+    display: grid;
+    grid-template-columns: 160px 1fr;
+    gap: 32px;
+    align-items: start;
+  }
+
+  .author h2 {
+    margin-bottom: 16px;
+  }
+
+  .author :global(.author-photo) {
+    width: 160px;
+    aspect-ratio: 4 / 5;
+    height: auto;
+    object-fit: cover;
+    object-position: 50% 30%;
+    border-radius: var(--radius);
+  }
+
+  @media (max-width: 600px) {
+    .author {
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+
+    .author :global(.author-photo) {
+      width: 128px;
+    }
+  }
+</style>

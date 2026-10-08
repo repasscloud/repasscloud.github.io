@@ -11,7 +11,7 @@ Last updated: 2025-01-01
 
 ## 1. Who We Are
 
-RePass Cloud Pty Ltd ("RePass Cloud", "we", "us") is an Australian-registered company headquartered in Sydney, New South Wales. This notice explains how we collect, use, store, and manage personal information during the hiring process.
+RePass Cloud Pty Ltd ("RePass Cloud", "we", "us") is an Australian company registered in New South Wales, with its business address in Findon, South Australia. This notice explains how we collect, use, store, and manage personal information during the hiring process.
 
 We are bound by the *Privacy Act 1988 (Cth)* and the Australian Privacy Principles (APPs).
 
@@ -74,7 +74,7 @@ By submitting an application, you confirm that you have read and agree to this A
 ## 10. Contact & Complaints
 
 **RePass Cloud Pty Ltd**
-Sydney, New South Wales, Australia
+3 Pioneer Street, Findon SA 5023, Australia
 [contact page](/contact)
 
 If you are not satisfied with our response to a privacy concern, you may contact the Office of the Australian Information Commissioner (OAIC) at [oaic.gov.au](https://www.oaic.gov.au).

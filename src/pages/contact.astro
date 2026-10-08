@@ -1,6 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import { COMPANY_ABN, COMPANY_LEGAL_NAME, CONTACT_EMAIL } from '../consts';
+import { COMPANY_ABN, COMPANY_ADDRESS, COMPANY_LEGAL_NAME, CONTACT_EMAIL } from '../consts';
 import { TOPICS } from '../../cloudflare/contact';
 
 const topics = Object.entries(TOPICS);
@@ -60,7 +60,9 @@ const topics = Object.entries(TOPICS);
           </div>
 
           <p class="muted small" style="margin:0">
-            We use your details only to reply to you. See our <a href="/legal/privacy-policy/">privacy policy</a>.
+            Please do not include passwords, API keys, payment-card details, unnecessary confidential information or
+            sensitive personal information. We will use the information you provide to respond to and administer your
+            enquiry in accordance with our <a href="/legal/privacy-policy/">Privacy Policy</a>.
           </p>
           <div>
             <button class="btn btn-primary" type="submit" id="cf-submit">Send message</button>
@@ -74,6 +76,8 @@ const topics = Object.entries(TOPICS);
           <div><dt>Email</dt><dd><a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a></dd></div>
           <div><dt>Company</dt><dd>{COMPANY_LEGAL_NAME}</dd></div>
           <div><dt>ABN</dt><dd>{COMPANY_ABN}</dd></div>
+          <div><dt>Address</dt><dd>{COMPANY_ADDRESS}</dd></div>
+          <div><dt>Privacy</dt><dd>Privacy requests or complaints: <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a></dd></div>
         </dl>
         <h3>Looking for something specific?</h3>
         <ul class="aside-links">

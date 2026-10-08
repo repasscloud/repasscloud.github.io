@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import AuthorBio from '../../components/AuthorBio.astro';
 import BookShelf from '../../components/BookShelf.astro';
 import { COMPANY_LEGAL_NAME, PUBLISHING_OG_IMAGE, SITE_DOMAIN } from '../../consts';
 import { books, bookOne, formatReleaseDate, SERIES } from '../../data/books';
@@ -11,7 +12,13 @@ const seriesSchema = {
   url: new URL('/publishing/', SITE_DOMAIN).href,
   sameAs: SERIES.url,
   description: SERIES.about,
-  author: { '@type': 'Person', name: SERIES.author, url: SERIES.authorUrl },
+  author: {
+    '@type': 'Person',
+    name: SERIES.author,
+    url: SERIES.authorUrl,
+    image: new URL(SERIES.authorPhoto.src, SITE_DOMAIN).href,
+    sameAs: [SERIES.authorSite],
+  },
   publisher: { '@type': 'Organization', name: COMPANY_LEGAL_NAME, url: SITE_DOMAIN },
   hasPart: books.map((b) => ({
     '@type': 'Book',
@@ -74,18 +81,8 @@ const seriesSchema = {
   </section>
 
   <section class="section band">
-    <div class="wrap split">
-      <div>
-        <h2 style="margin-bottom:20px">About the author</h2>
-        <p class="muted">
-          {SERIES.authorShort} ({SERIES.author}) is an Australian software engineer, writer and podcaster,
-          and the creator of {SERIES.name} and <a href={SERIES.authorSite} target="_blank" rel="noopener">Useful Stash ↗</a>.
-          His career spans software engineering, cloud infrastructure, automation, systems integration and
-          security, including machine learning and automation work long before ChatGPT made AI a
-          dinner-table topic.
-        </p>
-        <p class="muted">He distrusts hype, likes evidence, and writes for people who want enough knowledge to make up their own minds.</p>
-      </div>
+    <div class="wrap split about-grid">
+      <AuthorBio />
       <div>
         <h2 style="margin-bottom:20px">Publisher</h2>
         <dl class="kv">
@@ -122,7 +119,14 @@ const seriesSchema = {
 
   .pub-hero h1 {
     color: #fff;
-    font-size: clamp(2.1rem, 4.1vw, 3.5rem);
+    font-size: clamp(2rem, 3.4vw, 3rem);
+    white-space: nowrap;
+  }
+
+  @media (max-width: 400px) {
+    .pub-hero h1 {
+      white-space: normal;
+    }
   }
 
   .pub-hero .lead {
@@ -138,6 +142,17 @@ const seriesSchema = {
   .pub-btn:hover {
     background: var(--mist);
     color: var(--ink);
+  }
+
+  .about-grid {
+    grid-template-columns: 1.5fr 1fr;
+    gap: 64px;
+  }
+
+  @media (max-width: 960px) {
+    .about-grid {
+      grid-template-columns: 1fr;
+    }
   }
 
   .series {

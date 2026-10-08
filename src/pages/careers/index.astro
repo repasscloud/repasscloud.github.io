@@ -34,7 +34,7 @@ const hiringInfo = [
 
   <section class="section-sm">
     <div class="wrap">
-      <h2 style="margin-bottom:24px">Open roles</h2>
+      <h2 style="margin-bottom:24px">Open roles{jobs.length > 0 && <span class="open-count">{jobs.length}</span>}</h2>
       {jobs.length > 0 ? (
         <ul class="jobs">
           {jobs.map((job) => (
@@ -53,11 +53,10 @@ const hiringInfo = [
         </ul>
       ) : (
         <div class="empty">
-          <h3>No jobs currently open</h3>
+          <h3>No open roles right now</h3>
           <p class="muted">
-            We don't have any open roles right now. New roles are listed here first. If you'd like to be
-            considered for future work, <a href="/contact/?topic=careers">send us a short note</a> with a link
-            to your work.
+            We hire for project work from time to time, and new roles are listed here first. If you'd like to be
+            considered, <a href="/contact/?topic=careers">send us a short note</a> with a link to your work.
           </p>
         </div>
       )}
@@ -77,6 +76,20 @@ const hiringInfo = [
 </Layout>
 
 <style>
+  .open-count {
+    display: inline-grid;
+    place-items: center;
+    min-width: 30px;
+    height: 30px;
+    margin-left: 12px;
+    padding: 0 8px;
+    border-radius: 99px;
+    background: var(--magenta);
+    color: #fff;
+    font-size: 1rem;
+    vertical-align: 6px;
+  }
+
   .jobs {
     list-style: none;
     margin: 0;

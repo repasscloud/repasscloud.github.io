@@ -1,5 +1,6 @@
 ---
 import { Image } from 'astro:assets';
+import AuthorBio from '../../components/AuthorBio.astro';
 import Layout from '../../layouts/Layout.astro';
 import { COMPANY_LEGAL_NAME, PUBLISHING_OG_IMAGE, SITE_DOMAIN } from '../../consts';
 import { books, formatReleaseDate, SERIES, type Book } from '../../data/books';
@@ -162,7 +163,13 @@ const breadcrumbSchema = {
     </div>
   </section>
 
-  <section class="section-sm band">
+  <section class="section band">
+    <div class="wrap-narrow">
+      <AuthorBio />
+    </div>
+  </section>
+
+  <section class="section-sm">
     <div class="wrap">
       <p class="muted" style="margin:0">
         Next in the series: <strong>{books[book.number]?.title}</strong>, in development.{' '}

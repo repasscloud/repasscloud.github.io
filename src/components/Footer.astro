@@ -2,9 +2,11 @@
 import { GITHUB_URL, LINKEDIN_URL, TWITTER_URL } from '../consts';
 import { products } from '../data/products';
 import { books } from '../data/books';
+import { getOpenJobs } from '../lib/jobs';
 
 const year = new Date().getFullYear();
 const publishedBooks = books.filter((b) => b.page);
+const openRoles = (await getOpenJobs()).length;
 ---
 
 <footer class="site-footer">
@@ -51,7 +53,7 @@ const publishedBooks = books.filter((b) => b.page);
           <li><a href="/about/">About</a></li>
           <li><a href="/engineering/">Engineering</a></li>
           <li><a href="/news/">News</a></li>
-          <li><a href="/careers/">Careers</a></li>
+          <li><a href="/careers/">Careers{openRoles > 0 && ` (${openRoles} open ${openRoles === 1 ? 'role' : 'roles'})`}</a></li>
           <li><a href="/contact/">Contact</a></li>
         </ul>
       </div>
@@ -68,7 +70,7 @@ const publishedBooks = books.filter((b) => b.page);
     </div>
 
     <div class="footer-legal">
-      <span>&copy; {year} RePass Cloud Pty Ltd. ABN 74 642 243 801.</span>
+      <span>&copy; {year} RePass Cloud Pty Ltd. ABN 74 642 243 801. Made in Adelaide and Sydney with <span class="heart" role="img" aria-label="love">♥</span></span>
       <ul>
         <li><a href="/legal/privacy-policy/">Privacy</a></li>
         <li><a href="/legal/terms-of-service/">Terms</a></li>

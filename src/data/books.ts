@@ -1,5 +1,8 @@
 import type { ImageMetadata } from 'astro';
 import book01Cover from '../assets/books/book-01-cover.jpg';
+// Author photo: replace src/assets/author/author.jpg with a new image (same
+// file name, portrait 4:5 works best) and rebuild. It's cropped to 4:5 on the page.
+import authorPhoto from '../assets/author/author.jpg';
 
 /**
  * The How-To-Use-AI.com book series, published by RePass Cloud Pty Ltd.
@@ -17,6 +20,13 @@ export const SERIES = {
   launchListUrl: 'https://how-to-use-ai.com/',
   author: 'Danijel-James Wynyard-McClay',
   authorShort: 'DJ',
+  authorPhoto,
+  authorPhotoAlt: 'Danijel-James Wynyard-McClay',
+  /** Professional bio, adapted from books.json `authorProfile` without the profanity. */
+  authorBio: [
+    'DJ (Danijel-James Wynyard-McClay) is an Australian software engineer, writer and podcaster, and the creator of How-To-Use-AI.com and Useful Stash. His career spans software engineering, cloud infrastructure, automation, systems integration and security, including machine learning and automation work long before ChatGPT made AI a dinner-table topic.',
+    'He distrusts hype, likes evidence, and writes for people who want enough knowledge, practical experience and healthy scepticism to make up their own minds.',
+  ],
   authorUrl: 'https://how-to-use-ai.com/author/',
   authorSite: 'https://usefulstash.com',
   publisher: 'RePass Cloud Pty Ltd',

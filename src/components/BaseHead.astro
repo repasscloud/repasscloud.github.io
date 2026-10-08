@@ -80,7 +80,10 @@ const hasGa = GA_MEASUREMENT_ID.startsWith('G-');
 <meta name="description" content={description} />
 <meta name="robots" content={noIndex ? 'noindex, nofollow' : 'index, follow'} />
 
-<script is:inline>
+<script is:inline define:vars={{ gtmId: hasGtm ? GTM_CONTAINER_ID : '', gaId: hasGa ? GA_MEASUREMENT_ID : '' }}>
+  // Analytics stay off until the visitor allows them in the cookie banner.
+  // Consent Mode defaults stay denied; Google tags are only requested after
+  // window.repasscloudLoadAnalytics() runs (on "Allow analytics" or a stored "granted").
   window.dataLayer = window.dataLayer || [];
   function gtag() {
     window.dataLayer.push(arguments);
@@ -91,47 +94,36 @@ const hasGa = GA_MEASUREMENT_ID.startsWith('G-');
     ad_storage: 'denied',
     ad_user_data: 'denied',
     ad_personalization: 'denied',
-    wait_for_update: 500,
   });
 
-  try {
-    if (window.localStorage.getItem('repasscloud_consent') === 'granted') {
-      window.gtag('consent', 'update', {
-        analytics_storage: 'granted',
-        ad_storage: 'denied',
-        ad_user_data: 'denied',
-        ad_personalization: 'denied',
-      });
-    }
-  } catch {
-    // Ignore storage errors.
-  }
-</script>
-
-{hasGtm && (
-  <script is:inline define:vars={{ gtmId: GTM_CONTAINER_ID }}>
-    ((windowRef, documentRef, scriptTag, dataLayerName, containerId) => {
-      windowRef[dataLayerName] = windowRef[dataLayerName] || [];
-      windowRef[dataLayerName].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
-      const firstScript = documentRef.getElementsByTagName(scriptTag)[0];
-      const tag = documentRef.createElement(scriptTag);
-      const layer = dataLayerName !== 'dataLayer' ? `&l=${dataLayerName}` : '';
+  var loaded = false;
+  window.repasscloudLoadAnalytics = function () {
+    if (loaded) return;
+    loaded = true;
+    window.gtag('consent', 'update', { analytics_storage: 'granted' });
+    var add = function (src) {
+      var tag = document.createElement('script');
       tag.async = true;
-      tag.src = `https://www.googletagmanager.com/gtm.js?id=${containerId}${layer}`;
-      firstScript.parentNode?.insertBefore(tag, firstScript);
-    })(window, document, 'script', 'dataLayer', gtmId);
-  </script>
-)}
-
-{hasGa && (
-  <Fragment>
-    <script async src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}></script>
-    <script is:inline define:vars={{ gaId: GA_MEASUREMENT_ID }}>
+      tag.src = src;
+      document.head.appendChild(tag);
+    };
+    if (gtmId) {
+      window.dataLayer.push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+      add('https://www.googletagmanager.com/gtm.js?id=' + gtmId);
+    }
+    if (gaId) {
+      add('https://www.googletagmanager.com/gtag/js?id=' + gaId);
       window.gtag('js', new Date());
       window.gtag('config', gaId);
-    </script>
-  </Fragment>
-)}
+    }
+  };
+
+  try {
+    if (window.localStorage.getItem('repasscloud_consent') === 'granted') window.repasscloudLoadAnalytics();
+  } catch (e) {
+    // Storage unavailable: analytics stay off.
+  }
+</script>
 
 <meta property="og:type" content={type} />
 <meta property="og:url" content={canonicalURL} />

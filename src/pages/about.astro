@@ -1,7 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import ProductRows from '../components/ProductRows.astro';
-import { COMPANY_ABN, COMPANY_LEGAL_NAME } from '../consts';
+import { COMPANY_ABN, COMPANY_ACN, COMPANY_ADDRESS, COMPANY_LEGAL_NAME } from '../consts';
 import { SERIES } from '../data/books';
 
 const principles = [
@@ -99,7 +99,10 @@ const focusAreas = [
         <dl class="kv">
           <div><dt>Legal name</dt><dd>{COMPANY_LEGAL_NAME}</dd></div>
           <div><dt>ABN</dt><dd>{COMPANY_ABN}</dd></div>
-          <div><dt>Country</dt><dd>Australia</dd></div>
+          <div><dt>ACN</dt><dd>{COMPANY_ACN}</dd></div>
+          <div><dt>Registered in</dt><dd>New South Wales, Australia</dd></div>
+          <div><dt>Address</dt><dd>{COMPANY_ADDRESS}</dd></div>
+          <div><dt>Where we work</dt><dd>Adelaide and Sydney</dd></div>
           <div><dt>Contact</dt><dd><a href="/contact/">Send us a message</a></dd></div>
         </dl>
       </div>

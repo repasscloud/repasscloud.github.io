@@ -4,8 +4,9 @@
 <div id="cookie-banner" class="cookie-banner" role="region" aria-labelledby="cookie-banner-title" hidden>
   <h2 id="cookie-banner-title">Your privacy choices</h2>
   <p>
-    We use Google Analytics to see how people use this site, and only with your consent. We don't use
-    advertising cookies or sell personal information. <a href="/legal/privacy-policy/#8-cookies-and-similar-technologies">Read the privacy policy</a>.
+    We'd like to use Google Analytics to see how people use this site. It only runs if you allow it, and you can
+    change your choice at any time from the footer. We don't use advertising cookies or sell personal information.{' '}
+    <a href="/legal/privacy-policy/#6-analytics-cookies-and-similar-technologies">Read the privacy policy</a>.
   </p>
   <div class="cookie-actions">
     <button type="button" id="cookie-accept" class="btn btn-primary btn-sm">Allow analytics</button>
@@ -18,6 +19,10 @@
     var STORAGE_KEY = 'repasscloud_consent';
 
     function update(granted) {
+      if (granted && typeof window.repasscloudLoadAnalytics === 'function') {
+        window.repasscloudLoadAnalytics();
+        return;
+      }
       if (typeof gtag === 'function') {
         gtag('consent', 'update', {
           analytics_storage: granted ? 'granted' : 'denied',

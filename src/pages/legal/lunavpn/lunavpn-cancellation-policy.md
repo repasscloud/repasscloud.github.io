@@ -55,8 +55,8 @@ RePass Cloud. Any use of the open source code is at your own risk.
 ## 6. Contact
 
 RePass Cloud Pty Ltd
-PO BOX 262
-Bondi Junction NSW 1355
+3 Pioneer Street
+Findon SA 5023
 Australia
 
 Contact: [contact page](/contact)

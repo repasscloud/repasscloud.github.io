@@ -39,3 +39,6 @@
 /books/  /publishing/  301
 /press   /brand/  301
 /press/  /brand/  301
+
+# The old privacy policy PDF was replaced by the 24 September 2026 master policy (web only)
+/downloads/legal/privacy-policy.pdf  /legal/privacy-policy/  301

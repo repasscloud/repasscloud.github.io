@@ -55,14 +55,14 @@ Prefer small, reviewable updates. Do not reintroduce a services-first/engagement
 
 ### Layouts and shell
 
-- `src/layouts/Layout.astro`: document wrapper (`lang="en-AU"`), skip link target `#main`, header, footer, cookie banner, GTM noscript. Props: `title`, `description`, `exactTitle`, `ogImagePath`, `ogImageAlt`, `noIndex`, `canonical`, etc.
+- `src/layouts/Layout.astro`: document wrapper (`lang="en-AU"`), skip link target `#main`, header, footer, cookie banner. Props: `title`, `description`, `exactTitle`, `ogImagePath`, `ogImageAlt`, `noIndex`, `canonical`, etc.
 - `src/components/BaseHead.astro`: canonical, titles, descriptions, robots, OG/Twitter, favicons/manifest, RSS, sitemap link, fonts, GA/GTM with consent default denied. Title rule: `title === SITE_TITLE` → `HOME_TITLE`; `exactTitle` → verbatim; otherwise `"<title> | RePass Cloud"` unless that exceeds 65 characters, in which case the bare title is used.
 - `src/layouts/PostLayout.astro`: news articles, `BlogPosting` + `BreadcrumbList` schema.
 - `src/layouts/ProsePageLayout.astro`: markdown pages under `src/pages/legal/` and `src/pages/careers/`. Front matter: `title`, `description`, optional `seoTitle` (full `<title>`, used verbatim) and `noIndex`.
 
 ### Navigation and footer
 
-- `src/components/Header.astro`: Products, Publishing, Engineering, News, Company (`/about/`), Contact. Active state uses `currentPath.startsWith(href)` on trailing-slash paths. Mobile menu uses `hidden` + `aria-expanded`, closes on Escape (returns focus to the toggle), outside click, link click and resize to desktop.
+- `src/components/Header.astro`: Products, Publishing, Engineering, News, Company (`/about/`), Careers, Contact. Careers is always in the nav (hiring is a credibility signal) and shows a magenta count badge when `getOpenJobs()` returns roles; the footer link does the same in words. Active state uses `currentPath.startsWith(href)` on trailing-slash paths. Mobile menu uses `hidden` + `aria-expanded`, closes on Escape (returns focus to the toggle), outside click, link click and resize to desktop.
 - `src/components/Footer.astro`: columns Products (from `products.ts`), Publishing (from `books.ts`), Company, Elsewhere; legal row with ABN, policy links and the CCPA "Your privacy choices" button (must stay on every page). No CTA banners.
 
 ### Pages
@@ -80,7 +80,7 @@ Prefer small, reviewable updates. Do not reintroduce a services-first/engagement
 
 - Job ads are the `jobs` content collection: one markdown file per role in `src/content/jobs/`. Schema in `src/content.config.ts`; copy `src/content/jobs/_TEMPLATE.md` (files starting with `_` are ignored).
 - `src/lib/jobs.ts` → `getOpenJobs()` returns roles that are not `draft` and whose `closes` date hasn't passed at build time.
-- `/careers/` lists open roles, or shows "No jobs currently open" when there are none. Each open role gets `/careers/jobs/<file-name>/` with `JobPosting` structured data. Apply defaults to `/contact/?topic=careers&role=<title>`; set `apply` to an email or URL to override.
+- `/careers/` always exists. It lists open roles with a count, or shows "No open roles right now" when there are none. Each open role gets `/careers/jobs/<file-name>/` with `JobPosting` structured data. Apply defaults to `/contact/?topic=careers&role=<title>`; set `apply` to an email or URL to override.
 - To take a role down: set `draft: true` or delete the file, then rebuild.
 - Supporting pages (`how-we-hire`, `culture`, `candidate-guide`, `equal-opportunity`, `applicant-privacy-notice`) are markdown under `src/pages/careers/`.
 
@@ -118,11 +118,14 @@ Contact stays low-key: one nav item, footer links, and at most one restrained te
 
 ## Analytics and Consent Rules
 
+- GA4 and GTM are **not requested at all until consent**. `BaseHead.astro` sets Consent Mode defaults to denied and defines `window.repasscloudLoadAnalytics()`, which injects the Google scripts; it runs only when the visitor clicks "Allow analytics" or has a stored `granted` choice. There is no GTM `<noscript>` iframe. This follows the legal pack's "keep non-essential tags off before consent" principle.
 - Do not bypass the consent default of denied analytics storage (`BaseHead.astro`).
 - Do not add analytics scripts to pages directly.
 - Preserve the cookie banner (`CookieConsent.astro`) and keep the footer "Your privacy choices" button calling `window.repasscloudOpenCookieBanner()`.
 
 ## Legal and Privacy Pages
+
+The master Privacy Policy, Terms of Service and Refund Policy (effective 24 September 2026) come from the local, git-ignored `repasscloud-legal-pack-2026-09-24/repasscloud.com/` folder; its `operations/` notes are internal and must not be published. The contact-form notice uses the pack's exact wording. Corporate details: ABN 74 642 243 801, ACN 642 243 801, registered in New South Wales, business address 3 Pioneer Street, Findon SA 5023 (`COMPANY_*` in `src/consts.ts`). The old privacy-policy PDF was retired (301 to the web page). The LunaVPN closure notice stays as a historical record alongside LunaVPN in `/archive/`.
 
 Legal markdown lives in `src/pages/legal/`. Do not invent legal obligations or change legal wording unless asked; front-matter `description`/`seoTitle` are metadata and may be tuned for SEO. PDFs compiled from `latex/` are published from `public/downloads/legal/`.
 
@@ -163,6 +166,6 @@ Images have useful `alt` (decorative images `alt=""`); buttons have accessible n
 2. Legacy Hugo folders remain. Clean up only after confirming nothing under `static/` is still needed.
 3. CI uses Node 25 while `package.json` allows `>=22.12.0`.
 4. `CURSEDELETE_STRIPE_LINKS` are Stripe test-mode links.
-5. The privacy policy (section 8) says "We do not use Google Analytics", but the site loads GA4/GTM behind the consent banner. One of them needs to change; legal wording was not edited.
-6. Company location: the old site said Sydney; the book publisher address in `books.json` is in South Australia. New copy says "Australia" only. Confirm before adding a city to schema or copy.
+5. Footer reads "Made in Adelaide and Sydney with ♥" by the owner's request; the company is registered in NSW and its business address is in Findon SA.
+6. Author photo lives at `src/assets/author/author.jpg` (used by `AuthorBio.astro` and `Person` schema). Replace the file, keep the name, rebuild. Always use the author name "Danijel-James Wynyard-McClay".
 7. Several older posts have titles over 60 characters or descriptions over 160 (`npm run check:seo` lists them).

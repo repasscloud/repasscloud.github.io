@@ -4,7 +4,7 @@ import CookieConsent from '../components/CookieConsent.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import type { ImageMetadata } from 'astro';
-import { GTM_CONTAINER_ID, SITE_DESCRIPTION, SITE_TITLE } from '../consts';
+import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 
 interface Props {
   title?: string;
@@ -34,7 +34,6 @@ const {
   ogImageAlt,
 } = Astro.props;
 
-const hasGtm = GTM_CONTAINER_ID.startsWith('GTM-');
 ---
 
 <!doctype html>
@@ -56,16 +55,6 @@ const hasGtm = GTM_CONTAINER_ID.startsWith('GTM-');
     <slot name="head" />
   </head>
   <body>
-    {hasGtm && (
-      <noscript>
-        <iframe
-          src={`https://www.googletagmanager.com/ns.html?id=${GTM_CONTAINER_ID}`}
-          height="0"
-          width="0"
-          style="display:none;visibility:hidden"
-        ></iframe>
-      </noscript>
-    )}
     <Header />
     <main id="main">
       <slot />

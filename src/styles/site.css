@@ -425,6 +425,21 @@ hr {
   background: var(--mist);
 }
 
+.nav-count {
+  display: inline-grid;
+  place-items: center;
+  min-width: 20px;
+  height: 20px;
+  margin-left: 6px;
+  padding: 0 6px;
+  border-radius: 99px;
+  background: var(--magenta);
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 700;
+  vertical-align: 1px;
+}
+
 .nav a[aria-current='page'] {
   color: var(--ink);
   box-shadow: inset 0 -2px 0 var(--violet);
@@ -1088,6 +1103,10 @@ hr {
   border-top: 1px solid var(--ink-line);
   font-size: 0.88rem;
   color: var(--on-ink-3);
+}
+
+.footer-legal .heart {
+  color: var(--pink);
 }
 
 .footer-legal ul {

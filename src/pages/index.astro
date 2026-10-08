@@ -6,6 +6,7 @@ import FormattedDate from '../components/FormattedDate.astro';
 import ProductRows from '../components/ProductRows.astro';
 import {
   BRAND_LOGO_PNG,
+  COMPANY_ADDRESS_PARTS,
   COMPANY_LEGAL_NAME,
   CURSEDELETE_VERSION,
   GITHUB_URL,
@@ -32,7 +33,7 @@ const orgSchema = {
   logo: new URL(BRAND_LOGO_PNG, SITE_DOMAIN).href,
   description: SITE_DESCRIPTION,
   taxID: '74642243801',
-  address: { '@type': 'PostalAddress', addressCountry: 'AU' },
+  address: { '@type': 'PostalAddress', ...COMPANY_ADDRESS_PARTS },
   sameAs: [GITHUB_URL, LINKEDIN_URL, TWITTER_URL, SERIES.url],
 };
 

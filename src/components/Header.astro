@@ -1,10 +1,14 @@
 ---
+import { getOpenJobs } from '../lib/jobs';
+
+const openRoles = (await getOpenJobs()).length;
 const navLinks = [
   { href: '/products/', label: 'Products' },
   { href: '/publishing/', label: 'Publishing' },
   { href: '/engineering/', label: 'Engineering' },
   { href: '/news/', label: 'News' },
   { href: '/about/', label: 'Company' },
+  { href: '/careers/', label: 'Careers', count: openRoles },
   { href: '/contact/', label: 'Contact' },
 ];
 
@@ -21,8 +25,11 @@ const isActive = (href: string) => currentPath.startsWith(href);
     </a>
 
     <nav class="nav" aria-label="Primary">
-      {navLinks.map(({ href, label }) => (
-        <a href={href} aria-current={isActive(href) ? 'page' : undefined}>{label}</a>
+      {navLinks.map(({ href, label, count }) => (
+        <a href={href} aria-current={isActive(href) ? 'page' : undefined}>
+          {label}
+          {count ? <><span class="nav-count" aria-hidden="true">{count}</span><span class="sr-only">, {count} open {count === 1 ? 'role' : 'roles'}</span></> : null}
+        </a>
       ))}
     </nav>
 
@@ -40,8 +47,11 @@ const isActive = (href: string) => currentPath.startsWith(href);
   </div>
 
   <nav class="mobile-nav" id="mobile-nav" aria-label="Primary" hidden>
-    {navLinks.map(({ href, label }) => (
-      <a href={href} aria-current={isActive(href) ? 'page' : undefined}>{label}</a>
+    {navLinks.map(({ href, label, count }) => (
+      <a href={href} aria-current={isActive(href) ? 'page' : undefined}>
+        {label}
+        {count ? <><span class="nav-count" aria-hidden="true">{count}</span><span class="sr-only">, {count} open {count === 1 ? 'role' : 'roles'}</span></> : null}
+      </a>
     ))}
   </nav>
 </header>
