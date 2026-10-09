@@ -14,7 +14,7 @@ export const GA_MEASUREMENT_ID = 'G-RLMZK1PDGS';
 
 export const CINTURON_URL = 'https://cinturon360.com';
 export const GITHUB_URL = 'https://github.com/repasscloud';
-export const AETHON_URL = 'https://aethon.jobs';
+export const AETHON_URL = 'https://aethonjobs.com';
 
 export const TWITTER_URL = 'https://twitter.com/repasscloud';
 export const LINKEDIN_URL = 'https://www.linkedin.com/company/repass-cloud';
@@ -35,6 +35,7 @@ export const COMPANY_ADDRESS_PARTS = {
 };
 
 export const CURSEDELETE_GITHUB_URL = 'https://github.com/repasscloud/cursedelete-2';
+export const CURSEDELETE_LICENSING_URL = 'https://github.com/repasscloud/cursedelete-2/blob/main/docs/LICENSING.md';
 export const CURSEDELETE_OG_IMAGE = '/img/og-cursedelete.png';
 export const CURSEDELETE_ICON = '/img/cursedelete-icon.png';
 export const CURSEDELETE_CHANGELOG_URL =

@@ -6,6 +6,7 @@ import {
   CURSEDELETE_CHANGELOG_URL,
   CURSEDELETE_GITHUB_URL,
   CURSEDELETE_ICON,
+  CURSEDELETE_LICENSING_URL,
   CURSEDELETE_OG_IMAGE,
   CURSEDELETE_STRIPE_LINKS,
   CURSEDELETE_VERSION,
@@ -210,8 +211,12 @@ cargo build --release -p cursdel-cli
         ))}
       </div>
       <p class="muted small" style="margin-top:24px">
-        Payments are processed by Stripe and licences are issued after purchase. For questions about
-        editions, scale or Enterprise terms, email <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>.
+        Sold by RePass Cloud Pty Ltd, ABN 74642243801. Payments are processed by Stripe and licences are issued
+        after purchase. Use of CurseDelete 2 is subject to the{' '}
+        <a href={CURSEDELETE_LICENSING_URL} target="_blank" rel="noopener">CurseDelete licence terms ↗</a> and our{' '}
+        <a href="/legal/terms-of-service/">Terms of Service</a>. See the <a href="/legal/refund-policy/">Refund Policy</a>{' '}
+        and <a href="/legal/privacy-policy/">Privacy Policy</a>. For questions about editions, scale or Enterprise
+        terms, email <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>.
       </p>
     </div>
   </section>

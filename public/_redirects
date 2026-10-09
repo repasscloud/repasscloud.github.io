@@ -42,3 +42,7 @@
 
 # The old privacy policy PDF was replaced by the 24 September 2026 master policy (web only)
 /downloads/legal/privacy-policy.pdf  /legal/privacy-policy/  301
+
+# aethonjobs.com links here for its privacy policy; the master policy covers it
+/legal/privacy-policy/aethonsoftware   /legal/privacy-policy/  301
+/legal/privacy-policy/aethonsoftware/  /legal/privacy-policy/  301

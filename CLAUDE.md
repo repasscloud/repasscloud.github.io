@@ -127,6 +127,10 @@ Contact stays low-key: one nav item, footer links, and at most one restrained te
 
 The master Privacy Policy, Terms of Service and Refund Policy (effective 24 September 2026) come from the local, git-ignored `repasscloud-legal-pack-2026-09-24/repasscloud.com/` folder; its `operations/` notes are internal and must not be published. The contact-form notice uses the pack's exact wording. Corporate details: ABN 74 642 243 801, ACN 642 243 801, registered in New South Wales, business address 3 Pioneer Street, Findon SA 5023 (`COMPANY_*` in `src/consts.ts`). The old privacy-policy PDF was retired (301 to the web page). The LunaVPN closure notice stays as a historical record alongside LunaVPN in `/archive/`.
 
+`/legal/` is the legal hub: master policies, how the document hierarchy works, site/product notices (How-To-Use-AI.com privacy and terms, CurseDelete licensing, Aethon Jobs and Cinturon360 product documents) and company details. Purchase points (CurseDelete editions, book buy buttons) link the applicable terms, refund policy and privacy policy, as the pack requires. The applicant privacy notice (and its PDF, regenerated from `latex/` with pandoc + tectonic) supplements the master Privacy Policy and doesn't claim formal Privacy Act/APP-entity status.
+
+Aethon Jobs lives at `https://aethonjobs.com` (`aethon.jobs` has no DNS). aethonjobs.com links to `/legal/privacy-policy/aethonsoftware`, which 301s to the master policy.
+
 Legal markdown lives in `src/pages/legal/`. Do not invent legal obligations or change legal wording unless asked; front-matter `description`/`seoTitle` are metadata and may be tuned for SEO. PDFs compiled from `latex/` are published from `public/downloads/legal/`.
 
 ## LaTeX / PDF Publishing

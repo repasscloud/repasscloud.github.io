@@ -5,79 +5,99 @@ description: "How RePass Cloud collects, uses, stores and deletes the personal i
 seoTitle: "Applicant Privacy Notice | Careers at RePass Cloud"
 ---
 
-Last updated: 2025-01-01
+**Effective:** 9 October 2026  
+**Last updated:** 9 October 2026
 
 > Download: [Applicant Privacy Notice (PDF)](/downloads/legal/applicant-privacy-notice.pdf)
 
-## 1. Who We Are
+## 1. Who we are and how this notice fits
 
-RePass Cloud Pty Ltd ("RePass Cloud", "we", "us") is an Australian company registered in New South Wales, with its business address in Findon, South Australia. This notice explains how we collect, use, store, and manage personal information during the hiring process.
+This notice explains how **RePass Cloud Pty Ltd** ("RePass Cloud", "we", "us") collects, uses, stores and deletes personal information during hiring and contractor engagement.
 
-We are bound by the *Privacy Act 1988 (Cth)* and the Australian Privacy Principles (APPs).
+- RePass Cloud Pty Ltd
+- ABN: 74642243801
+- ACN: 642243801
+- Registered and public business address: 3 Pioneer Street, Findon SA 5023, Australia
+- Email: hello@repasscloud.com
 
-## 2. What Information We Collect
+This notice supplements the [RePass Cloud Privacy Policy](/legal/privacy-policy/). The Privacy Policy applies to applicant information too; where this notice is more specific about hiring, this notice prevails to the extent of the inconsistency.
 
-During the hiring process, we may collect:
+We use the Australian Privacy Principles as a baseline for handling applicant information. Nothing in this notice limits rights you have under applicable privacy or employment laws.
 
-- Contact details (name, email address, phone number, location)
-- Resume or CV, portfolio links, and GitHub profile
-- Responses to application questions
-- Introduction video (if submitted)
-- Interview notes and assessments
-- Interview recordings (where applicable and consented to)
-- Reference check information (where conducted)
+## 2. What information we collect
 
-## 3. How We Use Your Information
+During hiring, we may collect:
 
-We use applicant information solely for evaluating your suitability for the role applied for. We do not sell, share, or use applicant data for marketing purposes. We do not reuse applicant data for future roles without your explicit consent.
+- contact details (name, email address, phone number, location);
+- your resume or CV, portfolio links and GitHub profile;
+- answers to application questions;
+- an introduction video, if you send one;
+- interview notes and assessments;
+- interview recordings, where you have been told and have consented; and
+- reference check information, where references are checked.
 
-## 4. Interview Recordings
+Please don't send sensitive information (for example health, criminal record or identity documents) unless we ask for it for a specific, lawful reason.
 
-Where interviews are recorded, you will be informed and asked to consent before any recording begins.
+## 3. How we collect it
 
-- **Unsuccessful applicants:** all recordings are deleted upon notification of the outcome.
-- **Successful applicants:** a written summary of your interview is retained as part of your employee record. The video recording is deleted upon execution of your employment or contractor agreement.
+We collect information directly from you, for example through the [contact form](/contact/), by email, in interviews, and from links you provide. We may collect reference information from referees you nominate.
 
-## 5. Sharing Your Information
+Messages sent through the contact form are delivered to our inbox by an email delivery provider. See section 9 of the Privacy Policy for the kinds of providers we use.
 
-In limited circumstances, we may share applicant information with clients (where a consulting engagement requires it and where you have given explicit written consent) or with service providers who assist us in running our recruitment process.
+## 4. How we use it
 
-Without your consent, we cannot proceed with the application — it will be marked as declined and all data deleted in accordance with this notice.
+We use applicant information to assess your suitability for the role you applied for, communicate with you about your application, arrange interviews and reference checks, and meet legal obligations.
 
-## 6. Data Retention
+We do not sell applicant information or use it for marketing. We do not consider you for other roles without your consent.
 
-| Applicant Status | Retention |
+## 5. Interview recordings
+
+Where an interview is recorded, we tell you and ask for your consent before recording starts.
+
+- **Unsuccessful applicants:** recordings are deleted when we notify you of the outcome.
+- **Successful applicants:** a written summary of the interview is kept with your employee or contractor record. The recording is deleted once your employment or contractor agreement is signed.
+
+## 6. Sharing
+
+We may share applicant information:
+
+- with service providers who help us run hiring, such as email, storage and video-call providers; and
+- with a client, where a consulting engagement requires it and you have given explicit written consent.
+
+If you don't consent to a client disclosure that an engagement requires, we can't proceed with that application. It will be closed and your information deleted under this notice.
+
+## 7. Where information is stored
+
+Some providers that store or process applicant information may do so outside Australia, including in the United States, Europe and the United Kingdom. Section 10 of the Privacy Policy explains overseas handling and the safeguards we use. We take reasonable steps to protect applicant information from misuse, interference, loss and unauthorised access.
+
+## 8. How long we keep it
+
+| Applicant status | Retention |
 | --- | --- |
-| Unsuccessful applicant | Deleted upon notification of outcome |
-| Active employee (first 90 days) | Relevant application data carried into employee record; non-required data removed after 90 days |
-| Employee departed within 90 days | Application data removed promptly |
-| Former employee | Minimum data retained only as required by Australian statutory obligations |
+| Unsuccessful applicant | Deleted when we notify you of the outcome, unless you agree to be considered for future roles |
+| New employee or contractor (first 90 days) | Relevant application information moves to your employee or contractor record; anything not needed is removed after 90 days |
+| Leaves within the first 90 days | Application information removed promptly |
+| Former employee or contractor | Only the minimum information required by Australian law is kept |
 
-## 7. Data Storage
+## 9. Your choices and rights
 
-All applicant data is stored in Australia. We take reasonable technical and organisational measures to protect personal information against unauthorised access, loss, or misuse.
+You can ask us to:
 
-## 8. Your Rights
+- give you access to the personal information we hold about you;
+- correct information that is inaccurate, out of date or incomplete; or
+- delete your application and withdraw from the process at any time.
 
-Under the *Privacy Act 1988 (Cth)*, you have the right to:
+Make a request through the [contact page](/contact/) or by emailing hello@repasscloud.com. We may need to verify your identity first. Section 16 of the Privacy Policy explains how requests are handled.
 
-- Request access to the personal information we hold about you
-- Request correction of inaccurate or incomplete information
-- Make a complaint if you believe your privacy rights have been breached
+## 10. Complaints
 
-To exercise any of these rights, contact us via the [contact page](/contact).
+Privacy request or complaint: hello@repasscloud.com
 
-## 9. Agreement to This Notice
+If you're not satisfied with our response, you can contact the Office of the Australian Information Commissioner (OAIC) at [oaic.gov.au](https://www.oaic.gov.au), or the privacy regulator where you live.
 
-By submitting an application, you confirm that you have read and agree to this Applicant Privacy Notice.
+## 11. Changes
 
-## 10. Contact & Complaints
-
-**RePass Cloud Pty Ltd**
-3 Pioneer Street, Findon SA 5023, Australia
-[contact page](/contact)
-
-If you are not satisfied with our response to a privacy concern, you may contact the Office of the Australian Information Commissioner (OAIC) at [oaic.gov.au](https://www.oaic.gov.au).
+We may update this notice. The current version is always on this page, with its effective date at the top.
 
 ---
 
