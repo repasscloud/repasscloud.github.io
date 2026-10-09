@@ -169,7 +169,7 @@ Images have useful `alt` (decorative images `alt=""`); buttons have accessible n
 1. `deploy.sh` still builds with Hugo; legacy.
 2. Legacy Hugo folders remain. Clean up only after confirming nothing under `static/` is still needed.
 3. CI uses Node 25 while `package.json` allows `>=22.12.0`.
-4. `CURSEDELETE_STRIPE_LINKS` are Stripe test-mode links.
+4. `CURSEDELETE_STRIPE_LINKS` are Stripe test-mode Payment Links that issue no licence. They're to be replaced by on-site licensing (Stripe Checkout, webhook, D1, signed `software-license-v1` envelopes, CLI activation API) per `docs/CURSEDELETE-LICENSING-PLAN.md`. Not built yet; read that plan before touching purchase or licensing code.
 5. Footer reads "Made in Adelaide and Sydney with ♥" by the owner's request; the company is registered in NSW and its business address is in Findon SA.
 6. Author photo lives at `src/assets/author/author.jpg` (used by `AuthorBio.astro` and `Person` schema). Replace the file, keep the name, rebuild. Always use the author name "Danijel-James Wynyard-McClay".
 7. Several older posts have titles over 60 characters or descriptions over 160 (`npm run check:seo` lists them).
