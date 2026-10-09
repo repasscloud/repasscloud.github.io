@@ -16,7 +16,7 @@ RePass Cloud Pty Ltd has:
 
 - ABN: 74642243801
 - ACN: 642243801
-- public business address: 3 Pioneer Street, Findon SA 5023, Australia
+- business location: Findon, SA 5023, Australia
 
 By accessing or using a Service after having a reasonable opportunity to view these Terms, you agree to the Terms that apply to that use.
 
@@ -360,8 +360,7 @@ English is the controlling version to the extent permitted by law. A translation
 **RePass Cloud Pty Ltd**  
 ABN 74642243801  
 ACN 642243801  
-3 Pioneer Street  
-Findon SA 5023  
+Findon, SA 5023  
 Australia
 
 Email: hello@repasscloud.com  

@@ -25,9 +25,8 @@ export const COMPANY_ABN = '74 642 243 801';
 export const COMPANY_ACN = '642 243 801';
 // Registered in New South Wales; business address in South Australia
 // (source: repasscloud-legal-pack-2026-09-24, corporate details).
-export const COMPANY_ADDRESS = '3 Pioneer Street, Findon SA 5023, Australia';
+export const COMPANY_ADDRESS = 'Findon, SA 5023, Australia';
 export const COMPANY_ADDRESS_PARTS = {
-  streetAddress: '3 Pioneer Street',
   addressLocality: 'Findon',
   addressRegion: 'SA',
   postalCode: '5023',
