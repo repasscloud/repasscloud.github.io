@@ -1,0 +1,190 @@
+---
+import { Image } from 'astro:assets';
+import Layout from '../layouts/Layout.astro';
+import { COMPANY_LEGAL_NAME } from '../consts';
+import { bookOne, SERIES } from '../data/books';
+
+const marks = [
+  { name: 'Logo, full colour', preview: '/brand/repasscloud-logo.svg', bg: '#ffffff', svg: '/brand/repasscloud-logo.svg', png: '/brand/png/repasscloud-logo-4800.png', pngLabel: 'PNG 4800 px' },
+  { name: 'Logo, for dark backgrounds', preview: '/brand/repasscloud-logo-white.svg', bg: '#18141f', svg: '/brand/repasscloud-logo-white.svg', png: '/brand/png/repasscloud-logo-white-4800.png', pngLabel: 'PNG 4800 px' },
+  { name: 'Mark, full colour', preview: '/brand/repasscloud-mark.svg', bg: '#ffffff', svg: '/brand/repasscloud-mark.svg', png: '/brand/png/repasscloud-mark-4096.png', pngLabel: 'PNG 4096 px' },
+  { name: 'Mark, black', preview: '/brand/repasscloud-mark-black.svg', bg: '#f4f3f7', svg: '/brand/repasscloud-mark-black.svg', png: '/brand/png/repasscloud-mark-black-2048.png', pngLabel: 'PNG 2048 px' },
+  { name: 'Mark, white', preview: '/brand/repasscloud-mark-white.svg', bg: '#18141f', svg: '/brand/repasscloud-mark-white.svg', png: '/brand/png/repasscloud-mark-white-2048.png', pngLabel: 'PNG 2048 px' },
+  { name: 'Wordmark', preview: '/brand/repasscloud-wordmark.svg', bg: '#ffffff', svg: '/brand/repasscloud-wordmark.svg', png: '/brand/png/repasscloud-wordmark-2400.png', pngLabel: 'PNG 2400 px' },
+];
+
+const colours = [
+  { name: 'Ink', hex: '#18141F', use: 'Text, footer, dark surfaces' },
+  { name: 'Violet', hex: '#6A1FC4', use: 'Links and buttons' },
+  { name: 'Magenta', hex: '#C2186F', use: 'Highlights' },
+  { name: 'Gold', hex: '#FFBE16', use: 'Spectrum start, artwork only' },
+  { name: 'Pink', hex: '#E35F9A', use: 'Spectrum middle, artwork only' },
+  { name: 'Purple', hex: '#AB2DF3', use: 'Spectrum end, artwork only' },
+];
+---
+
+<Layout
+  title="Brand Assets: Logos, Colours and Press Kit"
+  description="Download RePass Cloud logos in SVG and high-resolution PNG, brand colours, and How-To-Use-AI.com cover art for press, partners and bookshops."
+>
+  <section class="page-hero">
+    <div class="wrap">
+      <h1>Brand and press</h1>
+      <p class="lead">Logos, colours and cover art for press, partners and bookshops. Use the files as supplied: don't recolour, stretch or add effects to the mark.</p>
+    </div>
+  </section>
+
+  <section class="section-sm">
+    <div class="wrap">
+      <h2 style="margin-bottom:28px">Logos</h2>
+      <div class="assets">
+        {marks.map((m) => (
+          <figure class="asset">
+            <div class="asset-preview" style={`background:${m.bg}`}>
+              <img src={m.preview} alt={m.name} loading="lazy" />
+            </div>
+            <figcaption>
+              <b>{m.name}</b>
+              <span><a href={m.svg} download>SVG</a> <a href={m.png} download>{m.pngLabel}</a></span>
+            </figcaption>
+          </figure>
+        ))}
+      </div>
+      <p class="muted small" style="margin-top:20px">
+        More sizes: mark PNGs at <a href="/brand/png/repasscloud-mark-512.png" download>512</a>, <a href="/brand/png/repasscloud-mark-1024.png" download>1024</a> and <a href="/brand/png/repasscloud-mark-2048.png" download>2048</a> px; logo on a solid background, <a href="/brand/png/repasscloud-logo-on-white-3000.png" download>white</a> or <a href="/brand/png/repasscloud-logo-on-ink-3000.png" download>ink</a>.
+      </p>
+    </div>
+  </section>
+
+  <section class="section-sm band">
+    <div class="wrap">
+      <h2 style="margin-bottom:28px">Colours</h2>
+      <ul class="swatches">
+        {colours.map((c) => (
+          <li><span style={`background:${c.hex}`}></span><b>{c.name}</b><code>{c.hex}</code><em>{c.use}</em></li>
+        ))}
+      </ul>
+      <p class="muted small" style="margin-top:20px">Typeface: Schibsted Grotesk (SIL Open Font License).</p>
+    </div>
+  </section>
+
+  <section class="section-sm">
+    <div class="wrap split">
+      <div>
+        <h2 style="margin-bottom:20px">Book cover</h2>
+        <p class="muted">{bookOne.title}, Book 1 of {SERIES.name}, by {SERIES.author}. Published by {COMPANY_LEGAL_NAME}.</p>
+        {bookOne.cover && (
+          <a href={bookOne.cover.src} download="ai-for-normal-people-cover.jpg" class="cover-link">
+            <Image src={bookOne.cover} alt={bookOne.coverAlt ?? ''} width={240} />
+          </a>
+        )}
+        <p class="small"><a href={bookOne.cover?.src} download="ai-for-normal-people-cover.jpg">Download cover ({bookOne.cover?.width} × {bookOne.cover?.height} px JPG)</a></p>
+      </div>
+      <div>
+        <h2 style="margin-bottom:20px">Press enquiries</h2>
+        <p class="muted">For interviews, review copies or anything not covered here, <a href="/contact/?topic=media">contact us</a>.</p>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .assets {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+
+  .asset {
+    margin: 0;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    overflow: hidden;
+  }
+
+  .asset-preview {
+    display: grid;
+    place-items: center;
+    height: 180px;
+    padding: 28px;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .asset-preview img {
+    max-height: 100%;
+    width: auto;
+  }
+
+  .asset figcaption {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+    padding: 14px 16px;
+    font-size: 0.95rem;
+  }
+
+  .asset figcaption span {
+    display: flex;
+    gap: 14px;
+    font-weight: 600;
+  }
+
+  .swatches {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .swatches li {
+    display: grid;
+    grid-template-columns: 56px 1fr;
+    column-gap: 14px;
+    align-items: center;
+  }
+
+  .swatches span {
+    grid-row: span 3;
+    width: 56px;
+    height: 56px;
+    border-radius: 10px;
+    box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.08);
+  }
+
+  .swatches code {
+    font-size: 0.85rem;
+    color: var(--ink-2);
+    background: none;
+    border: 0;
+    padding: 0;
+  }
+
+  .swatches em {
+    font-style: normal;
+    font-size: 0.88rem;
+    color: var(--ink-3);
+  }
+
+  .cover-link {
+    display: inline-block;
+    margin: 8px 0 12px;
+    box-shadow: 0 20px 40px -20px rgba(10, 22, 51, 0.5);
+  }
+
+  @media (max-width: 960px) {
+    .assets,
+    .swatches {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .assets,
+    .swatches {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

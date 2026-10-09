@@ -1,57 +1,149 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import {
+  AETHON_URL,
+  CINTURON_URL,
+  COMPANY_ABN,
+  COMPANY_ACN,
+  COMPANY_ADDRESS,
+  COMPANY_LEGAL_NAME,
+  CONTACT_EMAIL,
+  CURSEDELETE_LICENSING_URL,
+} from '../../consts';
 
-const legalLinks = [
-  { href: '/legal/privacy-policy/', icon: 'bi-shield-check', title: 'Privacy Policy', desc: 'How we collect, use, and protect personal information.' },
-  { href: '/legal/terms-of-service/', icon: 'bi-file-text', title: 'Terms of Service', desc: 'Terms governing access to and use of our websites, products, and services.' },
-  { href: '/legal/refund-policy/', icon: 'bi-arrow-return-left', title: 'Refund Policy', desc: 'Refund eligibility and process for paid subscriptions and services.' },
+const LEGAL_EFFECTIVE = '24 September 2026';
+
+const policies = [
+  { href: '/legal/privacy-policy/', title: 'Privacy Policy', desc: 'How we collect, use, disclose and protect personal information across our websites, products and services.' },
+  { href: '/legal/terms-of-service/', title: 'Terms of Service', desc: 'The terms for using our websites, software, publications and services.' },
+  { href: '/legal/refund-policy/', title: 'Refund Policy', desc: 'Your consumer rights, and how refunds and other remedies work for our products.' },
 ];
 
-const legacyLinks = [
-  { href: '/legal/lunavpn/lunavpn-cancellation-policy/', icon: 'bi-info-circle', title: 'LunaVPN Closure Notice', desc: 'Notice confirming LunaVPN is closed and accounts are terminated.' },
+const supplements = [
+  { href: 'https://how-to-use-ai.com/privacy/', title: 'How-To-Use-AI.com privacy notice', desc: 'Site-specific privacy notice for the book series website, newsletter and book sales.', external: true },
+  { href: 'https://how-to-use-ai.com/terms/', title: 'How-To-Use-AI.com website terms', desc: 'Site-specific terms for the book series website and direct book sales.', external: true },
+  { href: CURSEDELETE_LICENSING_URL, title: 'CurseDelete 2 licensing', desc: 'Edition and licence terms for CurseDelete 2, published with the software.', external: true },
+  { href: AETHON_URL, title: 'Aethon Jobs', desc: 'The Aethon Jobs application presents its own privacy notice and platform terms.', external: true },
+  { href: CINTURON_URL, title: 'Cinturon360', desc: 'Cinturon360 customers are covered by the product terms and agreements presented in the application or signed with us.', external: true },
 ];
+
+const notices = [
+  { href: '/careers/applicant-privacy-notice/', title: 'Applicant privacy notice', desc: 'How we handle personal information during hiring.' },
+  { href: '/careers/equal-opportunity/', title: 'Equal opportunity statement', desc: 'Our commitment to fair hiring and engagement.' },
+  { href: '/legal/lunavpn/lunavpn-cancellation-policy/', title: 'LunaVPN closure notice', desc: 'Confirms the retired LunaVPN service is closed and accounts are terminated.' },
+];
+
+const hostOf = (url: string) => new URL(url).host.replace(/^www\./, '');
 ---
 
 <Layout
-  title="Legal"
-  description="Legal documents for RePass Cloud Pty Ltd — Privacy Policy, Terms of Service, and Refund Policy."
+  title="Legal Policies: Privacy, Terms and Refunds | RePass Cloud"
+  exactTitle
+  description="Privacy Policy, Terms of Service and Refund Policy for RePass Cloud Pty Ltd, plus the site and product notices that supplement them for our websites and products."
 >
   <section class="page-hero">
-    <div class="container">
-      <div class="hero-eyebrow"><i class="bi bi-file-earmark-text"></i> RePass Cloud Pty Ltd</div>
+    <div class="wrap-narrow">
       <h1>Legal</h1>
-      <p class="hero-lead">Legal policies and notices for RePass Cloud Pty Ltd and its services.</p>
+      <p class="lead">
+        Three master policies cover every website, product, publication and tool that {COMPANY_LEGAL_NAME} operates.
+        Some products add their own notices on top.
+      </p>
     </div>
   </section>
 
-  <section class="section-sm bg-surface">
-    <div class="container container-narrow">
+  <section class="section-sm">
+    <div class="wrap-narrow">
+      <h2 class="list-title">Master policies</h2>
+      <p class="muted small">Effective {LEGAL_EFFECTIVE}.</p>
       <ul class="link-list">
-        {legalLinks.map((link) => (
+        {policies.map((l) => <li><a href={l.href}>{l.title}</a><span>{l.desc}</span></li>)}
+      </ul>
+
+      <h2 class="list-title">How the documents fit together</h2>
+      <ol class="order">
+        <li><b>Master policies</b> apply to everything we operate.</li>
+        <li><b>Site and product notices</b> supplement them where a product handles information or sales differently.</li>
+        <li><b>Order forms, checkout terms, licences and signed agreements</b> apply to a specific purchase or customer.</li>
+      </ol>
+      <p class="muted">
+        A more specific document prevails only to the extent it expressly applies to the relevant site, product, account
+        or transaction and is inconsistent with a more general one. Nothing in these documents limits rights you have
+        under consumer, privacy or other laws that can't be excluded.
+      </p>
+
+      <h2 class="list-title">Site and product notices</h2>
+      <ul class="link-list">
+        {supplements.map((l) => (
           <li>
-            <a href={link.href} class="link-row">
-              <i class={`bi ${link.icon} link-row-icon`}></i>
-              <span class="link-row-label">
-                {link.title}
-                <span class="text-sm text-muted">{link.desc}</span>
-              </span>
-              <i class="bi bi-arrow-right link-row-arrow"></i>
-            </a>
-          </li>
-        ))}
-        {legacyLinks.map((link) => (
-          <li>
-            <a href={link.href} class="link-row" style="opacity:0.7;">
-              <i class={`bi ${link.icon} link-row-icon`}></i>
-              <span class="link-row-label">
-                {link.title}
-                <span class="text-sm text-muted">{link.desc}</span>
-              </span>
-              <i class="bi bi-arrow-right link-row-arrow"></i>
-            </a>
+            <a href={l.href} target="_blank" rel="noopener">{l.title} ↗</a>
+            <span>{l.desc} <span class="host">{hostOf(l.href)}</span></span>
           </li>
         ))}
       </ul>
+
+      <h2 class="list-title">Other notices</h2>
+      <ul class="link-list">
+        {notices.map((l) => <li><a href={l.href}>{l.title}</a><span>{l.desc}</span></li>)}
+      </ul>
+
+      <h2 class="list-title">Company details</h2>
+      <dl class="kv">
+        <div><dt>Legal name</dt><dd>{COMPANY_LEGAL_NAME}</dd></div>
+        <div><dt>ABN</dt><dd>{COMPANY_ABN}</dd></div>
+        <div><dt>ACN</dt><dd>{COMPANY_ACN}</dd></div>
+        <div><dt>Registered in</dt><dd>New South Wales, Australia</dd></div>
+        <div><dt>Business address</dt><dd>{COMPANY_ADDRESS}</dd></div>
+        <div><dt>Privacy requests and complaints</dt><dd><a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a></dd></div>
+        <div><dt>Everything else</dt><dd><a href="/contact/">Contact page</a></dd></div>
+      </dl>
     </div>
   </section>
 </Layout>
+
+<style>
+  .list-title {
+    font-size: 1.25rem;
+    margin: 0 0 8px;
+  }
+
+  .link-list {
+    list-style: none;
+    margin: 0 0 48px;
+    padding: 0;
+  }
+
+  .link-list li {
+    padding: 16px 0;
+    border-top: 1px solid var(--line);
+  }
+
+  .link-list a {
+    display: block;
+    font-weight: 600;
+    font-size: 1.12rem;
+  }
+
+  .link-list span {
+    color: var(--ink-2);
+  }
+
+  .link-list .host {
+    display: inline-block;
+    margin-left: 6px;
+    font-size: 0.88rem;
+    color: var(--ink-3);
+  }
+
+  .order {
+    margin: 12px 0 16px;
+    padding-left: 1.3em;
+  }
+
+  .order li {
+    margin: 6px 0;
+  }
+
+  .muted:last-of-type {
+    margin-bottom: 48px;
+  }
+</style>

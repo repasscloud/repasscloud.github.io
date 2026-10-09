@@ -6,6 +6,7 @@ import {
   CURSEDELETE_CHANGELOG_URL,
   CURSEDELETE_GITHUB_URL,
   CURSEDELETE_ICON,
+  CURSEDELETE_LICENSING_URL,
   CURSEDELETE_OG_IMAGE,
   CURSEDELETE_STRIPE_LINKS,
   CURSEDELETE_VERSION,
@@ -18,14 +19,14 @@ const platforms = [
 ];
 
 const features = [
-  { icon: 'bi-lightning-charge', title: 'Streaming deletion', desc: 'Enumeration and deletion overlap — deletion starts before the tree is fully walked, with bounded memory use regardless of tree size.' },
-  { icon: 'bi-sliders', title: 'Adaptive concurrency', desc: '--workers auto hill-climbs to a good worker count for the storage target it is running against, or --workers N gives an exact override.' },
-  { icon: 'bi-shield-lock', title: 'Structural root protection', desc: 'A filesystem or SMB share root can never be deleted — including via a symlink or junction disguising one — enforced by two independently tested layers.' },
-  { icon: 'bi-link-45deg', title: 'Symlink-safe traversal', desc: 'A symlink or junction found inside a target tree is always deleted as the link object itself, never followed.' },
-  { icon: 'bi-clock-history', title: 'Retention cleanup', desc: '--age/--age-by with a mandatory duration unit; directories are removed only once genuinely empty, and the target directory itself is always preserved.' },
-  { icon: 'bi-funnel', title: 'Composable filters', desc: '--include/--exclude/--min-size/--max-size, with exclude always winning ties.' },
-  { icon: 'bi-code-square', title: 'Machine-readable output', desc: '--json with a versioned schema and a frozen exit-code contract for automation.' },
-  { icon: 'bi-lock', title: 'Lock handling', desc: '--kill-locks for local process locks, and an Business/Enterprise-only --close-remote-locks for supported Windows file servers.' },
+  { title: 'Streaming deletion', desc: 'Enumeration and deletion overlap — deletion starts before the tree is fully walked, with bounded memory use regardless of tree size.' },
+  { title: 'Adaptive concurrency', desc: '--workers auto hill-climbs to a good worker count for the storage target it is running against, or --workers N gives an exact override.' },
+  { title: 'Structural root protection', desc: 'A filesystem or SMB share root can never be deleted — including via a symlink or junction disguising one — enforced by two independently tested layers.' },
+  { title: 'Symlink-safe traversal', desc: 'A symlink or junction found inside a target tree is always deleted as the link object itself, never followed.' },
+  { title: 'Retention cleanup', desc: '--age/--age-by with a mandatory duration unit; directories are removed only once genuinely empty, and the target directory itself is always preserved.' },
+  { title: 'Composable filters', desc: '--include/--exclude/--min-size/--max-size, with exclude always winning ties.' },
+  { title: 'Machine-readable output', desc: '--json with a versioned schema and a frozen exit-code contract for automation.' },
+  { title: 'Lock handling', desc: '--kill-locks for local process locks, and a Business/Enterprise-only --close-remote-locks for supported Windows file servers.' },
 ];
 
 const editions = [
@@ -65,8 +66,9 @@ const breadcrumbSchema = {
 ---
 
 <Layout
-  title="CurseDelete 2"
-  description="CurseDelete 2 is a native, high-performance deletion engine for files and directory trees, built in Rust with streaming deletion, adaptive concurrency, and structural root protection."
+  title="CurseDelete 2: Fast, Safe Deletion for Huge Directory Trees"
+  exactTitle
+  description="CurseDelete 2 is a native Rust deletion engine for huge directory trees, with streaming deletion, adaptive concurrency and structural root protection."
   ogImagePath={CURSEDELETE_OG_IMAGE}
 >
   <Fragment slot="head">
@@ -74,55 +76,33 @@ const breadcrumbSchema = {
     <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
   </Fragment>
 
-  <section class="page-hero">
-    <div class="container">
-      <div class="hero-eyebrow">
-        <img src={CURSEDELETE_ICON} alt="" width="20" height="20" style="vertical-align:-4px; margin-right:0.35rem;" />
-        RePass Cloud product
-      </div>
-      <h1>CurseDelete 2</h1>
-      <p class="hero-lead">
-        A native, high-performance deletion engine for files and directory trees that refuse to die.
-        CurseDelete deletes while it enumerates, tunes its own concurrency to the storage target it is
-        running against, and structurally refuses to ever delete a filesystem or SMB share root.
-      </p>
-      <div class="hero-actions">
-        <a href={CURSEDELETE_GITHUB_URL} class="btn btn-primary btn-lg" target="_blank" rel="noopener">
-          <i class="bi bi-github"></i> View on GitHub
-        </a>
-        <a href="#licensing" class="btn btn-outline btn-lg">Licensing and editions</a>
-      </div>
-      <div class="hero-trust">
-        <div class="hero-trust-item"><i class="bi bi-tag"></i> Current version: {CURSEDELETE_VERSION}</div>
-        <div class="hero-trust-item"><i class="bi bi-cpu"></i> Rust, cross-platform (macOS, Windows, Linux)</div>
-        <div class="hero-trust-item"><i class="bi bi-terminal"></i> CLI binary: <code>cursdel</code></div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section bg-surface">
-    <div class="container">
-      <div class="showcase-split">
-        <div>
-          <div class="section-label">What it solves</div>
-          <h2>Deleting large or difficult file trees safely and fast.</h2>
-          <p class="section-intro">
-            Standard delete tooling either walks a full tree into memory before acting, or offers no
-            protection against accidentally deleting a filesystem or share root. CurseDelete's engine
-            streams deletion as it enumerates — memory use stays bounded regardless of tree size — and
-            root/share-root protection is enforced structurally, through two independently tested
-            layers, not just by convention.
-          </p>
-          <div class="hero-trust" style="margin-top:1rem;">
-            <div class="hero-trust-item"><i class="bi bi-check2-circle"></i> Retention cleanup for aged files and logs</div>
-            <div class="hero-trust-item"><i class="bi bi-check2-circle"></i> Build/release pipeline and CI cleanup jobs</div>
-            <div class="hero-trust-item"><i class="bi bi-check2-circle"></i> Large or slow storage targets (network shares, spinning disks)</div>
-            <div class="hero-trust-item"><i class="bi bi-check2-circle"></i> Locked-file remediation on Windows file servers</div>
-          </div>
+  <section class="page-hero cd-hero">
+    <div class="wrap cd-hero-grid">
+      <div>
+        <ol class="breadcrumb">
+          <li><a href="/products/">Products</a></li>
+          <li aria-current="page">CurseDelete 2</li>
+        </ol>
+        <div class="cd-title">
+          <img src={CURSEDELETE_ICON} alt="" width="64" height="64" />
+          <h1>CurseDelete 2</h1>
         </div>
-        <div class="showcase-panel">
-          <div class="section-label">Quick start</div>
-          <pre class="terminal-block"><code>$ cursdel /tmp/scratch/old-build --dry-run
+        <p class="lead">
+          A native, high-performance deletion engine for files and directory trees that refuse to die.
+          It deletes while it scans, tunes its own concurrency to the storage it runs on, and will never
+          delete a filesystem or SMB share root.
+        </p>
+        <div class="actions">
+          <a href="#licensing" class="btn btn-primary">Editions and licensing</a>
+          <a href={CURSEDELETE_GITHUB_URL} class="btn btn-quiet" target="_blank" rel="noopener">Source on GitHub ↗</a>
+        </div>
+        <dl class="facts">
+          <div><dt>Version</dt><dd>{CURSEDELETE_VERSION}</dd></div>
+          <div><dt>Platforms</dt><dd>macOS, Windows, Linux</dd></div>
+          <div><dt>Binary</dt><dd><code>cursdel</code> (Rust)</dd></div>
+        </dl>
+      </div>
+      <pre class="terminal cd-term" aria-label="Example dry run output"><span class="prompt">$</span> cursdel /tmp/scratch/old-build --dry-run
 CurseDelete 2
 
 Target:       /tmp/scratch/old-build
@@ -137,123 +117,204 @@ Would delete:
   Directories:       3
   Data:              20.0 B
 
-No files were modified.</code></pre>
-        </div>
-      </div>
+<span class="ok">No files were modified.</span></pre>
     </div>
   </section>
 
   <section class="section">
-    <div class="container">
-      <div class="text-center" style="margin-bottom:2rem;">
-        <div class="section-label">Capabilities</div>
-        <h2>Key features</h2>
-      </div>
-      <div class="grid-3">
-        {features.map((item) => (
-          <div class="feature-card">
-            <div class="feature-icon"><i class={`bi ${item.icon}`}></i></div>
-            <h3>{item.title}</h3>
-            <p>{item.desc}</p>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <section class="section bg-surface">
-    <div class="container">
-      <div class="text-center" style="margin-bottom:2rem;">
-        <div class="section-label">Platform support</div>
-        <h2>Cross-platform by design</h2>
-      </div>
-      <div class="grid-3">
-        {platforms.map((p) => (
-          <div class="aethon-card">
-            <h3>{p.name}</h3>
-            <p class="text-sm" style="font-weight:700; margin-top:0.4rem;">{p.status}</p>
-            <p class="text-sm text-muted" style="margin-top:0.5rem;">{p.detail}</p>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="container">
-      <div class="showcase-panel" style="max-width:900px;">
-        <div class="section-label">Install</div>
-        <h3>Build from source</h3>
-        <p class="text-muted">
-          No prebuilt release binaries are published yet. Building from source is currently the only
-          way to get <code>cursdel</code>. Requires a current stable Rust toolchain.
+    <div class="wrap split-wide">
+      <div>
+        <h2 style="margin-bottom:20px">Deleting large or difficult trees, safely and fast</h2>
+        <p class="muted">
+          Standard delete tools either walk a whole tree into memory before acting, or offer no protection
+          against deleting a filesystem or share root. CurseDelete streams deletion as it enumerates, so
+          memory stays bounded whatever the tree size, and root protection is enforced structurally by two
+          independently tested layers.
         </p>
-        <pre class="terminal-block" style="margin-top:0.75rem;"><code>git clone {CURSEDELETE_GITHUB_URL}.git
+      </div>
+      <div>
+        <h3 style="margin-bottom:12px">Where it earns its keep</h3>
+        <ul class="checks">
+          <li>Retention cleanup for aged files and logs</li>
+          <li>Build, release and CI cleanup jobs</li>
+          <li>Large or slow storage: network shares and spinning disks</li>
+          <li>Locked-file remediation on Windows file servers</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section band">
+    <div class="wrap">
+      <div class="sec-head"><h2>Features</h2></div>
+      <dl class="caps three">
+        {features.map((item) => (
+          <div><dt>{item.title}</dt><dd>{item.desc}</dd></div>
+        ))}
+      </dl>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="sec-head"><h2>Platform support</h2><p>Each platform uses its own native filesystem primitives rather than a portability layer.</p></div>
+      <div class="table-wrap">
+        <table class="data-table">
+          <thead><tr><th scope="col">Platform</th><th scope="col">Status</th><th scope="col">Implementation</th></tr></thead>
+          <tbody>
+            {platforms.map((p) => (
+              <tr><th scope="row" style="color:var(--ink);font-size:1rem">{p.name}</th><td style="white-space:nowrap">{p.status}</td><td class="muted">{p.detail}</td></tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="section band">
+    <div class="wrap split-wide">
+      <div>
+        <h2 style="margin-bottom:20px">Install</h2>
+        <p class="muted">
+          Prebuilt release binaries aren't published yet, so building from source is currently the only way
+          to get <code>cursdel</code>. You need a current stable Rust toolchain.
+        </p>
+        <p><a class="text-link" href={CURSEDELETE_GITHUB_URL} target="_blank" rel="noopener">Source and documentation ↗</a></p>
+      </div>
+      <pre class="terminal" style="align-self:center"><code>git clone {CURSEDELETE_GITHUB_URL}.git
 cd cursedelete-2
 cargo build --release -p cursdel-cli
 ./target/release/cursdel --version</code></pre>
-        <div style="margin-top:0.9rem;">
-          <a href={CURSEDELETE_GITHUB_URL} class="btn btn-outline btn-sm" target="_blank" rel="noopener">
-            <i class="bi bi-github"></i> Source and documentation
-          </a>
-        </div>
-      </div>
     </div>
   </section>
 
-  <section id="licensing" class="section bg-surface">
-    <div class="container">
-      <div class="text-center" style="margin-bottom:2rem;">
-        <div class="section-label">Licensing</div>
+  <section id="licensing" class="section">
+    <div class="wrap">
+      <div class="sec-head">
         <h2>Editions</h2>
-        <p class="hero-lead" style="max-width:70ch; margin:0.75rem auto 0;">
-          CurseDelete's core deletion engine — adaptive and manual worker control, retention, filters,
-          dry-run, and JSON output — runs at full, unthrottled speed in every edition, including the
-          free Community edition. Commercial editions monetise commercial-use rights, scale, and
-          support, not raw deletion speed. The only capability actually gated at runtime is
-          <code>--close-remote-locks</code>.
+        <p>
+          The full deletion engine runs at full speed in every edition, including the free Community
+          edition. Paid editions cover commercial-use rights, scale and support. The only feature gated at
+          runtime is <code>--close-remote-locks</code>.
         </p>
       </div>
-      <div class="grid-3">
+      <div class="editions">
         {editions.map((edition) => (
-          <div class="feature-card">
+          <div class="edition">
             <h3>{edition.name}</h3>
-            <p style="font-weight:700; margin-top:0.3rem;">{edition.price}</p>
-            <p class="text-sm text-muted" style="margin-top:0.4rem;">{edition.who}</p>
-            <div style="margin-top:0.8rem;">
-              <a
-                href={CURSEDELETE_STRIPE_LINKS[edition.key]}
-                class="btn btn-primary btn-sm"
-                target="_blank"
-                rel="noopener"
-              >
-                {edition.cta} <i class="bi bi-box-arrow-up-right"></i>
-              </a>
-            </div>
+            <p class="price">{edition.price}</p>
+            <p class="muted small">{edition.who}</p>
+            <a href={CURSEDELETE_STRIPE_LINKS[edition.key]} class={`btn ${edition.price === 'Free' ? 'btn-quiet' : 'btn-primary'} btn-sm`} target="_blank" rel="noopener">
+              {edition.cta}
+            </a>
           </div>
         ))}
       </div>
-
-      <div class="showcase-panel" style="max-width:900px; margin:2rem auto 0;">
-        <div class="section-label">Licensing enquiries</div>
-        <p class="text-muted">
-          Payment is handled by Stripe; licensing is issued separately after purchase. For questions
-          about editions, scale, or negotiated Enterprise terms, email{' '}
-          <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>.
-        </p>
-      </div>
+      <p class="muted small" style="margin-top:24px">
+        Sold by RePass Cloud Pty Ltd, ABN 74642243801. Payments are processed by Stripe and licences are issued
+        after purchase. Use of CurseDelete 2 is subject to the{' '}
+        <a href={CURSEDELETE_LICENSING_URL} target="_blank" rel="noopener">CurseDelete licence terms ↗</a> and our{' '}
+        <a href="/legal/terms-of-service/">Terms of Service</a>. See the <a href="/legal/refund-policy/">Refund Policy</a>{' '}
+        and <a href="/legal/privacy-policy/">Privacy Policy</a>. For questions about editions, scale or Enterprise
+        terms, email <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>.
+      </p>
     </div>
   </section>
 
-  <section class="section">
-    <div class="container">
-      <div class="text-center" style="margin-bottom:2rem;">
-        <div class="section-label">Release notes</div>
-        <h2>Changelog</h2>
-      </div>
-      <div class="showcase-panel" style="max-width:800px; margin:0 auto;">
-        <Changelog url={CURSEDELETE_CHANGELOG_URL} />
-      </div>
+  <section class="section band">
+    <div class="wrap-narrow">
+      <h2 style="margin-bottom:28px">Release notes</h2>
+      <Changelog url={CURSEDELETE_CHANGELOG_URL} />
     </div>
   </section>
 </Layout>
+
+<style>
+  .cd-hero-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 56px;
+    align-items: center;
+  }
+
+  .cd-title {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+  }
+
+  .cd-title img {
+    width: 64px;
+    height: 64px;
+    border-radius: 14px;
+  }
+
+  .cd-term {
+    margin: 0;
+  }
+
+  .checks {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .checks li {
+    position: relative;
+    padding: 12px 0 12px 30px;
+    border-top: 1px solid var(--line);
+  }
+
+  .checks li::before {
+    content: '';
+    position: absolute;
+    left: 4px;
+    top: 19px;
+    width: 12px;
+    height: 7px;
+    border-left: 2px solid var(--violet);
+    border-bottom: 2px solid var(--violet);
+    transform: rotate(-45deg);
+  }
+
+  .editions {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+  }
+
+  .edition {
+    display: flex;
+    flex-direction: column;
+    padding: 24px;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+  }
+
+  .edition .price {
+    margin: 6px 0 10px;
+    font-size: 1.6rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+  }
+
+  .edition .btn {
+    margin-top: auto;
+  }
+
+  @media (max-width: 960px) {
+    .cd-hero-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .editions {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .editions {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

@@ -1,8 +1,8 @@
 ---
 layout: ../../layouts/ProsePageLayout.astro
 title: Culture & Belonging
-description: How we work, what we value, and who we are at RePass Cloud.
-sectionLabel: Careers
+description: "How RePass Cloud works: our values, remote-friendly ways of working, ownership, and the kind of engineering culture we build for everyone on the team."
+seoTitle: "Culture and Belonging | Careers at RePass Cloud"
 ---
 
 ## Who We Are
@@ -13,7 +13,7 @@ We're not a corporate enterprise and we'll never try to be. We move fast, we tak
 
 ## How We Work
 
-We operate on a hybrid model with genuine flexibility. Some of our team works fully remotely; others work from an office that isn't near our Sydney head office. What we care about is output, communication, and reliability — not where you sit.
+We operate on a hybrid model with genuine flexibility. Some of our team works fully remotely; others work from places nowhere near Sydney or Adelaide. What we care about is output, communication, and reliability — not where you sit.
 
 We are a digital-first organisation. Flexible working arrangements are the norm, not the exception.
 

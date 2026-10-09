@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import { SITE_DOMAIN } from '../../consts';
 import { products } from '../../data/products';
 
 const itemListSchema = {
@@ -9,106 +10,171 @@ const itemListSchema = {
     '@type': 'ListItem',
     position: index + 1,
     name: product.name,
-    url: new URL(product.href, 'https://repasscloud.com').href,
+    url: new URL(product.href, SITE_DOMAIN).href,
   })),
 };
+
+const hostOf = (url: string) => new URL(url).host.replace(/^www\./, '');
 ---
 
 <Layout
-  title="Products"
-  description="Software products designed, built, and operated by RePass Cloud, including CurseDelete 2, Cinturon360, and Aethon Jobs."
+  title="Software Products We Build and Operate"
+  description="Software designed, built and operated by RePass Cloud: CurseDelete 2 for fast, safe deletion, Cinturon360 for enterprise control, and Aethon Jobs for hiring."
 >
   <Fragment slot="head">
     <script type="application/ld+json" set:html={JSON.stringify(itemListSchema)} />
   </Fragment>
 
   <section class="page-hero">
-    <div class="container">
-      <div class="hero-eyebrow"><i class="bi bi-box-seam"></i> Products</div>
-      <h1>Software products RePass Cloud designs, builds, and operates.</h1>
-      <p class="hero-lead">
-        Some products live directly on repasscloud.com. Others have their own dedicated product
-        websites — this page catalogues all of them and explains how each one relates to the company.
+    <div class="wrap">
+      <h1>Software we design, build and operate</h1>
+      <p class="lead">
+        Every product here is owned and supported by RePass Cloud. Some live on this site; others have
+        their own home on the web.
       </p>
     </div>
   </section>
 
-  <section class="section bg-surface">
-    <div class="container">
-      <div class="grid-2">
-        {products.map((product) => (
-          <div class="aethon-card">
-            <div class="feature-icon">
-              {product.iconImage ? (
-                <img src={product.iconImage} alt="" width="24" height="24" loading="lazy" decoding="async" style="object-fit:contain;" />
+  <section class="section-sm">
+    <div class="wrap">
+      <div class="product-list">
+        {products.map((p) => (
+          <article class="product">
+            <div class="product-ico" style={`background:${p.iconImage ? 'var(--ink)' : p.colour}`} aria-hidden="true">
+              {p.iconImage ? <img src={p.iconImage} alt="" width="72" height="72" loading="lazy" /> : p.monogram}
+            </div>
+            <div class="product-body">
+              <p class="kicker">{p.kind}</p>
+              <h2>
+                {p.destination === 'internal' ? <a href={p.href}>{p.name}</a> : p.name}
+                {p.version && <span class="tag">{p.version}</span>}
+              </h2>
+              <p class="product-tagline">{p.tagline}</p>
+              <p class="muted">{p.description}</p>
+              <ul class="tags" aria-label="Technology">
+                {p.tags.map((t) => <li class="tag tag-neutral">{t}</li>)}
+              </ul>
+            </div>
+            <div class="product-actions">
+              {p.destination === 'external' ? (
+                <a class="btn btn-quiet" href={p.href} target="_blank" rel="noopener">Visit {hostOf(p.href)} ↗</a>
               ) : (
-                <i class={`bi ${product.icon}`}></i>
+                <a class="btn btn-primary" href={p.href}>Product details<span class="sr-only">: {p.name}</span></a>
+              )}
+              {p.githubUrl && (
+                <a class="btn btn-quiet" href={p.githubUrl} target="_blank" rel="noopener">Source on GitHub ↗</a>
               )}
             </div>
-            <div class="section-label">{product.statusLabel}</div>
-            <h2 style="font-size:clamp(1.2rem,2vw,1.6rem); margin-top:0.35rem;">
-              {product.name}
-              {product.version && <span class="badge badge-secondary" style="margin-left:0.5rem; font-weight:600;">{product.version}</span>}
-            </h2>
-            <p class="text-muted" style="margin-top:0.4rem;">{product.description}</p>
-            <div class="tech-stack" style="margin-top:0.8rem;">
-              {product.tags.map((tag) => (
-                <span class="badge badge-secondary">{tag}</span>
-              ))}
-            </div>
-            <p class="text-sm text-muted" style="margin-top:0.9rem;">
-              {product.destination === 'internal'
-                ? 'Full product details are on repasscloud.com.'
-                : `Full product details are on ${product.name}’s own website.`}
-            </p>
-            <div style="margin-top:0.6rem; display:flex; gap:0.6rem; flex-wrap:wrap;">
-              <a
-                href={product.href}
-                class="btn btn-primary btn-sm"
-                target={product.destination === 'external' ? '_blank' : undefined}
-                rel={product.destination === 'external' ? 'noopener' : undefined}
-              >
-                {product.destination === 'external' ? (
-                  <Fragment>Visit {product.name} <i class="bi bi-box-arrow-up-right"></i></Fragment>
-                ) : (
-                  <Fragment>View product <i class="bi bi-arrow-right"></i></Fragment>
-                )}
-              </a>
-              {product.githubUrl && (
-                <a href={product.githubUrl} class="btn btn-outline btn-sm" target="_blank" rel="noopener">
-                  <i class="bi bi-github"></i> GitHub
-                </a>
-              )}
-            </div>
-          </div>
+          </article>
         ))}
       </div>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="container">
-      <div class="showcase-panel" style="max-width:900px;">
-        <div class="section-label">Beyond named products</div>
-        <h3>Not everything we build is a product.</h3>
-        <p class="text-muted">
-          A significant part of RePass Cloud's work is bespoke enterprise software: identity
-          automation, workflow systems, and integration-heavy control layers delivered directly for
-          client environments. See selected examples in case studies.
-        </p>
-        <a href="/case-studies" class="btn btn-outline btn-sm">See case studies <i class="bi bi-arrow-right"></i></a>
-      </div>
-    </div>
-  </section>
-
-  <section class="section bg-surface">
-    <div class="container">
-      <div class="section-label">Retired</div>
-      <h3 style="margin-bottom:0.6rem;">Looking for older projects?</h3>
-      <p class="text-muted" style="max-width:64ch;">
-        Legacy and open-source projects that are no longer active products are kept in the{' '}
-        <a href="/archive">archive</a> for reference and continuity.
+      <p class="muted small" style="margin-top:40px">
+        Looking for an older project? Retired and open-source work is in the <a href="/archive/">archive</a>.
       </p>
     </div>
   </section>
 </Layout>
+
+<style>
+  .product-list {
+    border-top: 1px solid var(--ink);
+  }
+
+  .product {
+    display: grid;
+    grid-template-columns: 72px 1fr auto;
+    gap: 32px;
+    padding: 40px 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .product-ico {
+    width: 72px;
+    height: 72px;
+    border-radius: 16px;
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+    color: #fff;
+    font-weight: 800;
+    font-size: 1.4rem;
+  }
+
+  .product-ico img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .product h2 {
+    font-size: 1.9rem;
+    margin-bottom: 8px;
+  }
+
+  .product h2 a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .product h2 a:hover {
+    color: var(--violet);
+  }
+
+  .product h2 .tag {
+    margin-left: 10px;
+    vertical-align: 6px;
+  }
+
+  .product-tagline {
+    font-size: 1.12rem;
+    font-weight: 500;
+    color: var(--ink);
+    max-width: 60ch;
+  }
+
+  .product-body .muted {
+    max-width: 68ch;
+  }
+
+  .product-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    min-width: 220px;
+  }
+
+  @media (max-width: 860px) {
+    .product {
+      grid-template-columns: 56px 1fr;
+      gap: 20px;
+    }
+
+    .product-ico {
+      width: 56px;
+      height: 56px;
+      border-radius: 13px;
+      font-size: 1.1rem;
+    }
+
+    .product-actions {
+      grid-column: 2;
+      flex-direction: row;
+      flex-wrap: wrap;
+      min-width: 0;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .product {
+      grid-template-columns: 1fr;
+    }
+
+    .product-actions {
+      grid-column: 1;
+    }
+
+    .product-actions .btn {
+      flex: 1 1 100%;
+    }
+  }
+</style>

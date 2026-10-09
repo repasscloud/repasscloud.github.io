@@ -23,3 +23,7 @@ tt.html
 REPASSCLOUD_ASTRO_GUIDE.md
 new_post_idea.txt
 .claude/setting.local.json
+
+# Local review material, not for publication
+/design-review/
+/repasscloud-legal-pack-*/

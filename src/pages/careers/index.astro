@@ -1,144 +1,170 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import FormattedDate from '../../components/FormattedDate.astro';
+import { employmentLabel, getOpenJobs, locationLabel } from '../../lib/jobs';
 
-const values = [
-  { title: 'Build real things', description: 'We work on production systems that organisations depend on daily.' },
-  { title: 'Own your work', description: 'Engineers own their areas end-to-end. No approval chains for obvious improvements.' },
-  { title: 'Quality matters', description: 'We build for production, not for demos. Security and reliability are non-negotiable.' },
-  { title: 'Output over optics', description: 'Remote and async-friendly. We judge on results, not visibility.' },
-];
+const jobs = await getOpenJobs();
 
-const culture = [
-  { icon: 'bi-globe2', title: 'Remote-first', description: 'We are distributed by default. Collaboration tools, async communication, and strong documentation are how we operate.' },
-  { icon: 'bi-graph-up-arrow', title: 'Engineering career paths', description: 'We support engineers who want to go deep technically. Management is not the only path forward here.' },
-  { icon: 'bi-shield-check', title: 'Security-minded team', description: 'Every team member thinks about security as part of their normal work, not as a separate checklist.' },
-];
-
-const exploreLinks = [
-  { href: '/careers/jobs/', icon: 'bi-briefcase', label: 'Open roles' },
-  { href: '/careers/how-we-hire/', icon: 'bi-people', label: 'How we hire — our end-to-end process, from application to offer' },
-  { href: '/careers/culture/', icon: 'bi-heart', label: 'Culture & Belonging — how we work and what we value' },
-  { href: '/careers/candidate-guide/', icon: 'bi-journal-text', label: 'Candidate Preparation Guide — what to expect and how to prepare' },
-  { href: '/careers/equal-opportunity/', icon: 'bi-balance', label: 'Equal Opportunity Statement' },
-  { href: '/careers/applicant-privacy-notice/', icon: 'bi-shield-check', label: 'Applicant Privacy Notice — how we handle your data' },
-  { href: '/contact', icon: 'bi-envelope', label: "Contact us with your background and what you're looking for" },
+const hiringInfo = [
+  { href: '/careers/how-we-hire/', label: 'How we hire', desc: 'Our process, from application to offer.' },
+  { href: '/careers/culture/', label: 'Culture and belonging', desc: 'How we work and what we value.' },
+  { href: '/careers/candidate-guide/', label: 'Candidate guide', desc: 'What to expect and how to prepare.' },
+  { href: '/careers/equal-opportunity/', label: 'Equal opportunity', desc: 'Our commitment to fair hiring.' },
+  { href: '/careers/applicant-privacy-notice/', label: 'Applicant privacy notice', desc: 'How we handle your information.' },
 ];
 ---
 
 <Layout
-  title="Careers"
-  description="Engineering roles and opportunities at RePass Cloud Pty Ltd. We hire engineers who build real things — people who take ownership, communicate clearly, and care about quality."
+  title="Careers at RePass Cloud: Engineering Jobs in Australia"
+  exactTitle
+  description={jobs.length > 0
+    ? `Open roles at RePass Cloud, an Australian software company: ${jobs.length} remote-friendly engineering ${jobs.length === 1 ? 'role' : 'roles'} building products and enterprise systems.`
+    : 'Careers at RePass Cloud, an Australian software company and publisher. No roles are open right now; see how we hire and get in touch for future roles.'}
 >
   <section class="page-hero">
-    <div class="container">
-      <div class="hero-eyebrow"><i class="bi bi-briefcase"></i> Join the team</div>
-      <h1>Work with RePass Cloud.</h1>
-      <p class="hero-lead">
-        We hire engineers and collaborators who build real things — people who take ownership,
-        communicate clearly, and care about the quality of what they ship.
+    <div class="wrap">
+      <h1>Careers</h1>
+      <p class="lead">
+        We hire engineers and collaborators who build real things: people who take ownership, write
+        clearly, and care about the quality of what they ship. We're remote-friendly and judge output,
+        not hours at a desk.
       </p>
-      <div class="hero-actions">
-        <a href="/contact" class="btn btn-primary btn-lg">Get in touch <i class="bi bi-arrow-right"></i></a>
-      </div>
-    </div>
-  </section>
-
-  <section class="section bg-surface">
-    <div class="container">
-      <div class="showcase-split">
-        <div>
-          <div class="section-label">What we're about</div>
-          <h2>Engineering-led. Remote-friendly.</h2>
-          <p class="section-intro">
-            RePass Cloud designs, builds, owns, and operates software products, and delivers
-            enterprise engineering work for organisations that need reliable, audit-aware technical
-            systems. Our engineers work across automation, backend platforms, infrastructure tooling,
-            and product development.
-          </p>
-          <p class="section-intro" style="margin-top:0.85rem;">
-            We are a hybrid, digital-first team. Some of us are fully remote. Some work from offices
-            nowhere near our Sydney head office. What we care about is output, not where you sit.
-          </p>
-        </div>
-        <div class="showcase-panel">
-          <div class="section-label">What we value</div>
-          <div class="hero-trust" style="margin-top:0.6rem; flex-direction:column; align-items:flex-start;">
-            {values.map((item) => (
-              <div class="hero-trust-item" style="align-items:flex-start;">
-                <i class="bi bi-check2-circle" style="margin-top:0.2rem;"></i>
-                <span>
-                  <strong>{item.title}</strong>
-                  <br />
-                  <span class="text-sm text-muted">{item.description}</span>
-                </span>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="container container-narrow">
-      <div class="section-label">Open roles</div>
-      <h2 style="margin-bottom:1.5rem;">Current opportunities</h2>
-
-      <div class="aethon-card">
-        <div class="feature-icon"><i class="bi bi-person-workspace"></i></div>
-        <h3>Open application</h3>
-        <p>
-          We don't always post open roles publicly. If you are a strong engineer interested in
-          enterprise software, cloud automation, identity systems, or developer tooling — get in
-          touch. Tell us what you build and why you're interested.
-        </p>
-        <div class="tech-stack" style="margin-top:0.9rem;">
-          <span class="badge badge-secondary">.NET</span>
-          <span class="badge badge-primary">Azure / AWS</span>
-          <span class="badge badge-secondary">PowerShell</span>
-          <span class="badge badge-secondary">Identity</span>
-          <span class="badge badge-secondary">Infrastructure</span>
-        </div>
-        <div style="margin-top:1.1rem;">
-          <a href="/contact" class="btn btn-primary">Send us a message <i class="bi bi-arrow-right"></i></a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section bg-surface">
-    <div class="container">
-      <div class="text-center" style="margin-bottom:2.5rem;">
-        <div class="section-label">Culture</div>
-        <h2>How we work</h2>
-      </div>
-      <div class="grid-3">
-        {culture.map((item) => (
-          <div class="feature-card">
-            <div class="feature-icon"><i class={`bi ${item.icon}`}></i></div>
-            <h3>{item.title}</h3>
-            <p>{item.description}</p>
-          </div>
-        ))}
-      </div>
     </div>
   </section>
 
   <section class="section-sm">
-    <div class="container container-narrow">
-      <div class="section-label">Explore</div>
-      <h3 style="margin-bottom:1.25rem;">More about working here</h3>
-      <ul class="link-list">
-        {exploreLinks.map((link) => (
-          <li>
-            <a href={link.href} class="link-row">
-              <i class={`bi ${link.icon} link-row-icon`}></i>
-              <span class="link-row-label">{link.label}</span>
-              <i class="bi bi-arrow-right link-row-arrow"></i>
-            </a>
-          </li>
+    <div class="wrap">
+      <h2 style="margin-bottom:24px">Open roles{jobs.length > 0 && <span class="open-count">{jobs.length}</span>}</h2>
+      {jobs.length > 0 ? (
+        <ul class="jobs">
+          {jobs.map((job) => (
+            <li>
+              <div>
+                <h3><a href={`/careers/jobs/${job.id}/`}>{job.data.title}</a></h3>
+                <p class="muted">{job.data.summary}</p>
+              </div>
+              <dl class="job-meta">
+                <div><dt class="sr-only">Type</dt><dd>{employmentLabel(job)}</dd></div>
+                <div><dt class="sr-only">Location</dt><dd>{locationLabel(job)}</dd></div>
+                <div><dt class="sr-only">Posted</dt><dd>Posted <FormattedDate date={job.data.datePosted} /></dd></div>
+              </dl>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <div class="empty">
+          <h3>No open roles right now</h3>
+          <p class="muted">
+            We hire for project work from time to time, and new roles are listed here first. If you'd like to be
+            considered, <a href="/contact/?topic=careers">send us a short note</a> with a link to your work.
+          </p>
+        </div>
+      )}
+    </div>
+  </section>
+
+  <section class="section-sm band">
+    <div class="wrap">
+      <h2 style="margin-bottom:24px">Hiring information</h2>
+      <dl class="caps three">
+        {hiringInfo.map((i) => (
+          <div><dt><a href={i.href}>{i.label}</a></dt><dd>{i.desc}</dd></div>
         ))}
-      </ul>
+      </dl>
     </div>
   </section>
 </Layout>
+
+<style>
+  .open-count {
+    display: inline-grid;
+    place-items: center;
+    min-width: 30px;
+    height: 30px;
+    margin-left: 12px;
+    padding: 0 8px;
+    border-radius: 99px;
+    background: var(--magenta);
+    color: #fff;
+    font-size: 1rem;
+    vertical-align: 6px;
+  }
+
+  .jobs {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border-top: 1px solid var(--ink);
+  }
+
+  .jobs li {
+    display: grid;
+    grid-template-columns: 1fr 280px;
+    gap: 32px;
+    padding: 28px 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .jobs h3 {
+    font-size: 1.35rem;
+    margin-bottom: 8px;
+  }
+
+  .jobs h3 a {
+    color: var(--ink);
+  }
+
+  .jobs h3 a:hover {
+    color: var(--violet);
+  }
+
+  .jobs .muted {
+    margin: 0;
+    max-width: 64ch;
+  }
+
+  .job-meta {
+    margin: 0;
+    color: var(--ink-2);
+    font-size: 0.95rem;
+  }
+
+  .job-meta dd {
+    margin: 0 0 4px;
+  }
+
+  .empty {
+    padding: 36px;
+    border: 1px dashed var(--line-strong);
+    border-radius: var(--radius);
+    max-width: 720px;
+  }
+
+  .empty h3 {
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+  }
+
+  .empty p {
+    margin: 0;
+  }
+
+  .caps dt a {
+    color: var(--ink);
+  }
+
+  .caps dt a:hover {
+    color: var(--violet);
+  }
+
+  @media (max-width: 760px) {
+    .jobs li {
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+
+    .empty {
+      padding: 24px;
+    }
+  }
+</style>

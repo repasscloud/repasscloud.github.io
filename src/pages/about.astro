@@ -1,121 +1,133 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import ProductRows from '../components/ProductRows.astro';
+import { COMPANY_ABN, COMPANY_ACN, COMPANY_ADDRESS, COMPANY_LEGAL_NAME } from '../consts';
+import { SERIES } from '../data/books';
 
 const principles = [
   {
     title: 'Engineering before presentation',
     description:
-      'We start with system behavior, control points, and integration realities before visual polish or documentation layers.',
+      'We start with system behaviour, control points and integration realities, then add polish and documentation.',
   },
   {
     title: 'Governance as a design input',
     description:
-      'Auditability, permissions, evidence trails, and supportability are part of architecture decisions from the start.',
+      'Auditability, permissions, evidence trails and supportability are part of architecture decisions from the start.',
   },
   {
-    title: 'Product ownership',
+    title: 'We own what we ship',
     description:
-      'Products we ship, we also operate and support ourselves — the same accountability applies whether it is a product or a client system.',
+      'Products and books we publish, we also maintain and support. The same accountability applies to client systems.',
   },
 ];
 
 const focusAreas = [
-  'Software product engineering (Rust, .NET)',
+  'Software product engineering in Rust and .NET',
   'Multi-tenant enterprise platforms',
   'Cloud governance and FinOps tooling',
-  'Microsoft 365 and Entra identity automation',
+  'Microsoft 365 and Entra ID identity automation',
   'PowerShell delivery and operational tooling',
-  'Integration-heavy business systems',
+  'Practical AI education and publishing',
 ];
 ---
 
 <Layout
-  title="Company"
-  description="RePass Cloud is an Australian software company that designs, builds, owns, and operates software products and enterprise technical systems."
+  title="About RePass Cloud: Australian Software Company and Publisher"
+  exactTitle
+  description="RePass Cloud Pty Ltd is an Australian company that designs, builds and operates its own software products and publishes the How-To-Use-AI.com book series."
 >
   <section class="page-hero">
-    <div class="container">
-      <div class="hero-eyebrow"><i class="bi bi-building"></i> Company</div>
-      <h1>An Australian software company that builds and operates its own products.</h1>
-      <p class="hero-lead">
-        RePass Cloud designs, builds, owns, and operates software products, and delivers serious
-        enterprise engineering work for teams working across cloud estates and identity-heavy
-        workflows.
+    <div class="wrap">
+      <h1>An Australian software company that builds, runs and publishes its own work</h1>
+      <p class="lead">
+        RePass Cloud designs, builds and operates software products, publishes the {SERIES.name} books,
+        and delivers enterprise engineering for teams with demanding cloud and identity estates.
       </p>
-      <div class="hero-actions">
-        <a href="/products" class="btn btn-primary btn-lg">Explore our products <i class="bi bi-arrow-right"></i></a>
-        <a href="/case-studies" class="btn btn-outline btn-lg">See case studies</a>
-      </div>
-    </div>
-  </section>
-
-  <section class="section bg-surface">
-    <div class="container">
-      <div class="showcase-split">
-        <div>
-          <div class="section-label">What we do</div>
-          <h2>Product ownership, plus enterprise delivery depth.</h2>
-          <p class="section-intro">
-            We build and operate our own named products, and we design and ship enterprise systems
-            where identity, controls, integration, and support all have to work together in
-            production.
-          </p>
-        </div>
-        <div class="showcase-panel">
-          <div class="section-label">Technical areas</div>
-          <div class="hero-trust">
-            {focusAreas.map((item) => (
-              <div class="hero-trust-item"><i class="bi bi-check2-circle"></i> {item}</div>
-            ))}
-          </div>
-        </div>
-      </div>
     </div>
   </section>
 
   <section class="section">
-    <div class="container">
-      <div class="text-center" style="margin-bottom:2rem;">
-        <div class="section-label">Operating principles</div>
-        <h2>How we execute</h2>
+    <div class="wrap split-wide">
+      <div>
+        <h2 style="margin-bottom:20px">What we do</h2>
+        <p class="muted">
+          We build and operate our own named products. We publish books that explain AI to people who
+          have to use it, not just read about it. And we design and ship enterprise systems where identity,
+          controls, integration and support all have to work together in production.
+        </p>
       </div>
-      <div class="grid-3">
-        {principles.map((item) => (
-          <div class="feature-card">
-            <h3>{item.title}</h3>
-            <p>{item.description}</p>
-          </div>
+      <div>
+        <h3 style="margin-bottom:12px">Technical areas</h3>
+        <ul class="area-list">
+          {focusAreas.map((item) => <li>{item}</li>)}
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section band">
+    <div class="wrap">
+      <div class="sec-head"><h2>How we work</h2></div>
+      <dl class="caps three">
+        {principles.map((p) => (
+          <div><dt>{p.title}</dt><dd>{p.description}</dd></div>
         ))}
-      </div>
-    </div>
-  </section>
-
-  <section class="section bg-surface">
-    <div class="container">
-      <div class="showcase-split">
-        <div>
-          <div class="section-label">Products</div>
-          <h2>Where to find what we build</h2>
-          <p class="text-muted">
-            Current products include CurseDelete 2, hosted directly on repasscloud.com, and
-            Cinturon360, our multi-tenant operational control platform.
-          </p>
-          <a href="/products" class="btn btn-primary btn-sm">See all products <i class="bi bi-arrow-right"></i></a>
-        </div>
-        <div class="showcase-visual">
-          <i class="bi bi-diagram-3-fill" style="font-size:2.5rem;"></i>
-          <div style="font-weight:700; margin-top:0.6rem;">Identity-aware control software</div>
-          <div style="font-size:0.85rem; opacity:0.8; margin-top:0.4rem;">Multi-tenant · Audit-ready · Delegated admin</div>
-        </div>
-      </div>
+      </dl>
     </div>
   </section>
 
   <section class="section">
-    <div class="container" style="text-align:center; max-width:60ch;">
-      <p class="text-muted">
-        Have a genuine enquiry? <a href="/contact">Contact us</a>.
-      </p>
+    <div class="wrap split">
+      <div>
+        <h2 style="margin-bottom:12px">Products</h2>
+        <p class="muted">Software we design, build and operate.</p>
+        <ProductRows />
+      </div>
+      <div>
+        <h2 style="margin-bottom:12px">Publishing</h2>
+        <p class="muted">{SERIES.about}</p>
+        <p><a class="text-link" href="/publishing/">The {SERIES.name} series</a></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section band">
+    <div class="wrap split">
+      <div>
+        <h2 style="margin-bottom:20px">Company details</h2>
+        <dl class="kv">
+          <div><dt>Legal name</dt><dd>{COMPANY_LEGAL_NAME}</dd></div>
+          <div><dt>ABN</dt><dd>{COMPANY_ABN}</dd></div>
+          <div><dt>ACN</dt><dd>{COMPANY_ACN}</dd></div>
+          <div><dt>Registered in</dt><dd>New South Wales, Australia</dd></div>
+          <div><dt>Address</dt><dd>{COMPANY_ADDRESS}</dd></div>
+          <div><dt>Where we work</dt><dd>Adelaide and Sydney</dd></div>
+          <div><dt>Contact</dt><dd><a href="/contact/">Send us a message</a></dd></div>
+        </dl>
+      </div>
+      <div>
+        <h2 style="margin-bottom:20px">Also here</h2>
+        <dl class="kv">
+          <div><dt>Careers</dt><dd><a href="/careers/">Open roles</a></dd></div>
+          <div><dt>Brand assets</dt><dd><a href="/brand/">Logos and press</a></dd></div>
+          <div><dt>Archive</dt><dd><a href="/archive/">Retired projects</a></dd></div>
+          <div><dt>Legal</dt><dd><a href="/legal/">Policies</a></dd></div>
+        </dl>
+      </div>
     </div>
   </section>
 </Layout>
+
+<style>
+  .area-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .area-list li {
+    padding: 12px 0;
+    border-top: 1px solid var(--line);
+  }
+</style>

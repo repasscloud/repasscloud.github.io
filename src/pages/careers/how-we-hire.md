@@ -1,8 +1,8 @@
 ---
 layout: ../../layouts/ProsePageLayout.astro
 title: How We Hire
-description: RePass Cloud's end-to-end hiring process — from application to offer.
-sectionLabel: Careers
+description: "RePass Cloud's hiring process from application to offer: each stage of the process, who is involved, and what candidates can expect from us."
+seoTitle: "How We Hire: Our Hiring Process | Careers at RePass Cloud"
 ---
 
 We hire engineers and collaborators who build real things. Our process is designed to be thorough but respectful of your time — no endless take-home assignments, no puzzle games, no gatekeeping. We want to understand how you think, what you've shipped, and whether we're a good fit for each other.

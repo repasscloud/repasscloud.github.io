@@ -111,8 +111,8 @@ try {
     {entries.map((entry) => (
       <div class="changelog-entry">
         <div class="changelog-entry-header">
-          <span class="badge badge-primary">{entry.version}</span>
-          {entry.date && <span class="text-sm text-muted">{entry.date}</span>}
+          <span class="tag">{entry.version}</span>
+          {entry.date && <span class="muted small">{entry.date}</span>}
         </div>
         <div class="changelog-body" set:html={entry.bodyHtml} />
       </div>
@@ -128,7 +128,7 @@ try {
   }
   .changelog-entry {
     padding-bottom: 1.5rem;
-    border-bottom: 1px solid var(--rpc-border);
+    border-bottom: 1px solid var(--line);
   }
   .changelog-entry:last-child {
     border-bottom: none;
@@ -144,21 +144,21 @@ try {
     font-size: 0.95rem;
     font-weight: 700;
     margin: 0.75rem 0 0.35rem;
-    color: var(--rpc-text-strong);
+    color: var(--ink);
   }
   .changelog-body :global(ul) {
     margin: 0 0 0.5rem;
     padding-left: 1.25rem;
   }
   .changelog-body :global(li) {
-    font-size: 0.9rem;
-    color: var(--rpc-muted);
+    font-size: 0.97rem;
+    color: var(--ink-2);
     line-height: 1.6;
     margin-bottom: 0.3rem;
   }
   .changelog-body :global(p) {
-    font-size: 0.9rem;
-    color: var(--rpc-muted);
+    font-size: 0.97rem;
+    color: var(--ink-2);
     line-height: 1.6;
   }
 </style>

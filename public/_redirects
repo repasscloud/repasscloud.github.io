@@ -1,8 +1,48 @@
-# Hugo → Astro URL redirects (preserving Google-indexed URLs)
-# NOTE: This file is for Cloudflare Pages only — GitHub Pages ignores it.
+# Cloudflare permanent redirects for URLs that have been public or indexed.
+# Treat old URLs as a public API: when a page moves, add a rule here instead
+# of deleting the old address. Specific rules must come before splats.
+# Exact paths are listed with and without a trailing slash.
 
-# Tags pages (Hugo generated these; not in Astro — redirect to posts)
-/tags/* /posts/ 301
+# Hugo-era tag pages
+/tags/*  /news/  301
 
-# Catch-all for any other Hugo pages not migrated
-# (add specific redirects here as needed)
+# /posts was renamed /news. One indexed URL had a typo in its slug.
+/posts/2026-03-06-export-microsoft-365-mialboxes-powershell   /news/2026-03-06-export-microsoft-365-mailboxes-powershell/  301
+/posts/2026-03-06-export-microsoft-365-mialboxes-powershell/  /news/2026-03-06-export-microsoft-365-mailboxes-powershell/  301
+/posts   /news/  301
+/posts/*  /news/:splat  301
+
+# Old projects page is now the archive
+/projects   /archive/  301
+/projects/  /archive/  301
+
+# Four service pages and case studies were merged into /engineering/
+/services   /engineering/  301
+/services/  /engineering/  301
+/services/enterprise-platforms   /engineering/#enterprise-platforms  301
+/services/enterprise-platforms/  /engineering/#enterprise-platforms  301
+/services/cloud-tooling   /engineering/#cloud-tooling  301
+/services/cloud-tooling/  /engineering/#cloud-tooling  301
+/services/m365-automation   /engineering/#m365-automation  301
+/services/m365-automation/  /engineering/#m365-automation  301
+/services/powershell   /engineering/#powershell  301
+/services/powershell/  /engineering/#powershell  301
+/case-studies   /engineering/#selected-work  301
+/case-studies/  /engineering/#selected-work  301
+
+# Job listings live on /careers/ (individual roles stay at /careers/jobs/<slug>/)
+/careers/jobs   /careers/  301
+/careers/jobs/  /careers/  301
+
+# Short aliases
+/books   /publishing/  301
+/books/  /publishing/  301
+/press   /brand/  301
+/press/  /brand/  301
+
+# The old privacy policy PDF was replaced by the 24 September 2026 master policy (web only)
+/downloads/legal/privacy-policy.pdf  /legal/privacy-policy/  301
+
+# aethonjobs.com links here for its privacy policy; the master policy covers it
+/legal/privacy-policy/aethonsoftware   /legal/privacy-policy/  301
+/legal/privacy-policy/aethonsoftware/  /legal/privacy-policy/  301

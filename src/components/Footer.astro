@@ -1,181 +1,96 @@
 ---
-import {
-  GITHUB_URL,
-  LINKEDIN_URL,
-  TWITTER_URL,
-} from '../consts';
+import { GITHUB_URL, LINKEDIN_URL, TWITTER_URL } from '../consts';
 import { products } from '../data/products';
+import { books } from '../data/books';
+import { getOpenJobs } from '../lib/jobs';
 
-interface Props {
-  simple?: boolean;
-}
-
-const { simple = false } = Astro.props;
 const year = new Date().getFullYear();
-
-const cursedelete = products.find((p) => p.slug === 'cursedelete');
-const cinturon = products.find((p) => p.slug === 'cinturon360');
-const aethon = products.find((p) => p.slug === 'aethon-jobs');
+const publishedBooks = books.filter((b) => b.page);
+const openRoles = (await getOpenJobs()).length;
 ---
 
 <footer class="site-footer">
-  <div class="container">
-    {simple ? (
-      <div class="footer-bottom footer-bottom-simple">
-        <div class="footer-bottom-copy">
-          &copy; {year} RePass Cloud Pty Ltd. Made with ❤️ in Sydney, AU 🇦🇺
-        </div>
-        <!-- CCPA opt-out — always visible per California law -->
-        <button
-          type="button"
-          class="footer-privacy-choices"
-          aria-label="Your Privacy Choices — Do Not Sell or Share My Personal Information"
-        >
-          <img src="/images/privacyoptions29x14.png" alt="Privacy options" width="29" height="14" />
-          Your Privacy Choices
-        </button>
-        <div class="footer-social">
-          <a href={TWITTER_URL} target="_blank" rel="noopener" aria-label="X / Twitter">
-            <i class="bi bi-twitter-x"></i>
-          </a>
-          <a href={LINKEDIN_URL} target="_blank" rel="noopener" aria-label="LinkedIn">
-            <i class="bi bi-linkedin"></i>
-          </a>
-          <a href={GITHUB_URL} target="_blank" rel="noopener" aria-label="GitHub">
-            <i class="bi bi-github"></i>
-          </a>
-        </div>
-      </div>
-    ) : (
-      <Fragment>
+  <div class="wrap">
     <div class="footer-grid">
       <div>
-        <div class="footer-brand">
-          <img
-            src="https://repasscloud.com/images/repass-cloud-logo.png"
-            alt="RePass Cloud"
-            class="footer-logo"
-            loading="lazy"
-            decoding="async"
-          />
-          <span>RePass Cloud</span>
-        </div>
-        <p class="footer-tagline">Software products and engineering systems.</p>
-        <p class="footer-copy">
-          Designed, built, and operated from Sydney, Australia.
-        </p>
+        <a href="/" class="footer-brand" aria-label="RePass Cloud home">
+          <img src="/brand/repasscloud-mark.svg" alt="" width="30" height="30" loading="lazy" />
+          RePass Cloud
+        </a>
+        <p>Australian software company and publisher. We build and run our own products and publish the How-To-Use-AI.com books.</p>
       </div>
 
       <div>
-        <div class="footer-col-title">Company</div>
-        <ul class="footer-links">
-          <li><a href="/about">Company</a></li>
-          <li><a href="/case-studies">Case Studies</a></li>
-          <li><a href="/careers">Careers</a></li>
-          <li><a href="/news">News</a></li>
+        <h2>Products</h2>
+        <ul>
+          {products.map((p) => (
+            <li>
+              {p.destination === 'external' ? (
+                <a href={p.href} target="_blank" rel="noopener">{p.name} ↗</a>
+              ) : (
+                <a href={p.href}>{p.name}</a>
+              )}
+            </li>
+          ))}
+          <li><a href="/archive/">Archive</a></li>
         </ul>
       </div>
 
       <div>
-        <div class="footer-col-title">Products</div>
-        <ul class="footer-links">
-          {cursedelete && <li><a href={cursedelete.href}>{cursedelete.name}</a></li>}
-          {cinturon && <li><a href={cinturon.href} target="_blank" rel="noopener">{cinturon.name} ↗</a></li>}
-          {aethon && <li><a href={aethon.href} target="_blank" rel="noopener">{aethon.name} ↗</a></li>}
-          <li><a href="/archive">Archive / Open Source</a></li>
+        <h2>Publishing</h2>
+        <ul>
+          <li><a href="/publishing/">How-To-Use-AI.com series</a></li>
+          {publishedBooks.map((b) => (
+            <li><a href={`/publishing/${b.slug}/`}>{b.title}</a></li>
+          ))}
+          <li><a href="/brand/">Brand and press</a></li>
         </ul>
       </div>
 
       <div>
-        <div class="footer-col-title">Engineering</div>
-        <ul class="footer-links">
-          <li><a href="/services/enterprise-platforms">Enterprise Platforms</a></li>
-          <li><a href="/services/cloud-tooling">Cloud Tooling</a></li>
-          <li><a href="/services/m365-automation">M365 / Identity Automation</a></li>
-          <li><a href="/services/powershell">PowerShell</a></li>
+        <h2>Company</h2>
+        <ul>
+          <li><a href="/about/">About</a></li>
+          <li><a href="/engineering/">Engineering</a></li>
+          <li><a href="/news/">News</a></li>
+          <li><a href="/careers/">Careers{openRoles > 0 && ` (${openRoles} open ${openRoles === 1 ? 'role' : 'roles'})`}</a></li>
+          <li><a href="/contact/">Contact</a></li>
         </ul>
       </div>
 
       <div>
-        <div class="footer-col-title">Connect</div>
-        <ul class="footer-links">
-          <li><a href="/contact">Contact</a></li>
+        <h2>Elsewhere</h2>
+        <ul>
           <li><a href={GITHUB_URL} target="_blank" rel="noopener">GitHub ↗</a></li>
           <li><a href={LINKEDIN_URL} target="_blank" rel="noopener">LinkedIn ↗</a></li>
-          <li><a href={TWITTER_URL} target="_blank" rel="noopener">X / Twitter ↗</a></li>
-        </ul>
-      </div>
-
-      <div>
-        <div class="footer-col-title">Legal</div>
-        <ul class="footer-links">
-          <li><a href="/legal/privacy-policy">Privacy</a></li>
-          <li><a href="/legal/terms-of-service">Terms</a></li>
-          <li><a href="/legal/refund-policy">Refunds</a></li>
-          <li><button type="button" class="footer-manage-cookies">Manage cookies</button></li>
+          <li><a href={TWITTER_URL} target="_blank" rel="noopener">X ↗</a></li>
+          <li><a href="/rss.xml">RSS feed</a></li>
         </ul>
       </div>
     </div>
 
-    <div class="footer-bottom">
-      <div class="footer-bottom-copy">
-        &copy; {year} RePass Cloud Pty Ltd. Made with ❤️ in Sydney, AU 🇦🇺
-      </div>
-      <!-- CCPA opt-out — always visible per California law -->
-      <button
-        type="button"
-        class="footer-privacy-choices"
-        aria-label="Your Privacy Choices — Do Not Sell or Share My Personal Information"
-      >
-        <img src="/images/privacyoptions29x14.png" alt="Privacy options" width="29" height="14" />
-        Your Privacy Choices
-      </button>
-      <div class="footer-social">
-        <a href={TWITTER_URL} target="_blank" rel="noopener" aria-label="X / Twitter">
-          <i class="bi bi-twitter-x"></i>
-        </a>
-        <a href={LINKEDIN_URL} target="_blank" rel="noopener" aria-label="LinkedIn">
-          <i class="bi bi-linkedin"></i>
-        </a>
-        <a href={GITHUB_URL} target="_blank" rel="noopener" aria-label="GitHub">
-          <i class="bi bi-github"></i>
-        </a>
-      </div>
+    <div class="footer-legal">
+      <span>&copy; {year} RePass Cloud Pty Ltd. ABN 74 642 243 801. Made in Adelaide and Sydney with <span class="heart" role="img" aria-label="love">♥</span></span>
+      <ul>
+        <li><a href="/legal/privacy-policy/">Privacy</a></li>
+        <li><a href="/legal/terms-of-service/">Terms</a></li>
+        <li><a href="/legal/refund-policy/">Refunds</a></li>
+        <li><a href="/legal/">Legal</a></li>
+        <li>
+          <!-- CCPA opt-out: must stay visible on every page -->
+          <button type="button" class="linkish" data-open-cookie-banner aria-label="Your privacy choices: do not sell or share my personal information">
+            <img src="/images/privacyoptions29x14.png" alt="" width="29" height="14" style="display:inline;vertical-align:-2px;margin-right:6px" />Your privacy choices
+          </button>
+        </li>
+      </ul>
     </div>
-      </Fragment>
-    )}
   </div>
 </footer>
 
 <script is:inline>
-  document.querySelector('.footer-manage-cookies')?.addEventListener('click', () => {
-    if (typeof window.repasscloudOpenCookieBanner === 'function') {
-      window.repasscloudOpenCookieBanner();
-    }
-  });
-  document.querySelectorAll('.footer-privacy-choices').forEach((btn) => {
+  document.querySelectorAll('[data-open-cookie-banner]').forEach((btn) => {
     btn.addEventListener('click', () => {
-      if (typeof window.repasscloudOpenCookieBanner === 'function') {
-        window.repasscloudOpenCookieBanner();
-      }
+      if (typeof window.repasscloudOpenCookieBanner === 'function') window.repasscloudOpenCookieBanner();
     });
   });
 </script>
-
-<style>
-  .footer-privacy-choices {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.375rem;
-    background: none;
-    border: none;
-    cursor: pointer;
-    color: #67708f;
-    font-size: 0.84rem;
-    padding: 0;
-    transition: color 0.15s;
-  }
-  .footer-privacy-choices:hover {
-    color: #a0a8c0;
-  }
-</style>

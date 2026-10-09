@@ -1,8 +1,8 @@
 ---
 layout: ../../layouts/ProsePageLayout.astro
 title: Candidate Preparation Guide
-description: What to expect during the RePass Cloud hiring process and how to prepare.
-sectionLabel: Careers
+description: "What to expect at each stage of the RePass Cloud hiring process, how to prepare for interviews and technical discussions, and what we look for in candidates."
+seoTitle: "Candidate Preparation Guide | Careers at RePass Cloud"
 ---
 
 We want every candidate to come into the process informed and prepared. This guide explains what we look for, what our interviews focus on, and how to give yourself the best chance of a good outcome — for both of us.

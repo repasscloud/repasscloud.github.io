@@ -28,9 +28,13 @@ export interface Product {
   /** Set when destination is 'external'. */
   externalUrl?: string;
   githubUrl?: string;
-  /** Bootstrap Icons class, used as a fallback when iconImage isn't set. */
-  icon: string;
-  /** Real product artwork (site-relative path); takes priority over `icon` when set. */
+  /** Two-letter monogram shown in a tile when iconImage isn't set. */
+  monogram: string;
+  /** Tile colour for the monogram. */
+  colour: string;
+  /** Short product type, e.g. "Command-line tool". */
+  kind: string;
+  /** Real product artwork (site-relative path); takes priority over `monogram` when set. */
   iconImage?: string;
   /** Current published version, e.g. "v2.0.0". Update when publishing a new release. */
   version?: string;
@@ -52,7 +56,9 @@ export const products: Product[] = [
     destination: 'internal',
     href: '/products/cursedelete/',
     githubUrl: CURSEDELETE_GITHUB_URL,
-    icon: 'bi-lightning-charge-fill',
+    monogram: 'CD',
+    colour: '#18141f',
+    kind: 'Command-line tool',
     iconImage: CURSEDELETE_ICON,
     version: CURSEDELETE_VERSION,
     changelogUrl: CURSEDELETE_CHANGELOG_URL,
@@ -70,7 +76,9 @@ export const products: Product[] = [
     destination: 'external',
     href: CINTURON_URL,
     externalUrl: CINTURON_URL,
-    icon: 'bi-diagram-3-fill',
+    monogram: 'C3',
+    colour: '#6a1fc4',
+    kind: 'Enterprise platform',
     tags: ['.NET', 'Azure', 'Entra ID', 'Multi-tenant'],
     showOnHomepage: true,
   },
@@ -85,7 +93,9 @@ export const products: Product[] = [
     destination: 'external',
     href: AETHON_URL,
     externalUrl: AETHON_URL,
-    icon: 'bi-people-fill',
+    monogram: 'AJ',
+    colour: '#c2186f',
+    kind: 'Hiring platform',
     tags: ['.NET', 'Blazor', 'PostgreSQL', 'AI'],
     showOnHomepage: true,
   },
@@ -93,7 +103,6 @@ export const products: Product[] = [
 
 export interface ArchiveProject {
   name: string;
-  icon: string;
   description: string;
   githubUrl?: string;
   note?: string;
@@ -102,38 +111,32 @@ export interface ArchiveProject {
 export const archiveProjects: ArchiveProject[] = [
   {
     name: 'CurseDelete (legacy)',
-    icon: 'bi-arrow-repeat',
     description:
       'The original CurseDelete implementations (a cross-platform C# CLI, and an early Rust prototype). Superseded by CurseDelete 2, RePass Cloud’s current active product.',
     note: 'Superseded — see the current product at /products/cursedelete/.',
   },
   {
     name: 'LunaVPN',
-    icon: 'bi-shield-lock',
     description: 'WireGuard privacy service retained as historical open-source work.',
     githubUrl: 'https://github.com/repasscloud/lunavpn',
   },
   {
     name: 'OptechX',
-    icon: 'bi-windows',
     description: 'Windows SOE tooling concepts from earlier product work.',
     githubUrl: 'https://github.com/repasscloud/optechx',
   },
   {
     name: 'WanderConnect',
-    icon: 'bi-geo-alt',
     description: 'Experience platform concept retained as archived reference.',
     githubUrl: 'https://github.com/repasscloud/wanderconnect',
   },
   {
     name: 'TigerGrab',
-    icon: 'bi-camera-video',
     description: 'Utility tooling retained for portfolio continuity.',
     githubUrl: 'https://github.com/repasscloud/tigergrab',
   },
   {
     name: 'CveInfo',
-    icon: 'bi-bug',
     description: 'CLI utility for vulnerability workflow support.',
     githubUrl: 'https://github.com/repasscloud/cveinfo',
   },

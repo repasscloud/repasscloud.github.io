@@ -10,7 +10,9 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "check": "astro check"
+    "check": "astro check",
+    "check:seo": "node script/check-seo.mjs",
+    "brand": "node script/generate-brand-assets.mjs"
   },
   "dependencies": {
     "@astrojs/mdx": "^7.0.5",

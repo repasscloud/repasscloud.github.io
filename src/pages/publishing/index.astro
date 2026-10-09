@@ -1,0 +1,245 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import AuthorBio from '../../components/AuthorBio.astro';
+import BookShelf from '../../components/BookShelf.astro';
+import { COMPANY_LEGAL_NAME, PUBLISHING_OG_IMAGE, SITE_DOMAIN } from '../../consts';
+import { books, bookOne, formatReleaseDate, SERIES } from '../../data/books';
+
+const seriesSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BookSeries',
+  name: SERIES.name,
+  url: new URL('/publishing/', SITE_DOMAIN).href,
+  sameAs: SERIES.url,
+  description: SERIES.about,
+  author: {
+    '@type': 'Person',
+    name: SERIES.author,
+    url: SERIES.authorUrl,
+    image: new URL(SERIES.authorPhoto.src, SITE_DOMAIN).href,
+    sameAs: [SERIES.authorSite],
+  },
+  publisher: { '@type': 'Organization', name: COMPANY_LEGAL_NAME, url: SITE_DOMAIN },
+  hasPart: books.map((b) => ({
+    '@type': 'Book',
+    name: b.title,
+    position: b.number,
+    ...(b.page ? { url: new URL(`/publishing/${b.slug}/`, SITE_DOMAIN).href } : {}),
+  })),
+};
+---
+
+<Layout
+  title="How-To-Use-AI.com Book Series, Published by RePass Cloud"
+  exactTitle
+  description="RePass Cloud publishes How-To-Use-AI.com, a five-book series that takes readers from first use of AI to designing AI systems. Book 1 is out 29 October 2026."
+  ogImagePath={PUBLISHING_OG_IMAGE}
+  ogImageAlt="How-To-Use-AI.com, Book 1: AI for Normal People, out 29 October 2026"
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(seriesSchema)} />
+  </Fragment>
+
+  <section class="pub-hero ink-band">
+    <div class="wrap pub-hero-grid">
+      <div class="pub-hero-copy">
+        <p class="kicker">Publishing</p>
+        <h1>{SERIES.name}</h1>
+        <p class="lead">
+          Five books that take a reader from never having touched AI to designing AI systems. Each one
+          assumes only what the books before it taught.
+        </p>
+        <div class="actions">
+          <a class="btn pub-btn" href={`/publishing/${bookOne.slug}/`}>Pre-order {bookOne.title}</a>
+          <a class="btn btn-on-ink" href={SERIES.url} target="_blank" rel="noopener">how-to-use-ai.com ↗</a>
+        </div>
+      </div>
+      <BookShelf />
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Read in order</h2>
+        <p>Book 1 is out on {formatReleaseDate(bookOne.releaseDate!)}. The later volumes are in development, and their plans may change.</p>
+      </div>
+      <ol class="series">
+        {books.map((b) => (
+          <li style={`--accent:${b.accent}`}>
+            <span class="series-n">{b.number}</span>
+            <div>
+              <p class="series-stage">{b.stage}</p>
+              <h3>{b.page ? <a href={`/publishing/${b.slug}/`}>{b.title}</a> : b.title}</h3>
+              <p class="muted">{b.subtitle ?? b.descriptor}</p>
+            </div>
+            <span class={`series-status${b.status === 'planned' ? '' : ' is-live'}`}>{b.statusLabel}</span>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <section class="section band">
+    <div class="wrap split about-grid">
+      <AuthorBio />
+      <div>
+        <h2 style="margin-bottom:20px">Publisher</h2>
+        <dl class="kv">
+          <div><dt>Publisher</dt><dd>{COMPANY_LEGAL_NAME}</dd></div>
+          <div><dt>Series website</dt><dd><a href={SERIES.url} target="_blank" rel="noopener">how-to-use-ai.com ↗</a></dd></div>
+          <div><dt>Media and trade</dt><dd><a href="/contact/?topic=media">Contact the publisher</a></dd></div>
+          <div><dt>Press assets</dt><dd><a href="/brand/">Logos and cover art</a></dd></div>
+        </dl>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .pub-hero {
+    padding: 80px 0 0;
+    overflow: hidden;
+  }
+
+  .pub-hero-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.05fr;
+    gap: 48px;
+    align-items: end;
+  }
+
+  .pub-hero-copy {
+    padding-bottom: 88px;
+  }
+
+  .pub-hero .kicker {
+    color: #f0a3c6;
+  }
+
+  .pub-hero h1 {
+    color: #fff;
+    font-size: clamp(2rem, 3.4vw, 3rem);
+    white-space: nowrap;
+  }
+
+  @media (max-width: 400px) {
+    .pub-hero h1 {
+      white-space: normal;
+    }
+  }
+
+  .pub-hero .lead {
+    margin-top: 24px;
+    color: var(--on-ink-2);
+  }
+
+  .pub-btn {
+    background: #fff;
+    color: var(--ink);
+  }
+
+  .pub-btn:hover {
+    background: var(--mist);
+    color: var(--ink);
+  }
+
+  .about-grid {
+    grid-template-columns: 1.5fr 1fr;
+    gap: 64px;
+  }
+
+  @media (max-width: 960px) {
+    .about-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .series {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border-top: 1px solid var(--ink);
+  }
+
+  .series li {
+    display: grid;
+    grid-template-columns: 72px 1fr auto;
+    gap: 24px;
+    align-items: baseline;
+    padding: 26px 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .series-n {
+    font-size: 2.6rem;
+    font-weight: 800;
+    line-height: 1;
+    color: var(--accent);
+  }
+
+  .series-stage {
+    margin: 0 0 4px;
+    font-weight: 600;
+    font-size: 0.92rem;
+    color: var(--ink-2);
+  }
+
+  .series h3 {
+    font-size: 1.45rem;
+    margin-bottom: 6px;
+  }
+
+  .series h3 a {
+    color: var(--ink);
+  }
+
+  .series h3 a:hover {
+    color: var(--violet);
+  }
+
+  .series .muted {
+    margin: 0;
+  }
+
+  .series-status {
+    font-size: 0.92rem;
+    color: var(--ink-2);
+    white-space: nowrap;
+  }
+
+  .series-status.is-live {
+    color: var(--magenta);
+    font-weight: 600;
+  }
+
+  @media (max-width: 960px) {
+    .pub-hero-grid {
+      grid-template-columns: 1fr;
+      gap: 8px;
+    }
+
+    .pub-hero-copy {
+      padding-bottom: 40px;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .pub-hero {
+      padding-top: 56px;
+    }
+
+    .series li {
+      grid-template-columns: 44px 1fr;
+      gap: 14px;
+    }
+
+    .series-n {
+      font-size: 1.9rem;
+    }
+
+    .series-status {
+      grid-column: 2;
+    }
+  }
+</style>

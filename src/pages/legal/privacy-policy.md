@@ -1,371 +1,411 @@
 ---
 layout: ../../layouts/ProsePageLayout.astro
 title: Privacy Policy
-description: Privacy Policy for RePass Cloud Pty Ltd covering its websites, products, and services.
-sectionLabel: Legal
+description: "Privacy Policy for RePass Cloud Pty Ltd: what personal information we collect through our websites, products and services, how we use it, and your rights."
+seoTitle: "Privacy Policy | RePass Cloud Pty Ltd"
 ---
 
-Last updated: 2026-03-09
+**Effective:** 24 September 2026  
+**Last updated:** 24 September 2026
 
-> Download: [Privacy Policy (PDF)](/downloads/legal/privacy-policy.pdf)
+## 1. Who we are
 
-## 1. Who We Are
+This Privacy Policy explains how **RePass Cloud Pty Ltd** ("RePass Cloud", "we", "us" or "our") collects, holds, uses, discloses and protects personal information in connection with websites, software, applications, APIs, publications, online services and other products that we operate and that link to this policy (collectively, the "Services").
 
-This Privacy Policy applies to RePass Cloud Pty Ltd ("RePass Cloud", "we", "us",
-or "our"). It explains how we collect, use, disclose, store, and protect
-personal information when you interact with our websites, products, and services
-(the "Services").
+Corporate details:
 
-Our actively developed and maintained enterprise SaaS product is Cinturon360.
-We may also operate additional websites, brands, prototypes, or legacy products.
-This policy applies to all Services we operate that link to this Privacy Policy.
+- RePass Cloud Pty Ltd
+- ABN: 74642243801
+- ACN: 642243801
+- Registered and public business address: 3 Pioneer Street, Findon SA 5023, Australia
+- Email: hello@repasscloud.com
+- Contact: https://repasscloud.com/contact/
 
-Examples of sites and brands that may link to this Privacy Policy include:
+Services that may link to this policy include RePass Cloud's corporate website, How-To-Use-AI.com, Aethon Jobs, Cinturon360, software utilities, publications and other tools we develop or operate.
 
-- [https://repasscloud.com](https://repasscloud.com)
-- Other RePass Cloud websites and service endpoints that link to this policy
+Some products have a separate privacy notice because they handle information in a way that is materially different from a normal public website. A product-specific privacy notice supplements this policy and prevails for that product to the extent of a genuine inconsistency.
 
-Legacy services notice: Some legacy or discontinued projects may still reference
-RePass Cloud. Where a service is no longer operated by us, this Privacy Policy
-does not apply to any independent third-party forks, deployments, or uses of
-that software.
+## 2. Our privacy approach
 
-If you do not agree with this policy, do not use the Services.
+The extent to which the Australian Privacy Act 1988 applies to a particular RePass Cloud activity depends on the law and the circumstances of that activity.
 
-## 2. Roles: Controller and Processor
+Whether or not RePass Cloud is legally required to comply with every Australian Privacy Principle for every activity, we intend to use the Australian Privacy Principles as a baseline for responsible handling of personal information, subject to any stricter requirement that applies in a particular jurisdiction or to a particular Service.
 
-Depending on the context, RePass Cloud may act as:
+Nothing in this policy limits rights that a person has under applicable privacy, consumer or other laws.
 
-- **Data controller** — for example, for account administration, billing, and
-  operating our websites and marketing activities.
-- **Data processor / service provider** — for example, when we process data on
-  behalf of a business customer in enterprise SaaS products such as Cinturon360.
+## 3. The information we may collect
 
-Business customers are typically the controller for customer content they upload
-to enterprise SaaS products. RePass Cloud processes that content to provide the
-Services under customer instructions, applicable agreements, and applicable law.
+The information we collect depends on which Service you use and how you interact with us.
 
-## 3. Contact Details
+### 3.1 Identity, account and contact information
 
-RePass Cloud Pty Ltd
-PO BOX 262
-Bondi Junction NSW 1355
-Australia
+This may include:
 
-Contact: [contact page](/contact)
+- name;
+- email address;
+- telephone number where required by a Service;
+- organisation or business name;
+- job title or role;
+- account or user identifiers;
+- account permissions and role assignments;
+- authentication identifiers supplied by an identity provider;
+- postal, billing or delivery address; and
+- information needed to administer an account or business relationship.
 
-If you are a customer administrator and need to raise a security or privacy
-issue urgently, email [contact page](/contact) and include "Privacy" or
-"Security" in the subject.
+### 3.2 Customer and user content
 
-## 4. Information We Collect
+Some Services allow customers or users to submit, upload, create or store information.
 
-We collect information from:
+The content and personal information in that material depend on the Service and the customer's use of it. Where RePass Cloud processes information on behalf of a business customer, the business customer may determine the purposes for which that information is collected and used, and additional contractual or privacy terms may apply.
 
-- You (when you create an account, use the Services, or contact support).
-- Your organisation (when they provision your access).
-- Your device and browser (when you access our websites and applications).
-- Service providers that help us operate the Services.
+### 3.3 Orders, billing and payments
 
-We collect the following categories of personal information, depending on how
-you use the Services.
+For purchases, licences, subscriptions or other paid Services, we may collect or receive:
 
-### 4.1 Identity and Account Data
+- purchaser or billing name;
+- email and contact information;
+- billing and delivery details;
+- product, plan, licence or service purchased;
+- order and transaction identifiers;
+- amounts, currencies and tax information;
+- payment status;
+- refunds, reversals and chargebacks;
+- fraud or risk information; and
+- transaction records required for reconciliation, accounting or support.
 
-- Name
-- Email address
-- Organisation name and identifiers
-- User identifiers and role assignments
-- Authentication identifiers issued by identity providers
+Payment providers such as Stripe may process payment-card details directly. Where provider-hosted or provider-supplied payment functionality is used, RePass Cloud does not intentionally store full payment-card numbers.
 
-### 4.2 Authentication and Access Data
+### 3.4 Website, device and technical information
 
-We support enterprise authentication via Microsoft Entra ID (Azure AD) and may
-support federated identity providers or OAuth sign-in options where customers
-require them. Password-based authentication may be enabled on a per-user basis.
+When a person accesses a Service, we or our infrastructure providers may process information such as:
 
-We may process:
+- IP address;
+- date and time;
+- requested URL and request metadata;
+- browser and device information;
+- operating system;
+- network information;
+- approximate country or region derived from an IP address;
+- session, authentication or security identifiers;
+- application, API, audit and security logs;
+- error and diagnostic information;
+- performance and availability telemetry;
+- anti-abuse, fraud and security signals; and
+- similar technical information reasonably required to operate and protect the Service.
 
-- Sign-in events and timestamps
-- Authentication logs
-- Access tokens and session identifiers (stored as needed for security)
-- Multi-factor authentication status (where supplied by identity provider)
+Different Services have different logging and retention settings. A product-specific privacy notice may state shorter or longer retention periods.
 
-Internal access for RePass Cloud personnel is restricted and uses Microsoft
-Entra ID authentication.
-
-### 4.3 Customer Content and Business Data (Enterprise SaaS)
-
-For enterprise SaaS (including Cinturon360), business customers may submit and
-store content that can include personal information, such as:
-
-- Employee or user profile details
-- Business contact details
-- Operational data (where customers choose to use those features)
-- Communications and support context entered within the platform
-
-This content is determined by the customer and their configuration and usage.
-
-### 4.4 Operational, Audit, and Security Logs
-
-We collect operational and security telemetry to protect the Services and meet
-audit requirements, including:
-
-- IP addresses
-- Authentication logs
-- Application and API access logs
-- Audit logs (administrative actions and configuration changes)
-- Error logs and diagnostic traces
-- Performance and availability telemetry
-
-Retention:
-
-- We retain logs for a **minimum of 90 days**.
-- We delete logs after **100 days**, unless longer retention is required for
-  contractual, legal, or security reasons (for example, an active investigation
-  or legal hold).
-
-We do not use logs for advertising purposes.
-
-### 4.5 Device and Technical Data
-
-- Browser type and version
-- Device type and operating system
-- Approximate location derived from IP (for security and fraud prevention)
-- Session metadata and performance metrics
-
-### 4.6 Billing and Payment Data
-
-If you purchase Services, we process billing contact details and transaction
-metadata. Payment processing may be handled by third-party payment providers
-such as Stripe. We do not store full payment card numbers.
-
-### 4.7 Support and Communications
+### 3.5 Communications and support
 
 If you contact us, we may collect:
 
-- The content of your request
-- Contact details
-- Diagnostics necessary to resolve your issue
-- Records of communications
+- your contact details;
+- the content of your message;
+- attachments you provide;
+- support or diagnostic information;
+- complaint or dispute information; and
+- records of our communications with you.
 
-## 5. How We Use Information
+General contact forms are not intended for passwords, API keys, payment-card details, unnecessary confidential information or sensitive personal information.
 
-We use personal information for the following purposes:
+### 3.6 Mailing lists and marketing
 
-- Provide and operate the Services, including user administration.
-- Authenticate users and manage sessions and access control.
-- Deliver support, troubleshoot issues, and respond to enquiries.
-- Maintain security, detect abuse, prevent fraud, and investigate incidents.
-- Monitor reliability and performance using internal telemetry and website analytics tools.
-- Comply with legal obligations and enforce our terms.
-- Business administration, including billing, accounting, and procurement.
-- Marketing communications where permitted by law and your preferences.
-- Improve and market our products and services using permitted analytics,
-  behavioural metrics, and advertising technologies.
+Where a Service offers a mailing list or marketing subscription, we may collect:
 
-We do not sell personal information.
+- name, if requested;
+- email address;
+- subscription status;
+- date, time and source of signup;
+- the wording or version of the consent presented;
+- confirmation or double-opt-in status;
+- unsubscribe or suppression status; and
+- delivery, bounce, open or link-interaction information if the selected mailing service provides and we enable those features.
 
-We do not use Google Analytics. We may use Microsoft Clarity and Microsoft
-Advertising as described in Section 8.
+We do not sell or rent subscriber lists for another business's independent marketing.
 
-## 6. Legal Bases for Processing
+### 3.7 Contractors, suppliers and professional relationships
 
-Where applicable law requires a legal basis (for example under GDPR), we rely on
-one or more of the following:
+We may hold names, business details, contact information, contracts, invoices, payment information, tax or business identifiers and correspondence concerning contractors, suppliers, advisers, authors, contributors, reviewers and other professional relationships.
 
-- **Contract:** to provide the Services you or your organisation requested.
-- **Legitimate interests:** to secure and improve Services, prevent fraud, and
-  protect our business and users.
-- **Consent:** where required for specific activities (for example certain
-  marketing communications, analytics cookies, advertising cookies, or optional
-  features).
-- **Legal obligation:** to comply with laws and respond to lawful requests.
-- **Vital interests:** to protect safety where applicable.
+### 3.8 Events, surveys, promotions and public interactions
 
-Where we act as a processor, the customer is responsible for determining the
-legal basis for customer content they provide to us.
+Depending on the activity, we may collect registration details, responses, feedback, competition entries, eligibility information, public social-media interactions, reviews, comments and information supplied by a participant.
 
-## 7. Hosting, Data Residency, and Infrastructure
+### 3.9 Sensitive information
 
-We host customer data using cloud infrastructure providers. Customers may choose
-hosting regions or providers depending on product configuration and commercial
-terms.
+We do not intentionally request sensitive information as part of our ordinary corporate website, sales, marketing or general support activities.
 
-Current and planned hosting approach:
+If a person voluntarily supplies sensitive information that was not requested, we will use it only to the extent reasonably necessary to understand or respond to the matter, meet a legal or record-keeping requirement, or address a genuine legal, security or safety issue. Where it is not reasonably necessary, we will avoid unnecessary copying or distribution and will delete or redact it where reasonably practicable.
 
-- Initial customers in Australia and New Zealand are hosted in **Microsoft Azure Australia** regions.
-- As we expand, we may host in other regions and providers to meet customer
-  demand and data residency requirements, including:
-  - Australia (Azure)
-  - United States (AWS)
-  - European Union (Hetzner EU)
+A product that genuinely requires different handling will publish additional information.
 
-If a customer is not explicitly configured for another region, hosting defaults
-to Australia.
+## 4. How we collect information
 
-## 8. Cookies and Similar Technologies
+We may collect information:
 
-We use cookies and similar technologies primarily for:
+- directly from you;
+- from your organisation or an authorised administrator;
+- automatically when you use a Service;
+- from payment, hosting, security, identity, fulfilment, retailer, communications or other service providers;
+- from business partners or contractors;
+- from public sources where reasonably necessary for a legitimate business activity; and
+- from another person where they are authorised to provide it.
 
-- Authentication and session management
-- Security controls
-- Preferences and settings
-- Performance and reliability
-- Website analytics, optimisation, and, where permitted, advertising and
-  marketing activities
+We try to collect only information reasonably necessary for the relevant activity.
 
-We partner with Microsoft Clarity and Microsoft Advertising to capture how you
-use and interact with our website through behavioural metrics, heatmaps, and
-session replay to improve and market our products/services. Website usage data
-is captured using first and third-party cookies and other tracking technologies
-to determine the popularity of products/services and online activity.
-Additionally, we use this information for site optimisation, fraud/security
-purposes, and advertising. For more information about how Microsoft collects and
-uses your data, visit the
-[Microsoft Privacy Statement](https://www.microsoft.com/privacy/privacystatement).
+## 5. Why we use information
 
-You can control cookies through your browser settings. Some features may not
-work properly if you disable cookies. Where required by applicable law, we will
-request consent before using non-essential cookies or similar technologies.
+Depending on the Service and the relationship involved, we may use personal information to:
 
-We do not use Google Analytics or Google advertising cookies.
+- provide, operate and maintain Services;
+- create and administer accounts;
+- authenticate users and manage permissions;
+- fulfil orders and provide downloads, licences or physical products;
+- process and reconcile payments, refunds and returns;
+- communicate about an account, order, product or Service;
+- provide customer service and technical support;
+- respond to enquiries, complaints and privacy requests;
+- operate mailing lists and send communications that a person has requested or that we are otherwise permitted to send;
+- record and honour marketing preferences and unsubscribe requests;
+- secure Services and infrastructure;
+- detect spam, bots, fraud, abuse, unauthorised access and security threats;
+- investigate incidents, disputes and chargebacks;
+- maintain audit, security and operational records;
+- monitor reliability, availability and performance;
+- improve products, content and business operations;
+- administer contractors, suppliers, contributors and commercial relationships;
+- perform accounting, taxation, reconciliation and statutory record keeping;
+- administer events, surveys, promotions and competitions;
+- establish, exercise or defend legal rights;
+- comply with applicable laws and lawful requests; and
+- support a genuine business sale, restructure or transfer where legally permitted and subject to appropriate protections.
 
-## 9. Disclosure of Information
+We do not use every category of information for every purpose. Use depends on why the information was collected and which Service is involved.
 
-We disclose personal information only as necessary to operate the Services, for
-the purposes described in this policy, and subject to appropriate protections.
+## 6. Analytics, cookies and similar technologies
 
-We may disclose information to:
+Different RePass Cloud Services use different technologies.
 
-- Cloud infrastructure providers (for hosting and storage).
-- Identity providers (for authentication and access management).
-- Payment processors (for billing and payments).
-- Security and operational vendors (for monitoring and incident response).
-- Analytics, advertising, and marketing vendors used to improve, measure, and
-  market our services, subject to applicable law.
-- Professional advisers (lawyers, auditors, insurers) under confidentiality.
-- Authorities where required by law or to protect rights and safety.
-- Business transferees in connection with a merger, acquisition, or sale.
+A Service may use:
 
-We do not sell personal information.
+- cookies or local storage required for authentication, sessions, security or preferences;
+- infrastructure analytics and security telemetry;
+- website analytics; and
+- advertising or marketing technologies where they are specifically implemented and lawfully used.
 
-## 10. International Data Transfers
+Where non-essential cookies, tracking or similar technologies require consent or an opt-out mechanism under applicable law, the relevant Service will provide the required control before or when those technologies are used.
 
-We may process data in Australia, the United States, the European Union, or
-other jurisdictions depending on hosting configuration and service operations.
+A site-specific notice may state that analytics or advertising technologies are not used on that site. A Service should not be assumed to use a particular analytics provider merely because another RePass Cloud site uses it.
 
-Where required, we implement safeguards such as:
+## 7. AI-assisted features and automated processing
 
-- Contractual protections (including Standard Contractual Clauses where applicable)
-- Encryption and access controls
-- Vendor due diligence and security requirements
+Some RePass Cloud products may use artificial intelligence or automated techniques to assist with tasks such as search, classification, matching, summarisation, ranking or workflow support.
 
-## 11. Security
+Where a Service uses personal information in an AI-assisted feature, the applicable product documentation or privacy notice should explain any materially significant use.
 
-We maintain an information security program designed to protect personal
-information. Controls may include:
+Unless a Service expressly states otherwise, RePass Cloud does not intend to use personal information to make solely automated decisions that produce legal or similarly significant effects on an individual without any human or other appropriate review.
 
-- Encryption in transit (TLS) and encryption at rest
-- Role-based access control and least-privilege access
-- Multi-factor authentication and strong authentication requirements
-- Audit logging and monitoring
-- Segmentation and environment controls
-- Secure development and change management practices
-- Vulnerability management and incident response procedures
+## 8. When we disclose information
 
-No method of transmission or storage is 100 percent secure. We continuously
-improve safeguards and respond to threats.
+We may disclose relevant information to:
 
-## 12. Data Retention and Deletion
+- cloud hosting, infrastructure and database providers;
+- identity and authentication providers;
+- payment processors and financial institutions;
+- email and mailing-list providers;
+- security, fraud-prevention and monitoring providers;
+- analytics providers where a Service uses them;
+- ecommerce, licensing, retailer, marketplace, distributor, printer, print-on-demand, fulfilment, courier and postal providers;
+- professional advisers, accountants, auditors and insurers;
+- contractors and suppliers who need information to perform their work;
+- business customers where the Service is operated on their behalf or according to their instructions;
+- regulators, courts, government agencies or law-enforcement authorities where disclosure is required or authorised by law; and
+- a genuine purchaser or successor in connection with a business sale or restructure where legally permitted and appropriately protected.
 
-We retain personal information only as long as necessary for the purposes
-described in this policy, including legal, tax, accounting, and security needs.
+We disclose only the information reasonably necessary for the relevant purpose.
 
-- Security and telemetry logs are generally retained for 90 to 100 days.
-- Customer content is retained according to customer instructions and contract terms.
-- Where deletion is requested, we will take reasonable steps to delete or
-  de-identify data unless an exception applies (for example, legal hold,
-  security investigation, or legal obligation).
+We do not sell personal information as a business model and do not sell mailing-list details.
 
-Backups may retain data for limited periods, but data is isolated and protected
-and deleted in line with our backup lifecycle.
+## 9. Cloudflare, Stripe and other important providers
 
-## 13. Data Breach and Incident Notification
+### Cloudflare
 
-If we become aware of a data breach affecting personal information, we will:
+RePass Cloud uses Cloudflare services for some websites and applications. Depending on the Service, this may include DNS, CDN, reverse proxy, TLS, security, Workers, databases, observability, analytics and Turnstile.
 
-- Investigate and take steps to contain and remediate the incident.
-- Notify affected customers and users as required by applicable law and contract.
-- Provide information reasonably necessary for customers to meet their own legal
-  obligations.
+Cloudflare may process request metadata, IP addresses, security signals and other technical information needed to provide those services.
 
-## 14. Your Rights and Choices
+Cloudflare privacy information:  
+https://www.cloudflare.com/privacypolicy/
 
-Your rights depend on where you live and how you use the Services.
+Cloudflare subprocessors:  
+https://www.cloudflare.com/gdpr/subprocessors/cloudflare-services/
 
-### 14.1 Australia and New Zealand
+### Stripe
 
-We handle personal information under Australia's Privacy Act 1988 and the
-Australian Privacy Principles (APPs), and New Zealand's Privacy Act 2020.
+Where Stripe is used for direct payment processing, Stripe may process payment, transaction, billing, technical, fraud, dispute and risk information. Stripe may act in different privacy roles depending on the activity.
 
-You may request access to, or correction of, personal information we hold about
-you. You may also make a complaint.
+Stripe privacy information:  
+https://stripe.com/au/privacy
 
-- **Australia:** Office of the Australian Information Commissioner (OAIC) — [oaic.gov.au](https://www.oaic.gov.au)
-- **New Zealand:** Office of the Privacy Commissioner — [privacy.org.nz](https://www.privacy.org.nz)
+Stripe privacy centre:  
+https://stripe.com/au/legal/privacy-center
 
-### 14.2 EEA, United Kingdom, and Switzerland
+### Other providers
 
-Where GDPR or similar laws apply, you may have rights to:
+We also use or may use providers for email, accounting, communications, fulfilment, storage, backups, security and other business functions. The providers used for a particular product may change as systems change. Material product-specific providers and data-location information should be stated in the relevant product notice where necessary to understand that processing.
 
-- Access
-- Rectification
-- Erasure
-- Restriction
-- Objection
-- Data portability
-- Withdraw consent (where processing is based on consent)
+## 10. Overseas handling
 
-You may also lodge a complaint with your local supervisory authority.
+RePass Cloud is based in Australia, but internet, cloud, payment, support and other service providers may process or make information accessible in other countries.
 
-### 14.3 United States State Privacy Laws
+Depending on the Service and provider, information may be processed in Australia, the United States, European countries, the United Kingdom, Ireland and other locations used by the provider or its subprocessors.
 
-Where applicable (for example California under CCPA/CPRA and other state laws),
-you may have rights to request access, correction, deletion, and to opt out of
-certain processing activities as defined by law.
+When we use an overseas provider, safeguards may include:
 
-We do not sell personal information.
+- reviewing the provider's privacy and security information;
+- using applicable service and data-processing terms;
+- reviewing data-location and subprocessor information where available;
+- limiting disclosure to information reasonably required for the service;
+- using encrypted connections for transmission;
+- applying access controls and account security;
+- restricting contractor access;
+- removing access when no longer required; and
+- using available contractual international-transfer safeguards where required.
 
-Where applicable law treats certain analytics, cookie-based advertising, or
-similar disclosures as "sharing" or targeted advertising, you may have the
-right to opt out of that processing.
+A site-specific notice may identify additional countries or more precise data-location arrangements.
 
-## 15. Exercising Rights and Verification
+## 11. International privacy laws
 
-To request access, correction, deletion, or other rights, contact:
-[contact page](/contact)
+If privacy law outside Australia applies to a particular RePass Cloud activity, we will handle requests and processing according to the rights and requirements that apply to that activity.
 
-If you are using Services through an organisation, your administrator may need
-to submit certain requests. We may need to verify identity before fulfilling
-requests. We aim to respond within timeframes required by applicable law.
+This may include rights of access, correction, deletion, restriction, objection, portability, withdrawal of consent or rights relating to certain targeted advertising or data-sharing activities.
 
-## 16. Children's Privacy
+Where GDPR, UK GDPR or another law requires a stated legal basis for processing, the applicable basis must be assessed for the particular activity. Depending on that activity, a lawful basis may include consent, performance of a contract, compliance with a legal obligation or a properly assessed legitimate interest.
 
-Our Services are not intended for children under 18 and we do not knowingly
-collect personal information from children.
+Nothing in this section represents that every overseas privacy law applies to every RePass Cloud Service.
 
-## 17. Changes to This Privacy Policy
+## 12. Marketing communications
 
-We may update this Privacy Policy from time to time. The "Last updated" date at
-the top indicates when this policy was most recently revised. Material changes
-may be communicated through the Services or by other appropriate means.
+Where we send commercial electronic messages, we use consent or another basis permitted by applicable law and provide an unsubscribe mechanism.
 
-## 18. Contact
+An unsubscribe request made through an automated mechanism is intended to take effect promptly. A manually submitted request will be actioned as soon as practicable and no later than 5 business days after receipt.
 
-RePass Cloud Pty Ltd
-PO BOX 262
-Bondi Junction NSW 1355
+We may keep a minimal suppression record after unsubscription so that the address is not accidentally added back to marketing. A suppression record may include the email address or a suitable non-reversible representation, suppression status, date and method of withdrawal and limited consent-history information. It is not used to send marketing.
+
+## 13. Retention
+
+We retain information for periods appropriate to the reason it is held.
+
+Our general approach includes:
+
+- contact and ordinary support records: normally up to 2 years after the matter is resolved, unless another retention requirement applies;
+- order, transaction, refund, chargeback and related business records: generally up to 5 years after the relevant transaction or final resolution, or longer where required for an unresolved dispute, tax, accounting or legal matter;
+- accounting and taxation records: for the period required by applicable Australian law;
+- marketing consent records: while subscribed and, where reasonably required, limited consent-history records for up to 5 years after withdrawal;
+- suppression records: for as long as reasonably necessary to prevent accidental re-mailing while the relevant mailing list is operated;
+- security incident records: generally up to 5 years after closure, or longer where an active legal, regulatory, insurance or enforcement matter requires it;
+- backups: according to the documented lifecycle of the relevant system, with a target maximum of 90 days where that is the configured business backup model; and
+- product-specific application data and logs: according to the retention schedule published or agreed for that product.
+
+A site-specific notice may state a materially different period. We do not intentionally restore deleted personal information from backups except where necessary for genuine disaster recovery, and backup copies expire through the applicable lifecycle.
+
+## 14. Security
+
+We use security measures appropriate to the nature of the information and the systems involved. Measures may include:
+
+- authenticated administrative access;
+- access controls and least-privilege permissions;
+- HTTPS/TLS for network transmission;
+- established infrastructure and payment providers;
+- keeping secrets and credentials out of publicly accessible source code;
+- software and dependency updates;
+- security, audit and operational logging;
+- anti-abuse, bot and rate-limiting controls;
+- backups and recovery arrangements where required;
+- restricting contractor access; and
+- incident investigation and response procedures.
+
+No system can guarantee absolute security.
+
+## 15. Data breaches
+
+Suspected privacy or security incidents are escalated to the business owner or designated privacy/security administrator.
+
+Where required, we will investigate, contain and remediate an incident, preserve relevant evidence, assess the information and people affected, coordinate with service providers and determine whether notification is required.
+
+Where the Australian Notifiable Data Breaches scheme or another mandatory notification law applies, we will make notifications required by that law.
+
+## 16. Access, correction, deletion and other requests
+
+You may contact us to:
+
+- ask what personal information we hold about you;
+- request access to or a copy of personal information;
+- request correction;
+- request deletion where offered or legally required;
+- withdraw marketing consent;
+- ask about overseas handling; or
+- make a privacy complaint.
+
+Where another privacy law gives you additional mandatory rights, we will consider those rights where that law applies.
+
+### Identity verification
+
+Verification will be proportionate to the sensitivity and risk of the request.
+
+Where possible, we use information already held, such as confirming from the email address associated with a record, sending a code or link to an existing contact address, or confirming limited transaction information.
+
+Government-issued identity documents are not normally requested and will only be considered where less intrusive verification is insufficient.
+
+### Timing
+
+We aim to:
+
+- acknowledge a privacy request or complaint within 5 business days; and
+- provide a substantive response within 30 calendar days where reasonably practicable, or sooner where applicable law requires.
+
+A request may be limited where permitted or required by law, including where identity cannot be reasonably verified, another person's rights would be affected, legal privilege applies, or information must be retained for taxation, accounting, fraud prevention, dispute, security, regulatory or legal purposes.
+
+No fee is ordinarily charged merely for making a privacy request.
+
+## 17. Children
+
+Individual Services may set different minimum ages.
+
+Our ordinary corporate and business Services are not directed to young children. If a Service permits users under 18, the product-specific notice should explain any age-specific handling that materially differs from this policy.
+
+Where we learn that personal information from a child has been collected in circumstances where it should not have been collected, we will take reasonable steps to delete it, subject to any lawful retention requirement.
+
+## 18. Complaints
+
+Privacy complaints should be sent in writing to hello@repasscloud.com and should include enough information for us to understand and investigate the issue.
+
+We aim to acknowledge a complaint within 5 business days and provide a substantive response within 30 calendar days where reasonably practicable.
+
+Where the Office of the Australian Information Commissioner has jurisdiction, an eligible complainant who remains dissatisfied may contact the OAIC after giving us a reasonable opportunity to address the complaint:
+
+https://www.oaic.gov.au/
+
+Other regulators may have jurisdiction depending on the person's location and the issue.
+
+## 19. Changes to this policy
+
+We may update this Privacy Policy as our Services, providers or legal obligations change.
+
+The current policy will be published with its effective or last-updated date.
+
+For a material change that could reasonably affect how people understand our collection, use, disclosure, overseas handling, retention or protection of personal information, we may also publish a prominent notice and, where appropriate, notify affected customers or subscribers directly.
+
+A change to this policy does not by itself authorise us to use information already collected for a materially incompatible new purpose. Where fresh consent is required, we will obtain it before that new use.
+
+## 20. Contact
+
+**RePass Cloud Pty Ltd**  
+ABN 74642243801  
+ACN 642243801  
+3 Pioneer Street  
+Findon SA 5023  
 Australia
 
-Contact: [contact page](/contact)
+Email: hello@repasscloud.com  
+Contact: https://repasscloud.com/contact/

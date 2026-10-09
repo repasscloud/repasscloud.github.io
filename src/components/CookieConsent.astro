@@ -1,24 +1,17 @@
 ---
 ---
 
-<div id="cookie-banner" class="cookie-banner" role="dialog" aria-modal="false" aria-label="Cookie preferences" hidden>
-  <div class="container cookie-banner__inner">
-    <div>
-      <p class="cookie-banner__eyebrow">Your privacy choices</p>
-      <p class="cookie-banner__text">
-        We use Google Analytics to understand how visitors use this site. No advertising cookies are used.
-        EU/UK visitors: we need your consent before analytics runs. California residents have the right to
-        opt out of the sale or sharing of personal information.
-      </p>
-      <a href="/legal/privacy-policy/#cookies" class="cookie-banner__link">Learn more</a>
-    </div>
-    <div class="cookie-banner__actions">
-      <button type="button" id="cookie-reject" class="btn btn-outline-light btn-sm">
-        <img src="/images/privacyoptions29x14.png" alt="Privacy options" width="29" height="14" />
-        Reject / Do Not Sell or Share
-      </button>
-      <button type="button" id="cookie-accept" class="btn btn-primary btn-sm">Accept Analytics</button>
-    </div>
+<div id="cookie-banner" class="cookie-banner" role="region" aria-labelledby="cookie-banner-title" hidden>
+  <h2 id="cookie-banner-title">Your privacy choices</h2>
+  <p>
+    We'd like to use Google Analytics to see how people use this site. It only runs if you allow it. Necessary
+    storage, such as remembering this choice, is always on. You can change your mind at any time with "Your privacy
+    choices" in the footer. We don't use advertising cookies or sell personal information.{' '}
+    <a href="/legal/privacy-policy/#6-analytics-cookies-and-similar-technologies">Privacy Policy</a>.
+  </p>
+  <div class="cookie-actions">
+    <button type="button" id="cookie-accept" class="btn btn-primary btn-sm">Allow analytics</button>
+    <button type="button" id="cookie-reject" class="btn btn-on-ink btn-sm">Don't allow analytics</button>
   </div>
 </div>
 
@@ -26,10 +19,14 @@
   (function () {
     var STORAGE_KEY = 'repasscloud_consent';
 
-    function grantConsent() {
+    function update(granted) {
+      if (granted && typeof window.repasscloudLoadAnalytics === 'function') {
+        window.repasscloudLoadAnalytics();
+        return;
+      }
       if (typeof gtag === 'function') {
         gtag('consent', 'update', {
-          analytics_storage: 'granted',
+          analytics_storage: granted ? 'granted' : 'denied',
           ad_storage: 'denied',
           ad_user_data: 'denied',
           ad_personalization: 'denied',
@@ -37,64 +34,65 @@
       }
     }
 
-    function denyConsent() {
-      if (typeof gtag === 'function') {
-        gtag('consent', 'update', {
-          analytics_storage: 'denied',
-          ad_storage: 'denied',
-          ad_user_data: 'denied',
-          ad_personalization: 'denied',
-        });
+    function read() {
+      try {
+        return localStorage.getItem(STORAGE_KEY);
+      } catch (e) {
+        return null;
       }
     }
 
-    function hideBanner() {
-      var banner = document.getElementById('cookie-banner');
-      if (banner) banner.hidden = true;
+    function save(value) {
+      try {
+        localStorage.setItem(STORAGE_KEY, value);
+      } catch (e) {
+        // Storage unavailable: the choice applies to this page view only.
+      }
     }
 
-    function showBanner() {
-      var banner = document.getElementById('cookie-banner');
-      if (banner) banner.hidden = false;
+    function banner() {
+      return document.getElementById('cookie-banner');
+    }
+
+    function show() {
+      var b = banner();
+      if (b) b.hidden = false;
+    }
+
+    function hide() {
+      var b = banner();
+      if (b) b.hidden = true;
     }
 
     function init() {
-      var stored = localStorage.getItem(STORAGE_KEY);
+      var stored = read();
+      if (stored === 'granted') update(true);
+      else if (stored === 'denied') update(false);
+      else show();
 
-      if (stored === 'granted') {
-        grantConsent();
-      } else if (stored === 'denied') {
-        denyConsent();
-      } else {
-        showBanner();
-      }
-
-      var acceptBtn = document.getElementById('cookie-accept');
-      var rejectBtn = document.getElementById('cookie-reject');
-
-      if (acceptBtn) {
-        acceptBtn.addEventListener('click', function () {
-          localStorage.setItem(STORAGE_KEY, 'granted');
-          grantConsent();
-          hideBanner();
+      var accept = document.getElementById('cookie-accept');
+      var reject = document.getElementById('cookie-reject');
+      if (accept)
+        accept.addEventListener('click', function () {
+          save('granted');
+          update(true);
+          hide();
         });
-      }
-
-      if (rejectBtn) {
-        rejectBtn.addEventListener('click', function () {
-          localStorage.setItem(STORAGE_KEY, 'denied');
-          denyConsent();
-          hideBanner();
+      if (reject)
+        reject.addEventListener('click', function () {
+          save('denied');
+          update(false);
+          hide();
         });
-      }
     }
 
-    window.repasscloudOpenCookieBanner = showBanner;
+    window.repasscloudOpenCookieBanner = function () {
+      show();
+      var accept = document.getElementById('cookie-accept');
+      if (accept) accept.focus();
+    };
 
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', init);
-    } else {
-      init();
-    }
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
+    else init();
   })();
 </script>

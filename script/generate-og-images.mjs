@@ -1,73 +1,120 @@
-// Generates branded 1200x630 Open Graph images from inline SVG using sharp.
+// Generates branded 1200x630 Open Graph images using sharp.
 // Run with: node script/generate-og-images.mjs
-// Re-run any time the brand palette or copy changes; outputs are static
-// files committed under public/img/.
+// Re-run any time the brand, copy or book cover changes; outputs are static
+// files committed under public/img/. Text is set in Schibsted Grotesk from
+// script/fonts/, outlined to paths so output matches the site.
 
-import sharp from 'sharp';
+import { readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
 
-const __dirname = dirname(fileURLToPath(import.meta.url));
-const outDir = join(__dirname, '..', 'public', 'img');
+const here = dirname(fileURLToPath(import.meta.url));
+const root = join(here, '..');
+const fontDir = join(here, 'fonts');
+// sharp's SVG renderer can't load custom fonts on every platform, so text is
+// outlined to paths with opentype.js (not a project dependency):
+//   npm i --no-save opentype.js@1.3.4 && node script/generate-og-images.mjs
+const { default: opentype } = await import('opentype.js');
+const fonts = Object.fromEntries(
+  [400, 600, 700, 800].map((w) => [w, opentype.loadSync(join(fontDir, `SchibstedGrotesk-${w}.ttf`))]),
+);
+function text(str, x, y, size, weight, fill, tracking = 0) {
+  const font = fonts[weight];
+  const glyphs = font.stringToGlyphs(str);
+  let cx = x;
+  let d = '';
+  glyphs.forEach((g, i) => {
+    d += g.getPath(cx, y, size).toPathData(2);
+    cx += (g.advanceWidth * size) / font.unitsPerEm + tracking;
+    if (i < glyphs.length - 1) cx += (font.getKerningValue(g, glyphs[i + 1]) * size) / font.unitsPerEm;
+  });
+  return `<path d="${d}" fill="${fill}"/>`;
+}
 
-const WIDTH = 1200;
-const HEIGHT = 630;
+const { default: sharp } = await import('sharp');
 
-function baseCard({ eyebrow, title, subtitle }) {
+const outDir = join(root, 'public', 'img');
+const W = 1200;
+const H = 630;
+
+const markSvg = readFileSync(join(root, 'public', 'brand', 'repasscloud-mark.svg'), 'utf8');
+const markInner = markSvg.replace(/^<svg[^>]*>/, '').replace(/<\/svg>\s*$/, '').replace(/<title>.*?<\/title>/, '');
+
+
+function card({ title, lines, kicker, size }) {
+  const titleSize = size ?? (title.length > 18 ? 76 : 92);
   return `
-<svg width="${WIDTH}" height="${HEIGHT}" viewBox="0 0 ${WIDTH} ${HEIGHT}" xmlns="http://www.w3.org/2000/svg">
+<svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg">
   <defs>
-    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#0c1020" />
-      <stop offset="100%" stop-color="#000000" />
-    </linearGradient>
-    <linearGradient id="glow" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#ab2df3" />
-      <stop offset="50%" stop-color="#e35f9a" />
-      <stop offset="100%" stop-color="#ffbe16" />
-    </linearGradient>
-    <linearGradient id="glow2" x1="100%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="#e92bcf" />
-      <stop offset="100%" stop-color="#ab2df3" />
+    <linearGradient id="spectrum" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#FFBE16"/><stop offset=".5" stop-color="#E35F9A"/><stop offset="1" stop-color="#AB2DF3"/>
     </linearGradient>
   </defs>
-
-  <rect width="${WIDTH}" height="${HEIGHT}" fill="url(#bg)" />
-
-  <circle cx="1040" cy="80" r="360" fill="url(#glow)" opacity="0.28" />
-  <circle cx="120" cy="620" r="300" fill="url(#glow2)" opacity="0.22" />
-
-  <rect x="0" y="0" width="10" height="${HEIGHT}" fill="url(#glow)" />
-
-  <text x="90" y="150" font-family="Arial, Helvetica, sans-serif" font-size="24" letter-spacing="4" fill="#ffbe16" font-weight="700">${eyebrow.toUpperCase()}</text>
-
-  <text x="88" y="270" font-family="Arial, Helvetica, sans-serif" font-size="72" font-weight="800" fill="#ffffff">${title}</text>
-
-  <text x="90" y="340" font-family="Arial, Helvetica, sans-serif" font-size="30" fill="#c7cbe0">${subtitle}</text>
-
-  <text x="90" y="560" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="700" fill="#ffffff">RePass Cloud</text>
-  <text x="90" y="592" font-family="Arial, Helvetica, sans-serif" font-size="20" fill="#8a90ad">repasscloud.com</text>
+  <rect width="${W}" height="${H}" fill="#18141F"/>
+  <rect width="${W}" height="8" fill="url(#spectrum)"/>
+  <g transform="translate(80 72) scale(0.125)">${markInner}</g>
+  ${text('RePass Cloud', 156, 113, 30, 700, '#FFFFFF')}
+  ${kicker ? text(kicker, 80, 290, 28, 600, '#E35F9A') : ''}
+  ${text(title, 76, kicker ? 380 : 360, titleSize, 800, '#FFFFFF', -2)}
+  ${lines
+    .map(
+      (l, i) =>
+        text(l, 80, (kicker ? 440 : 420) + i * 42, 30, 400, '#C9C4D3'),
+    )
+    .join('')}
+  ${text('repasscloud.com', 80, 574, 24, 600, '#9B94A8')}
 </svg>`;
 }
 
 const cards = [
   {
     file: 'og-default.png',
-    eyebrow: 'Software products and engineering systems',
     title: 'RePass Cloud',
-    subtitle: 'Australian software company — products, platforms, and enterprise systems.',
+    lines: ['Australian software company and publisher.', 'Products we build and run, and the How-To-Use-AI.com books.'],
   },
   {
     file: 'og-cursedelete.png',
-    eyebrow: 'RePass Cloud product',
+    kicker: 'Product',
     title: 'CurseDelete 2',
-    subtitle: 'A native, high-performance deletion engine for files and directory trees.',
+    lines: ['A native Rust deletion engine for directory trees', 'that refuse to die. macOS, Windows and Linux.'],
+  },
+  {
+    file: 'og-engineering.png',
+    kicker: 'Engineering',
+    title: 'Enterprise engineering',
+    lines: ['Identity automation, cloud governance and platform', 'work built to hold up in production.'],
   },
 ];
 
-for (const card of cards) {
-  const svg = baseCard(card);
-  const outPath = join(outDir, card.file);
-  await sharp(Buffer.from(svg)).png().toFile(outPath);
-  console.log(`Wrote ${outPath}`);
+for (const c of cards) {
+  const out = join(outDir, c.file);
+  await sharp(Buffer.from(card(c))).png().toFile(out);
+  console.log(`Wrote public/img/${c.file}`);
+}
+
+// Publishing card: copy on the left, Book 1 cover on the right.
+{
+  const coverPath = join(root, 'src', 'assets', 'books', 'book-01-cover.jpg');
+  const coverH = 470;
+  const cover = await sharp(coverPath).resize({ height: coverH }).jpeg({ quality: 90 }).toBuffer();
+  const { width: coverW } = await sharp(cover).metadata();
+  const base = card({
+    kicker: 'Publishing',
+    title: 'How-To-Use-AI.com',
+    size: 54,
+    lines: ['Book 1: AI for Normal People.', 'Out 29 October 2026.'],
+  });
+  const shadow = Buffer.from(
+    `<svg width="${coverW + 80}" height="${coverH + 80}" xmlns="http://www.w3.org/2000/svg"><defs><filter id="b"><feGaussianBlur stdDeviation="18"/></filter></defs><rect x="40" y="50" width="${coverW}" height="${coverH}" fill="#000" opacity=".55" filter="url(#b)"/></svg>`,
+  );
+  const left = W - coverW - 80;
+  const top = Math.round((H - coverH) / 2) + 10;
+  await sharp(Buffer.from(base))
+    .composite([
+      { input: shadow, left: left - 40, top: top - 40 },
+      { input: cover, left, top },
+    ])
+    .png()
+    .toFile(join(outDir, 'og-publishing.png'));
+  console.log('Wrote public/img/og-publishing.png');
 }

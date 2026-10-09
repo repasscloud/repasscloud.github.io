@@ -1,0 +1,32 @@
+---
+import { products, type Product } from '../data/products';
+
+interface Props {
+  items?: Product[];
+}
+
+const { items = products.filter((p) => p.showOnHomepage) } = Astro.props;
+const hostOf = (url: string) => new URL(url).host.replace(/^www\./, '');
+---
+
+<ul class="rows">
+  {items.map((p) => (
+    <li>
+      <span class="ico" style={`background:${p.iconImage ? 'var(--ink)' : p.colour}`} aria-hidden="true">
+        {p.iconImage ? <img src={p.iconImage} alt="" width="48" height="48" loading="lazy" decoding="async" /> : p.monogram}
+      </span>
+      <div>
+        <h4>
+          {p.name}
+          {p.version && <span class="tag">{p.version}</span>}
+        </h4>
+        <p>{p.tagline}</p>
+      </div>
+      {p.destination === 'external' ? (
+        <a class="go" href={p.href} target="_blank" rel="noopener">{hostOf(p.href)} ↗</a>
+      ) : (
+        <a class="go" href={p.href}>View product<span class="sr-only">: {p.name}</span></a>
+      )}
+    </li>
+  ))}
+</ul>

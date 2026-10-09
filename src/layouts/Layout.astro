@@ -4,7 +4,7 @@ import CookieConsent from '../components/CookieConsent.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import type { ImageMetadata } from 'astro';
-import { GTM_CONTAINER_ID, SITE_DESCRIPTION, SITE_TITLE } from '../consts';
+import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 
 interface Props {
   title?: string;
@@ -16,7 +16,8 @@ interface Props {
   updatedDate?: string;
   noIndex?: boolean;
   canonical?: string;
-  simpleFooter?: boolean;
+  exactTitle?: boolean;
+  ogImageAlt?: string;
 }
 
 const {
@@ -29,14 +30,14 @@ const {
   updatedDate,
   noIndex = false,
   canonical,
-  simpleFooter = false,
+  exactTitle = false,
+  ogImageAlt,
 } = Astro.props;
 
-const hasGtm = GTM_CONTAINER_ID.startsWith('GTM-');
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en-AU">
   <head>
     <BaseHead
       title={title}
@@ -48,25 +49,17 @@ const hasGtm = GTM_CONTAINER_ID.startsWith('GTM-');
       updatedDate={updatedDate}
       noIndex={noIndex}
       canonical={canonical}
+      exactTitle={exactTitle}
+      ogImageAlt={ogImageAlt}
     />
     <slot name="head" />
   </head>
   <body>
-    {hasGtm && (
-      <noscript>
-        <iframe
-          src={`https://www.googletagmanager.com/ns.html?id=${GTM_CONTAINER_ID}`}
-          height="0"
-          width="0"
-          style="display:none;visibility:hidden"
-        ></iframe>
-      </noscript>
-    )}
     <Header />
-    <main>
+    <main id="main">
       <slot />
     </main>
-    <Footer simple={simpleFooter} />
+    <Footer />
     <CookieConsent />
   </body>
 </html>

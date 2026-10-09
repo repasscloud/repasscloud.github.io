@@ -2,7 +2,7 @@
 layout: ../../../layouts/ProsePageLayout.astro
 title: LunaVPN Closure and Account Cancellation Notice
 description: Notice confirming LunaVPN is closed, subscriptions are cancelled, accounts are terminated, and support is no longer provided.
-sectionLabel: Legal
+seoTitle: "LunaVPN Closure and Account Cancellation Notice | RePass Cloud"
 ---
 
 Last updated: 2026-02-22
@@ -55,8 +55,8 @@ RePass Cloud. Any use of the open source code is at your own risk.
 ## 6. Contact
 
 RePass Cloud Pty Ltd
-PO BOX 262
-Bondi Junction NSW 1355
+3 Pioneer Street
+Findon SA 5023
 Australia
 
 Contact: [contact page](/contact)
