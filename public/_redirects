@@ -50,3 +50,6 @@
 # aethonjobs.com links here for its privacy policy; the master policy covers it
 /legal/privacy-policy/aethonsoftware   /legal/privacy-policy/  301
 /legal/privacy-policy/aethonsoftware/  /legal/privacy-policy/  301
+
+# Astro generates sitemap-index.xml; send the conventional path there
+/sitemap.xml  /sitemap-index.xml  301
