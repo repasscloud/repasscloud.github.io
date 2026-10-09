@@ -9,6 +9,10 @@
 # /posts was renamed /news. One indexed URL had a typo in its slug.
 /posts/2026-03-06-export-microsoft-365-mialboxes-powershell   /news/2026-03-06-export-microsoft-365-mailboxes-powershell/  301
 /posts/2026-03-06-export-microsoft-365-mialboxes-powershell/  /news/2026-03-06-export-microsoft-365-mailboxes-powershell/  301
+# Workers static assets apply splat rules before these exact ones for /posts/,
+# so the misspelt slug is also caught after it lands on /news/.
+/news/2026-03-06-export-microsoft-365-mialboxes-powershell   /news/2026-03-06-export-microsoft-365-mailboxes-powershell/  301
+/news/2026-03-06-export-microsoft-365-mialboxes-powershell/  /news/2026-03-06-export-microsoft-365-mailboxes-powershell/  301
 /posts   /news/  301
 /posts/*  /news/:splat  301
 
