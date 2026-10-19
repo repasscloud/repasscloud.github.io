@@ -18,6 +18,8 @@ export const AETHON_URL = 'https://aethonjobs.com';
 
 export const TWITTER_URL = 'https://twitter.com/repasscloud';
 export const LINKEDIN_URL = 'https://www.linkedin.com/company/repass-cloud';
+// Public Stripe Climate commitment page (1% of revenue to carbon removal).
+export const STRIPE_CLIMATE_URL = 'https://climate.stripe.com/B5BiSH';
 
 export const CONTACT_EMAIL = 'hello@repasscloud.com';
 export const COMPANY_LEGAL_NAME = 'RePass Cloud Pty Ltd';

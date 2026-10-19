@@ -64,7 +64,7 @@ Prefer small, reviewable updates. Do not reintroduce a services-first/engagement
 ### Navigation and footer
 
 - `src/components/Header.astro`: Products, Publishing, Engineering, News, Company (`/about/`), Careers, Contact. Careers is always in the nav (hiring is a credibility signal) and shows a magenta count badge when `getOpenJobs()` returns roles; the footer link does the same in words. Active state uses `currentPath.startsWith(href)` on trailing-slash paths. Mobile menu uses `hidden` + `aria-expanded`, closes on Escape (returns focus to the toggle), outside click, link click and resize to desktop.
-- `src/components/Footer.astro`: columns Products (from `products.ts`), Publishing (from `books.ts`), Company, Elsewhere; legal row with ABN, policy links and the CCPA "Your privacy choices" button (must stay on every page). No CTA banners.
+- `src/components/Footer.astro`: brand column with the Stripe Climate member link (`STRIPE_CLIMATE_URL`, official icon at `public/images/stripe-climate.svg`; 1% of revenue, as stated on that page); columns Products (from `products.ts`), Publishing (from `books.ts`), Company, Elsewhere; legal row with ABN, policy links and the CCPA "Your privacy choices" button (must stay on every page). No CTA banners.
 
 ### Pages
 
