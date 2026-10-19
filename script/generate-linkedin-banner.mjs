@@ -1,5 +1,7 @@
-// Generates the LinkedIn covers in the same style as the X header:
-//   1128x191 for the company page, 1584x396 for the personal profile.
+// Generates the LinkedIn covers:
+//   1128x191 for the company page, in the same style as the X header.
+//   1584x396 for the personal profile: neutral, book and How-To-Use-AI.com only,
+//   no RePass Cloud branding, so it lives in docs/marketing/assets, not public/.
 //   npm i --no-save opentype.js@1.3.4 && node script/generate-linkedin-banner.mjs
 // LinkedIn overlaps the bottom-left with the logo or profile photo and trims the
 // sides on mobile, so copy starts right of the avatar and the book sits inset.
@@ -31,7 +33,7 @@ const products = 'CurseDelete 2 · Cinturon360 · Aethon Jobs · How-To-Use-AI.c
 
 const banners = [
   {
-    file: 'repasscloud-linkedin-company-1128x191.png',
+    out: 'public/brand/png/repasscloud-linkedin-company-1128x191.png',
     W: 1128,
     H: 191,
     rule: 4,
@@ -45,23 +47,23 @@ const banners = [
     x: 230,
   },
   {
-    file: 'repasscloud-linkedin-profile-1584x396.png',
+    out: 'docs/marketing/assets/linkedin-personal-banner-1584x396.png',
     W: 1584,
     H: 396,
-    rule: 6,
+    rule: 0,
     coverH: 260,
     coverRight: 110,
     blur: 14,
     copy: (x) => `
-  ${text('Software and books,', x, 150, 58, 800, '#FFFFFF', -1.3)}
-  ${text('made in Australia.', x, 215, 58, 800, '#FFFFFF', -1.3)}
-  ${text(products, x + 2, 264, 19, 600, '#C9C4D3')}
-  ${text('repasscloud.com', x + 2, 304, 20, 600, '#9B94A8')}`,
+  ${text('Understanding AI,', x, 160, 58, 800, '#FFFFFF', -1.3)}
+  ${text('without the hype.', x, 225, 58, 800, '#FFFFFF', -1.3)}
+  ${text('Author of AI for Normal People, Book 1 of the How-To-Use-AI.com series', x + 2, 274, 19, 600, '#C9C4D3')}
+  ${text('how-to-use-ai.com', x + 2, 314, 20, 600, '#9B94A8')}`,
     x: 440,
   },
 ];
 
-for (const { file, W, H, rule, coverH, coverRight, blur, copy, x } of banners) {
+for (const { out, W, H, rule, coverH, coverRight, blur, copy, x } of banners) {
   const base = `
 <svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg">
   <defs>
@@ -92,6 +94,6 @@ for (const { file, W, H, rule, coverH, coverRight, blur, copy, x } of banners) {
       { input: cover, left, top },
     ])
     .png()
-    .toFile(join(root, 'public', 'brand', 'png', file));
-  console.log(`Wrote public/brand/png/${file}`);
+    .toFile(join(root, out));
+  console.log(`Wrote ${out}`);
 }
