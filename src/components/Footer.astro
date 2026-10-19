@@ -1,5 +1,5 @@
 ---
-import { GITHUB_URL, LINKEDIN_URL, TWITTER_URL } from '../consts';
+import { GITHUB_URL, LINKEDIN_URL, STRIPE_CLIMATE_URL, TWITTER_URL } from '../consts';
 import { products } from '../data/products';
 import { books } from '../data/books';
 import { getOpenJobs } from '../lib/jobs';
@@ -18,6 +18,10 @@ const openRoles = (await getOpenJobs()).length;
           RePass Cloud
         </a>
         <p>Australian software company and publisher. We build and run our own products and publish the How-To-Use-AI.com books.</p>
+        <a href={STRIPE_CLIMATE_URL} target="_blank" rel="noopener" class="footer-climate">
+          <img src="/images/stripe-climate.svg" alt="" width="22" height="22" loading="lazy" />
+          <span>Stripe Climate member: 1% of revenue to carbon removal ↗</span>
+        </a>
       </div>
 
       <div>

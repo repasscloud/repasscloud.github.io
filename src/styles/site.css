@@ -1093,6 +1093,20 @@ hr {
   height: 30px;
 }
 
+.footer-climate {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 4px;
+  font-size: 0.9rem;
+}
+
+.footer-climate img {
+  flex: none;
+  width: 22px;
+  height: 22px;
+}
+
 .footer-legal {
   display: flex;
   justify-content: space-between;
