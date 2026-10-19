@@ -37,6 +37,7 @@ Prefer small, reviewable updates. Do not reintroduce a services-first/engagement
 - `node script/generate-brand-assets.mjs` (`npm run brand`) renders PNGs into `public/brand/png/` (mark up to 4096 px, lockup up to 4800 px) and the favicon set (`favicon.ico`, `favicon.svg`, `favicon-16/32`, `apple-touch-icon.png`, `android-chrome-*`).
 - `script/generate-brand-svgs.mjs` rebuilds the SVGs themselves (needs `npm i --no-save opentype.js@1.3.4`); only needed if the mark geometry changes. Fonts for scripts are vendored in `script/fonts/` (SIL OFL).
 - `node script/generate-og-images.mjs` (also needs opentype.js) renders `public/img/og-default.png`, `og-cursedelete.png`, `og-engineering.png` and `og-publishing.png` (which composites the Book 1 cover).
+- Social headers (both need opentype.js): `script/generate-x-header.mjs` renders `public/brand/png/repasscloud-x-header-1500x500.png`; `script/generate-linkedin-banner.mjs` renders `repasscloud-linkedin-company-1128x191.png` and `repasscloud-linkedin-profile-1584x396.png`. Tagline on all three: "Software and books, made in Australia."
 - `/brand/` is the public press page with downloads.
 
 ## Important Files
