@@ -1,5 +1,5 @@
 ---
-layout: ../../../layouts/ProsePageLayout.astro
+layout: ../../layouts/ProsePageLayout.astro
 title: My Little CRM Privacy Policy
 description: "Privacy Policy for the My Little CRM mobile app: your CRM records stay on your device, with no account, tracking, analytics or cloud storage by RePass Cloud."
 seoTitle: "My Little CRM Privacy Policy | RePass Cloud Pty Ltd"
