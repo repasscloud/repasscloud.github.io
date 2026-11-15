@@ -22,6 +22,9 @@ export const LINKEDIN_URL = 'https://www.linkedin.com/company/repass-cloud';
 export const STRIPE_CLIMATE_URL = 'https://climate.stripe.com/B5BiSH';
 
 export const CONTACT_EMAIL = 'hello@repasscloud.com';
+// Cloudflare Turnstile site key for the contact form (public; the secret is the
+// TURNSTILE_SECRET Worker secret). Empty string = widget not shown.
+export const TURNSTILE_SITEKEY = '0x4AAAAAAGBXODcQQJ84KKDy';
 export const COMPANY_LEGAL_NAME = 'RePass Cloud Pty Ltd';
 export const COMPANY_ABN = '74 642 243 801';
 export const COMPANY_ACN = '642 243 801';
