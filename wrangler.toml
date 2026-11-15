@@ -19,3 +19,19 @@ run_worker_first = ["/api/*"]
 # [vars]
 # CONTACT_TO = "hello@repasscloud.com"
 # CONTACT_FROM = "hello@repasscloud.com"
+
+# Contact form limits (cloudflare/contact.ts), each per IP address and per sender email:
+# - CONTACT_LIMITS (KV): at most 3 sent messages in 24 hours.
+# - CONTACT_LIMITER: burst guard, 3 attempts a minute (KV can lag between locations).
+#   namespace_id is any account-unique integer.
+[[kv_namespaces]]
+binding = "CONTACT_LIMITS"
+id = "47f5558c86e941649541d431d8c98ed7"
+
+[[ratelimits]]
+name = "CONTACT_LIMITER"
+namespace_id = "4201"
+simple = { limit = 3, period = 60 }
+
+# Turnstile (contact form): npx wrangler secret put TURNSTILE_SECRET
+# The public site key is TURNSTILE_SITEKEY in src/consts.ts.

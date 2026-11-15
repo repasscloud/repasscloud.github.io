@@ -1,6 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import { COMPANY_ABN, COMPANY_ADDRESS, COMPANY_LEGAL_NAME, CONTACT_EMAIL } from '../consts';
+import { COMPANY_ABN, COMPANY_ADDRESS, COMPANY_LEGAL_NAME, CONTACT_EMAIL, TURNSTILE_SITEKEY } from '../consts';
 import { TOPICS } from '../../cloudflare/contact';
 
 const topics = Object.entries(TOPICS);
@@ -64,6 +64,7 @@ const topics = Object.entries(TOPICS);
             sensitive personal information. We will use the information you provide to respond to and administer your
             enquiry in accordance with our <a href="/legal/privacy-policy/">Privacy Policy</a>.
           </p>
+          {TURNSTILE_SITEKEY && <div id="cf-turnstile" data-sitekey={TURNSTILE_SITEKEY}></div>}
           <div>
             <button class="btn btn-primary" type="submit" id="cf-submit">Send message</button>
           </div>
@@ -109,6 +110,23 @@ const topics = Object.entries(TOPICS);
       if (msg && !msg.value) msg.placeholder = `About the ${role.slice(0, 160)} role: include a link to your CV and your work.`;
     }
     document.getElementById('cf-started').value = String(Date.now());
+
+    // Cloudflare Turnstile, rendered explicitly so it can be reset after each
+    // send (tokens are single-use and the page stays open).
+    const tsBox = document.getElementById('cf-turnstile');
+    let tsWidget;
+    if (tsBox) {
+      window.onRepassTurnstile = () => {
+        tsWidget = window.turnstile.render(tsBox, { sitekey: tsBox.dataset.sitekey, action: 'contact' });
+      };
+      const s = document.createElement('script');
+      s.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit&onload=onRepassTurnstile';
+      s.async = true;
+      document.head.appendChild(s);
+    }
+    const resetTurnstile = () => {
+      if (tsWidget !== undefined) window.turnstile?.reset(tsWidget);
+    };
 
     const show = (kind, text) => {
       status.hidden = false;
@@ -174,6 +192,7 @@ const topics = Object.entries(TOPICS);
       } catch {
         show('error', "Your message couldn't be sent. Check your connection and try again, or email hello@repasscloud.com.");
       } finally {
+        resetTurnstile();
         submit.disabled = false;
         submit.textContent = 'Send message';
       }
@@ -191,6 +210,10 @@ const topics = Object.entries(TOPICS);
 
   #form-status {
     margin-bottom: 24px;
+  }
+
+  #cf-turnstile:empty {
+    display: none;
   }
 
   .contact-aside h2 {

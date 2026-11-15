@@ -9,12 +9,35 @@
  * Optional plain-text variables:
  *   CONTACT_TO          - recipient (default hello@repasscloud.com)
  *   CONTACT_FROM        - sender on a MailerSend-verified domain (default hello@repasscloud.com)
+ *
+ * Spam protection, in order: origin check, honeypot, minimum fill time, link
+ * and content heuristics, a burst limit (CONTACT_LIMITER binding), a daily
+ * limit of 3 sent messages per IP and per email (CONTACT_LIMITS KV namespace),
+ * then Cloudflare Turnstile. Turnstile is enforced as
+ * soon as the TURNSTILE_SECRET secret exists; the matching public site key is
+ * TURNSTILE_SITEKEY in src/consts.ts. Set both together.
+ *   TURNSTILE_SECRET    - Turnstile widget secret (secret)
+ *   TURNSTILE_HOSTNAMES - comma-separated hostnames siteverify must report
+ *                         (default repasscloud.com)
  */
+
+export interface RateLimiter {
+  limit: (options: { key: string }) => Promise<{ success: boolean }>;
+}
+
+export interface KVStore {
+  get: (key: string) => Promise<string | null>;
+  put: (key: string, value: string, options?: { expiration?: number }) => Promise<void>;
+}
 
 export interface ContactEnv {
   MAILERSEND_API_KEY?: string;
   CONTACT_TO?: string;
   CONTACT_FROM?: string;
+  TURNSTILE_SECRET?: string;
+  TURNSTILE_HOSTNAMES?: string;
+  CONTACT_LIMITER?: RateLimiter;
+  CONTACT_LIMITS?: KVStore;
 }
 
 const DEFAULT_ADDRESS = 'hello@repasscloud.com';
@@ -32,7 +55,13 @@ export const TOPICS: Record<string, string> = {
 };
 
 const LIMITS = { name: 120, email: 254, company: 160, message: 5000, role: 160 };
-const MIN_FILL_MS = 2500;
+const MIN_FILL_MS = 4000;
+const MAX_LINKS = 2;
+const DAILY_LIMIT = 3;
+const DAY_SECONDS = 24 * 60 * 60;
+const URL_RE = /(?:https?:\/\/|www\.)\S+/gi;
+const TURNSTILE_URL = 'https://challenges.cloudflare.com/turnstile/v0/siteverify';
+const TURNSTILE_ACTION = 'contact';
 const EMAIL_RE = /^[^\s@<>"]+@[^\s@<>"]+\.[^\s@<>"]{2,}$/;
 
 type Fields = Record<string, string>;
@@ -45,7 +74,9 @@ interface Result {
 }
 
 function allowedOrigin(origin: string | null, requestUrl: string): boolean {
-  if (!origin) return true; // same-origin form posts from some browsers omit it
+  // Every current browser sends Origin on a POST, fetch or plain form. Scripts
+  // posting straight to the endpoint usually don't, so a missing one is refused.
+  if (!origin) return false;
   try {
     const o = new URL(origin);
     const self = new URL(requestUrl);
@@ -53,8 +84,6 @@ function allowedOrigin(origin: string | null, requestUrl: string): boolean {
       o.host === self.host ||
       o.hostname === 'repasscloud.com' ||
       o.hostname === 'www.repasscloud.com' ||
-      o.hostname.endsWith('.pages.dev') ||
-      o.hostname.endsWith('.workers.dev') ||
       o.hostname === 'localhost'
     );
   } catch {
@@ -81,6 +110,104 @@ const clean = (v: string | undefined, max: number) =>
 
 const oneLine = (v: string) => v.replace(/[\r\n]+/g, ' ').trim();
 
+const countLinks = (v: string) => (v.match(URL_RE) ?? []).length;
+
+/** Text that people writing to us don't send, but spam nearly always does. */
+function looksLikeSpam(name: string, company: string, message: string): boolean {
+  if (countLinks(name) || countLinks(company)) return true;
+  if (countLinks(message) > MAX_LINKS) return true;
+  if (/\[url=|<a\s+href=/i.test(message)) return true;
+  // The same character repeated at length (keyboard mashing, filler).
+  if (/(.)\1{24,}/.test(message)) return true;
+  return false;
+}
+
+async function rateLimited(env: ContactEnv, keys: string[]): Promise<boolean> {
+  if (!env.CONTACT_LIMITER) return false;
+  for (const key of keys) {
+    try {
+      const { success } = await env.CONTACT_LIMITER.limit({ key });
+      if (!success) return true;
+    } catch (err) {
+      console.error('contact: rate limiter failed', err);
+    }
+  }
+  return false;
+}
+
+interface DailyCount {
+  count: number;
+  expires: number; // unix seconds; the window runs 24 hours from the first message
+}
+
+async function readDaily(kv: KVStore, key: string): Promise<DailyCount | null> {
+  try {
+    const raw = await kv.get(`daily:${key}`);
+    if (!raw) return null;
+    const v = JSON.parse(raw) as DailyCount;
+    return v.expires > Date.now() / 1000 ? v : null;
+  } catch (err) {
+    console.error('contact: daily limit read failed', err);
+    return null;
+  }
+}
+
+/** True when any key has already sent DAILY_LIMIT messages in its 24-hour window. */
+async function overDailyLimit(env: ContactEnv, keys: string[]): Promise<boolean> {
+  if (!env.CONTACT_LIMITS) return false;
+  const counts = await Promise.all(keys.map((k) => readDaily(env.CONTACT_LIMITS!, k)));
+  return counts.some((c) => c !== null && c.count >= DAILY_LIMIT);
+}
+
+/** Counts a sent message against each key. */
+async function recordDaily(env: ContactEnv, keys: string[]): Promise<void> {
+  const kv = env.CONTACT_LIMITS;
+  if (!kv) return;
+  await Promise.all(
+    keys.map(async (k) => {
+      const now = Math.floor(Date.now() / 1000);
+      const prev = await readDaily(kv, k);
+      const next: DailyCount = prev
+        ? { count: prev.count + 1, expires: prev.expires }
+        : { count: 1, expires: now + DAY_SECONDS };
+      // KV needs an expiration at least 60 seconds out.
+      try {
+        await kv.put(`daily:${k}`, JSON.stringify(next), { expiration: Math.max(next.expires, now + 60) });
+      } catch (err) {
+        console.error('contact: daily limit write failed', err);
+      }
+    }),
+  );
+}
+
+async function turnstileOk(env: ContactEnv, token: string, ip: string): Promise<boolean> {
+  if (!token || token.length > 2048) return false;
+  const hostnames = new Set(
+    (env.TURNSTILE_HOSTNAMES || 'repasscloud.com')
+      .split(',')
+      .map((h) => h.trim())
+      .filter(Boolean),
+  );
+  try {
+    const body = new URLSearchParams({ secret: env.TURNSTILE_SECRET ?? '', response: token });
+    if (ip) body.set('remoteip', ip);
+    const res = await fetch(TURNSTILE_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      signal: AbortSignal.timeout(10_000),
+      body,
+    });
+    if (!res.ok) throw new Error(`siteverify ${res.status}`);
+    const result = (await res.json()) as { success?: boolean; action?: string; hostname?: string; 'error-codes'?: string[] };
+    if (result.success === true && result.action === TURNSTILE_ACTION && hostnames.has(result.hostname ?? '')) return true;
+    console.warn('contact: turnstile rejected', result['error-codes'], result.action, result.hostname);
+    return false;
+  } catch (err) {
+    console.error('contact: siteverify failed', err);
+    return false; // fail closed
+  }
+}
+
 const escapeHtml = (v: string) =>
   v.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 
@@ -98,11 +225,18 @@ export async function handleContact(request: Request, env: ContactEnv): Promise<
 
   // Spam traps: a hidden field people never fill in, and a minimum time on page.
   // Bots get a normal-looking success so they don't learn what tripped them.
-  if (fields.website) return { ok: true, status: 200 };
+  const silentDrop: Result = { ok: true, status: 200 };
+  if (fields.website) return silentDrop;
+  // The page script stamps `started`; a post without it didn't come from the page.
   const started = Number(fields.started);
-  if (Number.isFinite(started) && started > 0 && Date.now() - started < MIN_FILL_MS) {
-    return { ok: true, status: 200 };
+  if (!Number.isFinite(started) || started <= 0) {
+    return {
+      ok: false,
+      status: 400,
+      error: `The form needs JavaScript turned on. You can also email us at ${DEFAULT_ADDRESS}.`,
+    };
   }
+  if (Date.now() - started < MIN_FILL_MS) return silentDrop;
 
   const name = oneLine(clean(fields.name, LIMITS.name));
   const email = oneLine(clean(fields.email, LIMITS.email));
@@ -118,6 +252,36 @@ export async function handleContact(request: Request, env: ContactEnv): Promise<
   if (message.length < 10) fieldErrors.message = 'Write a message of at least 10 characters.';
   if (Object.keys(fieldErrors).length) {
     return { ok: false, status: 422, error: 'Check the highlighted fields.', fieldErrors };
+  }
+
+  if (looksLikeSpam(name, company, message)) {
+    console.warn('contact: dropped by content filter');
+    return silentDrop;
+  }
+
+  const ip = request.headers.get('cf-connecting-ip') ?? '';
+  const limitKeys = [`ip:${ip || 'unknown'}`, `email:${email.toLowerCase()}`];
+  if (await overDailyLimit(env, limitKeys)) {
+    return {
+      ok: false,
+      status: 429,
+      error: `You've already sent ${DAILY_LIMIT} messages today. Wait another day and try again.`,
+    };
+  }
+  if (await rateLimited(env, limitKeys)) {
+    return {
+      ok: false,
+      status: 429,
+      error: `You've sent several messages in a short time. Wait a few minutes, or email ${DEFAULT_ADDRESS}.`,
+    };
+  }
+
+  if (env.TURNSTILE_SECRET && !(await turnstileOk(env, fields['cf-turnstile-response'] ?? '', ip))) {
+    return {
+      ok: false,
+      status: 403,
+      error: `We couldn't confirm you're not a bot. Complete the check and send again, or email ${DEFAULT_ADDRESS}.`,
+    };
   }
 
   if (!env.MAILERSEND_API_KEY) {
@@ -173,7 +337,10 @@ export async function handleContact(request: Request, env: ContactEnv): Promise<
     return { ok: false, status: 502, error: `Your message couldn't be sent. Try again, or email ${DEFAULT_ADDRESS}.` };
   }
 
-  if (res.status === 202 || res.ok) return { ok: true, status: 200 };
+  if (res.status === 202 || res.ok) {
+    await recordDaily(env, limitKeys);
+    return { ok: true, status: 200 };
+  }
 
   console.error('contact: MailerSend error', res.status, await res.text().catch(() => ''));
   return { ok: false, status: 502, error: `Your message couldn't be sent. Try again, or email ${DEFAULT_ADDRESS}.` };
