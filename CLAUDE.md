@@ -53,7 +53,8 @@ Prefer small, reviewable updates. Do not reintroduce a services-first/engagement
 - `src/data/products.ts`: `products` (active) and `archiveProjects` (retired). Products use `monogram` + `colour` + `kind`, or `iconImage` for real art, plus optional `version`/`changelogUrl`. Used by the homepage, `/products/`, `/about/` and the footer.
 - `src/data/books.ts`: the How-To-Use-AI.com series (`SERIES`, `books`). Source of truth for book data is `publishing/books.json` in the how-to-use-ai.com repository (titles, ISBNs, accent colours, back-cover copy); copy changes across by hand. Kindle store links come from `https://how-to-use-ai.com/purchase/` (ASIN `B0HLYQSMQT`). Direct digital purchase links go to that purchase page, which gets direct links on release day. A book gets its own page when `page: true`.
 - `src/data/engineering.ts`: the four capabilities (with anchor ids) and selected outcomes, used by the homepage and `/engineering/`.
-- `src/components/Changelog.astro`: fetches and renders a Keep a Changelog `CHANGELOG.md` at build time; renders nothing if the fetch fails.
+- `src/lib/changelog.ts`: fetches a Keep a Changelog `CHANGELOG.md` at build time and renders each version as Markdown (remark + GFM; raw HTML dropped, relative links resolved to the GitHub repo); returns nothing if the fetch fails. Used by `src/layouts/ReleaseNotesLayout.astro` (the `/products/<slug>/release-notes/` pages) and `src/components/ReleaseNotesSummary.astro` (the short block on product pages). Set a product's `changelogUrl` and `releaseNotesHref` in `products.ts`.
+- `products.ts` `showInFooter`: the footer lists flagship products only, plus an "All products" link; every product still appears on `/products/`.
 
 ### Layouts and shell
 
@@ -70,7 +71,8 @@ Prefer small, reviewable updates. Do not reintroduce a services-first/engagement
 ### Pages
 
 - `/` (`src/pages/index.astro`): hero with the Book 1 cover and a real `cursdel` dry run → Software and Publishing panels → engineering capabilities → selected work → news. `Organization` + `WebSite` schema.
-- `/products/`, `/products/cursedelete/`: product catalogue (`ItemList` schema) and the CurseDelete 2 page (content verifiable from the `repasscloud/cursedelete-2` repo only; `SoftwareApplication` + `BreadcrumbList` schema, no `Offer`/ratings). The CLI binary is `cursdel`.
+- `/products/my-little-crm/` (+ `release-notes/`): My Little CRM, a free MIT-licensed Flutter app (`danijeljw-RPC/my-little-crm`); content verifiable from that repo. Download links are built from `MY_LITTLE_CRM_VERSION`, so update it on release. Not on the homepage or in the footer.
+- `/products/`, `/products/cursedelete/` (+ `release-notes/`): product catalogue (`ItemList` schema) and the CurseDelete 2 page (content verifiable from the `repasscloud/cursedelete-2` repo only; `SoftwareApplication` + `BreadcrumbList` schema, no `Offer`/ratings). The CLI binary is `cursdel`.
 - `/publishing/` (`BookSeries` schema, `BookShelf` component: Book 1 face-out with its real cover, later books as spines in their `books.json` accent colours) and `/publishing/<slug>/` (`Book` schema with an edition per ISBN; Kindle store list; direct purchase via how-to-use-ai.com).
 - `/engineering/`: merged former `/services/*` and `/case-studies` pages.
 - `/careers/`: see "Careers".
