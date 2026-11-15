@@ -5,6 +5,10 @@ import {
   CURSEDELETE_GITHUB_URL,
   CURSEDELETE_ICON,
   CURSEDELETE_VERSION,
+  MY_LITTLE_CRM_CHANGELOG_URL,
+  MY_LITTLE_CRM_GITHUB_URL,
+  MY_LITTLE_CRM_ICON,
+  MY_LITTLE_CRM_VERSION,
 } from '../consts';
 
 export type ProductStatus = 'active' | 'preview';
@@ -38,10 +42,17 @@ export interface Product {
   iconImage?: string;
   /** Current published version, e.g. "v2.0.0". Update when publishing a new release. */
   version?: string;
-  /** Raw markdown URL for a Keep a Changelog-style CHANGELOG.md, rendered via <Changelog>. */
+  /** Raw markdown URL for a Keep a Changelog-style CHANGELOG.md, rendered on `releaseNotesHref`. */
   changelogUrl?: string;
+  /** Internal release notes route, rendered from `changelogUrl`. */
+  releaseNotesHref?: string;
   tags: string[];
   showOnHomepage: boolean;
+  /**
+   * Whether the footer's Products column lists this product. Keep the footer
+   * to the flagship products; every product still appears on /products/.
+   */
+  showInFooter: boolean;
 }
 
 export const products: Product[] = [
@@ -62,8 +73,10 @@ export const products: Product[] = [
     iconImage: CURSEDELETE_ICON,
     version: CURSEDELETE_VERSION,
     changelogUrl: CURSEDELETE_CHANGELOG_URL,
+    releaseNotesHref: '/products/cursedelete/release-notes/',
     tags: ['Rust', 'CLI', 'macOS', 'Windows', 'Linux'],
     showOnHomepage: true,
+    showInFooter: true,
   },
   {
     slug: 'cinturon360',
@@ -81,6 +94,7 @@ export const products: Product[] = [
     kind: 'Enterprise platform',
     tags: ['.NET', 'Azure', 'Entra ID', 'Multi-tenant'],
     showOnHomepage: true,
+    showInFooter: true,
   },
   {
     slug: 'aethon-jobs',
@@ -98,6 +112,29 @@ export const products: Product[] = [
     kind: 'Hiring platform',
     tags: ['.NET', 'Blazor', 'PostgreSQL', 'AI'],
     showOnHomepage: true,
+    showInFooter: true,
+  },
+  {
+    slug: 'my-little-crm',
+    name: 'My Little CRM',
+    tagline: 'A private, offline record of your own conversations: who you spoke with, what was said, and what they promised.',
+    description:
+      'My Little CRM is a personal ledger for home users. Log calls, emails and letters with companies and people, track follow-ups, and search or export the history. It needs no account and no network connection, and your records stay on your device.',
+    status: 'active',
+    statusLabel: 'Active product',
+    destination: 'internal',
+    href: '/products/my-little-crm/',
+    githubUrl: MY_LITTLE_CRM_GITHUB_URL,
+    monogram: 'ML',
+    colour: '#18141f',
+    kind: 'Personal app',
+    iconImage: MY_LITTLE_CRM_ICON,
+    version: MY_LITTLE_CRM_VERSION,
+    changelogUrl: MY_LITTLE_CRM_CHANGELOG_URL,
+    releaseNotesHref: '/products/my-little-crm/release-notes/',
+    tags: ['Flutter', 'Android', 'macOS', 'Windows', 'Offline'],
+    showOnHomepage: false,
+    showInFooter: false,
   },
 ];
 

@@ -5,6 +5,7 @@ import { books } from '../data/books';
 import { getOpenJobs } from '../lib/jobs';
 
 const year = new Date().getFullYear();
+const footerProducts = products.filter((p) => p.showInFooter);
 const publishedBooks = books.filter((b) => b.page);
 const openRoles = (await getOpenJobs()).length;
 ---
@@ -27,7 +28,7 @@ const openRoles = (await getOpenJobs()).length;
       <div>
         <h2>Products</h2>
         <ul>
-          {products.map((p) => (
+          {footerProducts.map((p) => (
             <li>
               {p.destination === 'external' ? (
                 <a href={p.href} target="_blank" rel="noopener">{p.name} ↗</a>
@@ -36,6 +37,7 @@ const openRoles = (await getOpenJobs()).length;
               )}
             </li>
           ))}
+          <li><a href="/products/">All products</a></li>
           <li><a href="/archive/">Archive</a></li>
         </ul>
       </div>

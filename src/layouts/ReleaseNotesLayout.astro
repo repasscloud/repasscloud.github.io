@@ -1,0 +1,291 @@
+---
+/**
+ * Release notes page for a product in src/data/products.ts. Renders the
+ * product's CHANGELOG.md (fetched at build time) as HTML, newest first,
+ * with a version index. Used by /products/<slug>/release-notes/.
+ */
+import Layout from './Layout.astro';
+import type { Product } from '../data/products';
+import { formatReleaseDate, getChangelog } from '../lib/changelog';
+
+interface Props {
+  product: Product;
+  title: string;
+  description: string;
+  ogImagePath?: string;
+}
+
+const { product, title, description, ogImagePath } = Astro.props;
+const pageUrl = new URL(product.releaseNotesHref ?? Astro.url.pathname, 'https://repasscloud.com').href;
+const productUrl = new URL(product.href, 'https://repasscloud.com').href;
+
+const entries = product.changelogUrl
+  ? await getChangelog(product.changelogUrl, {
+      linkBase: product.githubUrl ? `${product.githubUrl}/blob/main/` : undefined,
+    })
+  : [];
+const latestId = entries.find((e) => !e.unreleased)?.id;
+const changelogSource = product.githubUrl ? `${product.githubUrl}/blob/main/CHANGELOG.md` : undefined;
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Products', item: 'https://repasscloud.com/products/' },
+    { '@type': 'ListItem', position: 2, name: product.name, item: productUrl },
+    { '@type': 'ListItem', position: 3, name: 'Release notes', item: pageUrl },
+  ],
+};
+---
+
+<Layout title={title} exactTitle description={description} ogImagePath={ogImagePath}>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  </Fragment>
+
+  <section class="page-hero rn-hero">
+    <div class="wrap">
+      <ol class="breadcrumb">
+        <li><a href="/products/">Products</a></li>
+        <li><a href={product.href}>{product.name}</a></li>
+        <li aria-current="page">Release notes</li>
+      </ol>
+      <div class="rn-title">
+        {product.iconImage && <img src={product.iconImage} alt="" width="56" height="56" />}
+        <h1>{product.name} release notes</h1>
+      </div>
+      <p class="lead">
+        What changed in each version of {product.name}, newest first. These notes come from the project’s
+        changelog on GitHub and are refreshed every time this site is built.
+      </p>
+      <dl class="facts">
+        {product.version && <div><dt>Current version</dt><dd>{product.version}</dd></div>}
+        <div><dt>Versioning</dt><dd>Semantic Versioning</dd></div>
+        {changelogSource && (
+          <div><dt>Source</dt><dd><a href={changelogSource} target="_blank" rel="noopener">CHANGELOG.md ↗</a></dd></div>
+        )}
+      </dl>
+    </div>
+  </section>
+
+  <section class="section-sm">
+    {entries.length > 0 ? (
+      <div class="wrap rn-grid">
+        <nav class="rn-index" aria-label="Versions">
+          <p class="rn-index-head">Versions</p>
+          <ol>
+            {entries.map((entry) => (
+              <li>
+                <a href={`#${entry.id}`}>
+                  <span class="rn-index-version">{entry.unreleased ? 'Unreleased' : `v${entry.version}`}</span>
+                  {entry.date && <span class="rn-index-date">{formatReleaseDate(entry.date)}</span>}
+                </a>
+              </li>
+            ))}
+          </ol>
+        </nav>
+
+        <div class="rn-entries">
+          {entries.map((entry) => (
+            <article class="rn-entry" id={entry.id} aria-labelledby={`${entry.id}-title`}>
+              <header class="rn-entry-head">
+                <h2 id={`${entry.id}-title`}>{entry.unreleased ? 'Unreleased' : `v${entry.version}`}</h2>
+                {entry.id === latestId && <span class="tag">Latest</span>}
+                {entry.unreleased && <span class="tag tag-neutral">In development</span>}
+                <p class="rn-meta">
+                  {entry.date && <time datetime={entry.date}>{formatReleaseDate(entry.date)}</time>}
+                  {entry.url && !entry.unreleased && (
+                    <a href={entry.url} target="_blank" rel="noopener">GitHub release ↗</a>
+                  )}
+                </p>
+              </header>
+              <div class="prose rn-body" set:html={entry.html} />
+            </article>
+          ))}
+        </div>
+      </div>
+    ) : (
+      <div class="wrap-narrow">
+        <p class="note">
+          The release notes couldn’t be loaded when this page was built.
+          {changelogSource && (
+            <>
+              {' '}Read them in the <a href={changelogSource} target="_blank" rel="noopener">changelog on GitHub ↗</a>.
+            </>
+          )}
+        </p>
+      </div>
+    )}
+  </section>
+
+  <section class="section-sm band">
+    <div class="wrap rn-foot">
+      <p><a class="text-link" href={product.href}>Back to {product.name}</a></p>
+      {product.githubUrl && (
+        <p><a class="text-link" href={`${product.githubUrl}/releases`} target="_blank" rel="noopener">All releases on GitHub ↗</a></p>
+      )}
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .rn-title {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .rn-title img {
+    width: 56px;
+    height: 56px;
+    border-radius: 13px;
+  }
+
+  .rn-grid {
+    display: grid;
+    grid-template-columns: 220px minmax(0, 1fr);
+    gap: 64px;
+    align-items: start;
+  }
+
+  .rn-index {
+    position: sticky;
+    top: 96px;
+  }
+
+  .rn-index-head {
+    margin: 0 0 10px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--ink-2);
+  }
+
+  .rn-index ol {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border-left: 1px solid var(--line);
+  }
+
+  .rn-index a {
+    display: block;
+    padding: 8px 0 8px 16px;
+    margin-left: -1px;
+    border-left: 2px solid transparent;
+    text-decoration: none;
+    color: var(--ink);
+  }
+
+  .rn-index a:hover {
+    border-left-color: var(--violet);
+    color: var(--violet);
+  }
+
+  .rn-index-version {
+    display: block;
+    font-weight: 700;
+  }
+
+  .rn-index-date {
+    display: block;
+    font-size: 0.85rem;
+    color: var(--ink-2);
+  }
+
+  .rn-entries {
+    max-width: var(--narrow);
+  }
+
+  .rn-entry {
+    padding-bottom: 48px;
+    margin-bottom: 48px;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .rn-entry:last-child {
+    border-bottom: 0;
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+
+  .rn-entry-head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px 12px;
+    margin-bottom: 20px;
+  }
+
+  .rn-entry-head h2 {
+    margin: 0;
+    font-size: 2rem;
+    letter-spacing: -0.02em;
+  }
+
+  .rn-meta {
+    flex-basis: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px 18px;
+    margin: 0;
+    font-size: 0.95rem;
+    color: var(--magenta);
+  }
+
+  .rn-meta a {
+    color: var(--violet);
+  }
+
+  /* Changelog bodies use ### for groups (Added, Changed, Fixed…) */
+  .rn-body :global(h3) {
+    margin: 1.8em 0 0.4em;
+    font-size: 1.15rem;
+  }
+
+  .rn-body :global(h3:first-child) {
+    margin-top: 0;
+  }
+
+  .rn-body :global(code) {
+    overflow-wrap: anywhere;
+  }
+
+  .rn-foot {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 32px;
+  }
+
+  .rn-foot p {
+    margin: 0;
+  }
+
+  @media (max-width: 860px) {
+    .rn-grid {
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+
+    .rn-index {
+      position: static;
+    }
+
+    .rn-index ol {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      border-left: 0;
+    }
+
+    .rn-index a {
+      margin: 0;
+      padding: 8px 14px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-sm);
+    }
+
+    .rn-index a:hover {
+      border-color: var(--violet);
+    }
+  }
+</style>

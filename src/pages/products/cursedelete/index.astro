@@ -1,9 +1,8 @@
 ---
 import Layout from '../../../layouts/Layout.astro';
-import Changelog from '../../../components/Changelog.astro';
+import ReleaseNotesSummary from '../../../components/ReleaseNotesSummary.astro';
 import {
   CONTACT_EMAIL,
-  CURSEDELETE_CHANGELOG_URL,
   CURSEDELETE_GITHUB_URL,
   CURSEDELETE_ICON,
   CURSEDELETE_LICENSING_URL,
@@ -11,6 +10,9 @@ import {
   CURSEDELETE_STRIPE_LINKS,
   CURSEDELETE_VERSION,
 } from '../../../consts';
+import { products } from '../../../data/products';
+
+const product = products.find((p) => p.slug === 'cursedelete')!;
 
 const platforms = [
   { name: 'macOS', status: 'Implemented and tested', detail: 'Native Darwin/POSIX primitives (openat/unlinkat/fstatat) — the reference PlatformEngine implementation.' },
@@ -100,6 +102,7 @@ const breadcrumbSchema = {
           <div><dt>Version</dt><dd>{CURSEDELETE_VERSION}</dd></div>
           <div><dt>Platforms</dt><dd>macOS, Windows, Linux</dd></div>
           <div><dt>Binary</dt><dd><code>cursdel</code> (Rust)</dd></div>
+          <div><dt>Changes</dt><dd><a href="/products/cursedelete/release-notes/">Release notes</a></dd></div>
         </dl>
       </div>
       <pre class="terminal cd-term" aria-label="Example dry run output"><span class="prompt">$</span> cursdel /tmp/scratch/old-build --dry-run
@@ -222,9 +225,8 @@ cargo build --release -p cursdel-cli
   </section>
 
   <section class="section band">
-    <div class="wrap-narrow">
-      <h2 style="margin-bottom:28px">Release notes</h2>
-      <Changelog url={CURSEDELETE_CHANGELOG_URL} />
+    <div class="wrap">
+      <ReleaseNotesSummary product={product} />
     </div>
   </section>
 </Layout>

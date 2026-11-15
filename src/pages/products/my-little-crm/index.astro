@@ -1,0 +1,415 @@
+---
+import { Image } from 'astro:assets';
+import Layout from '../../../layouts/Layout.astro';
+import ReleaseNotesSummary from '../../../components/ReleaseNotesSummary.astro';
+import {
+  MY_LITTLE_CRM_GITHUB_URL,
+  MY_LITTLE_CRM_ICON,
+  MY_LITTLE_CRM_LICENSE_URL,
+  MY_LITTLE_CRM_OG_IMAGE,
+  MY_LITTLE_CRM_RELEASES_URL,
+  MY_LITTLE_CRM_VERSION,
+} from '../../../consts';
+import { products } from '../../../data/products';
+import shotInteractions from '../../../assets/products/my-little-crm/phone-01-interactions.png';
+import shotFollowUps from '../../../assets/products/my-little-crm/phone-03-follow-ups.png';
+import shotHistory from '../../../assets/products/my-little-crm/phone-04-party-history.png';
+
+const product = products.find((p) => p.slug === 'my-little-crm')!;
+
+// Release assets follow my-little-crm-<version>-<platform> on GitHub Releases.
+const versionNumber = MY_LITTLE_CRM_VERSION.replace(/^v/, '');
+const releaseBase = `${MY_LITTLE_CRM_RELEASES_URL}/download/${MY_LITTLE_CRM_VERSION}`;
+const downloads = [
+  { platform: 'Android', file: `my-little-crm-${versionNumber}-android.apk`, note: 'APK for phones and tablets' },
+  { platform: 'macOS', file: `my-little-crm-${versionNumber}-macos.zip`, note: 'App bundle in a zip archive' },
+  { platform: 'Windows', file: `my-little-crm-${versionNumber}-windows-x64.zip`, note: 'x64, in a zip archive' },
+];
+
+const platforms = [
+  { name: 'Android', status: 'Release build', detail: 'APK attached to each GitHub release. Automatic cloud backup and device-transfer extraction of app data are turned off.' },
+  { name: 'macOS', status: 'Release build', detail: 'Zipped app bundle attached to each GitHub release. Integration-tested in CI.' },
+  { name: 'Windows', status: 'Release build', detail: 'Zipped x64 build attached to each GitHub release.' },
+  { name: 'Linux', status: 'Build from source', detail: 'Desktop GTK build. Integration-tested in CI; no release build yet.' },
+  { name: 'iOS', status: 'Build from source', detail: 'Builds with Xcode on macOS; no release build yet.' },
+];
+
+const features = [
+  { title: 'Record interactions', desc: 'The company or person, how you were contacted, the date and a summary, plus optional contact name, reference numbers, commitment and follow-up.' },
+  { title: 'Follow-ups', desc: 'Set a due date, and optionally a time. Outstanding follow-ups are grouped into Overdue, Due today and Upcoming, with an overdue count in the navigation.' },
+  { title: 'Party histories', desc: 'Every interaction with a company or person in one newest-first history. Rename a party, merge a duplicate into another, or delete it.' },
+  { title: 'Search', desc: 'Find notes, names, contacts and reference numbers. Results open the matching interaction directly.' },
+  { title: 'PDF and JSON export', desc: 'Export a party’s full chronological history as a PDF to print or attach to a complaint, or as JSON for your own records.' },
+  { title: 'Move to a new device', desc: 'Export everything to one versioned JSON file and import it into an empty ledger on another device. The app tells you the file isn’t encrypted before saving.' },
+  { title: 'Phone, tablet and desktop', desc: 'A navigation rail on tablets and desktop windows, with lists and details side by side when there’s room.' },
+  { title: 'Fast with big ledgers', desc: 'The home list loads 50 interactions at a time. With 50,000 interactions, the first page loads in under a millisecond.' },
+];
+
+const softwareSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'SoftwareApplication',
+  name: 'My Little CRM',
+  applicationCategory: 'UtilitiesApplication',
+  operatingSystem: 'Android, macOS, Windows',
+  softwareVersion: versionNumber,
+  description:
+    'My Little CRM is a private, offline-first ledger of your personal communications: who you spoke with, what was said, and what they promised. No account and no network connection needed.',
+  url: 'https://repasscloud.com/products/my-little-crm/',
+  image: new URL(MY_LITTLE_CRM_ICON, 'https://repasscloud.com').href,
+  downloadUrl: MY_LITTLE_CRM_RELEASES_URL,
+  releaseNotes: 'https://repasscloud.com/products/my-little-crm/release-notes/',
+  license: 'https://opensource.org/license/mit',
+  author: {
+    '@type': 'Organization',
+    name: 'RePass Cloud Pty Ltd',
+    url: 'https://repasscloud.com',
+  },
+};
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Products', item: 'https://repasscloud.com/products/' },
+    { '@type': 'ListItem', position: 2, name: 'My Little CRM', item: 'https://repasscloud.com/products/my-little-crm/' },
+  ],
+};
+---
+
+<Layout
+  title="My Little CRM: A Private, Offline Record of Your Calls"
+  exactTitle
+  description="My Little CRM keeps a private, offline record of your calls, emails and letters: who you spoke with, what was said and what they promised. Free."
+  ogImagePath={MY_LITTLE_CRM_OG_IMAGE}
+  ogImageAlt="My Little CRM: who you spoke with, what was said, and what they promised."
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(softwareSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  </Fragment>
+
+  <section class="page-hero mlc-hero">
+    <div class="wrap mlc-hero-grid">
+      <div>
+        <ol class="breadcrumb">
+          <li><a href="/products/">Products</a></li>
+          <li aria-current="page">My Little CRM</li>
+        </ol>
+        <div class="mlc-title">
+          <img src={MY_LITTLE_CRM_ICON} alt="" width="64" height="64" />
+          <h1>My Little CRM</h1>
+        </div>
+        <p class="lead">
+          Keep your own record of the calls, emails and letters you have with companies and people: who you
+          spoke with, what was said, and what they promised. It needs no account and no network
+          connection, and your records stay on your device.
+        </p>
+        <div class="actions">
+          <a href="#download" class="btn btn-primary">Download {MY_LITTLE_CRM_VERSION}</a>
+          <a href={MY_LITTLE_CRM_GITHUB_URL} class="btn btn-quiet" target="_blank" rel="noopener">Source on GitHub ↗</a>
+        </div>
+        <dl class="facts">
+          <div><dt>Version</dt><dd>{MY_LITTLE_CRM_VERSION}</dd></div>
+          <div><dt>Platforms</dt><dd>Android, macOS, Windows</dd></div>
+          <div><dt>Price</dt><dd>Free, MIT licence</dd></div>
+          <div><dt>Changes</dt><dd><a href="/products/my-little-crm/release-notes/">Release notes</a></dd></div>
+        </dl>
+      </div>
+      <figure class="mlc-phone">
+        <Image
+          src={shotInteractions}
+          alt="The My Little CRM home screen listing recent interactions with an energy company, a bank, an insurer and a property manager."
+          widths={[320, 640]}
+          sizes="(max-width: 960px) 260px, 320px"
+          loading="eager"
+        />
+      </figure>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap split-wide">
+      <div>
+        <h2 style="margin-bottom:20px">Your side of the conversation, written down</h2>
+        <p class="muted">
+          Important conversations get scattered across phone calls, emails, chats and letters. When a
+          promised callback never comes or a refund goes missing, your own dated notes are what help you
+          follow it up. My Little CRM is made for personal, at-home use.
+        </p>
+      </div>
+      <div>
+        <h3 style="margin-bottom:12px">Where it earns its keep</h3>
+        <ul class="checks">
+          <li>Calls with your energy provider, bank, insurer or landlord</li>
+          <li>Chasing refunds and promised callbacks on time</li>
+          <li>Keeping reference, ticket and case numbers in one place</li>
+          <li>A dated history to attach to a complaint</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section band">
+    <div class="wrap">
+      <div class="sec-head"><h2>Features</h2></div>
+      <dl class="caps three">
+        {features.map((item) => (
+          <div><dt>{item.title}</dt><dd>{item.desc}</dd></div>
+        ))}
+      </dl>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>A look inside</h2>
+        <p>Phone screens, shown with fictional sample data.</p>
+      </div>
+      <div class="mlc-shots">
+        <figure>
+          <Image src={shotInteractions} alt="Interactions list, newest first, with an Add interaction button." widths={[300, 600]} sizes="(max-width: 700px) 70vw, 300px" />
+          <figcaption>Interactions, newest first</figcaption>
+        </figure>
+        <figure>
+          <Image src={shotFollowUps} alt="Follow-ups screen listing outstanding follow-ups with their due dates." widths={[300, 600]} sizes="(max-width: 700px) 70vw, 300px" />
+          <figcaption>Outstanding follow-ups</figcaption>
+        </figure>
+        <figure>
+          <Image src={shotHistory} alt="A party history showing every interaction with one company in order." widths={[300, 600]} sizes="(max-width: 700px) 70vw, 300px" />
+          <figcaption>A party’s full history</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="section band">
+    <div class="wrap split-wide">
+      <div>
+        <h2 style="margin-bottom:20px">Private by design</h2>
+        <p class="muted">
+          Your records live in a SQLite database in the app’s own storage on your device. Recording,
+          search, follow-ups and exports all work offline.
+        </p>
+        <ul class="checks">
+          <li>No account or sign-up</li>
+          <li>Works fully offline</li>
+          <li>Your data stays on your device and is never uploaded</li>
+          <li>No ads, no analytics, no tracking</li>
+        </ul>
+      </div>
+      <div>
+        <h3 style="margin-bottom:12px">Worth knowing</h3>
+        <p class="muted">
+          Exports, including <strong>Export everything</strong>, are readable files, not encrypted backups.
+          Keep them somewhere you trust. If you save one to a cloud folder, that provider holds a copy.
+        </p>
+        <p class="muted">
+          Not included yet: an app PIN or biometrics, encrypted backup and restore, notifications, calendar
+          export, attachments and cloud sync. App-level database encryption is planned for a later security
+          release; until then your device’s own security protects the local database.
+        </p>
+        <p class="muted">
+          The <a href="/legal/my-little-crm-privacy/">My Little CRM privacy policy</a> sets this out in full.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="sec-head"><h2>Platform support</h2><p>One Flutter codebase, with release builds published for three platforms so far.</p></div>
+      <div class="table-wrap">
+        <table class="data-table">
+          <thead><tr><th scope="col">Platform</th><th scope="col">Status</th><th scope="col">Details</th></tr></thead>
+          <tbody>
+            {platforms.map((p) => (
+              <tr><th scope="row" style="color:var(--ink);font-size:1rem">{p.name}</th><td style="white-space:nowrap">{p.status}</td><td class="muted">{p.detail}</td></tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section id="download" class="section band">
+    <div class="wrap split-wide">
+      <div>
+        <h2 style="margin-bottom:20px">Download</h2>
+        <p class="muted">
+          {MY_LITTLE_CRM_VERSION} builds are published on GitHub, each with a SHA-256 checksum file. My Little
+          CRM is free and open source under the{' '}
+          <a href={MY_LITTLE_CRM_LICENSE_URL} target="_blank" rel="noopener">MIT licence ↗</a>. Use of the app is
+          also covered by the <a href="/legal/my-little-crm-terms/">My Little CRM terms of service</a> and{' '}
+          <a href="/legal/my-little-crm-privacy/">privacy policy</a>.
+        </p>
+        <h3 style="margin:28px 0 10px;font-size:1.08rem">Installing on Android</h3>
+        <ol class="mlc-steps muted">
+          <li>Download the APK on your phone.</li>
+          <li>When asked, allow your browser or file manager to install unknown apps.</li>
+          <li>Open the file and tap <strong>Install</strong>. Play Protect may warn about an unknown developer; that’s expected for apps installed outside Google Play.</li>
+        </ol>
+      </div>
+      <div>
+        <ul class="rows mlc-downloads">
+          {downloads.map((d) => (
+            <li>
+              <div>
+                <h3>{d.platform}</h3>
+                <p>{d.note} · <a href={`${releaseBase}/${d.file}.sha256`}>SHA-256<span class="sr-only"> checksum for {d.platform}</span></a></p>
+              </div>
+              <a class="go" href={`${releaseBase}/${d.file}`}>Download<span class="sr-only"> for {d.platform}</span></a>
+            </li>
+          ))}
+        </ul>
+        <p class="small muted" style="margin-top:18px">
+          Older versions and checksums: <a href={MY_LITTLE_CRM_RELEASES_URL} target="_blank" rel="noopener">all releases on GitHub ↗</a>
+        </p>
+        <h3 style="margin:28px 0 10px;font-size:1.08rem">Build from source</h3>
+        <pre class="terminal"><code>git clone {MY_LITTLE_CRM_GITHUB_URL}.git
+cd my-little-crm
+flutter pub get
+flutter run -d macos   <span class="dim"># or ios, android, windows, linux</span></code></pre>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <ReleaseNotesSummary product={product} />
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .mlc-hero-grid {
+    display: grid;
+    grid-template-columns: 1.3fr 0.7fr;
+    gap: 56px;
+    align-items: center;
+  }
+
+  .mlc-title {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+  }
+
+  .mlc-title img {
+    width: 64px;
+    height: 64px;
+    border-radius: 14px;
+    border: 1px solid var(--line);
+  }
+
+  .mlc-phone {
+    justify-self: center;
+    width: 100%;
+    max-width: 320px;
+    margin: 0;
+    padding: 10px;
+    border-radius: 34px;
+    background: var(--ink);
+    box-shadow: 0 24px 60px -24px rgb(24 20 31 / 0.45);
+  }
+
+  .mlc-phone img,
+  .mlc-shots img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  .mlc-phone img {
+    border-radius: 26px;
+  }
+
+  .checks {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .checks li {
+    position: relative;
+    padding: 12px 0 12px 30px;
+    border-top: 1px solid var(--line);
+  }
+
+  .checks li::before {
+    content: '';
+    position: absolute;
+    left: 4px;
+    top: 19px;
+    width: 12px;
+    height: 7px;
+    border-left: 2px solid var(--violet);
+    border-bottom: 2px solid var(--violet);
+    transform: rotate(-45deg);
+  }
+
+  .mlc-shots {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 300px));
+    justify-content: space-between;
+    gap: 32px;
+  }
+
+  .mlc-shots figure {
+    margin: 0;
+  }
+
+  .mlc-shots img {
+    border-radius: 18px;
+    border: 1px solid var(--line);
+  }
+
+  .mlc-shots figcaption {
+    margin-top: 12px;
+    font-size: 0.95rem;
+    font-weight: 600;
+  }
+
+  .mlc-steps {
+    margin: 0;
+    padding-left: 1.3em;
+  }
+
+  .mlc-steps li {
+    margin: 0.4em 0;
+  }
+
+  .mlc-downloads > li {
+    grid-template-columns: 1fr auto;
+  }
+
+  .mlc-downloads .go {
+    grid-column: auto;
+  }
+
+  @media (max-width: 960px) {
+    .mlc-hero-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .mlc-phone {
+      max-width: 260px;
+    }
+  }
+
+  @media (max-width: 700px) {
+    .mlc-shots {
+      grid-auto-flow: column;
+      grid-template-columns: none;
+      grid-auto-columns: 70%;
+      justify-content: start;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      padding-bottom: 8px;
+    }
+
+    .mlc-shots figure {
+      scroll-snap-align: start;
+    }
+  }
+</style>
