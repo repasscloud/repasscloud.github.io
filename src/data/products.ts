@@ -48,11 +48,6 @@ export interface Product {
   releaseNotesHref?: string;
   tags: string[];
   showOnHomepage: boolean;
-  /**
-   * Whether the footer's Products column lists this product. Keep the footer
-   * to the flagship products; every product still appears on /products/.
-   */
-  showInFooter: boolean;
 }
 
 export const products: Product[] = [
@@ -76,7 +71,6 @@ export const products: Product[] = [
     releaseNotesHref: '/products/cursedelete/release-notes/',
     tags: ['Rust', 'CLI', 'macOS', 'Windows', 'Linux'],
     showOnHomepage: true,
-    showInFooter: true,
   },
   {
     slug: 'cinturon360',
@@ -94,7 +88,6 @@ export const products: Product[] = [
     kind: 'Enterprise platform',
     tags: ['.NET', 'Azure', 'Entra ID', 'Multi-tenant'],
     showOnHomepage: true,
-    showInFooter: true,
   },
   {
     slug: 'aethon-jobs',
@@ -112,7 +105,6 @@ export const products: Product[] = [
     kind: 'Hiring platform',
     tags: ['.NET', 'Blazor', 'PostgreSQL', 'AI'],
     showOnHomepage: true,
-    showInFooter: true,
   },
   {
     slug: 'my-little-crm',
@@ -134,7 +126,6 @@ export const products: Product[] = [
     releaseNotesHref: '/products/my-little-crm/release-notes/',
     tags: ['Flutter', 'Android', 'macOS', 'Windows', 'Offline'],
     showOnHomepage: false,
-    showInFooter: false,
   },
 ];
 
