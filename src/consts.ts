@@ -49,6 +49,18 @@ export const CURSEDELETE_CHANGELOG_URL =
 // single place the product page's displayed version comes from.
 export const CURSEDELETE_VERSION = 'v2.0.0';
 
+export const MY_LITTLE_CRM_GITHUB_URL = 'https://github.com/danijeljw-RPC/my-little-crm';
+export const MY_LITTLE_CRM_RELEASES_URL = `${MY_LITTLE_CRM_GITHUB_URL}/releases`;
+export const MY_LITTLE_CRM_LICENSE_URL = `${MY_LITTLE_CRM_GITHUB_URL}/blob/main/LICENSE`;
+export const MY_LITTLE_CRM_CHANGELOG_URL =
+  'https://raw.githubusercontent.com/danijeljw-RPC/my-little-crm/refs/heads/main/CHANGELOG.md';
+export const MY_LITTLE_CRM_ICON = '/img/my-little-crm-icon.png';
+export const MY_LITTLE_CRM_OG_IMAGE = '/img/og-my-little-crm.png';
+
+// Update by hand on release, with the matching download file names on
+// /products/my-little-crm/ (they follow my-little-crm-<version>-<platform>).
+export const MY_LITTLE_CRM_VERSION = 'v1.1.0';
+
 // Stripe-hosted purchase pages, one per edition (Community/Education are
 // free but still issue a licence through Stripe Checkout). These are
 // currently Stripe *test-mode* links (buy.stripe.com/test_...) — swap for
