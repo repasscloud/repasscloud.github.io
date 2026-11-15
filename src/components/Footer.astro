@@ -1,6 +1,5 @@
 ---
 import { GITHUB_URL, LINKEDIN_URL, STRIPE_CLIMATE_URL, TWITTER_URL } from '../consts';
-import { products } from '../data/products';
 import { books } from '../data/books';
 import { getOpenJobs } from '../lib/jobs';
 
@@ -25,22 +24,6 @@ const openRoles = (await getOpenJobs()).length;
       </div>
 
       <div>
-        <h2>Products</h2>
-        <ul>
-          {products.map((p) => (
-            <li>
-              {p.destination === 'external' ? (
-                <a href={p.href} target="_blank" rel="noopener">{p.name} ↗</a>
-              ) : (
-                <a href={p.href}>{p.name}</a>
-              )}
-            </li>
-          ))}
-          <li><a href="/archive/">Archive</a></li>
-        </ul>
-      </div>
-
-      <div>
         <h2>Publishing</h2>
         <ul>
           <li><a href="/publishing/">How-To-Use-AI.com series</a></li>
@@ -55,8 +38,10 @@ const openRoles = (await getOpenJobs()).length;
         <h2>Company</h2>
         <ul>
           <li><a href="/about/">About</a></li>
+          <li><a href="/products/">Products</a></li>
           <li><a href="/engineering/">Engineering</a></li>
           <li><a href="/news/">News</a></li>
+          <li><a href="/archive/">Archive</a></li>
           <li><a href="/careers/">Careers{openRoles > 0 && ` (${openRoles} open ${openRoles === 1 ? 'role' : 'roles'})`}</a></li>
           <li><a href="/contact/">Contact</a></li>
         </ul>

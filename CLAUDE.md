@@ -50,10 +50,10 @@ Prefer small, reviewable updates. Do not reintroduce a services-first/engagement
 - `src/consts.ts`: site title (`SITE_TITLE`), homepage title (`HOME_TITLE`, kept 50-60 chars), description, company legal name/ABN, contact email, product/social URLs, OG image paths, brand paths, GTM/GA IDs.
   - `CURSEDELETE_STRIPE_LINKS` holds one Stripe-hosted purchase link per edition. These are Stripe **test-mode** links (`buy.stripe.com/test_...`); swap for live-mode links before real launch. Never fabricate a purchase URL.
   - `CURSEDELETE_VERSION` is a static string; update by hand on release.
-- `src/data/products.ts`: `products` (active) and `archiveProjects` (retired). Products use `monogram` + `colour` + `kind`, or `iconImage` for real art, plus optional `version`/`changelogUrl`. Used by the homepage, `/products/`, `/about/` and the footer.
+- `src/data/products.ts`: `products` (active) and `archiveProjects` (retired). Products use `monogram` + `colour` + `kind`, or `iconImage` for real art, plus optional `version`/`changelogUrl`. Used by the homepage, `/products/` and `/about/` (the footer has no product list; it links `/products/`).
 - `src/data/books.ts`: the How-To-Use-AI.com series (`SERIES`, `books`). Source of truth for book data is `publishing/books.json` in the how-to-use-ai.com repository (titles, ISBNs, accent colours, back-cover copy); copy changes across by hand. Kindle store links come from `https://how-to-use-ai.com/purchase/` (ASIN `B0HLYQSMQT`). Direct digital purchase links go to that purchase page, which gets direct links on release day. A book gets its own page when `page: true`.
 - `src/data/engineering.ts`: the four capabilities (with anchor ids) and selected outcomes, used by the homepage and `/engineering/`.
-- `src/components/Changelog.astro`: fetches and renders a Keep a Changelog `CHANGELOG.md` at build time; renders nothing if the fetch fails.
+- `src/lib/changelog.ts`: fetches a Keep a Changelog `CHANGELOG.md` at build time and renders each version as Markdown (remark + GFM; raw HTML dropped, relative links resolved to the GitHub repo); returns nothing if the fetch fails. Used by `src/layouts/ReleaseNotesLayout.astro` (the `/products/<slug>/release-notes/` pages) and `src/components/ReleaseNotesSummary.astro` (the short block on product pages). Set a product's `changelogUrl` and `releaseNotesHref` in `products.ts`.
 
 ### Layouts and shell
 
@@ -65,12 +65,13 @@ Prefer small, reviewable updates. Do not reintroduce a services-first/engagement
 ### Navigation and footer
 
 - `src/components/Header.astro`: Products, Publishing, Engineering, News, Company (`/about/`), Careers, Contact. Careers is always in the nav (hiring is a credibility signal) and shows a magenta count badge when `getOpenJobs()` returns roles; the footer link does the same in words. Active state uses `currentPath.startsWith(href)` on trailing-slash paths. Mobile menu uses `hidden` + `aria-expanded`, closes on Escape (returns focus to the toggle), outside click, link click and resize to desktop.
-- `src/components/Footer.astro`: brand column with the Stripe Climate member link (`STRIPE_CLIMATE_URL`, official icon at `public/images/stripe-climate.svg`; 1% of revenue, as stated on that page); columns Products (from `products.ts`), Publishing (from `books.ts`), Company, Elsewhere; legal row with ABN, policy links and the CCPA "Your privacy choices" button (must stay on every page). No CTA banners.
+- `src/components/Footer.astro`: brand column with the Stripe Climate member link (`STRIPE_CLIMATE_URL`, official icon at `public/images/stripe-climate.svg`; 1% of revenue, as stated on that page); columns Publishing (from `books.ts`), Company (includes Products and Archive links), Elsewhere; no per-product links; legal row with ABN, policy links and the CCPA "Your privacy choices" button (must stay on every page). No CTA banners.
 
 ### Pages
 
 - `/` (`src/pages/index.astro`): hero with the Book 1 cover and a real `cursdel` dry run → Software and Publishing panels → engineering capabilities → selected work → news. `Organization` + `WebSite` schema.
-- `/products/`, `/products/cursedelete/`: product catalogue (`ItemList` schema) and the CurseDelete 2 page (content verifiable from the `repasscloud/cursedelete-2` repo only; `SoftwareApplication` + `BreadcrumbList` schema, no `Offer`/ratings). The CLI binary is `cursdel`.
+- `/products/my-little-crm/` (+ `release-notes/`): My Little CRM, a free MIT-licensed Flutter app (`danijeljw-RPC/my-little-crm`); content verifiable from that repo. Download links are built from `MY_LITTLE_CRM_VERSION`, so update it on release. Not on the homepage.
+- `/products/`, `/products/cursedelete/` (+ `release-notes/`): product catalogue (`ItemList` schema) and the CurseDelete 2 page (content verifiable from the `repasscloud/cursedelete-2` repo only; `SoftwareApplication` + `BreadcrumbList` schema, no `Offer`/ratings). The CLI binary is `cursdel`.
 - `/publishing/` (`BookSeries` schema, `BookShelf` component: Book 1 face-out with its real cover, later books as spines in their `books.json` accent colours) and `/publishing/<slug>/` (`Book` schema with an edition per ISBN; Kindle store list; direct purchase via how-to-use-ai.com).
 - `/engineering/`: merged former `/services/*` and `/case-studies` pages.
 - `/careers/`: see "Careers".

@@ -1,0 +1,14 @@
+---
+import ReleaseNotesLayout from '../../../../layouts/ReleaseNotesLayout.astro';
+import { CURSEDELETE_OG_IMAGE } from '../../../../consts';
+import { products } from '../../../../data/products';
+
+const product = products.find((p) => p.slug === 'cursedelete')!;
+---
+
+<ReleaseNotesLayout
+  product={product}
+  title="CurseDelete 2 Release Notes: Every Version and Change"
+  description="Release notes for CurseDelete 2, the native Rust deletion engine: what was added, changed, fixed and secured in each version, newest first."
+  ogImagePath={CURSEDELETE_OG_IMAGE}
+/>

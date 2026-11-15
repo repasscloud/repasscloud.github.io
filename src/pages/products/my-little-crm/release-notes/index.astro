@@ -1,0 +1,14 @@
+---
+import ReleaseNotesLayout from '../../../../layouts/ReleaseNotesLayout.astro';
+import { MY_LITTLE_CRM_OG_IMAGE } from '../../../../consts';
+import { products } from '../../../../data/products';
+
+const product = products.find((p) => p.slug === 'my-little-crm')!;
+---
+
+<ReleaseNotesLayout
+  product={product}
+  title="My Little CRM Release Notes: Every Version and Change"
+  description="Release notes for My Little CRM, the private, offline record of your own conversations: what was added, changed and fixed in each version."
+  ogImagePath={MY_LITTLE_CRM_OG_IMAGE}
+/>
