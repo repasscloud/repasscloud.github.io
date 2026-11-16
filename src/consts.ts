@@ -54,6 +54,9 @@ export const MY_LITTLE_CRM_RELEASES_URL = `${MY_LITTLE_CRM_GITHUB_URL}/releases`
 export const MY_LITTLE_CRM_LICENSE_URL = `${MY_LITTLE_CRM_GITHUB_URL}/blob/main/LICENSE`;
 export const MY_LITTLE_CRM_CHANGELOG_URL =
   'https://raw.githubusercontent.com/danijeljw-RPC/my-little-crm/refs/heads/main/CHANGELOG.md';
+// Browser demo (Flutter web build on its own Worker). Always runs the latest
+// published version, with sample data; nothing is stored.
+export const MY_LITTLE_CRM_DEMO_URL = 'https://my-little-crm-demo.repasscloud.com';
 export const MY_LITTLE_CRM_ICON = '/img/my-little-crm-icon.png';
 export const MY_LITTLE_CRM_OG_IMAGE = '/img/og-my-little-crm.png';
 

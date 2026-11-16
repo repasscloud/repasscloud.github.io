@@ -61,6 +61,9 @@ const hostOf = (url: string) => new URL(url).host.replace(/^www\./, '');
               ) : (
                 <a class="btn btn-primary" href={p.href}>Product details<span class="sr-only">: {p.name}</span></a>
               )}
+              {p.demoUrl && (
+                <a class="btn btn-quiet" href={p.demoUrl} target="_blank" rel="noopener">Try the demo ↗</a>
+              )}
               {p.githubUrl && (
                 <a class="btn btn-quiet" href={p.githubUrl} target="_blank" rel="noopener">Source on GitHub ↗</a>
               )}
