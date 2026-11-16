@@ -6,6 +6,7 @@ import {
   CURSEDELETE_ICON,
   CURSEDELETE_VERSION,
   MY_LITTLE_CRM_CHANGELOG_URL,
+  MY_LITTLE_CRM_DEMO_URL,
   MY_LITTLE_CRM_GITHUB_URL,
   MY_LITTLE_CRM_ICON,
   MY_LITTLE_CRM_VERSION,
@@ -32,6 +33,8 @@ export interface Product {
   /** Set when destination is 'external'. */
   externalUrl?: string;
   githubUrl?: string;
+  /** Optional live demo that runs in the browser. */
+  demoUrl?: string;
   /** Two-letter monogram shown in a tile when iconImage isn't set. */
   monogram: string;
   /** Tile colour for the monogram. */
@@ -117,6 +120,7 @@ export const products: Product[] = [
     destination: 'internal',
     href: '/products/my-little-crm/',
     githubUrl: MY_LITTLE_CRM_GITHUB_URL,
+    demoUrl: MY_LITTLE_CRM_DEMO_URL,
     monogram: 'ML',
     colour: '#18141f',
     kind: 'Personal app',

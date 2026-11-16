@@ -3,6 +3,7 @@ import { Image } from 'astro:assets';
 import Layout from '../../../layouts/Layout.astro';
 import ReleaseNotesSummary from '../../../components/ReleaseNotesSummary.astro';
 import {
+  MY_LITTLE_CRM_DEMO_URL,
   MY_LITTLE_CRM_GITHUB_URL,
   MY_LITTLE_CRM_ICON,
   MY_LITTLE_CRM_LICENSE_URL,
@@ -26,7 +27,10 @@ const downloads = [
   { platform: 'Windows', file: `my-little-crm-${versionNumber}-windows-x64.zip`, note: 'x64, in a zip archive' },
 ];
 
+const demoHost = new URL(MY_LITTLE_CRM_DEMO_URL).host;
+
 const platforms = [
+  { name: 'Web', status: 'Live demo', detail: `Runs in your browser at ${demoHost} with sample data. Always the latest published version; nothing you enter is saved.` },
   { name: 'Android', status: 'Release build', detail: 'APK attached to each GitHub release. Automatic cloud backup and device-transfer extraction of app data are turned off.' },
   { name: 'macOS', status: 'Release build', detail: 'Zipped app bundle attached to each GitHub release. Integration-tested in CI.' },
   { name: 'Windows', status: 'Release build', detail: 'Zipped x64 build attached to each GitHub release.' },
@@ -106,11 +110,12 @@ const breadcrumbSchema = {
         </p>
         <div class="actions">
           <a href="#download" class="btn btn-primary">Download {MY_LITTLE_CRM_VERSION}</a>
+          <a href={MY_LITTLE_CRM_DEMO_URL} class="btn btn-quiet" target="_blank" rel="noopener">Try the demo ↗</a>
           <a href={MY_LITTLE_CRM_GITHUB_URL} class="btn btn-quiet" target="_blank" rel="noopener">Source on GitHub ↗</a>
         </div>
         <dl class="facts">
           <div><dt>Version</dt><dd>{MY_LITTLE_CRM_VERSION}</dd></div>
-          <div><dt>Platforms</dt><dd>Android, macOS, Windows</dd></div>
+          <div><dt>Platforms</dt><dd>Android, macOS, Windows, plus a web demo</dd></div>
           <div><dt>Price</dt><dd>Free, MIT licence</dd></div>
           <div><dt>Changes</dt><dd><a href="/products/my-little-crm/release-notes/">Release notes</a></dd></div>
         </dl>
@@ -183,6 +188,32 @@ const breadcrumbSchema = {
     </div>
   </section>
 
+  <section id="demo" class="section ink-band">
+    <div class="wrap split-wide">
+      <div>
+        <h2 style="margin-bottom:20px">Try it in your browser</h2>
+        <p>
+          The web demo is the full app, built from the same code as the downloads. It opens with a
+          ledger of fictional sample data, so you can see how it works before you install anything.
+        </p>
+        <div class="actions" style="margin-top:28px">
+          <a href={MY_LITTLE_CRM_DEMO_URL} class="btn btn-on-ink" target="_blank" rel="noopener">Open the demo ↗</a>
+        </div>
+      </div>
+      <div>
+        <ul class="checks mlc-demo-points">
+          <li><strong>Always current.</strong> The demo is updated with every published release, so it’s always the latest version.</li>
+          <li><strong>Sample data included.</strong> Interactions, follow-ups and party histories are already filled in to explore.</li>
+          <li><strong>Nothing is stored.</strong> Add, edit or delete what you like; your changes aren’t saved and are gone when you close or reload the page.</li>
+          <li><strong>No sign-up.</strong> It runs in your browser and needs JavaScript and WebAssembly.</li>
+        </ul>
+        <p class="small mlc-demo-note">
+          Use the demo to look around, not to keep records. For your own notes, download the app for your device.
+        </p>
+      </div>
+    </div>
+  </section>
+
   <section class="section band">
     <div class="wrap split-wide">
       <div>
@@ -218,7 +249,7 @@ const breadcrumbSchema = {
 
   <section class="section">
     <div class="wrap">
-      <div class="sec-head"><h2>Platform support</h2><p>One Flutter codebase, with release builds published for three platforms so far.</p></div>
+      <div class="sec-head"><h2>Platform support</h2><p>One Flutter codebase, with release builds published for three platforms so far and a web demo.</p></div>
       <div class="table-wrap">
         <table class="data-table">
           <thead><tr><th scope="col">Platform</th><th scope="col">Status</th><th scope="col">Details</th></tr></thead>
@@ -346,6 +377,22 @@ flutter run -d macos   <span class="dim"># or ios, android, windows, linux</span
     border-left: 2px solid var(--violet);
     border-bottom: 2px solid var(--violet);
     transform: rotate(-45deg);
+  }
+
+  .mlc-demo-points li {
+    border-top-color: rgb(255 255 255 / 0.18);
+  }
+
+  .mlc-demo-points li::before {
+    border-color: currentColor;
+  }
+
+  .mlc-demo-points strong {
+    color: var(--on-ink);
+  }
+
+  .mlc-demo-note {
+    margin-top: 18px;
   }
 
   .mlc-shots {
