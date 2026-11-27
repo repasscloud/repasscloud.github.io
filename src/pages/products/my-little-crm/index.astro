@@ -2,12 +2,14 @@
 import { Image } from 'astro:assets';
 import Layout from '../../../layouts/Layout.astro';
 import ReleaseNotesSummary from '../../../components/ReleaseNotesSummary.astro';
+import GooglePlayBadge from '../../../components/GooglePlayBadge.astro';
 import {
   MY_LITTLE_CRM_DEMO_URL,
   MY_LITTLE_CRM_GITHUB_URL,
   MY_LITTLE_CRM_ICON,
   MY_LITTLE_CRM_LICENSE_URL,
   MY_LITTLE_CRM_OG_IMAGE,
+  MY_LITTLE_CRM_PLAY_URL,
   MY_LITTLE_CRM_RELEASES_URL,
   MY_LITTLE_CRM_VERSION,
 } from '../../../consts';
@@ -112,6 +114,7 @@ const breadcrumbSchema = {
           <a href="#download" class="btn btn-primary">Download {MY_LITTLE_CRM_VERSION}</a>
           <a href={MY_LITTLE_CRM_DEMO_URL} class="btn btn-quiet" target="_blank" rel="noopener">Try the demo ↗</a>
           <a href={MY_LITTLE_CRM_GITHUB_URL} class="btn btn-quiet" target="_blank" rel="noopener">Source on GitHub ↗</a>
+          <GooglePlayBadge href={MY_LITTLE_CRM_PLAY_URL} productName="My Little CRM" />
         </div>
         <dl class="facts">
           <div><dt>Version</dt><dd>{MY_LITTLE_CRM_VERSION}</dd></div>
@@ -275,6 +278,10 @@ const breadcrumbSchema = {
           <a href="/legal/my-little-crm-privacy/">privacy policy</a>.
         </p>
         <h3 style="margin:28px 0 10px;font-size:1.08rem">Installing on Android</h3>
+        <p class="muted">
+          The simplest route is <a href={MY_LITTLE_CRM_PLAY_URL} target="_blank" rel="noopener">Google Play ↗</a>,
+          which also keeps the app up to date. To install the APK yourself instead:
+        </p>
         <ol class="mlc-steps muted">
           <li>Download the APK on your phone.</li>
           <li>When asked, allow your browser or file manager to install unknown apps.</li>

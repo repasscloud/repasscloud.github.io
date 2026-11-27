@@ -57,6 +57,8 @@ export const MY_LITTLE_CRM_CHANGELOG_URL =
 // Browser demo (Flutter web build on its own Worker). Always runs the latest
 // published version, with sample data; nothing is stored.
 export const MY_LITTLE_CRM_DEMO_URL = 'https://my-little-crm-demo.repasscloud.com';
+// Google Play store listing (Android).
+export const MY_LITTLE_CRM_PLAY_URL = 'https://play.google.com/store/apps/details?id=com.repasscloud.mylittlecrm';
 export const MY_LITTLE_CRM_ICON = '/img/my-little-crm-icon.png';
 export const MY_LITTLE_CRM_OG_IMAGE = '/img/og-my-little-crm.png';
 
