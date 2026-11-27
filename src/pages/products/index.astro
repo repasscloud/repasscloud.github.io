@@ -2,6 +2,7 @@
 import Layout from '../../layouts/Layout.astro';
 import { SITE_DOMAIN } from '../../consts';
 import { products } from '../../data/products';
+import GooglePlayBadge from '../../components/GooglePlayBadge.astro';
 
 const itemListSchema = {
   '@context': 'https://schema.org',
@@ -67,6 +68,7 @@ const hostOf = (url: string) => new URL(url).host.replace(/^www\./, '');
               {p.githubUrl && (
                 <a class="btn btn-quiet" href={p.githubUrl} target="_blank" rel="noopener">Source on GitHub ↗</a>
               )}
+              {p.googlePlayUrl && <GooglePlayBadge href={p.googlePlayUrl} productName={p.name} />}
             </div>
           </article>
         ))}
