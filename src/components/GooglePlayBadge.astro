@@ -1,0 +1,42 @@
+---
+// Official "Get it on Google Play" badge (served locally from public/), per
+// Google's badge guidelines: unmodified artwork, which includes its own
+// transparent clear space, 41 px on every side of 646x250 (the negative margin below cancels it).
+interface Props {
+  href: string;
+  /** Used in the accessible name, e.g. "Get My Little CRM on Google Play". */
+  productName: string;
+  /** Rendered image height in px, padding included. */
+  height?: number;
+}
+
+const { href, productName, height = 66 } = Astro.props;
+const width = Math.round((646 / 250) * height);
+---
+
+<a class="play-badge" href={href} target="_blank" rel="noopener">
+  <img
+    src="/images/badges/google-play-badge-en.png"
+    alt={`Get ${productName} on Google Play`}
+    width={width}
+    height={height}
+    loading="lazy"
+    decoding="async"
+  />
+</a>
+
+<style>
+  .play-badge {
+    display: inline-block;
+    align-self: flex-start;
+    line-height: 0;
+    /* Pull the badge's built-in clear space back so it lines up with buttons. */
+    margin: -11px;
+    border-radius: 8px;
+  }
+
+  .play-badge img {
+    display: block;
+    max-width: none;
+  }
+</style>
